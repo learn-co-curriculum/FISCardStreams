@@ -11,14 +11,20 @@
 
 @interface FISStream : NSObject
 
+@property (strong, nonatomic) NSString *streamID;
 @property (strong, nonatomic) NSString *streamName;
 @property (strong, nonatomic) NSString *streamDescription;
-@property (strong, nonatomic) NSString *streamID;
-@property (strong, nonatomic) NSDate *createdAt;
+@property (strong, nonatomic) NSDate   *createdAt;
 
-- (instancetype)initWithStreamName:(NSString *)streamName
-                 streamDescription:(NSString *)streamDescription
-                          streamID:(NSString *)streamID
-                         createdAt:(NSDate *)createdAt;
+@property (strong, nonatomic) NSMutableArray *cards;
+
+- (instancetype)init;
+- (instancetype)initWithStreamID:(NSString *)streamID
+                      streamName:(NSString *)streamName
+               streamDescription:(NSString *)streamDescription
+                       createdAt:(NSDate   *)createdAt
+                           cards:(NSMutableArray *)cards;
+
++ (FISStream *)createStreamFromDictionary:(NSDictionary *)streamDictionary;
 
 @end
