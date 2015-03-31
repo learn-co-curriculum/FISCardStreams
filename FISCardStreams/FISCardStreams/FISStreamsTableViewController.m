@@ -1,18 +1,20 @@
 //
-//  FISStreamTableViewController.m
+//  FISStreamsTableViewController.m
 //  FISCardStreams
 //
 //  Created by Mark Murray on 3/31/15.
 //  Copyright (c) 2015 Mark Edward Murray. All rights reserved.
 //
+//  assigned to Mark (temp)
 
-#import "FISStreamTableViewController.h"
+#import "FISStreamsTableViewController.h"
+#import "FISCardsTableViewController.h"
 
-@interface FISStreamTableViewController ()
+@interface FISStreamsTableViewController ()
 
 @end
 
-@implementation FISStreamTableViewController
+@implementation FISStreamsTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -87,9 +89,9 @@
 }
 */
 
-/*
-#pragma mark - Navigation
 
+#pragma mark - Navigation
+/*
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
