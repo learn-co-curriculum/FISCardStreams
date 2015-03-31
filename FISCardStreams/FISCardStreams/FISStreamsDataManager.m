@@ -9,6 +9,11 @@
 
 #import "FISStreamsDataManager.h"
 
+#import "FISStream.h"
+#import "FISCard.h"
+#import "FISAttachment.h"
+#import "FISComment.h"
+
 @implementation FISStreamsDataManager
 
 + (instancetype)sharedDataManager {
@@ -16,9 +21,27 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedDataManager = [[FISStreamsDataManager alloc] init];
+        _sharedDataManager.streams = [[NSMutableArray alloc]init];
     });
-    
     return _sharedDataManager;
+}
+
+#pragma mark - Test Data
+
+- (void)generateTestData {
+    FISCard *card1 = [[FISCard alloc]init];
+    card1.cardID = @"001";
+    card1.title = @"Sample Card";
+    card1.cardDescription = @"This is a sample card.";
+
+    
+    NSMutableArray *cards = [[NSMutableArray alloc]initWithArray:@[card1]];
+    FISStream *stream = [[FISStream alloc]initWithStreamID:@"streamID"
+                                                streamName:@"streamName"
+                                         streamDescription:@"streamDescription"
+                                                 createdAt:[NSDate date]
+                                                     cards:cards            ];
+    [self.streams addObject:stream];
 }
 
 #pragma mark - Core Data stack

@@ -28,7 +28,7 @@
                          postAt:[NSDate date]
                       isDeleted:NO
                       deletedAt:nil
-                    attachments:@[]
+                    attachments:[[NSMutableArray alloc]init]
                    commentCount:0
                        comments:[[NSMutableArray alloc]init]
                            tags:@[]                             ];
@@ -46,7 +46,7 @@
                         postAt:(NSDate   *)postAt
                      isDeleted:(BOOL      )isDeleted
                      deletedAt:(NSDate   *)deletedAt
-                   attachments:(NSArray  *)attachments
+                   attachments:(NSMutableArray *)attachments
                   commentCount:(NSInteger )commentCount
                       comments:(NSMutableArray *)comments
                           tags:(NSArray  *)tags {
@@ -71,8 +71,8 @@
 }
 
 + (FISCard *)createCardFromDictionary:(NSDictionary *)cardDictionary {
-    NSArray *attachments = [FISCard attachmentsFromArray:cardDictionary[@"attachments"]
-                                              withCardID:cardDictionary[@"id"]          ];
+    NSMutableArray *attachments = [FISCard attachmentsFromArray:cardDictionary[@"attachments"]
+                                                     withCardID:cardDictionary[@"id"]          ];
     
     NSMutableArray *comments = [FISCard commentsFromArray:cardDictionary[@"comments"]   ];
     
@@ -100,15 +100,15 @@
     return card;
 }
 
-+ (NSArray *)attachmentsFromArray:(NSArray *)attachmentDictionaries
++ (NSMutableArray *)attachmentsFromArray:(NSArray *)attachmentDictionaries
                        withCardID:(NSString *)cardID {
-    NSMutableArray *mAttachments = [[NSMutableArray alloc]init];
+    NSMutableArray *attachments = [[NSMutableArray alloc]init];
     for (NSDictionary *attachmentDictionary in attachmentDictionaries) {
         FISAttachment *attachment = [FISAttachment createAttachmentFromDictionary:attachmentDictionary
                                                                        withCardID:cardID];
-        [mAttachments addObject:attachment];
+        [attachments addObject:attachment];
     }
-    return [NSArray arrayWithArray:mAttachments];
+    return attachments;
 }
 
 + (NSMutableArray *)commentsFromArray:(NSArray *)commentDictionaries {

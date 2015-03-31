@@ -7,10 +7,18 @@
 //
 //  assigned to Mark (temp)
 
+
+// View Controllers
 #import "FISStreamsTableViewController.h"
 #import "FISCardsTableViewController.h"
 
+// Models
+#import "FISStreamsDataManager.h"
+#import "FISStream.h"
+
 @interface FISStreamsTableViewController ()
+
+@property (strong, nonatomic) FISStreamsDataManager *streamsDataManager;
 
 @end
 
@@ -18,6 +26,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
+    [self.streamsDataManager generateTestData];
+    self.streams = self.streamsDataManager.streams;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -34,26 +46,23 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [self.streams count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    FISStream *currentStream = self.streams[indexPath.row];
     
-    // Configure the cell...
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basicCell" forIndexPath:indexPath];
+    cell.textLabel.text = currentStream.streamName;
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -91,12 +100,13 @@
 
 
 #pragma mark - Navigation
-/*
+
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    FISCardsTableViewController *cardsTVC = segue.destinationViewController;
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    cardsTVC.stream = self.streams[indexPath.row];
 }
-*/
+
 
 @end

@@ -11,4 +11,6 @@
 
 @interface FISStreamsTableViewController : UITableViewController
 
+@property (strong, nonatomic) NSMutableArray *streams;
+
 @end

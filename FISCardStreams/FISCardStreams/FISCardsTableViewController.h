@@ -9,6 +9,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class FISStream;
+
 @interface FISCardsTableViewController : UITableViewController
+
+@property (strong, nonatomic) FISStream *stream;
 
 @end
