@@ -9,6 +9,7 @@
 
 #import "FISAppDelegate.h"
 #import "FISStreamsDataManager.h"
+#import "FISCardStreamsAPIClient.h"
 
 @interface FISAppDelegate ()
 
@@ -21,7 +22,7 @@
     // Override point for customization after application launch.
     
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
-    
+    [FISCardStreamsAPIClient getAllStreamsAndCheckWithCompletionBlock:nil];
     return YES;
 }
 
