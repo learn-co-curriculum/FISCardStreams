@@ -16,5 +16,5 @@ extern NSString *const CARDSTREAMS_BASE_URL;
 // Mark's API credentials
 extern NSString *const CARDSTREAMS_APP_ID;
 extern NSString *const CARDSTREAMS_KEY;
-
+extern NSString *const GITHUB_API_URL;
 @end

@@ -9,7 +9,7 @@
 
 #import "FISAppDelegate.h"
 #import "FISStreamsDataManager.h"
-
+#import "FISGithubAPIClient.h"
 @interface FISAppDelegate ()
 
 @end
@@ -22,6 +22,12 @@
     
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
     
+    [FISGithubAPIClient getUserRepos:@"joemantey" completionBlock:^(NSArray * repo)  {
+        NSLog(@"%@", repo);
+    }];
+    
+    
+
     return YES;
 }
 
