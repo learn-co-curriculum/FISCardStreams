@@ -101,7 +101,7 @@
 }
 
 + (NSMutableArray *)attachmentsFromArray:(NSArray *)attachmentDictionaries
-                       withCardID:(NSString *)cardID {
+                              withCardID:(NSString *)cardID {
     NSMutableArray *attachments = [[NSMutableArray alloc]init];
     for (NSDictionary *attachmentDictionary in attachmentDictionaries) {
         FISAttachment *attachment = [FISAttachment createAttachmentFromDictionary:attachmentDictionary

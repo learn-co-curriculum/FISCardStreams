@@ -17,4 +17,8 @@ NSString *const CARDSTREAMS_BASE_URL = @"https://api.cardstreams.io/v1";
 NSString *const CARDSTREAMS_APP_ID = @"a43a7450";
 NSString *const CARDSTREAMS_KEY = @"51a297e99b4ca58be472ee943da73e7b";
 
+//Joes Github
+NSString *const GITHUB_API_URL=@"https://api.github.com";
+
+
 @end

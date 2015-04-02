@@ -8,7 +8,11 @@
 //  assigned to Anish
 
 #import <Foundation/Foundation.h>
+#import "FISConstants.h"
 
 @interface FISGithubAPIClient : NSObject
+
++(void)getRepositoriesWithCompletion:(void (^)(NSArray *repoDictionaries))completionBlock;
+
 
 @end
