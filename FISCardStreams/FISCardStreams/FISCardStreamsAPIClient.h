@@ -16,8 +16,7 @@
 /**
  Get all Streams to check the userame during signUp.
  */
-+ (void) getAllStreamsAndCheckWithCompletionBlock:(void (^)(NSArray *streamNames))completionBlock;
-
++ (void) getAllStreamsAndCheckWithUsername: (NSString *)username CompletionBlock:(void (^)(FISStream *))completionBlock SecondCompletionBlock: (void (^)(BOOL unique))secondCompletionBlock;
 
 
 /**

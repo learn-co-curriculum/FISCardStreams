@@ -11,6 +11,8 @@
 #import "FISStreamsDataManager.h"
 #import "FISCardStreamsAPIClient.h"
 
+#import "FISCardstreamLogInViewController.h"
+
 @interface FISAppDelegate ()
 
 @end
@@ -21,8 +23,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
-//    [FISCardStreamsAPIClient getAllStreamsAndCheckWithCompletionBlock:nil];
+    
+    //if (self.streamsDataManager.userStream) {
+    UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"LoginFlow" bundle:nil];
+    FISCardstreamLogInViewController *loginViewController = [myStoryboard instantiateInitialViewController];
+    self.window.rootViewController = loginViewController;
+   // }
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
