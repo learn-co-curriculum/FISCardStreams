@@ -29,7 +29,7 @@
 /**
  Date and time when the Stream was created.
  */
-@property (strong, nonatomic) NSDate   *createdAt;
+@property (strong, nonatomic) NSDate *createdAt;
 
 /**
  List of cards attributed to the Stream.
