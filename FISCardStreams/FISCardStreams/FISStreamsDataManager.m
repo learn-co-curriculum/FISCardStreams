@@ -9,6 +9,10 @@
 
 #import "FISStreamsDataManager.h"
 
+// API Clients
+#import "FISCardStreamsAPIClient.h"
+
+// Data Models
 #import "FISStream.h"
 #import "FISCard.h"
 #import "FISAttachment.h"
@@ -25,6 +29,35 @@
     });
     return _sharedDataManager;
 }
+
+#pragma mark - API requests
+
+- (void)getStreamForStreamIDWithCompletion:(void (^)(BOOL))completionBlock {
+#warning overriding streamID property for testing
+//    self.streamID = @"551aa2e6583813280700385a"; // Mark's SampleStream;
+    self.streamID = @"5519584e5838132807000d05"; // Anish's MyFirstStream;
+    
+    [FISCardStreamsAPIClient getStreamsForAUserWithStreamIDs:self.streamID AndCompletionBlock:^(FISStream *stream) {
+        self.userStream = stream;
+        completionBlock(YES);
+    }];
+}
+
+- (void)getAllCardsForUserStreamWithCompletion:(void (^)(BOOL))completionBlock {
+    if (self.userStream != nil) {
+        [FISCardStreamsAPIClient getAllCardsWithStreamID:self.userStream.streamID AndCheckWithCompletionBlock:^(NSArray *userCards) {
+            self.userStream.cards = [[NSMutableArray alloc]init];
+            for (NSDictionary *cardDictionary in userCards) {
+                FISCard *card = [FISCard createCardFromDictionary:cardDictionary];
+                [self.userStream.cards addObject:card];
+            }
+            completionBlock(YES);
+        }];
+    } else {
+        NSLog(@"userStream has not been fetched from the server");
+    }
+}
+
 
 #pragma mark - Test Data
 

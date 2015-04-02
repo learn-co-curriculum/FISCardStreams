@@ -28,8 +28,10 @@
     [super viewDidLoad];
     
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
-    [self.streamsDataManager generateTestData];
-    self.streams = self.streamsDataManager.streams;
+//    [self.streamsDataManager generateTestData];
+//    self.streams = self.streamsDataManager.streams;
+    self.streams = [[NSMutableArray alloc]init];
+
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

@@ -14,6 +14,14 @@
 extern NSString *const CARDSTREAMS_BASE_URL;
 
 // Mark's API credentials
+extern NSString *const CARDSTREAMS_APP_ID_MARK;
+extern NSString *const CARDSTREAMS_KEY_MARK;
+
+// Anish's API credentials
+extern NSString *const CARDSTREAMS_APP_ID_ANISH;
+extern NSString *const CARDSTREAMS_KEY_ANISH;
+
+
 extern NSString *const CARDSTREAMS_APP_ID;
 extern NSString *const CARDSTREAMS_KEY;
 

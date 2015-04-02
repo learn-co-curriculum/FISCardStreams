@@ -7,8 +7,10 @@
 //
 //  assigned to Mark (temp)
 
-// View Controllers
+
 #import "FISCardsTableViewController.h"
+
+#import "FISStreamsDataManager.h"
 
 // Models
 #import "FISStreamsDataManager.h"
@@ -17,6 +19,8 @@
 
 @interface FISCardsTableViewController ()
 
+@property (strong, nonatomic) FISStreamsDataManager *streamsDataManager;
+
 @end
 
 @implementation FISCardsTableViewController
@@ -24,7 +28,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = self.stream.streamName;
+    self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
+    
+    [self.streamsDataManager getStreamForStreamIDWithCompletion:^(BOOL success) {
+        NSLog(@"stream fetched");
+        [self.streamsDataManager getAllCardsForUserStreamWithCompletion:^(BOOL success) {
+            NSLog(@"cards fetched");
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                NSLog(@"Reload tableview");
+                self.stream = self.streamsDataManager.userStream;
+                self.navigationItem.title = self.stream.streamName;
+                [self.tableView reloadData];
+            }];
+        }];
+    } ];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

@@ -22,7 +22,7 @@
     // Override point for customization after application launch.
     
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
-    [FISCardStreamsAPIClient getAllStreamsAndCheckWithCompletionBlock:nil];
+//    [FISCardStreamsAPIClient getAllStreamsAndCheckWithCompletionBlock:nil];
     return YES;
 }
 
