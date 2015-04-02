@@ -18,9 +18,10 @@
 @implementation FISCardStreamsAPIClient
 
 
-+ (void) getAllStreamsAndCheckWithCompletionBlock:(void (^)(NSArray *))completionBlock
++ (void) getAllStreamsAndCheckWithUsername: (NSString *)username CompletionBlock:(void (^)(FISStream *))completionBlock SecondCompletionBlock: (void (^)(BOOL ))secondCompletionBlock
 {
  
+    __block BOOL unique = NO;
     NSString *cardstreamURL = [NSString stringWithFormat:@"%@/streams", CARDSTREAMS_BASE_URL];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -35,7 +36,18 @@
     [manager GET:cardstreamURL parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSArray *allStreams = responseObject;
-        completionBlock(allStreams);
+        for (NSDictionary *streamDictionary in allStreams) {
+            if ([streamDictionary[@"name"] isEqualToString:username]) {
+                
+                FISStream *stream = [FISStream createStreamFromDictionary:streamDictionary];
+                unique = YES;
+                completionBlock(stream);
+                
+            }
+        }
+        
+        secondCompletionBlock(unique);
+
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Fail: %@", error.localizedDescription);
