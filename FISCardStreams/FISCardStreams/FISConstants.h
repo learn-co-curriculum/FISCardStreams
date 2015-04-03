@@ -25,4 +25,7 @@ extern NSString *const CARDSTREAMS_KEY_ANISH;
 extern NSString *const CARDSTREAMS_APP_ID;
 extern NSString *const CARDSTREAMS_KEY;
 
+//Joes Github
+extern NSString *const GITHUB_API_URL;
+
 @end
