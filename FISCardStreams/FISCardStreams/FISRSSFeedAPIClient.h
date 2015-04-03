@@ -11,4 +11,10 @@
 
 @interface FISRSSFeedAPIClient : NSObject
 
+@property(strong, nonatomic)NSString * blogLink;
+
+
+-(NSString *)transformBlogUrlToBlogRssFeedUrl;
+-(NSArray *)getBlogList;
+- (instancetype)initWithBlogUrl:(NSString *)blogUrl;
 @end

@@ -28,6 +28,7 @@
 		6A7C1F3F1ACAFA4400DA0161 /* FISAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7C1F3E1ACAFA4400DA0161 /* FISAttachment.m */; };
 		6A7C1F421ACAFA5800DA0161 /* FISComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7C1F411ACAFA5800DA0161 /* FISComment.m */; };
 		6A7C1F461ACB1D3200DA0161 /* NSDate+DateFromJSONDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7C1F451ACB1D3200DA0161 /* NSDate+DateFromJSONDate.m */; };
+		747F79281ACEE80D00825492 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 747F79271ACEE80D00825492 /* XMLReader.m */; };
 		889998181ACDA94E00A2050B /* FISCardstreamLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889998171ACDA94E00A2050B /* FISCardstreamLogInViewController.m */; };
 		8899981B1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8899981A1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,8 @@
 		6A7C1F411ACAFA5800DA0161 /* FISComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISComment.m; sourceTree = "<group>"; };
 		6A7C1F441ACB1D3200DA0161 /* NSDate+DateFromJSONDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateFromJSONDate.h"; sourceTree = "<group>"; };
 		6A7C1F451ACB1D3200DA0161 /* NSDate+DateFromJSONDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateFromJSONDate.m"; sourceTree = "<group>"; };
+		747F79261ACEE80D00825492 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLReader.h; path = "../../../../../Downloads/XMLReader-no-objc-arc/XMLReader.h"; sourceTree = "<group>"; };
+		747F79271ACEE80D00825492 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLReader.m; path = "../../../../../Downloads/XMLReader-no-objc-arc/XMLReader.m"; sourceTree = "<group>"; };
 		889998161ACDA94E00A2050B /* FISCardstreamLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISCardstreamLogInViewController.h; sourceTree = "<group>"; };
 		889998171ACDA94E00A2050B /* FISCardstreamLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCardstreamLogInViewController.m; sourceTree = "<group>"; };
 		889998191ACDC30B00A2050B /* FISCardstreamSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISCardstreamSignUpViewController.h; sourceTree = "<group>"; };
@@ -183,6 +186,8 @@
 				6A7C1F2B1ACADE9700DA0161 /* FISGithubAPIClient.m */,
 				6A7C1F2D1ACADEB900DA0161 /* FISRSSFeedAPIClient.h */,
 				6A7C1F2E1ACADEB900DA0161 /* FISRSSFeedAPIClient.m */,
+				747F79261ACEE80D00825492 /* XMLReader.h */,
+				747F79271ACEE80D00825492 /* XMLReader.m */,
 			);
 			name = "API Clients";
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 				6A7C1F391ACAE02A00DA0161 /* FISCard.m in Sources */,
 				6A7C1F2F1ACADEB900DA0161 /* FISRSSFeedAPIClient.m in Sources */,
 				6A7C1F3C1ACAE6F100DA0161 /* FISCardsTableViewController.m in Sources */,
+				747F79281ACEE80D00825492 /* XMLReader.m in Sources */,
 				6A7C1F321ACADEEF00DA0161 /* FISStreamsDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
