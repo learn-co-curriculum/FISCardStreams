@@ -45,22 +45,35 @@
 //takes a repo name (fullname) and spits out a dictionary of stats {(week id) : (number of commits per week)}
 +(void)getRepoStats:(NSString *)repoFullName completionBlock:(void (^)(NSMutableDictionary *))completionBlock
 {
-    NSString *githubURL = [NSString stringWithFormat:@"%@//repos/%@/stats/commit_activity?", GITHUB_API_URL, repoFullName];
-    
+    NSString *githubURL = [NSString stringWithFormat:@"%@/repos/%@/stats/commit_activity?", GITHUB_API_URL, repoFullName];
+
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     [manager GET:githubURL parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        
         NSArray * userRepoList = responseObject;
         NSMutableDictionary *commitStats = [[NSMutableDictionary alloc]init];
         for (NSDictionary * data in userRepoList) {
-            [commitStats setObject:data[@"total"] forKey:data[@"week"]];
+            NSString * convertDate = [FISGithubAPIClient convertUnixToTimeStamp:data[@"week"]];
+            [commitStats setObject:data[@"total"] forKey:convertDate];
         }
         completionBlock(commitStats);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Fail: %@",error.localizedDescription);
     }];
+    
+}
+
++(NSString *)convertUnixToTimeStamp:(NSString *)unixTime
+{
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    NSDate * myDate = [NSDate dateWithTimeIntervalSince1970:[unixTime doubleValue]];
+    
+    NSString *formattedDateString = [dateFormatter stringFromDate:myDate];
+    return formattedDateString;
     
 }
 

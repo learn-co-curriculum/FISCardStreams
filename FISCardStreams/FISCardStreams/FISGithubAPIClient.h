@@ -13,7 +13,7 @@
 
 +(void)getUserRepos:(NSString *)userName completionBlock:(void (^)(NSArray * repos))completionBlock;
 
-+(void)getRepoStats:(NSString *)repoFullName completionBlock:(void (^)(NSMutableDictionary *))completionBlock;
++(void)getRepoStats:(NSString *)repoFullName completionBlock:(void (^)(NSMutableDictionary * stats))completionBlock;
 
-
++(NSString *)convertUnixToTimeStamp:(NSString *)unixTime;
 @end

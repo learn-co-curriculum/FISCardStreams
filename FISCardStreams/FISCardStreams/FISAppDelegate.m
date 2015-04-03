@@ -12,6 +12,7 @@
 #import "FISCardStreamsAPIClient.h"
 #import "FISCardstreamLogInViewController.h"
 #import "FISRSSFeedAPIClient.h"
+#import "FISGithubAPIClient.h"
 
 @interface FISAppDelegate ()
 
@@ -34,11 +35,25 @@
    // }
     
     // To get the list of blog for a user
-    FISRSSFeedAPIClient *rssFeed = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:@"https://medium.com/@n3llee"];
-    NSArray *blogFeedList = [rssFeed getBlogList];
-    NSLog(@"blog is %@", blogFeedList);
+//    FISRSSFeedAPIClient *rssFeed = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:@"https://medium.com/@n3llee"];
+//    NSArray *blogFeedList = [rssFeed getBlogList];
+//    NSLog(@"blog is %@", blogFeedList);
+    
+    
+    // calling the GithubAPI
+    
+    [FISGithubAPIClient getUserRepos:@"joemantey" completionBlock:^(NSArray *repos) {
+        for (NSString *userRepo in repos) {
+            [FISGithubAPIClient getRepoStats:userRepo completionBlock:^(NSMutableDictionary *stats) {
+                NSLog(@"stats are for %@: %@", userRepo, stats);
+            }];
+        }
+    }];
+    
+    
     
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
