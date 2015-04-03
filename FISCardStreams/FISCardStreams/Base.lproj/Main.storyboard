@@ -7,7 +7,7 @@
         <!--Cards Table View Controller-->
         <scene sceneID="TM6-wq-eRa">
             <objects>
-                <tableViewController id="md1-rq-13t" customClass="FISCardsTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="cardsTVC" id="md1-rq-13t" customClass="FISCardsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ge1-Ui-VnG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

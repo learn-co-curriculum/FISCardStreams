@@ -33,9 +33,9 @@
 #pragma mark - API requests
 
 - (void)getStreamForStreamIDWithCompletion:(void (^)(BOOL))completionBlock {
-#warning overriding streamID property for testing
+//#warning overriding streamID property for testing
 //    self.streamID = @"551aa2e6583813280700385a"; // Mark's SampleStream;
-    self.streamID = @"5519584e5838132807000d05"; // Anish's MyFirstStream;
+//    self.streamID = @"5519584e5838132807000d05"; // Anish's MyFirstStream;
     
     [FISCardStreamsAPIClient getStreamsForAUserWithStreamIDs:self.streamID AndCompletionBlock:^(FISStream *stream) {
         self.userStream = stream;

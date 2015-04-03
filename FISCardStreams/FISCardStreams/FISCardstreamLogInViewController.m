@@ -54,8 +54,8 @@
    [FISCardStreamsAPIClient getAllStreamsAndCheckWithUsername:self.usernameTextField.text CompletionBlock:^(FISStream *stream) {
            self.streamToPass = stream;
            NSLog(@"Logged In");
-           //self.dataManager.userStream = self.streamToPass;
-           //[self takeMeToHomePage];
+           self.dataManager.userStream = self.streamToPass;
+           [self takeMeToHomePage];
    } SecondCompletionBlock:^(BOOL unique) {
        if (!unique) {
        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log in failed"
@@ -84,12 +84,12 @@
 -(void)takeMeToHomePage
 {
     UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UINavigationController *navController = [myStoryboard instantiateInitialViewController];
-    UIViewController *homePage = [myStoryboard instantiateViewControllerWithIdentifier:@"homeVC"];
-    UIApplication *application = [UIApplication sharedApplication];
-    [application.keyWindow setRootViewController:navController];
+    UIViewController *initialVC = [myStoryboard instantiateInitialViewController];
     
-    [self presentViewController:homePage animated:YES completion:nil];
+    [self presentViewController:initialVC animated:YES completion:nil];
+    
+    UIApplication *application = [UIApplication sharedApplication];
+    [application.keyWindow setRootViewController:initialVC];
 }
 
 @end
