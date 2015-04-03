@@ -11,7 +11,7 @@
 
 @interface FISGithubAPIClient : NSObject
 
-+(void)getUserRepos:(NSString *)userName completionBlock:(void (^)(NSArray *))completionBlock;
++(void)getUserRepos:(NSString *)userName completionBlock:(void (^)(NSArray * repos))completionBlock;
 
 +(void)getRepoStats:(NSString *)repoFullName completionBlock:(void (^)(NSMutableDictionary *))completionBlock;
 

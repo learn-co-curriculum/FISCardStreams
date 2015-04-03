@@ -10,8 +10,8 @@
 #import "FISAppDelegate.h"
 #import "FISStreamsDataManager.h"
 #import "FISCardStreamsAPIClient.h"
-
 #import "FISCardstreamLogInViewController.h"
+#import "FISRSSFeedAPIClient.h"
 
 @interface FISAppDelegate ()
 
@@ -32,6 +32,11 @@
     FISCardstreamLogInViewController *loginViewController = [myStoryboard instantiateInitialViewController];
     self.window.rootViewController = loginViewController;
    // }
+    
+    // To get the list of blog for a user
+    FISRSSFeedAPIClient *rssFeed = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:@"https://medium.com/@n3llee"];
+    NSArray *blogFeedList = [rssFeed getBlogList];
+    NSLog(@"blog is %@", blogFeedList);
     
     [self.window makeKeyAndVisible];
     return YES;
