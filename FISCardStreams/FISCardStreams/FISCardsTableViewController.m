@@ -12,6 +12,9 @@
 
 #import "FISStreamsDataManager.h"
 
+// Custom Cells
+#import "FISCardTableViewCell.h"
+
 // Models
 #import "FISStreamsDataManager.h"
 #import "FISStream.h"
@@ -29,8 +32,6 @@
     [super viewDidLoad];
     
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
-   
-
     
     [self.streamsDataManager getAllCardsForUserStreamWithCompletion:^(BOOL success) {
         NSLog(@"cards fetched");
@@ -66,13 +67,17 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    FISCardTableViewCell *cardCell = (FISCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cardCell" forIndexPath:indexPath];
+    
     FISCard *currentCard = self.stream.cards[indexPath.row];
+    cardCell.card = currentCard;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"subtitleCell" forIndexPath:indexPath];
-    cell.textLabel.text = currentCard.title;
-    cell.detailTextLabel.text = currentCard.cardDescription;
-    
-    return cell;
+    return cardCell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 176;
 }
 
 

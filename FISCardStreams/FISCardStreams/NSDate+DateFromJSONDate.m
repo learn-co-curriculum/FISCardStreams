@@ -13,7 +13,7 @@
 
 + (NSDate *)dateFromJSONDate:(NSString *)jsonDate {
     NSDateFormatter *jsonDateFormat = [[NSDateFormatter alloc]init];
-    [jsonDateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
+    [jsonDateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     
     NSDate *date = [jsonDateFormat dateFromString:jsonDate];
     return date;
