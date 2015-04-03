@@ -23,7 +23,7 @@
 +(void)getUserRepos:(NSString *)userName completionBlock:(void (^)(NSArray *))completionBlock
 {
     
-    NSString *githubURL = [NSString stringWithFormat:@"%@/users/%@/repos?", GITHUB_API_URL, userName];
+    NSString *githubURL = [NSString stringWithFormat:@"%@/users/%@/repos??client_id=%@&client_secret=%@", GITHUB_API_URL, userName,GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
@@ -45,7 +45,7 @@
 //takes a repo name (fullname) and spits out a dictionary of stats {(week id) : (number of commits per week)}
 +(void)getRepoStats:(NSString *)repoFullName completionBlock:(void (^)(NSMutableDictionary *))completionBlock
 {
-    NSString *githubURL = [NSString stringWithFormat:@"%@/repos/%@/stats/commit_activity?", GITHUB_API_URL, repoFullName];
+    NSString *githubURL = [NSString stringWithFormat:@"%@/repos/%@/stats/commit_activity?client_id=%@&client_secret=%@", GITHUB_API_URL, repoFullName, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET];
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
