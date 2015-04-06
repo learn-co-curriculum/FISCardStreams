@@ -38,6 +38,13 @@
     self.containerView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.containerView.layer.borderWidth= 0.5f;
     
+    //draw line in the middle of view
+    CGFloat halfWidth = self.contentView.bounds.size.width / 2;
+    CGFloat height = self.contentView.bounds.size.height;
+    
+    UIView *verticalLineView=[[UIView alloc] initWithFrame:CGRectMake(halfWidth, 0, 2, height)];
+    [verticalLineView setBackgroundColor:[UIColor redColor]];
+    [self.contentView addSubview:verticalLineView];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

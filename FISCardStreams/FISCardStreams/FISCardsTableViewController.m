@@ -80,6 +80,32 @@
     return 176;
 }
 
+#pragma Mark -scrolling control
+//
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+//    // if decelerating, let scrollViewDidEndDecelerating: handle it
+//    if (decelerate == NO) {
+//        [self centerTable];
+//    }
+//}
+//
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+//    [self centerTable];
+//}
+//
+//- (void)centerTable {
+//    NSIndexPath *pathForCenterCell = [self.tableView indexPathForRowAtPoint:CGPointMake(CGRectGetMidX(self.tableView.bounds), CGRectGetMidY(self.tableView.bounds))];
+//    
+//    [self.tableView scrollToRowAtIndexPath:pathForCenterCell atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+//}
+
+
+
+
+
+
+
+
 
 /*
 // Override to support conditional editing of the table view.

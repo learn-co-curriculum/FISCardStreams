@@ -20,7 +20,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PxH-dq-h9o">
-                                            <rect key="frame" x="150" y="27" width="300" height="132"/>
+                                            <rect key="frame" x="150" y="22" width="300" height="132"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Kq-Ua-fqK">
                                                     <rect key="frame" x="20" y="8" width="260" height="24"/>
@@ -29,16 +29,16 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 3, 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cj7-3M-bAM">
-                                                    <rect key="frame" x="20" y="32" width="260" height="14"/>
+                                                    <rect key="frame" x="20" y="32" width="260" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lyr-M4-hRd">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lyr-M4-hRd">
                                                     <rect key="frame" x="20" y="48" width="260" height="35"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvP-oK-BlT">
-                                                    <rect key="frame" x="20" y="92" width="275" height="21"/>
+                                                    <rect key="frame" x="20" y="92.5" width="275" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -66,13 +66,14 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="centerY" secondItem="PxH-dq-h9o" secondAttribute="centerY" constant="-6" id="L05-iX-xA4"/>
-                                        <constraint firstAttribute="centerX" secondItem="PxH-dq-h9o" secondAttribute="centerX" constant="-0.5" id="TT0-Vz-3vJ"/>
+                                        <constraint firstAttribute="centerY" secondItem="PxH-dq-h9o" secondAttribute="centerY" id="L05-iX-xA4"/>
+                                        <constraint firstAttribute="centerX" secondItem="PxH-dq-h9o" secondAttribute="centerX" id="TT0-Vz-3vJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="attachmentView" destination="lyr-M4-hRd" id="reQ-hM-BL5"/>
                                     <outlet property="containerView" destination="PxH-dq-h9o" id="ihV-Ip-7e5"/>
+                                    <outlet property="contentView" destination="p4e-tm-Lro" id="bOO-QG-rrb"/>
                                     <outlet property="dateLabel" destination="cj7-3M-bAM" id="Fvt-AQ-HMe"/>
                                     <outlet property="descriptionLabel" destination="SvP-oK-BlT" id="0ix-V6-AmE"/>
                                     <outlet property="titleLabel" destination="8Kq-Ua-fqK" id="wtz-Th-KXI"/>
