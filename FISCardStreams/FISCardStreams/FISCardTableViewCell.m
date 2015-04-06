@@ -29,14 +29,10 @@
 -(void)drawViewShadow{
     
     //set border shadow
-    
-    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.containerView.bounds];
-    self.containerView.layer.masksToBounds = NO;
-    self.containerView.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.containerView.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
-    self.containerView.layer.shadowOpacity = 0.5f;
-    self.containerView.layer.shadowPath = shadowPath.CGPath;
-    
+    self.containerView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    self.containerView.layer.shadowOffset = CGSizeMake(3, 5);
+    self.containerView.layer.shadowRadius = 5;
+    self.containerView.layer.shadowOpacity = 0.5;
     
     //set border color
     self.containerView.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -62,6 +58,9 @@
         self.dateLabel.text = [dateFormatter stringFromDate:self.card.createdAt];
         
         self.descriptionLabel.text = self.card.cardDescription;
+            
+
+        
     }
 
 }
