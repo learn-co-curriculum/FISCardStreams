@@ -13,6 +13,9 @@
 #import "FISCardstreamLogInViewController.h"
 #import "FISRSSFeedAPIClient.h"
 #import "FISGithubAPIClient.h"
+#import "FISConstants.h"
+#import <NSURL+QueryDictionary.h>
+#import <AFOAuth2Manager.h>
 
 @interface FISAppDelegate ()
 
@@ -42,7 +45,7 @@
     
     // calling the GithubAPI
     
-    [FISGithubAPIClient getUserRepos:@"joemantey" completionBlock:^(NSArray *repos) {
+    [FISGithubAPIClient getUserRepos:@"n3llee" completionBlock:^(NSArray *repos) {
         for (NSString *userRepo in repos) {
             [FISGithubAPIClient getRepoStats:userRepo completionBlock:^(NSMutableDictionary *stats) {
                 NSLog(@"stats are for %@: %@", userRepo, stats);
@@ -81,5 +84,34 @@
     [self.streamsDataManager saveContext];
 }
 
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    NSDictionary *urlParams = [url uq_queryDictionary];
+    
+    NSLog(@"code: %@",urlParams[@"code"]);
+    
+    NSURL *baseURL = [NSURL URLWithString:@"https://github.com/login/"];
+    
+    AFOAuth2Manager *manager = [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
+                                                               clientID:GITHUB_CLIENT_ID
+                                                                 secret:GITHUB_CLIENT_SECRET];
+    
+    manager.useHTTPBasicAuthentication = NO;
+    [manager authenticateUsingOAuthWithURLString:@"oauth/access_token"
+                                            code:urlParams[@"code"]
+                                     redirectURI:@"githubLogin://callback"
+                                         success:^(AFOAuthCredential *credential)
+     {
+         
+         [AFOAuthCredential storeCredential:credential
+                             withIdentifier:@"githubToken"];
+         NSLog(@"store the auth data");
+         
+         
+         
+     } failure:^(NSError *error) {
+     }];
+    return YES;
+}
 
 @end

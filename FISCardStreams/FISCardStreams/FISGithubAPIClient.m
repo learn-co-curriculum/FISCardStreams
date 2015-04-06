@@ -10,6 +10,8 @@
 #import "FISGithubAPIClient.h"
 #import "FISConstants.h"
 #import <AFNetworking.h>
+#import <AFOAuth2Manager.h>
+#import <AFOAuth2Manager/AFHTTPRequestSerializer+OAuth2.h>
 
 @interface FISGithubAPIClient ()
 
@@ -19,6 +21,15 @@
 
 @implementation FISGithubAPIClient
 
++(void)redirectAfterAuth
+{
+    NSString *githubString = [NSString stringWithFormat:@"https://github.com/login/oauth/authorize?client_id=%@&redirect_uri=%@&scope=repo",GITHUB_CLIENT_ID,@"githubLogin://callback"];
+    
+    NSURL *githubURL = [NSURL URLWithString:githubString];
+    
+    [[UIApplication sharedApplication] openURL:githubURL];
+}
+
 //gets all of the user's repos and returns an array
 +(void)getUserRepos:(NSString *)userName completionBlock:(void (^)(NSArray *))completionBlock
 {
@@ -26,6 +37,14 @@
     NSString *githubURL = [NSString stringWithFormat:@"%@/users/%@/repos??client_id=%@&client_secret=%@", GITHUB_API_URL, userName,GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    AFJSONRequestSerializer *serializer = [[AFJSONRequestSerializer alloc]init];
+    
+    AFOAuthCredential *credential =[AFOAuthCredential retrieveCredentialWithIdentifier:@"githubToken"];
+    
+    [serializer setAuthorizationHeaderFieldWithCredential:credential];
+    
+    manager.requestSerializer = serializer;
     
     [manager GET:githubURL parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
@@ -48,6 +67,14 @@
     NSString *githubURL = [NSString stringWithFormat:@"%@/repos/%@/stats/commit_activity?client_id=%@&client_secret=%@", GITHUB_API_URL, repoFullName, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET];
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    AFJSONRequestSerializer *serializer = [[AFJSONRequestSerializer alloc]init];
+    
+    AFOAuthCredential *credential =[AFOAuthCredential retrieveCredentialWithIdentifier:@"githubToken"];
+    
+    [serializer setAuthorizationHeaderFieldWithCredential:credential];
+    
+    manager.requestSerializer = serializer;
     
     [manager GET:githubURL parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray * userRepoList = responseObject;
