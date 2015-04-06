@@ -63,7 +63,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="centerY" secondItem="PxH-dq-h9o" secondAttribute="centerY" constant="-6" id="L05-iX-xA4"/>
                                         <constraint firstAttribute="centerX" secondItem="PxH-dq-h9o" secondAttribute="centerX" constant="-0.5" id="TT0-Vz-3vJ"/>
@@ -76,6 +76,13 @@
                                     <outlet property="descriptionLabel" destination="SvP-oK-BlT" id="0ix-V6-AmE"/>
                                     <outlet property="titleLabel" destination="8Kq-Ua-fqK" id="wtz-Th-KXI"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="192" id="VPr-y5-tvm">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VPr-y5-tvm" id="wng-n0-qC2">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>

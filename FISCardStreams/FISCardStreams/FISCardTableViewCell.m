@@ -27,12 +27,21 @@
 }
 
 -(void)drawViewShadow{
+    
+    //set border shadow
+    
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.containerView.bounds];
     self.containerView.layer.masksToBounds = NO;
     self.containerView.layer.shadowColor = [UIColor blackColor].CGColor;
     self.containerView.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
     self.containerView.layer.shadowOpacity = 0.5f;
     self.containerView.layer.shadowPath = shadowPath.CGPath;
+    
+    
+    //set border color
+    self.containerView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.containerView.layer.borderWidth= 0.5f;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
