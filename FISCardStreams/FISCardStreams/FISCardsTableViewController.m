@@ -73,6 +73,18 @@
     FISCard *currentCard = self.stream.cards[indexPath.row];
     cardCell.card = currentCard;
     
+    //draw line in the middle of view
+    CGFloat halfWidth = cardCell.frame.size.width / 2;
+    CGFloat height = cardCell.frame.size.height;
+    
+    NSLog(@"%f", halfWidth);
+    NSLog(@"%f", height);
+    
+    
+    UIView *verticalLineView=[[UIView alloc] initWithFrame:CGRectMake(halfWidth, 0, 2, height)];
+    [verticalLineView setBackgroundColor:[UIColor redColor]];
+    [cardCell insertSubview:verticalLineView atIndex:0];
+    
     return cardCell;
 }
 
