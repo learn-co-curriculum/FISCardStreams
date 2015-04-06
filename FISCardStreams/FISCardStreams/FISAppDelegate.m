@@ -29,7 +29,7 @@
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
     
     //if (self.streamsDataManager.userStream) {
-    UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"LoginFlow" bundle:nil];
+    UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"blog" bundle:nil];
     FISCardstreamLogInViewController *loginViewController = [myStoryboard instantiateInitialViewController];
     self.window.rootViewController = loginViewController;
    // }
@@ -41,14 +41,14 @@
     
     
     // calling the GithubAPI
-    
-    [FISGithubAPIClient getUserRepos:@"joemantey" completionBlock:^(NSArray *repos) {
-        for (NSString *userRepo in repos) {
-            [FISGithubAPIClient getRepoStats:userRepo completionBlock:^(NSMutableDictionary *stats) {
-                NSLog(@"stats are for %@: %@", userRepo, stats);
-            }];
-        }
-    }];
+//    
+//    [FISGithubAPIClient getUserRepos:@"joemantey" completionBlock:^(NSArray *repos) {
+//        for (NSString *userRepo in repos) {
+//            [FISGithubAPIClient getRepoStats:userRepo completionBlock:^(NSMutableDictionary *stats) {
+//                NSLog(@"stats are for %@: %@", userRepo, stats);
+//            }];
+//        }
+//    }];
     
     
     

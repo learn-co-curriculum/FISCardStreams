@@ -29,6 +29,8 @@
 		6A7C1F461ACB1D3200DA0161 /* NSDate+DateFromJSONDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7C1F451ACB1D3200DA0161 /* NSDate+DateFromJSONDate.m */; };
 		6A9C3B531ACEDBBA00CD56E6 /* FISCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C3B511ACEDBBA00CD56E6 /* FISCardTableViewCell.m */; };
 		747F792B1ACEEC5600825492 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 747F792A1ACEEC5600825492 /* XMLReader.m */; };
+		747F79341AD2DFB600825492 /* blog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 747F79331AD2DFB600825492 /* blog.storyboard */; };
+		747F793D1AD2E2BB00825492 /* FISBlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 747F793C1AD2E2BB00825492 /* FISBlogViewController.m */; };
 		889998181ACDA94E00A2050B /* FISCardstreamLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889998171ACDA94E00A2050B /* FISCardstreamLogInViewController.m */; };
 		8899981B1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8899981A1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m */; };
 /* End PBXBuildFile section */
@@ -85,6 +87,9 @@
 		6A9C3B511ACEDBBA00CD56E6 /* FISCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCardTableViewCell.m; sourceTree = "<group>"; };
 		747F792A1ACEEC5600825492 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		747F792C1ACEEC7D00825492 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		747F79331AD2DFB600825492 /* blog.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = blog.storyboard; sourceTree = "<group>"; };
+		747F793B1AD2E2BB00825492 /* FISBlogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISBlogViewController.h; sourceTree = "<group>"; };
+		747F793C1AD2E2BB00825492 /* FISBlogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISBlogViewController.m; sourceTree = "<group>"; };
 		889998161ACDA94E00A2050B /* FISCardstreamLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISCardstreamLogInViewController.h; sourceTree = "<group>"; };
 		889998171ACDA94E00A2050B /* FISCardstreamLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCardstreamLogInViewController.m; sourceTree = "<group>"; };
 		889998191ACDC30B00A2050B /* FISCardstreamSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISCardstreamSignUpViewController.h; sourceTree = "<group>"; };
@@ -138,6 +143,9 @@
 				6A7C1F251ACADE6400DA0161 /* FISConstants.m */,
 				6A7C1EFA1ACAD82800DA0161 /* FISAppDelegate.h */,
 				6A7C1EFB1ACAD82800DA0161 /* FISAppDelegate.m */,
+				747F793B1AD2E2BB00825492 /* FISBlogViewController.h */,
+				747F793C1AD2E2BB00825492 /* FISBlogViewController.m */,
+				747F79331AD2DFB600825492 /* blog.storyboard */,
 				6A7C1F431ACAFA6600DA0161 /* Models */,
 				6A7C1F331ACADF2100DA0161 /* API Clients */,
 				889998141ACDA8AD00A2050B /* Controllers */,
@@ -333,6 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				747F79341AD2DFB600825492 /* blog.storyboard in Resources */,
 				6A7C1F201ACAD8DC00DA0161 /* LoginFlow.storyboard in Resources */,
 				6A7C1F051ACAD82800DA0161 /* Main.storyboard in Resources */,
 				6A7C1F0A1ACAD82800DA0161 /* LaunchScreen.xib in Resources */,
@@ -394,6 +403,7 @@
 				6A7C1EFF1ACAD82800DA0161 /* FISCardStreams.xcdatamodeld in Sources */,
 				6A7C1F261ACADE6400DA0161 /* FISConstants.m in Sources */,
 				6A7C1EFC1ACAD82800DA0161 /* FISAppDelegate.m in Sources */,
+				747F793D1AD2E2BB00825492 /* FISBlogViewController.m in Sources */,
 				8899981B1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m in Sources */,
 				6A7C1EF91ACAD82800DA0161 /* main.m in Sources */,
 				6A7C1F461ACB1D3200DA0161 /* NSDate+DateFromJSONDate.m in Sources */,

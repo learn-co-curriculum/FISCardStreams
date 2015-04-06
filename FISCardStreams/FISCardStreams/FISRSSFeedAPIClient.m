@@ -56,9 +56,14 @@
     for (NSInteger i = 0; i < [blogList count]; i++) {
         NSMutableDictionary * filteredData = [[NSMutableDictionary alloc]init];
         filteredData[@"title"] = blogList[i][@"title"][@"@"];
-        filteredData[@"summary"] = blogList[i][@"description"][@"@"];
         filteredData[@"link"] = blogList[i][@"link"][@"@"];
         filteredData[@"pubDate"] = blogList[i][@"pubDate"][@"@"];
+        
+        NSString * description = blogList[i][@"description"][@"@"];
+        
+        NSString * changeImageSize = [description stringByReplacingOccurrencesOfString:@"width=\"600\" height=\"200\"" withString:@"width=\"200\" height=\"100\""];
+        filteredData[@"summary"] = [changeImageSize stringByReplacingOccurrencesOfString:@"»" withString:@""];
+        
         [userBlogResult addObject:filteredData];
     }
     
@@ -66,6 +71,7 @@
     
     
 }
+
 
 
 // note for myself
