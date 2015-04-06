@@ -7,14 +7,32 @@
 //
 
 #import "FISCardTableViewCell.h"
-
 #import "FISCard.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation FISCardTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
     
+    [self roundViewCorners];
+    [self drawViewShadow];
+    
+}
+
+
+-(void)roundViewCorners{
+    self.containerView.layer.cornerRadius = 5;
+    self.layer.masksToBounds = YES;
+}
+
+-(void)drawViewShadow{
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.containerView.bounds];
+    self.containerView.layer.masksToBounds = NO;
+    self.containerView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.containerView.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
+    self.containerView.layer.shadowOpacity = 0.5f;
+    self.containerView.layer.shadowPath = shadowPath.CGPath;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
