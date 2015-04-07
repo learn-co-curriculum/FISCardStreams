@@ -32,7 +32,10 @@
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
         [dateFormatter setDateStyle:NSDateFormatterLongStyle];
         [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-        self.dateLabel.text = [dateFormatter stringFromDate:self.card.createdAt];
+        if (!self.card.postAt) {
+            self.card.postAt = self.card.createdAt;
+        }
+        self.dateLabel.text = [dateFormatter stringFromDate:self.card.postAt];
         
         self.descriptionLabel.text = self.card.cardDescription;
     }

@@ -8,9 +8,11 @@
 //  assigned to Mark
 
 #import "FISStreamsDataManager.h"
+#import "NSDate+DateFromJSONDate.h"
 
 // API Clients
 #import "FISCardStreamsAPIClient.h"
+#import "FISRSSFeedAPIClient.h"
 
 // Data Models
 #import "FISStream.h"
@@ -58,6 +60,40 @@
     }
 }
 
+- (void)updateRSSFeedWithCompletionBlock:(void (^)(NSArray *))completionBlock {
+    FISRSSFeedAPIClient *rssFeedAPIClient = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:@"https://medium.com/@MarkEdwardMurray"];
+    
+    NSMutableArray *allCardTitles = [[NSMutableArray alloc]init];
+    for (FISCard *currentCard in self.userStream.cards) {
+        [allCardTitles addObject:currentCard.title];
+    }
+    
+    NSArray *allBlogPosts = [rssFeedAPIClient getBlogList];
+    
+    NSMutableArray *mNewBlogCards = [[NSMutableArray alloc]init];
+    for (NSDictionary *blogDictionary in allBlogPosts) {
+        // check that a card with this blog post's title does not already exist
+        if ([allCardTitles containsObject:blogDictionary[@"title"]]) {
+            continue;
+        }
+        
+        NSDate *postAt = [NSDate dateFromRSSDate:blogDictionary[@"pubDate"]];
+        NSNumber *epochPostAt = @([postAt timeIntervalSince1970]);
+        
+        NSDictionary *cardBody = @{ @"title" : blogDictionary[@"title"],
+                                    @"description" : blogDictionary[@"summary"],
+                                    @"postAt" : epochPostAt,
+                                    @"postLink" :  blogDictionary[@"link"] };
+        [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
+                                   WithContentDictionary:cardBody
+                                     WithCompletionBlock:^(FISCard *card) {
+                                         [mNewBlogCards addObject:card];
+                                         NSLog(@"card created %@", card.title);
+                                     }];
+    }
+    NSArray *newBlogCards = [NSArray arrayWithArray:mNewBlogCards];
+    completionBlock(newBlogCards);
+}
 
 #pragma mark - Test Data
 

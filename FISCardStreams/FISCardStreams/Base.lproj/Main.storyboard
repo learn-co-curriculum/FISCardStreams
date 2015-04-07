@@ -24,7 +24,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Kq-Ua-fqK">
                                                     <rect key="frame" x="20" y="8" width="260" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.27563857060000002" green="0.79890703910000005" blue="0.30628022129999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 3, 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cj7-3M-bAM">
@@ -82,7 +82,13 @@
                             <outlet property="delegate" destination="md1-rq-13t" id="BC0-FM-pBL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="8nu-Uq-ceA"/>
+                    <navigationItem key="navigationItem" id="8nu-Uq-ceA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="wum-XU-e7c">
+                            <connections>
+                                <action selector="refreshTapped:" destination="md1-rq-13t" id="hDv-9K-3Gv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T2q-2y-Xtd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

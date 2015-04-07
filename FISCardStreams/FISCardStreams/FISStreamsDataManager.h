@@ -34,4 +34,6 @@
 - (void)getStreamForStreamIDWithCompletion:(void (^)(BOOL success))completionBlock;
 - (void)getAllCardsForUserStreamWithCompletion:(void (^)(BOOL success))completionBlock;
 
+- (void)updateRSSFeedWithCompletionBlock:(void (^)(NSArray *newBlogCards))completionBlock;
+
 @end

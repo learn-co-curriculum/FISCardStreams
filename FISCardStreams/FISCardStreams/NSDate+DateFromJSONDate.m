@@ -19,4 +19,20 @@
     return date;
 }
 
++ (NSString *)dateAsJSONDate:(NSDate *)date {
+    NSDateFormatter *jsonDateFormat = [[NSDateFormatter alloc]init];
+    [jsonDateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    
+    NSString *jsonDate = [jsonDateFormat stringFromDate:date];
+    return jsonDate;
+}
+
++ (NSDate *)dateFromRSSDate:(NSString *)rssDate {
+    NSDateFormatter *rssDateFormat = [[NSDateFormatter alloc]init];
+    [rssDateFormat setDateFormat:@"ccc, dd LLL yyyy HH:mm:ss vvv"];
+    
+    NSDate *date = [rssDateFormat dateFromString:rssDate];
+    return date;
+}
+
 @end

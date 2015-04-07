@@ -24,6 +24,8 @@
 
 @property (strong, nonatomic) FISStreamsDataManager *streamsDataManager;
 
+- (IBAction)refreshTapped:(id)sender;
+
 @end
 
 @implementation FISCardsTableViewController
@@ -124,5 +126,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)refreshTapped:(id)sender {
+    [self.streamsDataManager updateRSSFeedWithCompletionBlock:^(NSArray *newBlogCards) {
+        [self.streamsDataManager.userStream.cards addObjectsFromArray:newBlogCards];
+        [self.tableView reloadData];
+    }];
+}
 
 @end

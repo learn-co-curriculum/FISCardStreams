@@ -13,4 +13,8 @@
 
 + (NSDate *)dateFromJSONDate:(NSString *)jsonDate;
 
++ (NSString *)dateAsJSONDate:(NSDate *)date;
+
++ (NSDate *)dateFromRSSDate:(NSString *)rssDate;
+
 @end
