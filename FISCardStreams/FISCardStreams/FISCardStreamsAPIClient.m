@@ -20,7 +20,6 @@
 
 + (void) getAllStreamsAndCheckWithUsername: (NSString *)username CompletionBlock:(void (^)(FISStream *))completionBlock SecondCompletionBlock: (void (^)(BOOL ))secondCompletionBlock
 {
- 
     __block BOOL unique = NO;
     NSString *cardstreamURL = [NSString stringWithFormat:@"%@/streams", CARDSTREAMS_BASE_URL];
     
@@ -112,11 +111,6 @@
 }
 
 
-
-/*
- Example of content Dictionary:
- { "title": "BIGGGG3", "description": "sdfsdf", "attachments": [ { "filename": "", "mimeType": ".", "sourceUrl": "ww.sac.com" } ]}
- */
 
 + (void) createACardWithStreamID: (NSString *)streamID WithContentDictionary: (NSDictionary *)cardBody WithCompletionBlock:(void (^)(FISCard *))completionBlock
 {

@@ -9,14 +9,10 @@
 
 #import "FISAppDelegate.h"
 #import "FISStreamsDataManager.h"
-#import "FISCardStreamsAPIClient.h"
 #import "FISCardstreamLogInViewController.h"
 #import "FISRSSFeedAPIClient.h"
-#import "FISGithubAPIClient.h"
 #import "FISConstants.h"
-
 #import <NSURL+QueryDictionary/NSURL+QueryDictionary.h>
-
 #import <AFOAuth2Manager.h>
 
 @interface FISAppDelegate ()
@@ -39,29 +35,11 @@
     self.window.rootViewController = loginViewController;
    // }
     
-    // To get the list of blog for a user
-//    FISRSSFeedAPIClient *rssFeed = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:@"https://medium.com/@n3llee"];
-//    NSArray *blogFeedList = [rssFeed getBlogList];
-//    NSLog(@"blog is %@", blogFeedList);
     
-    
-    // calling the GithubAPI
-    
-    
-    [FISGithubAPIClient getUserRepositoriesWithUsername:@"anish7mnm" AndCompletionBlock:^(NSArray *repos) {
-
-        NSLog(@"MY repos: %@ ", repos);
-        
-    }];
-     
-        
-        //        for (NSString *userRepo in repos) {
-//            [FISGithubAPIClient getRepoStats:userRepo completionBlock:^(NSMutableDictionary *stats) {
-//                NSLog(@"stats are for %@: %@", userRepo, stats);
-//            }];
-//        }
-
-    
+    // To get the list of blog for a user : Nelly
+    //    FISRSSFeedAPIClient *rssFeed = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:@"https://medium.com/@n3llee"];
+    //    NSArray *blogFeedList = [rssFeed getBlogList];
+    //    NSLog(@"blog is %@", blogFeedList);
     
     [self.window makeKeyAndVisible];
     
@@ -117,6 +95,7 @@
        
      } failure:^(NSError *error) {
      }];
+    
     return YES;
 }
 

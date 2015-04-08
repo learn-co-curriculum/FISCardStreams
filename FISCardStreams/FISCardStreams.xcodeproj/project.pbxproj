@@ -137,13 +137,13 @@
 		6A7C1EF51ACAD82800DA0161 /* FISCardStreams */ = {
 			isa = PBXGroup;
 			children = (
-				6A7C1F241ACADE6400DA0161 /* FISConstants.h */,
-				6A7C1F251ACADE6400DA0161 /* FISConstants.m */,
 				6A7C1EFA1ACAD82800DA0161 /* FISAppDelegate.h */,
 				6A7C1EFB1ACAD82800DA0161 /* FISAppDelegate.m */,
+				6A7C1F031ACAD82800DA0161 /* Main.storyboard */,
+				6A7C1F1F1ACAD8DC00DA0161 /* LoginFlow.storyboard */,
 				6A7C1F431ACAFA6600DA0161 /* Models */,
-				6A7C1F331ACADF2100DA0161 /* API Clients */,
 				889998141ACDA8AD00A2050B /* Controllers */,
+				888EBA071AD5C6C1005E92C3 /* Views */,
 				6A7C1EF61ACAD82800DA0161 /* Supporting Files */,
 			);
 			path = FISCardStreams;
@@ -152,7 +152,6 @@
 		6A7C1EF61ACAD82800DA0161 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6A7C1F081ACAD82800DA0161 /* LaunchScreen.xib */,
 				6A7C1F061ACAD82800DA0161 /* Images.xcassets */,
 				6A7C1EFD1ACAD82800DA0161 /* FISCardStreams.xcdatamodeld */,
 				6A7C1EF71ACAD82800DA0161 /* Info.plist */,
@@ -196,6 +195,8 @@
 		6A7C1F431ACAFA6600DA0161 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				888EBA061AD5C08A005E92C3 /* Constants */,
+				6A7C1F331ACADF2100DA0161 /* API Clients */,
 				889998151ACDA8E400A2050B /* Data Manager */,
 				6A7C1F341ACAE01800DA0161 /* FISStream.h */,
 				6A7C1F351ACAE01900DA0161 /* FISStream.m */,
@@ -219,15 +220,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		888EBA061AD5C08A005E92C3 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				6A7C1F241ACADE6400DA0161 /* FISConstants.h */,
+				6A7C1F251ACADE6400DA0161 /* FISConstants.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		888EBA071AD5C6C1005E92C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6A7C1F081ACAD82800DA0161 /* LaunchScreen.xib */,
+				6A9C3B501ACEDBBA00CD56E6 /* FISCardTableViewCell.h */,
+				6A9C3B511ACEDBBA00CD56E6 /* FISCardTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		889998141ACDA8AD00A2050B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6A7C1F031ACAD82800DA0161 /* Main.storyboard */,
-				6A7C1F1F1ACAD8DC00DA0161 /* LoginFlow.storyboard */,
 				6A7C1F3A1ACAE6F100DA0161 /* FISCardsTableViewController.h */,
 				6A7C1F3B1ACAE6F100DA0161 /* FISCardsTableViewController.m */,
-				6A9C3B501ACEDBBA00CD56E6 /* FISCardTableViewCell.h */,
-				6A9C3B511ACEDBBA00CD56E6 /* FISCardTableViewCell.m */,
 				889998161ACDA94E00A2050B /* FISCardstreamLogInViewController.h */,
 				889998171ACDA94E00A2050B /* FISCardstreamLogInViewController.m */,
 				889998191ACDC30B00A2050B /* FISCardstreamSignUpViewController.h */,

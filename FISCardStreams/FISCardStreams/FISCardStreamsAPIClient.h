@@ -35,6 +35,8 @@
 
 /**
  Create a card for the user using the unique StreamID and the JSON content passed as an NSDictionary wherever the method is called. This method returns the entire card to be displayed/stored.
+ Example of content Dictionary:
+ { "title": "BIGGGG3", "description": "sdfsdf", "attachments": [ { "filename": "", "mimeType": ".", "sourceUrl": "ww.sac.com" } ]}
  */
 + (void) createACardWithStreamID: (NSString *)streamID WithContentDictionary: (NSDictionary *)cardBody WithCompletionBlock:(void (^)(FISCard *card))completionBlock;
 

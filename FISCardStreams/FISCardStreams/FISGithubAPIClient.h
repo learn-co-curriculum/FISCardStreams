@@ -11,12 +11,35 @@
 
 @interface FISGithubAPIClient : NSObject
 
+
+/**
+ Directs the user to Github login screen and back to FISCardStream://callback
+ */
 +(void)redirectAfterAuthentication;
 
+
+/**
+ Returns an NSDictionary consisting of the user feed.
+ Format:
+  {
+     "commit_message" = "My commit message";
+     "commited_date" = "2015-04-07T21:46:55Z";
+     "repo_name" = "MyRepoName";
+     username = githubUsername;
+  }
+ */
++(void)getPublicFeedsWithCompletionBlock:(void (^)(NSDictionary * feed))completionBlock;
+
+
+
+/**
+ I don't think we need these -Anish
+ */
 +(void)getUserRepositoriesWithUsername:(NSString *)Username AndCompletionBlock:(void (^)(NSArray * repos))completionBlock;
 
-
-+(void)getRepoStats:(NSString *)repoFullName completionBlock:(void (^)(NSMutableDictionary * stats))completionBlock;
++(void)getRepoStatisticsWithRepositoryName:(NSString *)repoistoryName Username: (NSString *)username AndCompletionBlock:(void (^)(NSMutableDictionary * stats))completionBlock;
 
 +(NSString *)convertUnixToTimeStamp:(NSString *)unixTime;
+
+
 @end

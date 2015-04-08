@@ -16,5 +16,11 @@
 
 -(NSString *)transformBlogUrlToBlogRssFeedUrl;
 -(NSArray *)getBlogList;
+
+/**
+ Instantiating the API Client with Blog URL
+ */
+
 - (instancetype)initWithBlogUrl:(NSString *)blogUrl;
+
 @end

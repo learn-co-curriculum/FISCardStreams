@@ -22,6 +22,7 @@
 @implementation FISGithubAPIClient
 
 
+
 +(void)redirectAfterAuthentication
 {
     NSString *githubString = [NSString stringWithFormat:@"https://github.com/login/oauth/authorize?client_id=%@&redirect_uri=%@&scope=repo",GITHUB_CLIENT_ID,@"githubLogin://callback"];
@@ -30,6 +31,55 @@
     
     [[UIApplication sharedApplication] openURL:githubURL];
 }
+
+
+
++(void)getPublicFeedsWithCompletionBlock:(void (^)(NSDictionary *))completionBlock
+{
+    NSString *githubURL = [NSString stringWithFormat:@"https://api.github.com/users/anish7mnm/events"];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    AFJSONRequestSerializer *serializer = [[AFJSONRequestSerializer alloc]init];
+    
+    AFOAuthCredential *credential =[AFOAuthCredential retrieveCredentialWithIdentifier:@"githubToken"];
+    
+    [serializer setAuthorizationHeaderFieldWithCredential:credential];
+    
+    manager.requestSerializer = serializer;
+    
+    [manager GET:githubURL parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        NSArray *events = responseObject;
+        
+        for (NSDictionary *event in events) {
+            
+            NSArray *data = event[@"payload"][@"commits"];
+            NSString *repo = event[@"repo"][@"name"];
+            NSArray *fullName = [repo componentsSeparatedByString:@"/"];
+            
+            NSString *username = fullName[0];
+            NSString *repoName = fullName[1];
+            NSString *message = data[0][@"message"];
+            NSString *createdAt = event[@"created_at"];
+            NSDictionary *commit = @{@"username":username,
+                                     @"repo_name":repoName,
+                                     @"commit_message":message,
+                                     @"commited_date":createdAt};
+            
+            NSLog(@"%@", commit);
+            completionBlock(commit);
+            
+        }
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Fail: %@",error.localizedDescription);
+    }];
+    
+}
+
+
+
 
 
 //gets all of the user's repos and returns an array
@@ -64,9 +114,9 @@
 }
 
 //takes a repo name (fullname) and spits out a dictionary of stats {(week id) : (number of commits per week)}
-+(void)getRepoStats:(NSString *)repoFullName completionBlock:(void (^)(NSMutableDictionary *))completionBlock
++(void)getRepoStatisticsWithRepositoryName:(NSString *)repoistoryName Username: (NSString *)username AndCompletionBlock:(void (^)(NSMutableDictionary *))completionBlock
 {
-    NSString *githubURL = [NSString stringWithFormat:@"%@/repos/%@/stats/commit_activity?client_id=%@&client_secret=%@", GITHUB_API_URL, repoFullName, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET];
+    NSString *githubURL = [NSString stringWithFormat:@"%@/repos/%@/stats/commit_activity?client_id=%@&client_secret=%@", GITHUB_API_URL, repoistoryName, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET];
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
@@ -92,6 +142,8 @@
     }];
     
 }
+
+
 
 +(NSString *)convertUnixToTimeStamp:(NSString *)unixTime
 {

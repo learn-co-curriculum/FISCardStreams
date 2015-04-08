@@ -26,6 +26,9 @@
 
 @implementation FISCardstreamLogInViewController
 
+
+#pragma mark - View Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -35,20 +38,9 @@
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
+#pragma mark - UIButton Actions
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 - (IBAction)logInButtonTapped:(id)sender {
     
    [FISCardStreamsAPIClient getAllStreamsAndCheckWithUsername:self.usernameTextField.text CompletionBlock:^(FISStream *stream) {
@@ -80,6 +72,8 @@
     [self presentViewController:signUpVC animated:YES completion:nil];
 }
 
+
+#pragma mark - View helper
 
 -(void)takeMeToHomePage
 {

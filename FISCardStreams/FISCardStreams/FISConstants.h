@@ -25,7 +25,14 @@ extern NSString *const CARDSTREAMS_KEY_ANISH;
 extern NSString *const CARDSTREAMS_APP_ID;
 extern NSString *const CARDSTREAMS_KEY;
 
-//Joes Github
+
+/**
+ 
+ FISCardStreams' official Github credentials.
+ Callback URI: FISCardStreams://callback
+ 
+ */
+
 extern NSString *const GITHUB_API_URL;
 extern NSString *const GITHUB_CLIENT_SECRET;
 extern NSString *const GITHUB_CLIENT_ID;

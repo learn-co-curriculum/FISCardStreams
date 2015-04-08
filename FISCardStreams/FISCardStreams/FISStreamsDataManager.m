@@ -35,9 +35,10 @@
 #pragma mark - API requests
 
 - (void)getStreamForStreamIDWithCompletion:(void (^)(BOOL))completionBlock {
-//#warning overriding streamID property for testing
-//    self.streamID = @"551aa2e6583813280700385a"; // Mark's SampleStream;
-//    self.streamID = @"5519584e5838132807000d05"; // Anish's MyFirstStream;
+    
+    //#warning overriding streamID property for testing
+    //self.streamID = @"551aa2e6583813280700385a"; // Mark's SampleStream;
+    //self.streamID = @"5519584e5838132807000d05"; // Anish's MyFirstStream;
     
     [FISCardStreamsAPIClient getStreamsForAUserWithStreamIDs:self.streamID AndCompletionBlock:^(FISStream *stream) {
         self.userStream = stream;
@@ -102,7 +103,7 @@
     card1.cardID = @"001";
     card1.title = @"Sample Card";
     card1.cardDescription = @"This is a sample card.";
-
+    
     
     NSMutableArray *cards = [[NSMutableArray alloc]initWithArray:@[card1]];
     FISStream *stream = [[FISStream alloc]initWithStreamID:@"streamID"

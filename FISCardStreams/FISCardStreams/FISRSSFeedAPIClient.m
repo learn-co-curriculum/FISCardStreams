@@ -25,6 +25,7 @@
     return [self initWithBlogUrl:@""];
 }
 
+
 -(NSString *)transformBlogUrlToBlogRssFeedUrl
 {
     NSString * feed = @"feed";
@@ -41,6 +42,7 @@
     
     return [NSString stringWithFormat:@"%@%@/%@",domain,feed,blogUserName];
 }
+
 
 -(NSArray *)getBlogList
 {
