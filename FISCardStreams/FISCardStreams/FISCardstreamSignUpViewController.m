@@ -78,7 +78,7 @@
                 [FISCardStreamsAPIClient createAStreamForName:self.usernameTextField.text WithCompletionBlock:^(FISStream *userStream) {
                     NSLog(@"Signed UP");
                     //self.dataManager.userStream = self.streamToPass;
-                    //[self takeMeToHomePage];
+                    [self takeMeToCredentialPage];
                     [self.indicatorView stopAnimating];
                 }];
         }
@@ -95,6 +95,18 @@
     [application.keyWindow setRootViewController:navController];
     
     [self presentViewController:homePage animated:YES completion:nil];
+}
+
+-(void)takeMeToCredentialPage
+{
+    UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"LoginFlow" bundle:nil];
+    UINavigationController *navController = [myStoryboard instantiateInitialViewController];
+    UIViewController *homePage = [myStoryboard instantiateViewControllerWithIdentifier:@"credentialVC"];
+    UIApplication *application = [UIApplication sharedApplication];
+    [application.keyWindow setRootViewController:navController];
+    
+    [self presentViewController:homePage animated:YES completion:nil];
+
 }
 
 @end

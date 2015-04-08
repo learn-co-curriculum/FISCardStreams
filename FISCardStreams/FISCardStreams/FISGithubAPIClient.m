@@ -21,7 +21,8 @@
 
 @implementation FISGithubAPIClient
 
-+(void)redirectAfterAuth
+
++(void)redirectAfterAuthentication
 {
     NSString *githubString = [NSString stringWithFormat:@"https://github.com/login/oauth/authorize?client_id=%@&redirect_uri=%@&scope=repo",GITHUB_CLIENT_ID,@"githubLogin://callback"];
     
@@ -30,11 +31,12 @@
     [[UIApplication sharedApplication] openURL:githubURL];
 }
 
+
 //gets all of the user's repos and returns an array
-+(void)getUserRepos:(NSString *)userName completionBlock:(void (^)(NSArray *))completionBlock
++(void)getUserRepositoriesWithUsername:(NSString *)Username AndCompletionBlock:(void (^)(NSArray *))completionBlock
 {
     
-    NSString *githubURL = [NSString stringWithFormat:@"%@/users/%@/repos??client_id=%@&client_secret=%@", GITHUB_API_URL, userName,GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET];
+    NSString *githubURL = [NSString stringWithFormat:@"%@/users/%@/repos??client_id=%@&client_secret=%@", GITHUB_API_URL, Username,GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     

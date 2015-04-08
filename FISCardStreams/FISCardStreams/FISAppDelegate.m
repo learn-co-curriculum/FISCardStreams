@@ -14,7 +14,9 @@
 #import "FISRSSFeedAPIClient.h"
 #import "FISGithubAPIClient.h"
 #import "FISConstants.h"
-#import <NSURL+QueryDictionary.h>
+
+#import <NSURL+QueryDictionary/NSURL+QueryDictionary.h>
+
 #import <AFOAuth2Manager.h>
 
 @interface FISAppDelegate ()
@@ -45,12 +47,25 @@
     
     // calling the GithubAPI
     
-    [FISGithubAPIClient getUserRepos:@"n3llee" completionBlock:^(NSArray *repos) {
-        for (NSString *userRepo in repos) {
-            [FISGithubAPIClient getRepoStats:userRepo completionBlock:^(NSMutableDictionary *stats) {
-                NSLog(@"stats are for %@: %@", userRepo, stats);
-            }];
-        }
+  
+    
+    [FISGithubAPIClient getUserRepos:@"anish7mnm" completionBlock:^(NSArray *repos) {
+
+        NSLog(@"MY repos: %@ ", repos);
+        
+        
+        
+        
+        //        for (NSString *userRepo in repos) {
+//            [FISGithubAPIClient getRepoStats:userRepo completionBlock:^(NSMutableDictionary *stats) {
+//                NSLog(@"stats are for %@: %@", userRepo, stats);
+//            }];
+//        }
+    }];
+    
+    [FISGithubAPIClient getRepositoriesWithCompletion:^(NSArray *repos) {
+        NSLog(@"ALL repos: %@ ", repos);
+
     }];
     
     
@@ -105,9 +120,7 @@
          
          [AFOAuthCredential storeCredential:credential
                              withIdentifier:@"githubToken"];
-         NSLog(@"store the auth data");
-         
-         
+         NSLog(@"store the auth data. Token: %@", credential.accessToken);
          
      } failure:^(NSError *error) {
      }];

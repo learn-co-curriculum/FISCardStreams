@@ -23,7 +23,7 @@ NSString *const CARDSTREAMS_KEY_MARK = @"51a297e99b4ca58be472ee943da73e7b";
 NSString *const CARDSTREAMS_APP_ID_ANISH = @"c1bb343c";
 NSString *const CARDSTREAMS_KEY_ANISH = @"ee1875c7b1527f31206d39f5b95aa98a";
 
-//Joes Github
+//Joes Github credentials
 NSString *const GITHUB_API_URL=@"https://api.github.com";
 NSString *const GITHUB_CLIENT_ID = @"f523187ecd099eecc17d";
 NSString *const GITHUB_CLIENT_SECRET = @"784bc46e9c6d412b31d6dfab7d798d1078472603";

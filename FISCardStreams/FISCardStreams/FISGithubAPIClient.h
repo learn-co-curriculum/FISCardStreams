@@ -11,9 +11,11 @@
 
 @interface FISGithubAPIClient : NSObject
 
-+(void)redirectAfterAuth;
++(void)redirectAfterAuthentication;
 
-+(void)getUserRepos:(NSString *)userName completionBlock:(void (^)(NSArray * repos))completionBlock;
++(void)getUserRepositoriesWithUsername:(NSString *)Username AndCompletionBlock:(void (^)(NSArray * repos))completionBlock;
+
+
 
 +(void)getRepoStats:(NSString *)repoFullName completionBlock:(void (^)(NSMutableDictionary * stats))completionBlock;
 
