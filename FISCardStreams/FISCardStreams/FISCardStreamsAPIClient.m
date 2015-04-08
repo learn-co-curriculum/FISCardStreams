@@ -197,6 +197,34 @@
 
 
 
++ (void) postAnAttachmentWithStreamID:(NSString *)streamID ACardID:(NSString *)cardID TheContentDictionary: (NSDictionary *)cardBody AndCheckWithCompletionBlock:(void (^)(FISCard *))completionBlock
+{
+    NSString *cardstreamURL = [NSString stringWithFormat:@"%@/streams/%@/cards/%@", CARDSTREAMS_BASE_URL, streamID, cardID];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    AFJSONRequestSerializer *serializer = [[AFJSONRequestSerializer alloc] init];
+    [serializer setValue:CARDSTREAMS_APP_ID forHTTPHeaderField:@"X-Lifestreams-3scale-AppId"];
+    [serializer setValue:CARDSTREAMS_KEY forHTTPHeaderField:@"X-Lifestreams-3scale-AppKey"];
+    
+    manager.requestSerializer = serializer;
+    
+    [manager PATCH:cardstreamURL parameters:cardBody success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        FISCard *cardReturned = [FISCard createCardFromDictionary:responseObject];
+        completionBlock(cardReturned);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        NSLog(@"Fail: %@", error.localizedDescription);
+        
+    }];
+    
+}
+
+
+
+
 + (void) deleteACardsWithStreamID:(NSString *)streamID ACardID:(NSString *)cardID AndCheckWithCompletionBlock:(void (^)(void))completionBlock
 {
     NSString *cardstreamURL = [NSString stringWithFormat:@"%@/streams/%@/cards/%@", CARDSTREAMS_BASE_URL, streamID, cardID];
