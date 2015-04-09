@@ -41,6 +41,8 @@
         NSLog(@"sya what %@", userNetworkActivities);
     }];
     
+
+//    [FISGithubAPIClient getPublicFeedsWithUsername:@"notDanish" WithCompletionBlock:nil];
     
     // To get the list of blog for a user : Nelly
     //    FISRSSFeedAPIClient *rssFeed = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:@"https://medium.com/@n3llee"];

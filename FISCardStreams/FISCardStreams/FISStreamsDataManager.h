@@ -19,6 +19,16 @@
 @property (strong, nonatomic) NSString *streamID;
 @property (strong, nonatomic) FISStream *userStream;
 
+/**
+ The source address of the logged-in user's blog. The only blog site currently supported by the date formatter is Medium.com.
+ */
+@property (strong, nonatomic) NSString *blogURL;
+
+/**
+ The logged-in user's Github username for pulling commit details from the user's public newsfeed.
+ */
+@property (strong, nonatomic) NSString *githubUsername;
+
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
@@ -35,5 +45,6 @@
 - (void)getAllCardsForUserStreamWithCompletion:(void (^)(BOOL success))completionBlock;
 
 - (void)updateRSSFeedWithCompletionBlock:(void (^)(NSArray *newBlogCards))completionBlock;
+- (void)updateGithubFeedWithCompletionBlock:(void (^)(NSArray *newGithubCards))completionBlock;
 
 @end

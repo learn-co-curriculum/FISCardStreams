@@ -35,4 +35,12 @@
     return date;
 }
 
++ (NSDate *)dateFromGithubDate:(NSString *)githubDate {
+    NSDateFormatter *githubDateFormat = [[NSDateFormatter alloc]init];
+    [githubDateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+    
+    NSDate *date = [githubDateFormat dateFromString:githubDate];
+    return date;
+}
+
 @end

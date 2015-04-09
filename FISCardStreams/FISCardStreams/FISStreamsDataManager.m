@@ -13,6 +13,7 @@
 // API Clients
 #import "FISCardStreamsAPIClient.h"
 #import "FISRSSFeedAPIClient.h"
+#import "FISGithubAPIClient.h"
 
 // Data Models
 #import "FISStream.h"
@@ -28,6 +29,8 @@
     dispatch_once(&onceToken, ^{
         _sharedDataManager = [[FISStreamsDataManager alloc] init];
         _sharedDataManager.streams = [[NSMutableArray alloc]init];
+        _sharedDataManager.blogURL = @"https://medium.com/@MarkEdwardMurray";
+        _sharedDataManager.githubUsername = @"markedwardmurray";
     });
     return _sharedDataManager;
 }
@@ -35,10 +38,6 @@
 #pragma mark - API requests
 
 - (void)getStreamForStreamIDWithCompletion:(void (^)(BOOL))completionBlock {
-    
-    //#warning overriding streamID property for testing
-    //self.streamID = @"551aa2e6583813280700385a"; // Mark's SampleStream;
-    //self.streamID = @"5519584e5838132807000d05"; // Anish's MyFirstStream;
     
     [FISCardStreamsAPIClient getStreamsForAUserWithStreamIDs:self.streamID AndCompletionBlock:^(FISStream *stream) {
         self.userStream = stream;
@@ -62,7 +61,7 @@
 }
 
 - (void)updateRSSFeedWithCompletionBlock:(void (^)(NSArray *))completionBlock {
-    FISRSSFeedAPIClient *rssFeedAPIClient = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:@"https://medium.com/@MarkEdwardMurray"];
+    FISRSSFeedAPIClient *rssFeedAPIClient = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:self.blogURL];
     
     NSMutableArray *allCardTitles = [[NSMutableArray alloc]init];
     for (FISCard *currentCard in self.userStream.cards) {
@@ -73,6 +72,7 @@
     
     NSMutableArray *mNewBlogCards = [[NSMutableArray alloc]init];
     for (NSDictionary *blogDictionary in allBlogPosts) {
+        
         // check that a card with this blog post's title does not already exist
         if ([allCardTitles containsObject:blogDictionary[@"title"]]) {
             continue;
@@ -84,7 +84,8 @@
         NSDictionary *cardBody = @{ @"title" : blogDictionary[@"title"],
                                     @"description" : blogDictionary[@"summary"],
                                     @"postAt" : epochPostAt,
-                                    @"postLink" :  blogDictionary[@"link"] };
+                                    @"postLink" :  blogDictionary[@"link"],
+                                    @"source" : @"blog" };
         [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
                                    WithContentDictionary:cardBody
                                      WithCompletionBlock:^(FISCard *card) {
@@ -94,6 +95,48 @@
     }
     NSArray *newBlogCards = [NSArray arrayWithArray:mNewBlogCards];
     completionBlock(newBlogCards);
+}
+
+- (void)updateGithubFeedWithCompletionBlock:(void (^)(NSArray *))completionBlock {
+    NSMutableArray *allCardTimeStamps = [[NSMutableArray alloc]init];
+    for (FISCard *currentCard in self.userStream.cards) {
+        NSNumber *epochCardDate = @([currentCard.postAt timeIntervalSince1970]);
+        [allCardTimeStamps addObject:epochCardDate];
+    }
+    
+    
+    [FISGithubAPIClient getPublicFeedsWithUsername:self.githubUsername
+                               WithCompletionBlock:^(NSArray *commits) {
+        for (NSDictionary *githubDictionary in commits) {
+            NSDate *postAt = [NSDate dateFromGithubDate:githubDictionary[@"commited_date"]];
+            NSNumber *epochPostAt = @([postAt timeIntervalSince1970]);
+            
+            // checks via timestamp that the item has not been previously assimilated
+            if ([allCardTimeStamps containsObject:epochPostAt]) {
+                continue;
+            }
+            
+            NSString *cardDescription = [NSString stringWithFormat:@"%@ pushed to %@ \"%@\"",
+                                         githubDictionary[@"username"],
+                                         githubDictionary[@"repo_name"],
+                                         githubDictionary[@"commit_message"]];
+            
+            NSDictionary *cardBody = @{ @"title" : @"Github Commit",
+                                        @"description" : cardDescription,
+                                        @"postAt" : epochPostAt,
+                                        @"source" : @"github" };
+            [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
+                                       WithContentDictionary:cardBody
+                                         WithCompletionBlock:^(FISCard *card) {
+                                             NSMutableArray *newGithubCards = [[NSMutableArray alloc]init];
+                                             [newGithubCards addObject:card];
+                                             
+                                             if ([githubDictionary isEqual:[commits lastObject]]) {
+                                                 completionBlock(newGithubCards);
+                                             }
+                                         }];
+        }
+    }];
 }
 
 #pragma mark - Test Data
