@@ -23,15 +23,18 @@ PODS:
   - AFOAuth2Manager (2.2.0):
     - AFNetworking/NSURLConnection (~> 2.2)
   - MONActivityIndicatorView (0.0.3)
+  - NSURL+ParseQuery (0.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - AFOAuth2Manager
   - MONActivityIndicatorView
+  - NSURL+ParseQuery
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
   AFOAuth2Manager: 952eb62e8fd8022971e64c6e8fe28b9e999224af
   MONActivityIndicatorView: a00611695de16d956b17d03be25ee49a8effc5f2
+  NSURL+ParseQuery: e67ddd406d7e015ec7205fd29083cfb33c9ab8ea
 
 COCOAPODS: 0.35.0

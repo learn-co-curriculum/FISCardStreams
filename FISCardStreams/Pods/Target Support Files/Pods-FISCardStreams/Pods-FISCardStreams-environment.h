@@ -60,3 +60,9 @@
 #define COCOAPODS_VERSION_MINOR_MONActivityIndicatorView 0
 #define COCOAPODS_VERSION_PATCH_MONActivityIndicatorView 3
 
+// NSURL+ParseQuery
+#define COCOAPODS_POD_AVAILABLE_NSURL_ParseQuery
+#define COCOAPODS_VERSION_MAJOR_NSURL_ParseQuery 0
+#define COCOAPODS_VERSION_MINOR_NSURL_ParseQuery 1
+#define COCOAPODS_VERSION_PATCH_NSURL_ParseQuery 0
+

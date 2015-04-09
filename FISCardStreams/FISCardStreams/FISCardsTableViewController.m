@@ -11,6 +11,7 @@
 #import "FISCardsTableViewController.h"
 
 #import "FISStreamsDataManager.h"
+#import "FISConstants.h"
 
 // Custom Cells
 #import "FISCardTableViewCell.h"
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) FISStreamsDataManager *streamsDataManager;
 
 - (IBAction)refreshTapped:(id)sender;
+- (IBAction)stackExchangeLoginTapped:(id)sender;
 
 @end
 
@@ -128,10 +130,20 @@
 */
 
 - (IBAction)refreshTapped:(id)sender {
-    [self.streamsDataManager updateRSSFeedWithCompletionBlock:^(NSArray *newBlogCards) {
-        [self.streamsDataManager.userStream.cards addObjectsFromArray:newBlogCards];
-        [self.tableView reloadData];
+//    [self.streamsDataManager updateRSSFeedWithCompletionBlock:^(NSArray *newBlogCards) {
+//        [self.streamsDataManager.userStream.cards addObjectsFromArray:newBlogCards];
+//        [self.tableView reloadData];
+//    }];
+    [self.streamsDataManager updateStackExchangeNetworkActivityWithCompletionBlock:^(NSArray *newStackExchangeCards) {
+        NSLog(@"SE Cards: %@", newStackExchangeCards);
     }];
+    
+}
+
+- (IBAction)stackExchangeLoginTapped:(id)sender {
+    NSString *stackExchangeString = [NSString stringWithFormat:@"https://stackexchange.com/oauth/dialog?client_id=%@&redirect_uri=login_success", STACKEXCHANGE_CLIENT_ID];
+    NSURL *stackExchangeURL = [NSURL URLWithString:stackExchangeString];
+    [[UIApplication sharedApplication] openURL:stackExchangeURL];
 }
 
 @end

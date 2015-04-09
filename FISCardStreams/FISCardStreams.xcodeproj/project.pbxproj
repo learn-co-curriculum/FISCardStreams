@@ -31,7 +31,7 @@
 		747F792B1ACEEC5600825492 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 747F792A1ACEEC5600825492 /* XMLReader.m */; };
 		889998181ACDA94E00A2050B /* FISCardstreamLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889998171ACDA94E00A2050B /* FISCardstreamLogInViewController.m */; };
 		8899981B1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8899981A1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m */; };
-		88BE23BF1AD567C5006FA622 /* StackExchangeAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE23BE1AD567C5006FA622 /* StackExchangeAPI.m */; };
+		88BE23BF1AD567C5006FA622 /* FISStackExchangeAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE23BE1AD567C5006FA622 /* FISStackExchangeAPI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,8 +90,8 @@
 		889998171ACDA94E00A2050B /* FISCardstreamLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCardstreamLogInViewController.m; sourceTree = "<group>"; };
 		889998191ACDC30B00A2050B /* FISCardstreamSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISCardstreamSignUpViewController.h; sourceTree = "<group>"; };
 		8899981A1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCardstreamSignUpViewController.m; sourceTree = "<group>"; };
-		88BE23BD1AD567C5006FA622 /* StackExchangeAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackExchangeAPI.h; sourceTree = "<group>"; };
-		88BE23BE1AD567C5006FA622 /* StackExchangeAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackExchangeAPI.m; sourceTree = "<group>"; };
+		88BE23BD1AD567C5006FA622 /* FISStackExchangeAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISStackExchangeAPI.h; sourceTree = "<group>"; };
+		88BE23BE1AD567C5006FA622 /* FISStackExchangeAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISStackExchangeAPI.m; sourceTree = "<group>"; };
 		B0E688A2D2D1B38D94F890D7 /* Pods-FISCardStreams.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FISCardStreams.release.xcconfig"; path = "Pods/Target Support Files/Pods-FISCardStreams/Pods-FISCardStreams.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,8 +186,8 @@
 				6A7C1F2B1ACADE9700DA0161 /* FISGithubAPIClient.m */,
 				6A7C1F2D1ACADEB900DA0161 /* FISRSSFeedAPIClient.h */,
 				6A7C1F2E1ACADEB900DA0161 /* FISRSSFeedAPIClient.m */,
-				88BE23BD1AD567C5006FA622 /* StackExchangeAPI.h */,
-				88BE23BE1AD567C5006FA622 /* StackExchangeAPI.m */,
+				88BE23BD1AD567C5006FA622 /* FISStackExchangeAPI.h */,
+				88BE23BE1AD567C5006FA622 /* FISStackExchangeAPI.m */,
 				747F792C1ACEEC7D00825492 /* XMLReader.h */,
 				747F792A1ACEEC5600825492 /* XMLReader.m */,
 			);
@@ -405,7 +405,7 @@
 				6A7C1F291ACADE7D00DA0161 /* FISCardStreamsAPIClient.m in Sources */,
 				6A7C1F421ACAFA5800DA0161 /* FISComment.m in Sources */,
 				6A7C1EFF1ACAD82800DA0161 /* FISCardStreams.xcdatamodeld in Sources */,
-				88BE23BF1AD567C5006FA622 /* StackExchangeAPI.m in Sources */,
+				88BE23BF1AD567C5006FA622 /* FISStackExchangeAPI.m in Sources */,
 				6A7C1F261ACADE6400DA0161 /* FISConstants.m in Sources */,
 				6A7C1EFC1ACAD82800DA0161 /* FISAppDelegate.m in Sources */,
 				8899981B1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m in Sources */,

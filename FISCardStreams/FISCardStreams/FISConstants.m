@@ -18,6 +18,11 @@ NSString *const CARDSTREAMS_KEY = @"51a297e99b4ca58be472ee943da73e7b"; // Mark
 // Mark's API credentials
 NSString *const CARDSTREAMS_APP_ID_MARK = @"a43a7450";
 NSString *const CARDSTREAMS_KEY_MARK = @"51a297e99b4ca58be472ee943da73e7b";
+NSString *const STACKEXCHANGE_BASE_URL = @"https://api.stackexchange.com/2.2/";
+// https://stackapps.com/apps/oauth/view/4607
+NSString *const STACKEXCHANGE_CLIENT_ID = @"4607";
+NSString *const STACKEXCHANGE_CLINET_SECRET = @"WhRxl0DHVVofjk7utGgbjg((";
+NSString *const STACKEXCHANGE_KEY = @"RSl8ZpyYF6c7e18lHtl3vw((";
 
 // Anish's API credentials
 NSString *const CARDSTREAMS_APP_ID_ANISH = @"c1bb343c";

@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSString *streamID;
 @property (strong, nonatomic) FISStream *userStream;
 
+@property (strong, nonatomic) NSString *blogURL;
+
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
@@ -35,5 +37,7 @@
 - (void)getAllCardsForUserStreamWithCompletion:(void (^)(BOOL success))completionBlock;
 
 - (void)updateRSSFeedWithCompletionBlock:(void (^)(NSArray *newBlogCards))completionBlock;
+
+- (void)updateStackExchangeNetworkActivityWithCompletionBlock:(void (^)(NSArray *newStackExchangeCards))completionBlock;
 
 @end

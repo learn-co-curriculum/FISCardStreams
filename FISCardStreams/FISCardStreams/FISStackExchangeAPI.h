@@ -1,5 +1,5 @@
 //
-//  StackExchangeAPI.h
+//  FISStackExchangeAPI.h
 //  FISCardStreams
 //
 //  Created by Anish Kumar on 4/8/15.
@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface StackExchangeAPI : NSObject
+@interface FISStackExchangeAPI : NSObject
+
++ (void)getNetworkActivityForCurrentUserWithToken:(NSString *)token completionBlock:(void (^)(NSArray *items))completionBlock;
 
 @end

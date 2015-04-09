@@ -13,6 +13,7 @@
 // API Clients
 #import "FISCardStreamsAPIClient.h"
 #import "FISRSSFeedAPIClient.h"
+#import "FISStackExchangeAPI.h"
 
 // Data Models
 #import "FISStream.h"
@@ -61,7 +62,11 @@
 }
 
 - (void)updateRSSFeedWithCompletionBlock:(void (^)(NSArray *))completionBlock {
-    FISRSSFeedAPIClient *rssFeedAPIClient = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:@"https://medium.com/@MarkEdwardMurray"];
+    if (!self.blogURL) {
+        self.blogURL = @"https://medium.com/@MarkEdwardMurray";
+    }
+    
+    FISRSSFeedAPIClient *rssFeedAPIClient = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:self.blogURL];
     
     NSMutableArray *allCardTitles = [[NSMutableArray alloc]init];
     for (FISCard *currentCard in self.userStream.cards) {
@@ -93,6 +98,14 @@
     }
     NSArray *newBlogCards = [NSArray arrayWithArray:mNewBlogCards];
     completionBlock(newBlogCards);
+}
+
+- (void)updateStackExchangeNetworkActivityWithCompletionBlock:(void (^)(NSArray *))completionBlock {
+    NSString *token = @"Axc8zL3obq6W1jdeeZARbg"; // Mark's stack exchange token
+    
+    [FISStackExchangeAPI getNetworkActivityForCurrentUserWithToken:token completionBlock:^(NSArray *items) {
+        NSLog(@"%@", items);
+    }];
 }
 
 #pragma mark - Test Data

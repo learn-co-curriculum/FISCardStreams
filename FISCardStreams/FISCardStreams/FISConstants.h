@@ -16,6 +16,10 @@ extern NSString *const CARDSTREAMS_BASE_URL;
 // Mark's API credentials
 extern NSString *const CARDSTREAMS_APP_ID_MARK;
 extern NSString *const CARDSTREAMS_KEY_MARK;
+extern NSString *const STACKEXCHANGE_BASE_URL;
+extern NSString *const STACKEXCHANGE_CLIENT_ID;
+extern NSString *const STACKEXCHANGE_CLIENT_SECRET;
+extern NSString *const STACKEXCHANGE_KEY;
 
 // Anish's API credentials
 extern NSString *const CARDSTREAMS_APP_ID_ANISH;

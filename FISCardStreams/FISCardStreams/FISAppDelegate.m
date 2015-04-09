@@ -7,6 +7,8 @@
 //
 //  do not modify
 
+#import <NSURL+ParseQuery/NSURL+QueryParser.h>
+
 #import "FISAppDelegate.h"
 #import "FISStreamsDataManager.h"
 #import "FISCardStreamsAPIClient.h"
@@ -80,6 +82,12 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self.streamsDataManager saveContext];
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    NSDictionary *parsedQuery = [url parseQuery];
+    NSLog(@"parsedQuery: %@", parsedQuery);
+    return YES;
 }
 
 
