@@ -19,7 +19,14 @@
 @property (strong, nonatomic) NSString *streamID;
 @property (strong, nonatomic) FISStream *userStream;
 
+/**
+ The source address of the logged-in user's blog. The only blog site currently supported by the date formatter is Medium.com.
+ */
 @property (strong, nonatomic) NSString *blogURL;
+
+/**
+ The logged-in user's Github username for pulling commit details from the user's public newsfeed.
+ */
 @property (strong, nonatomic) NSString *githubUsername;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;

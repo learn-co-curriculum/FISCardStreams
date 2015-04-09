@@ -29,6 +29,8 @@
     dispatch_once(&onceToken, ^{
         _sharedDataManager = [[FISStreamsDataManager alloc] init];
         _sharedDataManager.streams = [[NSMutableArray alloc]init];
+        _sharedDataManager.blogURL = @"https://medium.com/@MarkEdwardMurray";
+        _sharedDataManager.githubUsername = @"markedwardmurray";
     });
     return _sharedDataManager;
 }
@@ -36,10 +38,6 @@
 #pragma mark - API requests
 
 - (void)getStreamForStreamIDWithCompletion:(void (^)(BOOL))completionBlock {
-    
-    //#warning overriding streamID property for testing
-    //self.streamID = @"551aa2e6583813280700385a"; // Mark's SampleStream;
-    //self.streamID = @"5519584e5838132807000d05"; // Anish's MyFirstStream;
     
     [FISCardStreamsAPIClient getStreamsForAUserWithStreamIDs:self.streamID AndCompletionBlock:^(FISStream *stream) {
         self.userStream = stream;
@@ -63,7 +61,7 @@
 }
 
 - (void)updateRSSFeedWithCompletionBlock:(void (^)(NSArray *))completionBlock {
-    FISRSSFeedAPIClient *rssFeedAPIClient = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:@"https://medium.com/@MarkEdwardMurray"];
+    FISRSSFeedAPIClient *rssFeedAPIClient = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:self.blogURL];
     
     NSMutableArray *allCardTitles = [[NSMutableArray alloc]init];
     for (FISCard *currentCard in self.userStream.cards) {
@@ -82,7 +80,6 @@
         
         NSDate *postAt = [NSDate dateFromRSSDate:blogDictionary[@"pubDate"]];
         NSNumber *epochPostAt = @([postAt timeIntervalSince1970]);
-//        NSString *jsonPostAt = [NSDate dateAsJSONDate:postAt];
         
         NSDictionary *cardBody = @{ @"title" : blogDictionary[@"title"],
                                     @"description" : blogDictionary[@"summary"],
@@ -108,7 +105,7 @@
     }
     
     
-    [FISGithubAPIClient getPublicFeedsWithUsername:@"markedwardmurray"
+    [FISGithubAPIClient getPublicFeedsWithUsername:self.githubUsername
                                WithCompletionBlock:^(NSArray *commits) {
         for (NSDictionary *githubDictionary in commits) {
             NSDate *postAt = [NSDate dateFromGithubDate:githubDictionary[@"commited_date"]];
