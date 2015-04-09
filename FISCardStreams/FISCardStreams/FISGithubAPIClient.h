@@ -28,7 +28,7 @@
      username = githubUsername;
   }
  */
-+(void)getPublicFeedsWithCompletionBlock:(void (^)(NSDictionary * feed))completionBlock;
++(void)getPublicFeedsWithUsername: (NSString *)username WithCompletionBlock:(void (^)(NSDictionary * feed))completionBlock;
 
 
 

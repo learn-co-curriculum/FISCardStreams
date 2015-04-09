@@ -25,7 +25,7 @@
 
 +(void)redirectAfterAuthentication
 {
-    NSString *githubString = [NSString stringWithFormat:@"https://github.com/login/oauth/authorize?client_id=%@&redirect_uri=%@&scope=repo",GITHUB_CLIENT_ID,@"githubLogin://callback"];
+    NSString *githubString = [NSString stringWithFormat:@"https://github.com/login/oauth/authorize?client_id=%@&redirect_uri=%@&scope=repo",GITHUB_CLIENT_ID,@"FISCardStreams://callback"];
     
     NSURL *githubURL = [NSURL URLWithString:githubString];
     
@@ -34,9 +34,9 @@
 
 
 
-+(void)getPublicFeedsWithCompletionBlock:(void (^)(NSDictionary *))completionBlock
++(void)getPublicFeedsWithUsername: (NSString *)username WithCompletionBlock:(void (^)(NSDictionary *))completionBlock
 {
-    NSString *githubURL = [NSString stringWithFormat:@"https://api.github.com/users/anish7mnm/events"];
+    NSString *githubURL = [NSString stringWithFormat:@"https://api.github.com/users/%@/events", username];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
@@ -53,8 +53,11 @@
         NSArray *events = responseObject;
         
         for (NSDictionary *event in events) {
-            
+        
             NSArray *data = event[@"payload"][@"commits"];
+            
+            if (data)
+            {
             NSString *repo = event[@"repo"][@"name"];
             NSArray *fullName = [repo componentsSeparatedByString:@"/"];
             
@@ -69,6 +72,7 @@
             
             NSLog(@"%@", commit);
             completionBlock(commit);
+            }
             
         }
         

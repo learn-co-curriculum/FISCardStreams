@@ -8,6 +8,7 @@
 //  do not modify
 
 #import "FISAppDelegate.h"
+#import "FISGithubAPIClient.h"
 #import "FISStreamsDataManager.h"
 #import "FISCardstreamLogInViewController.h"
 #import "FISRSSFeedAPIClient.h"
@@ -35,6 +36,7 @@
     self.window.rootViewController = loginViewController;
    // }
     
+    [FISGithubAPIClient getPublicFeedsWithUsername:@"notDanish" WithCompletionBlock:nil];
     
     // To get the list of blog for a user : Nelly
     //    FISRSSFeedAPIClient *rssFeed = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:@"https://medium.com/@n3llee"];
@@ -85,7 +87,7 @@
     manager.useHTTPBasicAuthentication = NO;
     [manager authenticateUsingOAuthWithURLString:@"oauth/access_token"
                                             code:urlParams[@"code"]
-                                     redirectURI:@"githubLogin://callback"
+                                     redirectURI:@"FISCardStreams://callback"
                                          success:^(AFOAuthCredential *credential)
      {
          
