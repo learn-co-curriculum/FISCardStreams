@@ -6,6 +6,7 @@ target 'FISCardStreams' do
 	pod 'AFOAuth2Manager'
 	pod 'MONActivityIndicatorView'
 	pod 'NSURL+QueryDictionary'
+	pod 'RGCardViewLayout','1.0'
 
 end
 

@@ -66,3 +66,9 @@
 #define COCOAPODS_VERSION_MINOR_NSURL_QueryDictionary 1
 #define COCOAPODS_VERSION_PATCH_NSURL_QueryDictionary 0
 
+// RGCardViewLayout
+#define COCOAPODS_POD_AVAILABLE_RGCardViewLayout
+#define COCOAPODS_VERSION_MAJOR_RGCardViewLayout 1
+#define COCOAPODS_VERSION_MINOR_RGCardViewLayout 0
+#define COCOAPODS_VERSION_PATCH_RGCardViewLayout 0
+

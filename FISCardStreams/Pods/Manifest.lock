@@ -24,17 +24,20 @@ PODS:
     - AFNetworking/NSURLConnection (~> 2.2)
   - MONActivityIndicatorView (0.0.3)
   - NSURL+QueryDictionary (1.1.0)
+  - RGCardViewLayout (1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - AFOAuth2Manager
   - MONActivityIndicatorView
   - NSURL+QueryDictionary
+  - RGCardViewLayout (= 1.0)
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
   AFOAuth2Manager: 952eb62e8fd8022971e64c6e8fe28b9e999224af
   MONActivityIndicatorView: a00611695de16d956b17d03be25ee49a8effc5f2
   NSURL+QueryDictionary: dd0a5fec689a9b4780b6fa0e0225c01ca3ea653e
+  RGCardViewLayout: d8f4ecd6703b3f012f876008cff19dae711a9b07
 
 COCOAPODS: 0.35.0
