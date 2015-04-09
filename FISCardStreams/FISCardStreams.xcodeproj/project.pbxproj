@@ -33,6 +33,7 @@
 		747F793D1AD2E2BB00825492 /* FISBlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 747F793C1AD2E2BB00825492 /* FISBlogViewController.m */; };
 		889998181ACDA94E00A2050B /* FISCardstreamLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889998171ACDA94E00A2050B /* FISCardstreamLogInViewController.m */; };
 		8899981B1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8899981A1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m */; };
+		88F7EBDB1AD6D6D30073E9FB /* TestingWebViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F7EBDA1AD6D6D30073E9FB /* TestingWebViewTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,8 @@
 		889998171ACDA94E00A2050B /* FISCardstreamLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCardstreamLogInViewController.m; sourceTree = "<group>"; };
 		889998191ACDC30B00A2050B /* FISCardstreamSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISCardstreamSignUpViewController.h; sourceTree = "<group>"; };
 		8899981A1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCardstreamSignUpViewController.m; sourceTree = "<group>"; };
+		88F7EBD91AD6D6D30073E9FB /* TestingWebViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestingWebViewTableViewCell.h; sourceTree = "<group>"; };
+		88F7EBDA1AD6D6D30073E9FB /* TestingWebViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestingWebViewTableViewCell.m; sourceTree = "<group>"; };
 		B0E688A2D2D1B38D94F890D7 /* Pods-FISCardStreams.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FISCardStreams.release.xcconfig"; path = "Pods/Target Support Files/Pods-FISCardStreams/Pods-FISCardStreams.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +148,8 @@
 				6A7C1EFB1ACAD82800DA0161 /* FISAppDelegate.m */,
 				747F793B1AD2E2BB00825492 /* FISBlogViewController.h */,
 				747F793C1AD2E2BB00825492 /* FISBlogViewController.m */,
+				88F7EBD91AD6D6D30073E9FB /* TestingWebViewTableViewCell.h */,
+				88F7EBDA1AD6D6D30073E9FB /* TestingWebViewTableViewCell.m */,
 				747F79331AD2DFB600825492 /* blog.storyboard */,
 				6A7C1F431ACAFA6600DA0161 /* Models */,
 				6A7C1F331ACADF2100DA0161 /* API Clients */,
@@ -398,6 +403,7 @@
 			files = (
 				6A7C1F361ACAE01900DA0161 /* FISStream.m in Sources */,
 				889998181ACDA94E00A2050B /* FISCardstreamLogInViewController.m in Sources */,
+				88F7EBDB1AD6D6D30073E9FB /* TestingWebViewTableViewCell.m in Sources */,
 				6A7C1F291ACADE7D00DA0161 /* FISCardStreamsAPIClient.m in Sources */,
 				6A7C1F421ACAFA5800DA0161 /* FISComment.m in Sources */,
 				6A7C1EFF1ACAD82800DA0161 /* FISCardStreams.xcdatamodeld in Sources */,
