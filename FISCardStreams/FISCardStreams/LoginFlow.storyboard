@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9oK-W7-AbO">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -216,6 +217,15 @@
                                     <constraint firstAttribute="width" constant="30" id="AdT-JL-GeF"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2J4-CD-yLi">
+                                <rect key="frame" x="211" y="399" width="178" height="30"/>
+                                <state key="normal" title="Stack Exchange Activities">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stackExchangeLoginButtonTapped:" destination="cBn-ee-LEL" eventType="touchUpInside" id="n68-mR-bLu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -228,8 +238,10 @@
                             <constraint firstItem="sUr-7z-EBh" firstAttribute="leading" secondItem="jLC-nu-ijO" secondAttribute="trailing" constant="19" id="O5f-d5-aaZ"/>
                             <constraint firstItem="To1-VT-rmu" firstAttribute="centerY" secondItem="wUc-95-89C" secondAttribute="centerY" constant="0.5" id="OFM-cc-HzP"/>
                             <constraint firstItem="jLC-nu-ijO" firstAttribute="height" secondItem="4IF-jQ-nYa" secondAttribute="height" id="Pam-CT-3A9"/>
+                            <constraint firstItem="2J4-CD-yLi" firstAttribute="top" secondItem="To1-VT-rmu" secondAttribute="bottom" constant="118" id="TlT-Iw-J0d"/>
                             <constraint firstItem="jLC-nu-ijO" firstAttribute="centerY" secondItem="4IF-jQ-nYa" secondAttribute="centerY" id="Xm4-O2-WFe"/>
                             <constraint firstItem="jLC-nu-ijO" firstAttribute="width" secondItem="4IF-jQ-nYa" secondAttribute="width" id="YfZ-VM-l8B"/>
+                            <constraint firstAttribute="centerX" secondItem="2J4-CD-yLi" secondAttribute="centerX" id="sUg-xk-fwm"/>
                             <constraint firstItem="jLC-nu-ijO" firstAttribute="centerX" secondItem="4IF-jQ-nYa" secondAttribute="centerX" id="z5Z-aZ-Ymp"/>
                         </constraints>
                     </view>
@@ -240,6 +252,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dYk-CI-CFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1910" y="301"/>
+        </scene>
+        <!--Stack Sexchange Login Web View Controller-->
+        <scene sceneID="M3L-Ye-oQH">
+            <objects>
+                <viewController restorationIdentifier="stackVC" storyboardIdentifier="stackVC" id="c8d-yj-OsM" customClass="StackSexchangeLoginWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7iO-EK-8Kb"/>
+                        <viewControllerLayoutGuide type="bottom" id="3Nu-V3-DW6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fgN-Af-iCd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRI-cA-0Jp">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3Nu-V3-DW6" firstAttribute="top" secondItem="SRI-cA-0Jp" secondAttribute="bottom" id="9kW-65-5l2"/>
+                            <constraint firstItem="SRI-cA-0Jp" firstAttribute="top" secondItem="7iO-EK-8Kb" secondAttribute="bottom" constant="-20" id="NaX-gF-dw3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SRI-cA-0Jp" secondAttribute="trailing" constant="-16" id="SbZ-UC-L0U"/>
+                            <constraint firstItem="SRI-cA-0Jp" firstAttribute="leading" secondItem="fgN-Af-iCd" secondAttribute="leadingMargin" constant="-16" id="tc3-uY-AeV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="stackExchange" destination="SRI-cA-0Jp" id="Jfk-gv-MaM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rcd-OQ-fsK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1910" y="1075"/>
         </scene>
     </scenes>
 </document>

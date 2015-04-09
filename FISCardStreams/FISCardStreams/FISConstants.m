@@ -24,9 +24,16 @@ NSString *const CARDSTREAMS_APP_ID_ANISH = @"c1bb343c";
 NSString *const CARDSTREAMS_KEY_ANISH = @"ee1875c7b1527f31206d39f5b95aa98a";
 
 
-//CardStream Github credentials
+//CardStreams Github credentials
 NSString *const GITHUB_API_URL=@"https://api.github.com";
 NSString *const GITHUB_CLIENT_ID = @"4ab2f9efbcf1c9420a0c";
 NSString *const GITHUB_CLIENT_SECRET = @"8797f598ceb9f165f60e366ea3a57e8e8c2e0574";
+
+
+//CardStreams Stack Exchange credentials
+NSString *const STACKEXCHANGE_BASE_URL = @"https://api.stackexchange.com/2.2/";
+NSString *const STACKEXCHANGE_CLIENT_ID = @"4612";
+NSString *const STACKEXCHANGE_CLINET_SECRET = @"qh)p9EvXTFjj6jDVzktxoA((";
+NSString *const STACKEXCHANGE_KEY = @"lxFoOmObqZMUnpIjcTgepQ((";
 
 @end

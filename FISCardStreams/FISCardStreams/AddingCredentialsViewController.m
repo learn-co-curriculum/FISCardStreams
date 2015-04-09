@@ -8,8 +8,11 @@
 
 #import "AddingCredentialsViewController.h"
 #import "FISGithubAPIClient.h"
+#import "FISStackExchangeAPI.h"
 #import <AFNetworking.h>
 #import <AFOAuth2Manager.h>
+
+#import "StackSexchangeLoginWebViewController.h"
 
 @interface AddingCredentialsViewController ()
 
@@ -47,4 +50,13 @@
 
 }
 
+- (IBAction)stackExchangeLoginButtonTapped:(id)sender {
+    
+    //[FISStackExchangeAPI redirectAfterAuthentication];
+    
+    StackSexchangeLoginWebViewController *stackVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stackVC"];
+    
+    [self presentViewController:stackVC animated:YES completion:nil];
+    
+}
 @end

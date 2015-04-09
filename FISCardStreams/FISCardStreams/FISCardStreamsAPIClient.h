@@ -14,27 +14,27 @@
 @interface FISCardStreamsAPIClient : NSObject
 
 /**
- Get all Streams to check the userame during signUp.
+ *  Get all Streams to check the userame during signUp.
  */
 + (void) getAllStreamsAndCheckWithUsername: (NSString *)username CompletionBlock:(void (^)(FISStream *))completionBlock SecondCompletionBlock: (void (^)(BOOL unique))secondCompletionBlock;
 
 
 /**
- Create a stream for user with a unique Title given by the User as Username.
+*  Create a stream for user with a unique Title given by the User as Username.
  */
 + (void) createAStreamForName: (NSString *)name WithCompletionBlock:(void (^)(FISStream *userStream))completionBlock;
 
 
 
 /**
- Get the user stream using the StreamID persisiting in the device (as CoreData or something else).
+*  Get the user stream using the StreamID persisiting in the device (as CoreData or something else).
  */
 + (void) getStreamsForAUserWithStreamIDs: (NSString *)streamIDs AndCompletionBlock: (void (^)(FISStream *stream))completionBlock;
 
 
 
 /**
- Create a card for the user using the unique StreamID and the JSON content passed as an NSDictionary wherever the method is called. This method returns the entire card to be displayed/stored.
+ *  Create a card for the user using the unique StreamID and the JSON content passed as an NSDictionary wherever the method is called. This method returns the entire card to be displayed/stored.
  Example of content Dictionary:
  { "title": "BIGGGG3", "description": "sdfsdf", "attachments": [ { "filename": "", "mimeType": ".", "sourceUrl": "ww.sac.com" } ]}
  */

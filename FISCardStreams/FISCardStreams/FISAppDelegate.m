@@ -15,7 +15,7 @@
 #import "FISConstants.h"
 #import <NSURL+QueryDictionary/NSURL+QueryDictionary.h>
 #import <AFOAuth2Manager.h>
-
+#import "FISStackExchangeAPI.h"
 
 @interface FISAppDelegate ()
 
@@ -37,7 +37,10 @@
     self.window.rootViewController = loginViewController;
    // }
     
-    [FISGithubAPIClient getPublicFeedsWithUsername:@"notDanish" WithCompletionBlock:nil];
+    [FISStackExchangeAPI getNetworkActivityForCurrentUserWithCompletionBlock:^(NSArray *userNetworkActivities) {
+        NSLog(@"sya what %@", userNetworkActivities);
+    }];
+    
     
     // To get the list of blog for a user : Nelly
     //    FISRSSFeedAPIClient *rssFeed = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:@"https://medium.com/@n3llee"];
@@ -75,29 +78,65 @@
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    NSDictionary *urlParams = [url uq_queryDictionary];
+    NSString *referred_url = annotation[@"ReferrerURL"];
     
-    NSLog(@"code: %@",urlParams[@"code"]);
+    if ([referred_url isEqualToString:@"https://github.com/login/oauth/authorize?client_id=4ab2f9efbcf1c9420a0c&redirect_uri=FISCardStreams://callback&scope=repo"])
+    {
+        
+        NSDictionary *urlParams = [url uq_queryDictionary];
+        
+        NSLog(@"code: %@",urlParams[@"code"]);
+        
+        NSURL *baseURL = [NSURL URLWithString:@"https://github.com/login/"];
+        
+        AFOAuth2Manager *manager = [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
+                                                                   clientID:GITHUB_CLIENT_ID
+                                                                     secret:GITHUB_CLIENT_SECRET];
+        
+        manager.useHTTPBasicAuthentication = NO;
+        [manager authenticateUsingOAuthWithURLString:@"oauth/access_token"
+                                                code:urlParams[@"code"]
+                                         redirectURI:@"FISCardStreams://callback"
+                                             success:^(AFOAuthCredential *credential)
+         {
+             
+             [AFOAuthCredential storeCredential:credential
+                                 withIdentifier:@"githubToken"];
+             NSLog(@"store the auth data. Token: %@", credential.accessToken);
+             
+         } failure:^(NSError *error) {
+         }];
+    }
     
-    NSURL *baseURL = [NSURL URLWithString:@"https://github.com/login/"];
+    else
+    {
     
-    AFOAuth2Manager *manager = [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
-                                                               clientID:GITHUB_CLIENT_ID
-                                                                 secret:GITHUB_CLIENT_SECRET];
-    
-    manager.useHTTPBasicAuthentication = NO;
-    [manager authenticateUsingOAuthWithURLString:@"oauth/access_token"
-                                            code:urlParams[@"code"]
-                                     redirectURI:@"FISCardStreams://callback"
-                                         success:^(AFOAuthCredential *credential)
-     {
-         
-         [AFOAuthCredential storeCredential:credential
-                             withIdentifier:@"githubToken"];
-         NSLog(@"store the auth data. Token: %@", credential.accessToken);
-       
-     } failure:^(NSError *error) {
-     }];
+        NSDictionary *urlParams = [url uq_queryDictionary];
+        
+        NSLog(@"code: %@",urlParams[@"code"]);
+        
+        NSURL *baseURL = [NSURL URLWithString:@"https://stackexchange.com"];
+        
+        AFOAuth2Manager *manager = [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
+                                                                   clientID:STACKEXCHANGE_CLIENT_ID
+                                                                     secret:STACKEXCHANGE_CLINET_SECRET];
+        
+        manager.useHTTPBasicAuthentication = NO;
+        [manager authenticateUsingOAuthWithURLString:@"oauth/access_token"
+                                                code:urlParams[@"code"]
+                                         redirectURI:@"FISCardStreams://callback"
+                                             success:^(AFOAuthCredential *credential)
+         {
+             
+             [AFOAuthCredential storeCredential:credential
+                                 withIdentifier:@"stackExchangeToken"];
+             NSLog(@"store the auth data. Token: %@", credential.accessToken);
+             
+         } failure:^(NSError *error) {
+         }];
+
+        
+    }
     
     return YES;
 }
