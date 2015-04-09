@@ -13,6 +13,7 @@
 // API Clients
 #import "FISCardStreamsAPIClient.h"
 #import "FISRSSFeedAPIClient.h"
+#import "FISGithubAPIClient.h"
 
 // Data Models
 #import "FISStream.h"
@@ -73,6 +74,7 @@
     
     NSMutableArray *mNewBlogCards = [[NSMutableArray alloc]init];
     for (NSDictionary *blogDictionary in allBlogPosts) {
+        
         // check that a card with this blog post's title does not already exist
         if ([allCardTitles containsObject:blogDictionary[@"title"]]) {
             continue;
@@ -80,6 +82,7 @@
         
         NSDate *postAt = [NSDate dateFromRSSDate:blogDictionary[@"pubDate"]];
         NSNumber *epochPostAt = @([postAt timeIntervalSince1970]);
+//        NSString *jsonPostAt = [NSDate dateAsJSONDate:postAt];
         
         NSDictionary *cardBody = @{ @"title" : blogDictionary[@"title"],
                                     @"description" : blogDictionary[@"summary"],
@@ -94,6 +97,51 @@
     }
     NSArray *newBlogCards = [NSArray arrayWithArray:mNewBlogCards];
     completionBlock(newBlogCards);
+}
+
+- (void)updateGithubFeedWithCompletionBlock:(void (^)(NSArray *))completionBlock {
+    NSMutableArray *allCardTimeStamps = [[NSMutableArray alloc]init];
+    for (FISCard *currentCard in self.userStream.cards) {
+        NSNumber *epochCardDate = @([currentCard.postAt timeIntervalSince1970]);
+        [allCardTimeStamps addObject:epochCardDate];
+    }
+    
+    
+    [FISGithubAPIClient getPublicFeedsWithUsername:@"markedwardmurray"
+                               WithCompletionBlock:^(NSArray *commits) {
+        for (NSDictionary *githubDictionary in commits) {
+            NSDate *postAt = [NSDate dateFromGithubDate:githubDictionary[@"commited_date"]];
+            NSNumber *epochPostAt = @([postAt timeIntervalSince1970]);
+//            NSString *jsonPostAt = [NSDate dateAsJSONDate:postAt];
+//            NSDate *rePostAt = [NSDate dateWithTimeIntervalSince1970:[epochPostAt floatValue]];
+//            NSString *cardStreamsDate = [NSDate dateAsJSONDate:rePostAt];
+//            NSLog(@"%@", cardStreamsDate);
+            
+            // checks via timestamp that the datum has not been previously assimilated
+            if ([allCardTimeStamps containsObject:epochPostAt]) {
+                continue;
+            }
+            
+            NSString *cardDescription = [NSString stringWithFormat:@"%@ pushed to %@ \"%@\"",
+                                         githubDictionary[@"username"],
+                                         githubDictionary[@"repo_name"],
+                                         githubDictionary[@"commit_message"]];
+            
+            NSDictionary *cardBody = @{ @"title" : @"Github Commit",
+                                        @"description" : cardDescription,
+                                        @"postAt" : epochPostAt };
+            [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
+                                       WithContentDictionary:cardBody
+                                         WithCompletionBlock:^(FISCard *card) {
+                                             NSMutableArray *newGithubCards = [[NSMutableArray alloc]init];
+                                             [newGithubCards addObject:card];
+                                             
+                                             if ([githubDictionary isEqual:[commits lastObject]]) {
+                                                 completionBlock(newGithubCards);
+                                             }
+                                         }];
+        }
+    }];
 }
 
 #pragma mark - Test Data

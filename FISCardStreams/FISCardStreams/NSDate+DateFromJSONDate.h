@@ -17,4 +17,6 @@
 
 + (NSDate *)dateFromRSSDate:(NSString *)rssDate;
 
++ (NSDate *)dateFromGithubDate:(NSString *)githubDate;
+
 @end

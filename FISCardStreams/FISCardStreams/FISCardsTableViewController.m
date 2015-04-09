@@ -7,8 +7,11 @@
 //
 //  assigned to Mark (temp)
 
+#import <AFOAuth2Manager.h>
+
 
 #import "FISCardsTableViewController.h"
+#import "AddingCredentialsViewController.h"
 
 #import "FISStreamsDataManager.h"
 
@@ -130,7 +133,16 @@
 - (IBAction)refreshTapped:(id)sender {
     [self.streamsDataManager updateRSSFeedWithCompletionBlock:^(NSArray *newBlogCards) {
         [self.streamsDataManager.userStream.cards addObjectsFromArray:newBlogCards];
-        [self.tableView reloadData];
+        [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+            [self.tableView reloadData];
+        }];
+    }];
+    
+    [self.streamsDataManager updateGithubFeedWithCompletionBlock:^(NSArray *newGithubCards) {
+        [self.streamsDataManager.userStream.cards addObjectsFromArray:newGithubCards];
+        [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+            [self.tableView reloadData];
+        }];
     }];
 }
 

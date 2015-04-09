@@ -44,7 +44,6 @@
 - (IBAction)githubLoginButtonTapped:(id)sender {
     
     [FISGithubAPIClient redirectAfterAuthentication];
-
 }
 
 @end
