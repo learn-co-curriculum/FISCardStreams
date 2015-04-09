@@ -34,7 +34,7 @@
 
 
 
-+(void)getPublicFeedsWithUsername: (NSString *)username WithCompletionBlock:(void (^)(NSDictionary *))completionBlock
++(void)getPublicFeedsWithUsername: (NSString *)username WithCompletionBlock:(void (^)(NSArray *))completionBlock
 {
     NSString *githubURL = [NSString stringWithFormat:@"https://api.github.com/users/%@/events", username];
     
@@ -51,6 +51,8 @@
     [manager GET:githubURL parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSArray *events = responseObject;
+        
+        NSMutableArray *mCommits = [[NSMutableArray alloc]init];
         
         for (NSDictionary *event in events) {
         
@@ -71,10 +73,11 @@
                                      @"commited_date":createdAt};
             
             NSLog(@"%@", commit);
-            completionBlock(commit);
+            [mCommits addObject:commit];
             }
-            
         }
+        NSArray *commits = [NSArray arrayWithArray:mCommits];
+        completionBlock(commits);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Fail: %@",error.localizedDescription);
