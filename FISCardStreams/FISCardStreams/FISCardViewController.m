@@ -34,7 +34,7 @@
 
 
 #pragma mark - CollectionView Delegate
-//
+
 //-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    return CGSizeMake(300, 600);
@@ -61,12 +61,6 @@
     
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
-    
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width, 2)];
-    
-    lineView.backgroundColor = [UIColor whiteColor];
-    [cell.contentView addSubview:lineView];
-    cell.backgroundColor = [UIColor whiteColor];
     
     return cell;
 }
