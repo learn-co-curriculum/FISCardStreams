@@ -87,7 +87,8 @@
         NSDictionary *cardBody = @{ @"title" : blogDictionary[@"title"],
                                     @"description" : blogDictionary[@"summary"],
                                     @"postAt" : epochPostAt,
-                                    @"postLink" :  blogDictionary[@"link"] };
+                                    @"postLink" :  blogDictionary[@"link"],
+                                    @"source" : @"blog" };
         [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
                                    WithContentDictionary:cardBody
                                      WithCompletionBlock:^(FISCard *card) {
@@ -112,12 +113,8 @@
         for (NSDictionary *githubDictionary in commits) {
             NSDate *postAt = [NSDate dateFromGithubDate:githubDictionary[@"commited_date"]];
             NSNumber *epochPostAt = @([postAt timeIntervalSince1970]);
-//            NSString *jsonPostAt = [NSDate dateAsJSONDate:postAt];
-//            NSDate *rePostAt = [NSDate dateWithTimeIntervalSince1970:[epochPostAt floatValue]];
-//            NSString *cardStreamsDate = [NSDate dateAsJSONDate:rePostAt];
-//            NSLog(@"%@", cardStreamsDate);
             
-            // checks via timestamp that the datum has not been previously assimilated
+            // checks via timestamp that the item has not been previously assimilated
             if ([allCardTimeStamps containsObject:epochPostAt]) {
                 continue;
             }
@@ -129,7 +126,8 @@
             
             NSDictionary *cardBody = @{ @"title" : @"Github Commit",
                                         @"description" : cardDescription,
-                                        @"postAt" : epochPostAt };
+                                        @"postAt" : epochPostAt,
+                                        @"source" : @"github" };
             [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
                                        WithContentDictionary:cardBody
                                          WithCompletionBlock:^(FISCard *card) {

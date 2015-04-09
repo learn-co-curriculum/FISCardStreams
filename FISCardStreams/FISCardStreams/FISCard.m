@@ -26,6 +26,7 @@
                       displayAt:0
                  streamPosition:0
                          postAt:[NSDate date]
+                         source:@""
                       isDeleted:NO
                       deletedAt:nil
                     attachments:[[NSMutableArray alloc]init]
@@ -44,6 +45,7 @@
                      displayAt:(NSInteger )displayAt
                 streamPosition:(NSInteger )streamPosition
                         postAt:(NSDate   *)postAt
+                        source:(NSString *)source
                      isDeleted:(BOOL      )isDeleted
                      deletedAt:(NSDate   *)deletedAt
                    attachments:(NSMutableArray *)attachments
@@ -60,6 +62,7 @@
         _displayAt       = displayAt;
         _streamPosition  = streamPosition;
         _postAt          = postAt;
+        _source          = source;
         _isDeleted       = isDeleted;
         _deletedAt       = deletedAt;
         _attachments     = attachments;
@@ -81,6 +84,11 @@
     NSDate *postAt    = [NSDate dateFromJSONDate:cardDictionary[@"postAt"]];
     NSDate *deletedAt = [NSDate dateFromJSONDate:cardDictionary[@"deletedAt"]];
     
+    NSString *source = @"";
+    if ([[cardDictionary allKeys]containsObject:@"source"]) {
+        source = cardDictionary[@"source"];
+    }
+    
     FISCard *card = [[FISCard alloc]initWithCardID:cardDictionary[@"id"]
                                           streamID:cardDictionary[@"streamId"]
                                              title:cardDictionary[@"title"]
@@ -90,6 +98,7 @@
                                          displayAt:(NSInteger)cardDictionary[@"displayAt"]
                                     streamPosition:(NSInteger)cardDictionary[@"streamPosition"]
                                             postAt:postAt
+                                            source:source
                                          isDeleted:cardDictionary[@"isDeleted"]
                                          deletedAt:deletedAt
                                        attachments:attachments

@@ -60,6 +60,11 @@
 @property (strong, nonatomic) NSDate    *postAt;
 
 /**
+ (custom--optional) The origin of the card's data.
+ */
+@property (strong, nonatomic) NSString  *source;
+
+/**
  Is the card absent from the Stream?
  */
 @property (nonatomic        ) BOOL      isDeleted;
@@ -103,6 +108,7 @@
                      displayAt:(NSInteger )displayAt
                 streamPosition:(NSInteger )streamPosition
                         postAt:(NSDate   *)postAt
+                        source:(NSString *)source
                      isDeleted:(BOOL      )isDeleted
                      deletedAt:(NSDate   *)deletedAt
                    attachments:(NSMutableArray *)attachments
