@@ -245,5 +245,24 @@
 }
 
 
++ (void) getAllStreamsWithCompletionBlock:(void (^)(NSArray *))completionBlock {
+    NSString *cardstreamURL = [NSString stringWithFormat:@"%@/streams", CARDSTREAMS_BASE_URL];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    AFJSONRequestSerializer *serializer = [[AFJSONRequestSerializer alloc] init];
+    
+    [serializer setValue:CARDSTREAMS_APP_ID forHTTPHeaderField:@"X-Lifestreams-3scale-AppId"];
+    [serializer setValue:CARDSTREAMS_KEY forHTTPHeaderField:@"X-Lifestreams-3scale-AppKey"];
+    
+    manager.requestSerializer = serializer;
+    
+    [manager GET:cardstreamURL parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *allStreamDictionaries = (NSArray *)responseObject;
+        completionBlock(allStreamDictionaries);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Fail: %@", error.localizedDescription);
+    }];
+}
 
 @end

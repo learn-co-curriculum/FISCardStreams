@@ -10,6 +10,7 @@
 		38EE61D21AD6D62C00D65B32 /* FISCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE61D11AD6D62C00D65B32 /* FISCardViewController.m */; };
 		38EE61D51AD7044200D65B32 /* FISCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE61D41AD7044200D65B32 /* FISCardCollectionViewCell.m */; };
 		6A0D7EAB3C70015C7445DE06 /* libPods-FISCardStreams.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5664142CC4A883379FB29245 /* libPods-FISCardStreams.a */; };
+		6A35AA771AD8438900B1788D /* FISCollectionDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A35AA761AD8438900B1788D /* FISCollectionDataManager.m */; };
 		6A7C1EF91ACAD82800DA0161 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7C1EF81ACAD82800DA0161 /* main.m */; };
 		6A7C1EFC1ACAD82800DA0161 /* FISAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7C1EFB1ACAD82800DA0161 /* FISAppDelegate.m */; };
 		6A7C1EFF1ACAD82800DA0161 /* FISCardStreams.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6A7C1EFD1ACAD82800DA0161 /* FISCardStreams.xcdatamodeld */; };
@@ -55,6 +56,8 @@
 		38EE61D41AD7044200D65B32 /* FISCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCardCollectionViewCell.m; sourceTree = "<group>"; };
 		3DE0F0B7A4ABDED34230BA8A /* Pods-FISCardStreams.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FISCardStreams.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FISCardStreams/Pods-FISCardStreams.debug.xcconfig"; sourceTree = "<group>"; };
 		5664142CC4A883379FB29245 /* libPods-FISCardStreams.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FISCardStreams.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A35AA751AD8438900B1788D /* FISCollectionDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISCollectionDataManager.h; sourceTree = "<group>"; };
+		6A35AA761AD8438900B1788D /* FISCollectionDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCollectionDataManager.m; sourceTree = "<group>"; };
 		6A7C1EF31ACAD82800DA0161 /* FISCardStreams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FISCardStreams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A7C1EF71ACAD82800DA0161 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A7C1EF81ACAD82800DA0161 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -279,6 +282,8 @@
 			children = (
 				6A7C1F301ACADEEF00DA0161 /* FISStreamsDataManager.h */,
 				6A7C1F311ACADEEF00DA0161 /* FISStreamsDataManager.m */,
+				6A35AA751AD8438900B1788D /* FISCollectionDataManager.h */,
+				6A35AA761AD8438900B1788D /* FISCollectionDataManager.m */,
 			);
 			name = "Data Manager";
 			sourceTree = "<group>";
@@ -436,6 +441,7 @@
 				6A7C1F261ACADE6400DA0161 /* FISConstants.m in Sources */,
 				88BE23C31AD5825B006FA622 /* AddingCredentialsViewController.m in Sources */,
 				6A7C1EFC1ACAD82800DA0161 /* FISAppDelegate.m in Sources */,
+				6A35AA771AD8438900B1788D /* FISCollectionDataManager.m in Sources */,
 				887305691AD701B7000E85D1 /* StackSexchangeLoginWebViewController.m in Sources */,
 				8899981B1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m in Sources */,
 				38EE61D21AD6D62C00D65B32 /* FISCardViewController.m in Sources */,

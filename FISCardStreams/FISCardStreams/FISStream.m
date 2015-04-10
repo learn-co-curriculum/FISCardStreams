@@ -50,6 +50,15 @@
     return stream;
 }
 
++ (NSArray *)createArrayOfStreamsFromDictionaries:(NSArray *)streamDictionaries {
+    NSMutableArray *mStreams = [[NSMutableArray alloc]init];
+    for (NSDictionary *streamDictionary in streamDictionaries) {
+        FISStream *newStream = [FISStream createStreamFromDictionary:streamDictionary];
+        [mStreams addObject:newStream];
+    }
+    return [NSArray arrayWithArray:mStreams];
+}
+
 //- (void)initializeCardsFromArray:(NSArray *)cardDictionaries {
 //    NSMutableArray *cards = [[NSMutableArray alloc]init];
 //    for (NSDictionary *cardDictionary in cardDictionaries) {

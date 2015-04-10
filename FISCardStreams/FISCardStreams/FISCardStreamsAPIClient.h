@@ -62,4 +62,6 @@ Used to update the Title, Description, Attachments, Tags of the card with a uniq
 + (void) deleteACardsWithStreamID:(NSString *)streamID ACardID:(NSString *)cardID AndCheckWithCompletionBlock:(void (^)(void))completionBlock;
 
 
++ (void) getAllStreamsWithCompletionBlock:(void (^)(NSArray *allStreams))completionBlock;
+
 @end

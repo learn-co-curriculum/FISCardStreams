@@ -48,8 +48,13 @@
                            cards:(NSMutableArray *)cards;
 
 /**
-*  Generates a Stream from a serialized JSON dictionary response from the CardStream API.
+*  Generates a Stream from a serialized JSON dictionary response from the CardStreams API.
 */
 + (FISStream *)createStreamFromDictionary:(NSDictionary *)streamDictionary;
+
+/**
+ *  Generates an array of FISStream objects from an array of serialized JSON dictionaries from the CardStreams API response.
+ */
++ (NSArray *)createArrayOfStreamsFromDictionaries:(NSArray *)streamDictionaries;
 
 @end
