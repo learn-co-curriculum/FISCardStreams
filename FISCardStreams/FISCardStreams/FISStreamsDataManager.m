@@ -48,11 +48,7 @@
 - (void)getAllCardsForUserStreamWithCompletion:(void (^)(BOOL))completionBlock {
     if (self.userStream != nil) {
         [FISCardStreamsAPIClient getAllCardsWithStreamID:self.userStream.streamID AndCheckWithCompletionBlock:^(NSArray *userCards) {
-            self.userStream.cards = [[NSMutableArray alloc]init];
-            for (NSDictionary *cardDictionary in userCards) {
-                FISCard *card = [FISCard createCardFromDictionary:cardDictionary];
-                [self.userStream.cards addObject:card];
-            }
+            self.userStream.cards = [FISCard createCardsFromCardDictionaries:userCards];
             completionBlock(YES);
         }];
     } else {

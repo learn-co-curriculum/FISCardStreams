@@ -120,5 +120,6 @@
  Generates a card from a serialized JSON dictionary response from the CardStream API.
  */
 + (FISCard *)createCardFromDictionary:(NSDictionary *)cardDictionary;
++ (NSMutableArray *)createCardsFromCardDictionaries:(NSArray *)cardDictionaries;
 
 @end

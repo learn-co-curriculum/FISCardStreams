@@ -50,33 +50,8 @@
     
     [manager GET:githubURL parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        NSArray *events = responseObject;
+        NSArray *commits = [self filterCommitsFromEventFeed:responseObject];
         
-        NSMutableArray *mCommits = [[NSMutableArray alloc]init];
-        
-        for (NSDictionary *event in events) {
-        
-            NSArray *data = event[@"payload"][@"commits"];
-            
-            if (data)
-            {
-            NSString *repo = event[@"repo"][@"name"];
-            NSArray *fullName = [repo componentsSeparatedByString:@"/"];
-            
-            NSString *username = fullName[0];
-            NSString *repoName = fullName[1];
-            NSString *message = data[0][@"message"];
-            NSString *createdAt = event[@"created_at"];
-            NSDictionary *commit = @{@"username":username,
-                                     @"repo_name":repoName,
-                                     @"commit_message":message,
-                                     @"commited_date":createdAt};
-            
-            NSLog(@"%@", commit);
-            [mCommits addObject:commit];
-            }
-        }
-        NSArray *commits = [NSArray arrayWithArray:mCommits];
         completionBlock(commits);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -84,7 +59,6 @@
     }];
     
 }
-
 
 
 
@@ -121,7 +95,7 @@
 }
 
 //takes a repo name (fullname) and spits out a dictionary of stats {(week id) : (number of commits per week)}
-+(void)getRepoStatisticsWithRepositoryName:(NSString *)repoistoryName Username: (NSString *)username AndCompletionBlock:(void (^)(NSMutableDictionary *))completionBlock
++(void)getRepoStatisticsWithRepositoryName:(NSString *)repoistoryName Username: (NSString *)username success:(void (^)(NSMutableDictionary *))successBlock failure:(void (^) (NSError *))errorBlock
 {
     NSString *githubURL = [NSString stringWithFormat:@"%@/repos/%@/stats/commit_activity?client_id=%@&client_secret=%@", GITHUB_API_URL, repoistoryName, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET];
 
@@ -142,15 +116,17 @@
             NSString * convertDate = [FISGithubAPIClient convertUnixToTimeStamp:data[@"week"]];
             [commitStats setObject:data[@"total"] forKey:convertDate];
         }
-        completionBlock(commitStats);
+        successBlock(commitStats);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Fail: %@",error.localizedDescription);
+        errorBlock(error);
     }];
     
 }
 
 
+#pragma mark - Helper methods
 
 +(NSString *)convertUnixToTimeStamp:(NSString *)unixTime
 {
@@ -163,6 +139,37 @@
     NSString *formattedDateString = [dateFormatter stringFromDate:myDate];
     return formattedDateString;
     
+}
+
+
++ (NSArray *)filterCommitsFromEventFeed:(NSArray *)events {
+    
+    NSMutableArray *mCommits = [[NSMutableArray alloc]init];
+    
+    for (NSDictionary *event in events) {
+        
+        NSArray *data = event[@"payload"][@"commits"];
+        
+        if (data)
+        {
+            NSString *repo = event[@"repo"][@"name"];
+            NSArray *fullName = [repo componentsSeparatedByString:@"/"];
+            
+            NSString *username = fullName[0];
+            NSString *repoName = fullName[1];
+            NSString *message = data[0][@"message"];
+            NSString *createdAt = event[@"created_at"];
+            NSDictionary *commit = @{@"username":username,
+                                     @"repo_name":repoName,
+                                     @"commit_message":message,
+                                     @"commited_date":createdAt};
+            
+            NSLog(@"%@", commit);
+            [mCommits addObject:commit];
+        }
+    }
+    
+    return [NSArray arrayWithArray:mCommits];
 }
 
 

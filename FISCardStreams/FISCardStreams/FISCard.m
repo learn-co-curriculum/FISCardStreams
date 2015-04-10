@@ -73,6 +73,19 @@
     return self;
 }
 
+
++ (NSMutableArray *)createCardsFromCardDictionaries:(NSArray *)cardDictionaries {
+    
+    NSMutableArray *userStreamOfCards = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *cardDictionary in cardDictionaries) {
+        FISCard *card = [FISCard createCardFromDictionary:cardDictionary];
+        [userStreamOfCards addObject:card];
+    }
+    
+    return userStreamOfCards;
+}
+
 + (FISCard *)createCardFromDictionary:(NSDictionary *)cardDictionary {
     NSMutableArray *attachments = [FISCard attachmentsFromArray:cardDictionary[@"attachments"]
                                                      withCardID:cardDictionary[@"id"]          ];
