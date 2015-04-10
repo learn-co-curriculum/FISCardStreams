@@ -52,8 +52,12 @@
 - (IBAction)signUpButtonTapped:(id)sender {
     
     FISCardstreamSignUpViewController *signUpVC = [self.storyboard instantiateViewControllerWithIdentifier:@"signUpVC"];
-    
+        
+    signUpVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     signUpVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    
+
+    
     [self presentViewController:signUpVC animated:YES completion:nil];
 }
 
