@@ -46,5 +46,6 @@
 
 - (void)updateRSSFeedWithCompletionBlock:(void (^)(NSArray *newBlogCards))completionBlock;
 - (void)updateGithubFeedWithCompletionBlock:(void (^)(NSArray *newGithubCards))completionBlock;
+- (void)updateStackExchangeFeedWithCompletionBlock:(void (^)(NSArray *newStackExchangeCards))completionBlock;
 
 @end

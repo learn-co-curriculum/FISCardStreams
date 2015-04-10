@@ -79,7 +79,8 @@
         }
         
         NSDate *postAt = [NSDate dateFromRSSDate:blogDictionary[@"pubDate"]];
-        NSNumber *epochPostAt = @([postAt timeIntervalSince1970]);
+        NSInteger postAtInt = [postAt timeIntervalSince1970] * 1000; // convert to milliseconds
+        NSNumber *epochPostAt = @(postAtInt);
         
         NSDictionary *cardBody = @{ @"title" : blogDictionary[@"title"],
                                     @"description" : blogDictionary[@"summary"],
@@ -100,7 +101,8 @@
 - (void)updateGithubFeedWithCompletionBlock:(void (^)(NSArray *))completionBlock {
     NSMutableArray *allCardTimeStamps = [[NSMutableArray alloc]init];
     for (FISCard *currentCard in self.userStream.cards) {
-        NSNumber *epochCardDate = @([currentCard.postAt timeIntervalSince1970]);
+        NSInteger postAtInt = [currentCard.postAt timeIntervalSince1970] * 1000; // convert to milliseconds
+        NSNumber *epochCardDate = @(postAtInt);
         [allCardTimeStamps addObject:epochCardDate];
     }
     
@@ -109,7 +111,8 @@
                                WithCompletionBlock:^(NSArray *commits) {
         for (NSDictionary *githubDictionary in commits) {
             NSDate *postAt = [NSDate dateFromGithubDate:githubDictionary[@"commited_date"]];
-            NSNumber *epochPostAt = @([postAt timeIntervalSince1970]);
+            NSInteger postAtInt = [postAt timeIntervalSince1970] * 1000; // convert to milliseconds
+            NSNumber *epochPostAt = @(postAtInt);
             
             // checks via timestamp that the item has not been previously assimilated
             if ([allCardTimeStamps containsObject:epochPostAt]) {
@@ -138,6 +141,16 @@
         }
     }];
 }
+
+- (void)updateStackExchangeFeedWithCompletionBlock:(void (^)(NSArray *))completionBlock {
+    NSMutableArray *allCardTimeStamps = [[NSMutableArray alloc]init];
+    for (FISCard *currentCard in self.userStream.cards) {
+        NSInteger postAtInt = [currentCard.postAt timeIntervalSince1970] * 1000; // convert to milliseconds
+        NSNumber *epochCardDate = @(postAtInt);
+        [allCardTimeStamps addObject:epochCardDate];
+    }
+}
+
 
 #pragma mark - Test Data
 
