@@ -8,12 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@class FISStream;
+
 @interface FISCollectionDataManager : NSObject
 
 @property (strong, nonatomic) NSArray *allStreams;
 
 + (instancetype)sharedDataManager;
 
-- (void)fetchAllStreamsWithCompletionBlock:(void (^)(NSArray *allStreams, BOOL success))completionBlock;
+- (void)getAllStreamsWithCompletionBlock:(void (^)(NSArray *allStreams, BOOL success))completionBlock;
+
+- (void)getShowcaseCardsForStream:(FISStream *)stream completionBlock:(void (^)(NSArray *showcaseCards))completionBlock;
 
 @end

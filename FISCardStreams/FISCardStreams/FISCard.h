@@ -117,8 +117,13 @@
                           tags:(NSArray  *)tags;
 
 /**
- Generates a card from a serialized JSON dictionary response from the CardStream API.
+ Generates a card from a serialized JSON dictionary response from the CardStreams API.
  */
 + (FISCard *)createCardFromDictionary:(NSDictionary *)cardDictionary;
+
+/**
+ Generates an array of cards from an array of serialized JSON dictionaries from the CardStreams API response.
+ */
++ (NSArray *)createArrayOfCardsFromDictionaries:(NSArray *)cardDictionaries;
 
 @end

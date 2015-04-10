@@ -109,6 +109,17 @@
     return card;
 }
 
++ (NSArray *)createArrayOfCardsFromDictionaries:(NSArray *)cardDictionaries {
+    NSMutableArray *mCards = [[NSMutableArray alloc]init];
+    for (NSDictionary *cardDictionary in cardDictionaries) {
+        FISCard *newCard = [FISCard createCardFromDictionary:cardDictionary];
+        [mCards addObject:newCard];
+    }
+    return [NSArray arrayWithArray:mCards];
+}
+
+#pragma mark - Helper methods
+
 + (NSMutableArray *)attachmentsFromArray:(NSArray *)attachmentDictionaries
                        withCardID:(NSString *)cardID {
     NSMutableArray *attachments = [[NSMutableArray alloc]init];

@@ -10,6 +10,7 @@
 #import "FISAppDelegate.h"
 #import "FISGithubAPIClient.h"
 #import "FISStreamsDataManager.h"
+#import "FISCollectionDataManager.h"
 #import "FISCardstreamLogInViewController.h"
 #import "FISRSSFeedAPIClient.h"
 #import "FISConstants.h"
@@ -31,11 +32,12 @@
     
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
     
+    
     //if (self.streamsDataManager.userStream) {
-    UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"LoginFlow" bundle:nil];
     FISCardstreamLogInViewController *loginViewController = [myStoryboard instantiateInitialViewController];
     self.window.rootViewController = loginViewController;
-   // }
+    // }
   
     
     

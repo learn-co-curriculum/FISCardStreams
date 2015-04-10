@@ -31,9 +31,43 @@
     return _sharedDataManager;
 }
 
-- (void)fetchAllStreamsWithCompletionBlock:(void (^)(NSArray *, BOOL))completionBlock {
-    FISCardStreamsAPIClient
+- (void)getAllStreamsWithCompletionBlock:(void (^)(NSArray *, BOOL))completionBlock {
+    [FISCardStreamsAPIClient getAllStreamsWithCompletionBlock:^(NSArray *allStreams) {
+        self.allStreams = [FISStream createArrayOfStreamsFromDictionaries:allStreams];
+    }];
 }
 
+- (void)getShowcaseCardsForStream:(FISStream *)stream completionBlock:(void (^)(NSArray *))completionBlock {
+    NSString *streamID = stream.streamID;
+    [FISCardStreamsAPIClient getAllCardsWithStreamID:streamID AndCheckWithCompletionBlock:^(NSArray *userCards) {
+        NSArray *allCards = [FISCard createArrayOfCardsFromDictionaries:userCards];
+        
+        FISCard *githubCard = [self findMostRecentGithubCardInCardsArray:allCards];
+        FISCard *blogCard = [self findMostRecentBlogCardInCardsArray:allCards];
+        FISCard *stackExchangeCard = [self findMostRecentStackExchangeCardInCardsArray:allCards];
+        
+        completionBlock(@[githubCard, blogCard, stackExchangeCard]);
+    }];
+}
+
+#pragma mark - Helper Methods
+
+- (FISCard *)findMostRecentGithubCardInCardsArray:(NSArray *)allCards {
+    FISCard *githubCard = [FISCard init];
+    githubCard.title = @"Github";
+    return githubCard;
+}
+
+- (FISCard *)findMostRecentBlogCardInCardsArray:(NSArray *)allCards {
+    FISCard *blogCard = [FISCard init];
+    blogCard.title = @"Blog Post";
+    return blogCard;
+}
+
+- (FISCard *)findMostRecentStackExchangeCardInCardsArray:(NSArray *)allCards {
+    FISCard *stackExchangeCard = [FISCard init];
+    stackExchangeCard.title = @"Stack Exchange";
+    return stackExchangeCard;
+}
 
 @end
