@@ -19,14 +19,14 @@
 
 
 /**
- Returns an NSDictionary consisting of the user feed.
- Format:
-  {
-     "commit_message" = "My commit message";
-     "commited_date" = "2015-04-07T21:46:55Z";
-     "repo_name" = "MyRepoName";
-     username = githubUsername;
-  }
+*  Returns an NSDictionary consisting of the user feed.
+    Format:
+    {
+        "commit_message" = "My commit message";
+        "commited_date" = "2015-04-07T21:46:55Z";
+        "repo_name" = "MyRepoName";
+        username = githubUsername;
+    }
  */
 +(void)getPublicFeedsWithUsername: (NSString *)username WithCompletionBlock:(void (^)(NSArray * commits))completionBlock;
 

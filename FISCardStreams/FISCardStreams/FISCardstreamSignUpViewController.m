@@ -54,34 +54,16 @@
 
 }
 
+
 - (IBAction)signUpButtonTapped:(id)sender {
     
     [self.indicatorView startAnimating];
-    [FISCardStreamsAPIClient getAllStreamsAndCheckWithUsername:self.usernameTextField.text CompletionBlock:^(FISStream *stream) {
-        
-        [self.indicatorView stopAnimating];
-
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Signup failed"
-                                                            message:@"Username is already taken"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Try Again"
-                                                  otherButtonTitles:nil];
-            [alert show];
-    }SecondCompletionBlock:^(BOOL unique) {
-        if (unique == NO) {
-                [FISCardStreamsAPIClient createAStreamForName:self.usernameTextField.text WithCompletionBlock:^(FISStream *userStream) {
-                    NSLog(@"Signed UP");
-                    //self.dataManager.userStream = self.streamToPass;
-                    [self takeMeToCredentialPage];
-                    [self.indicatorView stopAnimating];
-                }];
-        }
-        }];
+    [self checkForUsernameUniquenessAndSignUserUp];
     
 }
 
 
-#pragma mark - View helper
+#pragma mark - View Helper Methods
 
 -(void)takeMeToHomePage
 {
@@ -94,6 +76,7 @@
     [self presentViewController:homePage animated:YES completion:nil];
 }
 
+
 -(void)takeMeToCredentialPage
 {
     UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"LoginFlow" bundle:nil];
@@ -105,5 +88,34 @@
     [self presentViewController:homePage animated:YES completion:nil];
 
 }
+
+
+#pragma mark - UIButton Helper Method
+
+- (void)checkForUsernameUniquenessAndSignUserUp {
+    [FISCardStreamsAPIClient getAllStreamsAndCheckWithUsername:self.usernameTextField.text CompletionBlock:^(FISStream *stream) {
+        
+        [self.indicatorView stopAnimating];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Signup failed"
+                                                        message:@"Username is already taken"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Try Again"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }SecondCompletionBlock:^(BOOL unique) {
+        
+        if (unique == NO) {
+            [FISCardStreamsAPIClient createAStreamForName:self.usernameTextField.text WithCompletionBlock:^(FISStream *userStream) {
+                NSLog(@"Signed UP");
+                //self.dataManager.userStream = self.streamToPass;
+                [self takeMeToCredentialPage];
+                [self.indicatorView stopAnimating];
+                
+            }];
+        }
+    }];
+}
+
 
 @end

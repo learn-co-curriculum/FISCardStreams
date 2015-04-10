@@ -36,10 +36,16 @@
     FISCardstreamLogInViewController *loginViewController = [myStoryboard instantiateInitialViewController];
     self.window.rootViewController = loginViewController;
    // }
+  
     
-    [FISStackExchangeAPI getNetworkActivityForCurrentUserWithCompletionBlock:^(NSArray *userNetworkActivities) {
-        NSLog(@"sya what %@", userNetworkActivities);
-    }];
+    
+     /**
+     *  Testers For API CLients
+     */
+    
+//    [FISStackExchangeAPI getNetworkActivityForCurrentUserWithCompletionBlock:^(NSArray *userNetworkActivities) {
+//        NSLog(@"sya what %@", userNetworkActivities);
+//    }];
     
 
 //    [FISGithubAPIClient getPublicFeedsWithUsername:@"notDanish" WithCompletionBlock:nil];
@@ -80,10 +86,6 @@
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    NSString *referred_url = annotation[@"ReferrerURL"];
-    
-    if ([referred_url isEqualToString:@"https://github.com/login/oauth/authorize?client_id=4ab2f9efbcf1c9420a0c&redirect_uri=FISCardStreams://callback&scope=repo"])
-    {
         
         NSDictionary *urlParams = [url uq_queryDictionary];
         
@@ -108,37 +110,6 @@
              
          } failure:^(NSError *error) {
          }];
-    }
-    
-    else
-    {
-    
-        NSDictionary *urlParams = [url uq_queryDictionary];
-        
-        NSLog(@"code: %@",urlParams[@"code"]);
-        
-        NSURL *baseURL = [NSURL URLWithString:@"https://stackexchange.com"];
-        
-        AFOAuth2Manager *manager = [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
-                                                                   clientID:STACKEXCHANGE_CLIENT_ID
-                                                                     secret:STACKEXCHANGE_CLINET_SECRET];
-        
-        manager.useHTTPBasicAuthentication = NO;
-        [manager authenticateUsingOAuthWithURLString:@"oauth/access_token"
-                                                code:urlParams[@"code"]
-                                         redirectURI:@"FISCardStreams://callback"
-                                             success:^(AFOAuthCredential *credential)
-         {
-             
-             [AFOAuthCredential storeCredential:credential
-                                 withIdentifier:@"stackExchangeToken"];
-             NSLog(@"store the auth data. Token: %@", credential.accessToken);
-             
-         } failure:^(NSError *error) {
-         }];
-
-        
-    }
     
     return YES;
 }

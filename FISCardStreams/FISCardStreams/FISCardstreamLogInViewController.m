@@ -41,30 +41,15 @@
 
 #pragma mark - UIButton Actions
 
+
 - (IBAction)logInButtonTapped:(id)sender {
     
-   [FISCardStreamsAPIClient getAllStreamsAndCheckWithUsername:self.usernameTextField.text CompletionBlock:^(FISStream *stream) {
-           self.streamToPass = stream;
-           NSLog(@"Logged In");
-           self.dataManager.userStream = self.streamToPass;
-           [self takeMeToHomePage];
-   } SecondCompletionBlock:^(BOOL unique) {
-       if (!unique) {
-       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log in failed"
-                                                       message:@"Username doesn't match"
-                                                      delegate:self
-                                             cancelButtonTitle:@"Try Again"
-                                             otherButtonTitles:nil];
-       [alert show];
-       }
-       
-   }];
+    [self checkForUsernameAndLogUserIn];
     
 }
 
 
 - (IBAction)signUpButtonTapped:(id)sender {
-    
     
     FISCardstreamSignUpViewController *signUpVC = [self.storyboard instantiateViewControllerWithIdentifier:@"signUpVC"];
     
@@ -85,5 +70,33 @@
     UIApplication *application = [UIApplication sharedApplication];
     [application.keyWindow setRootViewController:initialVC];
 }
+
+
+#pragma mark - UIButton Helper Methods
+
+- (void)checkForUsernameAndLogUserIn {
+    
+    [FISCardStreamsAPIClient getAllStreamsAndCheckWithUsername:self.usernameTextField.text CompletionBlock:^(FISStream *stream) {
+        
+        self.streamToPass = stream;
+        NSLog(@"Logged In");
+        self.dataManager.userStream = self.streamToPass;
+        [self takeMeToHomePage];
+        
+    } SecondCompletionBlock:^(BOOL unique) {
+        
+        if (!unique)
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log in failed"
+                                                            message:@"Username doesn't match"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Try Again"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+        
+    }];
+}
+
 
 @end

@@ -25,12 +25,14 @@
 
 @implementation AddingCredentialsViewController
 
+
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -48,6 +50,7 @@
     
     [FISGithubAPIClient redirectAfterAuthentication];
 }
+
 
 - (IBAction)stackExchangeLoginButtonTapped:(id)sender {
     

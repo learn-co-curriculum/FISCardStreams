@@ -23,6 +23,8 @@
 #import "FISStream.h"
 #import "FISCard.h"
 
+
+
 @interface FISCardsTableViewController ()
 
 @property (strong, nonatomic) FISStreamsDataManager *streamsDataManager;
@@ -31,22 +33,19 @@
 
 @end
 
+
+
 @implementation FISCardsTableViewController
+
+
+#pragma mark - View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
     
-    [self.streamsDataManager getAllCardsForUserStreamWithCompletion:^(BOOL success) {
-        NSLog(@"cards fetched");
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            NSLog(@"Reload tableview");
-            self.stream = self.streamsDataManager.userStream;
-            self.navigationItem.title = self.stream.streamName;
-            [self.tableView reloadData];
-        }];
-    }];
+    [self getAllCardsForUser];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -55,16 +54,13 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-#pragma mark - Table view data source
+#pragma mark - UITableView Data Source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.stream.cards count];
@@ -80,6 +76,7 @@
     
     return cardCell;
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 176;
@@ -120,15 +117,8 @@
 }
 */
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+#pragma mark - UIButton Actions
 
 - (IBAction)refreshTapped:(id)sender {
     [self.streamsDataManager updateRSSFeedWithCompletionBlock:^(NSArray *newBlogCards) {
@@ -145,5 +135,21 @@
         }];
     }];
 }
+
+
+#pragma mark - View Helper Methods
+
+- (void)getAllCardsForUser {
+    [self.streamsDataManager getAllCardsForUserStreamWithCompletion:^(BOOL success) {
+        NSLog(@"cards fetched");
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            NSLog(@"Reload tableview");
+            self.stream = self.streamsDataManager.userStream;
+            self.navigationItem.title = self.stream.streamName;
+            [self.tableView reloadData];
+        }];
+    }];
+}
+
 
 @end

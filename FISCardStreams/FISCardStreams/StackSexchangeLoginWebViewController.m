@@ -20,6 +20,7 @@
 @implementation StackSexchangeLoginWebViewController
 
 
+#pragma mark - View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,11 +33,13 @@
 
 
 #pragma mark - UIWebView Delegate Methods
+
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
     // starting the load, show the activity indicator in the status bar
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
+
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
@@ -48,16 +51,24 @@
         NSString *realAccessToken = [accessTokenWithExpiry componentsSeparatedByString:@"="][1];
         NSLog(@"Access Token is %@", realAccessToken);
         
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setValue:realAccessToken forKey:@"access_token"];
-        [defaults synchronize];
+        [self storingAccessTokenAsUserDefaults:realAccessToken];
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+    
     // finished loading, hide the activity indicator in the status bar
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
+
+#pragma mark - UIWebViewDelegate Helper Methods
+
+- (void)storingAccessTokenAsUserDefaults:(NSString *)accessToken
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:accessToken forKey:@"access_token"];
+    [defaults synchronize];
+}
 
 
 @end

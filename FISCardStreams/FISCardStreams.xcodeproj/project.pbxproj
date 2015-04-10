@@ -147,8 +147,6 @@
 				6A7C1EFB1ACAD82800DA0161 /* FISAppDelegate.m */,
 				6A7C1F031ACAD82800DA0161 /* Main.storyboard */,
 				6A7C1F1F1ACAD8DC00DA0161 /* LoginFlow.storyboard */,
-				887305671AD701B7000E85D1 /* StackSexchangeLoginWebViewController.h */,
-				887305681AD701B7000E85D1 /* StackSexchangeLoginWebViewController.m */,
 				6A7C1F431ACAFA6600DA0161 /* Models */,
 				889998141ACDA8AD00A2050B /* Controllers */,
 				888EBA071AD5C6C1005E92C3 /* Views */,
@@ -260,6 +258,8 @@
 				8899981A1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m */,
 				88BE23C11AD5825B006FA622 /* AddingCredentialsViewController.h */,
 				88BE23C21AD5825B006FA622 /* AddingCredentialsViewController.m */,
+				887305671AD701B7000E85D1 /* StackSexchangeLoginWebViewController.h */,
+				887305681AD701B7000E85D1 /* StackSexchangeLoginWebViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
