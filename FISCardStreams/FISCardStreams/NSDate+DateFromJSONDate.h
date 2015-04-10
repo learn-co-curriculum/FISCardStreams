@@ -12,7 +12,7 @@
 @interface NSDate (DateFromJSONDate)
 
 /**
- Takes a date-as-string from the CardStreams.io api response and converts it to NSDate. The accepted date format is "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'".
+*  Takes a date-as-string from the CardStreams.io api response and converts it to NSDate. The accepted date format is "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'".
  */
 + (NSDate *)dateFromJSONDate:(NSString *)jsonDate;
 
