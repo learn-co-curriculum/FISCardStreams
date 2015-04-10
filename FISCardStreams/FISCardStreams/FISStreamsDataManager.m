@@ -14,6 +14,7 @@
 #import "FISCardStreamsAPIClient.h"
 #import "FISRSSFeedAPIClient.h"
 #import "FISGithubAPIClient.h"
+#import "FISStackExchangeAPI.h"
 
 // Data Models
 #import "FISStream.h"
@@ -106,7 +107,7 @@
         [allCardTimeStamps addObject:epochCardDate];
     }
     
-    
+    NSMutableArray *newGithubCards = [[NSMutableArray alloc]init];
     [FISGithubAPIClient getPublicFeedsWithUsername:self.githubUsername
                                WithCompletionBlock:^(NSArray *commits) {
         for (NSDictionary *githubDictionary in commits) {
@@ -128,10 +129,11 @@
                                         @"description" : cardDescription,
                                         @"postAt" : epochPostAt,
                                         @"source" : @"github" };
+            
             [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
                                        WithContentDictionary:cardBody
                                          WithCompletionBlock:^(FISCard *card) {
-                                             NSMutableArray *newGithubCards = [[NSMutableArray alloc]init];
+                                             
                                              [newGithubCards addObject:card];
                                              
                                              if ([githubDictionary isEqual:[commits lastObject]]) {
@@ -149,6 +151,41 @@
         NSNumber *epochCardDate = @(postAtInt);
         [allCardTimeStamps addObject:epochCardDate];
     }
+    
+    NSMutableArray *newStackExchangeCards = [[NSMutableArray alloc]init];
+    [FISStackExchangeAPI getNetworkActivityForCurrentUserWithCompletionBlock:^(NSArray *userNetworkActivities) {
+        for (NSDictionary *activityDictionary in userNetworkActivities) {
+            NSLog(@"%@", activityDictionary[@"creation_date"]);
+            NSInteger postAtInt = [activityDictionary[@"creation_date"] integerValue] * 1000; // convert to milliseconds
+            NSNumber *epochPostAt = @(postAtInt);
+            
+            if ([allCardTimeStamps containsObject:epochPostAt]) {
+                continue;
+            }
+            
+            NSString *cardDescription = [NSString stringWithFormat:@"%@: %@\n%@",
+                                         activityDictionary[@"activity_type"],
+                                         activityDictionary[@"title"],
+                                         activityDictionary[@"description"]  ];
+            
+            NSDictionary *cardBody = @{ @"title" : activityDictionary[@"api_site_parameter"],
+                                        @"description" : cardDescription,
+                                        @"postAt" : epochPostAt,
+                                        @"postLink" : activityDictionary[@"link"],
+                                        @"source" : @"stack_exchange" };
+            
+
+            [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
+                                       WithContentDictionary:cardBody
+                                         WithCompletionBlock:^(FISCard *card) {
+                                             [newStackExchangeCards addObject:card];
+                                             
+                                             if ([activityDictionary isEqual:[userNetworkActivities lastObject]]) {
+                                                 completionBlock(newStackExchangeCards);
+                                             }
+                                         }];
+        }
+    }];
 }
 
 

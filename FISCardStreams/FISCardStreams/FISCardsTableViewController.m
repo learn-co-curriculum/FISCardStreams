@@ -134,6 +134,13 @@
             [self.tableView reloadData];
         }];
     }];
+    
+    [self.streamsDataManager updateStackExchangeFeedWithCompletionBlock:^(NSArray *newStackExchangeCards) {
+        [self.streamsDataManager.userStream.cards addObjectsFromArray:newStackExchangeCards];
+        [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+            [self.tableView reloadData];
+        }];
+    }];
 }
 
 

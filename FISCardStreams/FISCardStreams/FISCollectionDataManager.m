@@ -50,23 +50,32 @@
     }];
 }
 
-#pragma mark - Helper Methods
+#pragma mark - Test Data
 
 - (FISCard *)findMostRecentGithubCardInCardsArray:(NSArray *)allCards {
     FISCard *githubCard = [FISCard init];
     githubCard.title = @"Github";
+    githubCard.cardDescription = @"This is a test commit.";
+    githubCard.postAt = [NSDate date];
+    githubCard.source = @"github";
     return githubCard;
 }
 
 - (FISCard *)findMostRecentBlogCardInCardsArray:(NSArray *)allCards {
     FISCard *blogCard = [FISCard init];
     blogCard.title = @"Blog Post";
+    blogCard.cardDescription = @"This is a test blog post.";
+    blogCard.postAt = [NSDate date];
+    blogCard.source = @"blog";
     return blogCard;
 }
 
 - (FISCard *)findMostRecentStackExchangeCardInCardsArray:(NSArray *)allCards {
     FISCard *stackExchangeCard = [FISCard init];
     stackExchangeCard.title = @"Stack Exchange";
+    stackExchangeCard.cardDescription = @"This is a test stack exchange card.";
+    stackExchangeCard.postAt = [NSDate date];
+    stackExchangeCard.source = @"stack_exchange";
     return stackExchangeCard;
 }
 

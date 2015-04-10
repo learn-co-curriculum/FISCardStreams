@@ -40,8 +40,10 @@
     NSString *accessToken = [defaults valueForKey:@"accesstoken"];
     
     //Test accessToken = @"9oeBQj2NjJcEMtS1UdmahQ))
-    
-    
+    if (!accessToken) {
+        accessToken = @"K8LRUshQvv7blHC7WHex(w))"; // Mark
+    }
+        
     NSDictionary *urlParams = @{@"access_token":accessToken,
                                 @"key":STACKEXCHANGE_KEY};
 
