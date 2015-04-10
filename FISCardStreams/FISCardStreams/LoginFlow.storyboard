@@ -180,7 +180,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Github Activities" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4IF-jQ-nYa">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Github Activities" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4IF-jQ-nYa">
                                 <rect key="frame" x="237" y="114" width="126" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -202,14 +202,14 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLC-nu-ijO">
                                 <rect key="frame" x="237" y="114" width="126" height="30"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Github Activities">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="githubLoginButtonTapped:" destination="cBn-ee-LEL" eventType="touchUpInside" id="Gnj-xc-bdK"/>
                                 </connections>
                             </button>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sUr-7z-EBh">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="sUr-7z-EBh">
                                 <rect key="frame" x="382" y="115" width="30" height="27"/>
                                 <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -226,12 +226,23 @@
                                     <action selector="stackExchangeLoginButtonTapped:" destination="cBn-ee-LEL" eventType="touchUpInside" id="n68-mR-bLu"/>
                                 </connections>
                             </button>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="A64-HP-LVF">
+                                <rect key="frame" x="409" y="400" width="30" height="27"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="2dn-Bt-SGF"/>
+                                    <constraint firstAttribute="width" constant="30" id="OVC-Cz-O8N"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="eKO-pA-ib0"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" id="gE6-bz-alB"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="To1-VT-rmu" secondAttribute="centerY" constant="34" id="0oE-kv-Liq"/>
                             <constraint firstItem="sUr-7z-EBh" firstAttribute="centerY" secondItem="jLC-nu-ijO" secondAttribute="centerY" constant="-0.5" id="1xQ-YN-FUC"/>
                             <constraint firstAttribute="centerX" secondItem="To1-VT-rmu" secondAttribute="centerX" constant="-64" id="5AV-xD-lW8"/>
+                            <constraint firstItem="A64-HP-LVF" firstAttribute="centerY" secondItem="2J4-CD-yLi" secondAttribute="centerY" constant="-0.5" id="EAR-v1-MHs"/>
                             <constraint firstItem="To1-VT-rmu" firstAttribute="top" secondItem="4IF-jQ-nYa" secondAttribute="bottom" constant="107" id="JDH-UI-vlV"/>
                             <constraint firstItem="To1-VT-rmu" firstAttribute="leading" secondItem="wUc-95-89C" secondAttribute="trailing" constant="5" id="JFA-wP-hmG"/>
                             <constraint firstAttribute="centerX" secondItem="4IF-jQ-nYa" secondAttribute="centerX" id="NhZ-F2-yIE"/>
@@ -289,5 +300,6 @@
     </scenes>
     <resources>
         <image name="anish" width="640" height="1136"/>
+        <image name="check" width="512" height="512"/>
     </resources>
 </document>
