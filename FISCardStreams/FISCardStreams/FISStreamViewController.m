@@ -1,15 +1,12 @@
 //
-//  FISCardsTableViewController.m
+//  FISStreamViewController.m
 //  FISCardStreams
 //
-//  Created by Mark Murray on 3/31/15.
+//  Created by Joseph Smalls-Mantey on 4/12/15.
 //  Copyright (c) 2015 Mark Edward Murray. All rights reserved.
 //
-//  assigned to Mark (temp)
 
-
-
-#import "FISCardsTableViewController.h"
+#import "FISStreamViewController.h"
 #import "AddingCredentialsViewController.h"
 
 #import "FISStreamsDataManager.h"
@@ -25,19 +22,17 @@
 #import <AFOAuth2Manager.h>
 
 
+@interface FISStreamViewController ()
 
-
-@interface FISCardsTableViewController ()
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) FISStreamsDataManager *streamsDataManager;
-
 - (IBAction)refreshTapped:(id)sender;
 
 @end
 
 
 
-@implementation FISCardsTableViewController
+@implementation FISStreamViewController
 
 
 #pragma mark - View Lifecycle
@@ -86,38 +81,38 @@
 
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 
 #pragma mark - UIButton Actions
@@ -132,13 +127,6 @@
     
     [self.streamsDataManager updateGithubFeedWithCompletionBlock:^(NSArray *newGithubCards) {
         [self.streamsDataManager.userStream.cards addObjectsFromArray:newGithubCards];
-        [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-            [self.tableView reloadData];
-        }];
-    }];
-    
-    [self.streamsDataManager updateStackExchangeFeedWithCompletionBlock:^(NSArray *newStackExchangeCards) {
-        [self.streamsDataManager.userStream.cards addObjectsFromArray:newStackExchangeCards];
         [[NSOperationQueue mainQueue]addOperationWithBlock:^{
             [self.tableView reloadData];
         }];
