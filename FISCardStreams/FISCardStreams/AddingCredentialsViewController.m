@@ -17,6 +17,7 @@
 @interface AddingCredentialsViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *checkerImage;
+@property (weak, nonatomic) IBOutlet UIImageView *checkerImageTwo;
 
 - (IBAction)githubLoginButtonTapped:(id)sender;
 
@@ -39,6 +40,13 @@
     AFOAuthCredential *cred = [AFOAuthCredential retrieveCredentialWithIdentifier:@"githubToken"];
     if (cred) {
         self.checkerImage.hidden = NO;
+    }
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *accessToken = [defaults valueForKey:@"access_token"];
+    
+    if (accessToken) {
+        self.checkerImageTwo.hidden = NO;
     }
 
 }

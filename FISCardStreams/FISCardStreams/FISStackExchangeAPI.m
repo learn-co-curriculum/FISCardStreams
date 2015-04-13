@@ -18,7 +18,7 @@
 +(NSURLRequest *)redirectAfterAuthentication
 {
     
-    NSString *stackExchangeString = [NSString stringWithFormat:@"https://stackexchange.com/oauth/dialog?client_id=%@&redirect_uri=%@&scope=private_info",STACKEXCHANGE_CLIENT_ID,@"https://stackexchange.com/oauth/login_success"];
+    NSString *stackExchangeString = [NSString stringWithFormat:@"https://stackexchange.com/oauth/dialog?client_id=%@&redirect_uri=%@&scope=private_info,no_expiry",STACKEXCHANGE_CLIENT_ID,@"https://stackexchange.com/oauth/login_success"];
     
     NSURL *stackExchangeURL = [NSURL URLWithString:stackExchangeString];
     
@@ -37,7 +37,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *accessToken = [defaults valueForKey:@"accesstoken"];
+    NSString *accessToken = [defaults valueForKey:@"access_token"];
     
     //Test accessToken = @"9oeBQj2NjJcEMtS1UdmahQ))
     if (!accessToken) {
