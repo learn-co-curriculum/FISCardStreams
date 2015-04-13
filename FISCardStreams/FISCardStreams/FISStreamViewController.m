@@ -20,6 +20,8 @@
 #import "FISCard.h"
 
 #import <AFOAuth2Manager.h>
+#import <QuartzCore/QuartzCore.h>
+
 
 
 @interface FISStreamViewController ()
@@ -43,6 +45,9 @@
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
     
     [self getAllCardsForUser];
+    
+    [self.tableView setDelegate:self];
+    [self.tableView setDataSource:self];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
