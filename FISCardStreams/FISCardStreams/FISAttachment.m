@@ -61,4 +61,15 @@
                                                errors:attachmentDictionary[@"control"][@"errors"]   ];
 }
 
++ (NSMutableArray *)attachmentsFromArray:(NSArray *)attachmentDictionaries
+                              withCardID:(NSString *)cardID {
+    NSMutableArray *attachments = [[NSMutableArray alloc]init];
+    for (NSDictionary *attachmentDictionary in attachmentDictionaries) {
+        FISAttachment *attachment = [FISAttachment createAttachmentFromDictionary:attachmentDictionary
+                                                                       withCardID:cardID];
+        [attachments addObject:attachment];
+    }
+    return attachments;
+}
+
 @end

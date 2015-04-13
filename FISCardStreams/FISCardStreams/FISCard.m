@@ -74,10 +74,10 @@
 }
 
 + (FISCard *)createCardFromDictionary:(NSDictionary *)cardDictionary {
-    NSMutableArray *attachments = [FISCard attachmentsFromArray:cardDictionary[@"attachments"]
+    NSMutableArray *attachments = [FISAttachment attachmentsFromArray:cardDictionary[@"attachments"]
                                                      withCardID:cardDictionary[@"id"]          ];
     
-    NSMutableArray *comments = [FISCard commentsFromArray:cardDictionary[@"comments"]   ];
+    NSMutableArray *comments = [FISComment commentsFromArray:cardDictionary[@"comments"]   ];
     
     NSDate *createdAt = [NSDate dateFromJSONDate:cardDictionary[@"createdAt"]];
     NSDate *updatedAt = [NSDate dateFromJSONDate:cardDictionary[@"updatedAt"]];
@@ -117,29 +117,5 @@
     }
     return [NSArray arrayWithArray:mCards];
 }
-
-#pragma mark - Helper methods
-
-+ (NSMutableArray *)attachmentsFromArray:(NSArray *)attachmentDictionaries
-                       withCardID:(NSString *)cardID {
-    NSMutableArray *attachments = [[NSMutableArray alloc]init];
-    for (NSDictionary *attachmentDictionary in attachmentDictionaries) {
-        FISAttachment *attachment = [FISAttachment createAttachmentFromDictionary:attachmentDictionary
-                                                                       withCardID:cardID];
-        [attachments addObject:attachment];
-    }
-    return attachments;
-}
-
-+ (NSMutableArray *)commentsFromArray:(NSArray *)commentDictionaries {
-    NSMutableArray *comments = [[NSMutableArray alloc]init];
-    for (NSDictionary *commentDictionary in commentDictionaries) {
-        FISComment *comment = [FISComment createCommentFromDictionary:commentDictionary];
-        [comments addObject:comment];
-    }
-    return comments;
-}
-
-
 
 @end

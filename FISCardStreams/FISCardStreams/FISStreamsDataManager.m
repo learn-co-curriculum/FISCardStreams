@@ -23,6 +23,10 @@
 
 @implementation FISStreamsDataManager
 
+NSString *const SOURCE_BLOG = @"blog";
+NSString *const SOURCE_GITHUB = @"github";
+NSString *const SOURCE_STACK_EXCHANGE = @"stack_exchange";
+
 + (instancetype)sharedDataManager {
     static FISStreamsDataManager *_sharedDataManager = nil;
     static dispatch_once_t onceToken;
@@ -63,9 +67,11 @@
 - (void)updateRSSFeedWithCompletionBlock:(void (^)(NSArray *))completionBlock {
     FISRSSFeedAPIClient *rssFeedAPIClient = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:self.blogURL];
     
-    NSMutableArray *allCardTitles = [[NSMutableArray alloc]init];
+    NSMutableArray *allBlogCardTitles = [[NSMutableArray alloc]init];
     for (FISCard *currentCard in self.userStream.cards) {
-        [allCardTitles addObject:currentCard.title];
+        if ([currentCard.source isEqualToString:SOURCE_BLOG]) {
+            [allBlogCardTitles addObject:currentCard.title];
+        }
     }
     
     NSArray *allBlogPosts = [rssFeedAPIClient getBlogList];
@@ -74,7 +80,7 @@
     for (NSDictionary *blogDictionary in allBlogPosts) {
         
         // check that a card with this blog post's title does not already exist
-        if ([allCardTitles containsObject:blogDictionary[@"title"]]) {
+        if ([allBlogCardTitles containsObject:blogDictionary[@"title"]]) {
             continue;
         }
         
@@ -86,7 +92,7 @@
                                     @"description" : blogDictionary[@"summary"],
                                     @"postAt" : epochPostAt,
                                     @"postLink" :  blogDictionary[@"link"],
-                                    @"source" : @"blog" };
+                                    @"source" : SOURCE_BLOG };
         [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
                                    WithContentDictionary:cardBody
                                      WithCompletionBlock:^(FISCard *card) {
@@ -99,11 +105,13 @@
 }
 
 - (void)updateGithubFeedWithCompletionBlock:(void (^)(NSArray *))completionBlock {
-    NSMutableArray *allCardTimeStamps = [[NSMutableArray alloc]init];
+    NSMutableArray *allGithubCardTimeStamps = [[NSMutableArray alloc]init];
     for (FISCard *currentCard in self.userStream.cards) {
-        NSInteger postAtInt = [currentCard.postAt timeIntervalSince1970] * 1000; // convert to milliseconds
-        NSNumber *epochCardDate = @(postAtInt);
-        [allCardTimeStamps addObject:epochCardDate];
+            if ([currentCard.source isEqualToString:SOURCE_GITHUB]) {
+                NSInteger postAtInt = [currentCard.postAt timeIntervalSince1970] * 1000; // convert to milliseconds
+                NSNumber *epochCardDate = @(postAtInt);
+                [allGithubCardTimeStamps addObject:epochCardDate];
+        }
     }
     
     
@@ -115,7 +123,7 @@
             NSNumber *epochPostAt = @(postAtInt);
             
             // checks via timestamp that the item has not been previously assimilated
-            if ([allCardTimeStamps containsObject:epochPostAt]) {
+            if ([allGithubCardTimeStamps containsObject:epochPostAt]) {
                 continue;
             }
             
@@ -128,6 +136,8 @@
                                         @"description" : cardDescription,
                                         @"postAt" : epochPostAt,
                                         @"source" : @"github" };
+                                        @"source" : SOURCE_GITHUB };
+            
             [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
                                        WithContentDictionary:cardBody
                                          WithCompletionBlock:^(FISCard *card) {
@@ -143,12 +153,47 @@
 }
 
 - (void)updateStackExchangeFeedWithCompletionBlock:(void (^)(NSArray *))completionBlock {
-    NSMutableArray *allCardTimeStamps = [[NSMutableArray alloc]init];
+    NSMutableArray *allSECardTimeStamps = [[NSMutableArray alloc]init];
     for (FISCard *currentCard in self.userStream.cards) {
-        NSInteger postAtInt = [currentCard.postAt timeIntervalSince1970] * 1000; // convert to milliseconds
-        NSNumber *epochCardDate = @(postAtInt);
-        [allCardTimeStamps addObject:epochCardDate];
+        if ([currentCard.source isEqualToString:SOURCE_STACK_EXCHANGE]) {
+            NSInteger postAtInt = [currentCard.postAt timeIntervalSince1970] * 1000; // convert to milliseconds
+            NSNumber *epochCardDate = @(postAtInt);
+            [allSECardTimeStamps addObject:epochCardDate];
+        }
     }
+    
+    NSMutableArray *newStackExchangeCards = [[NSMutableArray alloc]init];
+    [FISStackExchangeAPI getNetworkActivityForCurrentUserWithCompletionBlock:^(NSArray *userNetworkActivities) {
+        for (NSDictionary *activityDictionary in userNetworkActivities) {
+            NSInteger postAtInt = [activityDictionary[@"creation_date"] integerValue] * 1000; // convert to milliseconds
+            NSNumber *epochPostAt = @(postAtInt);
+            
+            if ([allSECardTimeStamps containsObject:epochPostAt]) {
+                continue;
+            }
+            
+            NSString *cardDescription = [NSString stringWithFormat:@"%@: %@\n%@",
+                                         activityDictionary[@"activity_type"],
+                                         activityDictionary[@"title"],
+                                         activityDictionary[@"description"]  ];
+            
+            NSDictionary *cardBody = @{ @"title" : activityDictionary[@"api_site_parameter"],
+                                        @"description" : cardDescription,
+                                        @"postAt" : epochPostAt,
+                                        @"postLink" : activityDictionary[@"link"],
+                                        @"source" : SOURCE_STACK_EXCHANGE };
+            
+            [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
+                                       WithContentDictionary:cardBody
+                                         WithCompletionBlock:^(FISCard *card) {
+                                             [newStackExchangeCards addObject:card];
+                                             
+                                             if ([activityDictionary isEqual:[userNetworkActivities lastObject]]) {
+                                                 completionBlock(newStackExchangeCards);
+                                             }
+                                         }];
+        }
+    }];
 }
 
 

@@ -46,4 +46,9 @@
  */
 + (FISComment *)createCommentFromDictionary:(NSDictionary *)commentDictionary;
 
+/**
+ Generates an array of FISComment objects from an array of serialized JSON response dictionaries from the CardStreams API.
+ */
++ (NSMutableArray *)commentsFromArray:(NSArray *)commentDictionaries;
+
 @end

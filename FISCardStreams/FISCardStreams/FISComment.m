@@ -44,4 +44,13 @@
                                         content:commentDictionary[@"content"]   ];
 }
 
++ (NSMutableArray *)commentsFromArray:(NSArray *)commentDictionaries {
+    NSMutableArray *comments = [[NSMutableArray alloc]init];
+    for (NSDictionary *commentDictionary in commentDictionaries) {
+        FISComment *comment = [FISComment createCommentFromDictionary:commentDictionary];
+        [comments addObject:comment];
+    }
+    return comments;
+}
+
 @end

@@ -74,9 +74,15 @@
                               errors:(NSArray *)errors;
 
 /**
- Generates an Attachment from a serialized JSON dictionary response from the CardStreams API for the designated Card.
+ Generates an Attachment from a serialized JSON dictionary response from the CardStreams API for the designated CardID.
  */
 + (FISAttachment *)createAttachmentFromDictionary:(NSDictionary *)attachmentDictionary
                                        withCardID:(NSString *)cardID;
+
+/**
+ Generates an array of FISAttachment objects from an array of serialized JSON reponse dictionaries from the CardStreams API for the designated CardID.
+ */
++ (NSMutableArray *)attachmentsFromArray:(NSArray *)attachmentDictionaries
+                              withCardID:(NSString *)cardID;
 
 @end
