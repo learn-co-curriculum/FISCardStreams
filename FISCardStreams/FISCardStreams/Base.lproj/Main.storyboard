@@ -11,7 +11,7 @@
         <scene sceneID="TM6-wq-eRa">
             <objects>
                 <tableViewController storyboardIdentifier="cardsTVC" id="md1-rq-13t" customClass="FISCardsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ge1-Ui-VnG">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ge1-Ui-VnG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -21,13 +21,20 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vBf-xg-nMq" id="p4e-tm-Lro">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PxH-dq-h9o">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HS1-tp-U0o" userLabel="BackLine">
+                                            <rect key="frame" x="299" y="3" width="3" height="183"/>
+                                            <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="3" id="b10-Ac-89H"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PxH-dq-h9o">
                                             <rect key="frame" x="150" y="27" width="300" height="132"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Kq-Ua-fqK">
                                                     <rect key="frame" x="20" y="8" width="260" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <color key="textColor" red="0.27563857060000002" green="0.79890703910000005" blue="0.30628022129999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 3, 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cj7-3M-bAM">
@@ -36,11 +43,11 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lyr-M4-hRd">
-                                                    <rect key="frame" x="20" y="48" width="260" height="35"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lyr-M4-hRd">
+                                                    <rect key="frame" x="20" y="48" width="260" height="36"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvP-oK-BlT">
-                                                    <rect key="frame" x="20" y="92" width="275" height="21"/>
+                                                    <rect key="frame" x="20" y="93" width="275" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -66,14 +73,18 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
+                                        <constraint firstItem="HS1-tp-U0o" firstAttribute="top" secondItem="p4e-tm-Lro" secondAttribute="topMargin" constant="-5" id="JO6-vc-Ihj"/>
+                                        <constraint firstItem="HS1-tp-U0o" firstAttribute="bottom" secondItem="p4e-tm-Lro" secondAttribute="bottom" constant="10" id="KHi-Fs-O71"/>
                                         <constraint firstAttribute="centerY" secondItem="PxH-dq-h9o" secondAttribute="centerY" constant="-6" id="L05-iX-xA4"/>
+                                        <constraint firstItem="HS1-tp-U0o" firstAttribute="centerX" secondItem="p4e-tm-Lro" secondAttribute="centerX" id="PGU-48-f2R"/>
                                         <constraint firstAttribute="centerX" secondItem="PxH-dq-h9o" secondAttribute="centerX" constant="-0.5" id="TT0-Vz-3vJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="attachmentView" destination="lyr-M4-hRd" id="reQ-hM-BL5"/>
+                                    <outlet property="containerView" destination="PxH-dq-h9o" id="qQI-CX-DBO"/>
                                     <outlet property="dateLabel" destination="cj7-3M-bAM" id="Fvt-AQ-HMe"/>
                                     <outlet property="descriptionLabel" destination="SvP-oK-BlT" id="0ix-V6-AmE"/>
                                     <outlet property="titleLabel" destination="8Kq-Ua-fqK" id="wtz-Th-KXI"/>
@@ -183,7 +194,7 @@
                                                             <subviews>
                                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="    [content title]" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f6n-LE-CGo" userLabel="Title">
                                                                     <rect key="frame" x="0.0" y="0.0" width="361" height="54"/>
-                                                                    <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits"/>
