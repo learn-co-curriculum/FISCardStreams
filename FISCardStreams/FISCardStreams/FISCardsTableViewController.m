@@ -13,6 +13,7 @@
 #import "AddingCredentialsViewController.h"
 
 #import "FISStreamsDataManager.h"
+#import "FISCollectionDataManager.h"
 
 // Custom Cells
 #import "FISCardTableViewCell.h"
@@ -30,8 +31,10 @@
 @interface FISCardsTableViewController ()
 
 @property (strong, nonatomic) FISStreamsDataManager *streamsDataManager;
+@property (strong, nonatomic) FISCollectionDataManager *collectionsDataManager;
 
 - (IBAction)refreshTapped:(id)sender;
+- (IBAction)searchTapped:(id)sender;
 
 @end
 
@@ -46,8 +49,11 @@
     [super viewDidLoad];
     
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
+    self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
+
     
     [self getAllCardsForUser];
+    [self getAllStreams];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -145,6 +151,9 @@
     }];
 }
 
+- (IBAction)searchTapped:(id)sender {
+}
+
 
 #pragma mark - View Helper Methods
 
@@ -160,5 +169,19 @@
     }];
 }
 
+-(void)getAllStreams{
+    [self.collectionsDataManager getAllStreamsWithCompletionBlock:^(NSArray *allStreams, BOOL success) {
+        NSLog(@"collections fetched");
+        
+        for (FISStream *currentStream in self.collectionsDataManager.allStreams) {
+            [self.collectionsDataManager getShowcaseCardsForStream:currentStream completionBlock:^(NSArray *showcaseCards) {
+                [currentStream.cards addObjectsFromArray:showcaseCards];
+            }];
+        }
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            NSLog(@"reload tableivew");
+        }];
+    }];
+}
 
 @end

@@ -49,6 +49,11 @@
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
     
+    
+    //get all streams with completions block
+        //inside the completion block reload the tableview
+        //pull the first stream using all streams [0]
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

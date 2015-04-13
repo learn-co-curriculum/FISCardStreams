@@ -7,12 +7,19 @@
 //
 
 #import "FISCardViewController.h"
+#import "FISCardCollectionViewCell.h"
 #import <RGCardViewLayout.h>
+#import "FISStream.h"
+#import "FISCard.h"
+
+
+#import "FISCollectionDataManager.h"
 
 @interface FISCardViewController () 
 
 @property (nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) FISCollectionDataManager *collectionsDataManager;
 
 @end
 
@@ -21,18 +28,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setUpCollectionView];
+    
+    self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
+//    [self getAllStreams];
+    
+
+}
+
+
+-(void)setUpCollectionView{
+    
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
-    
     UICollectionViewFlowLayout *cardFlow = [[RGCardViewLayout alloc]init];
-    
     self.collectionView.collectionViewLayout = cardFlow;
-
-    
-    
 }
-
 
 #pragma mark - CollectionView Delegate
 
@@ -48,7 +60,7 @@
 
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 5;
+    return 3;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -58,16 +70,37 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSLog(@"cell for item at index path");
+    FISCardCollectionViewCell *cell = [collectionView    dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
+    
+    FISStream *currentStream = self.collectionsDataManager.allStreams[indexPath.row];
+    
+    FISCard *gitHubCard = currentStream.cards[0];
     
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
+    cell.titleField.text = gitHubCard.title;
+    cell.contentField.text = gitHubCard.cardDescription;
+    
     
     return cell;
 }
 
 
+#pragma mark - View Helper Methods
 
+-(void)getAllStreams{
+    [self.collectionsDataManager getAllStreamsWithCompletionBlock:^(NSArray *allStreams, BOOL success) {
+        NSLog(@"collections fetched");
+        
+        for (FISStream *currentStream in self.collectionsDataManager.allStreams) {
+            [self.collectionsDataManager getShowcaseCardsForStream:currentStream completionBlock:^(NSArray *showcaseCards) {
+                [currentStream.cards addObjectsFromArray:showcaseCards];
+            }];
+        }
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            NSLog(@"reload tableivew");
+        }];
+    }];
+}
 
 /*
 #pragma mark - Navigation
