@@ -21,33 +21,35 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anish" translatesAutoresizingMaskIntoConstraints="NO" id="t8I-Tj-nss">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8St-12-Bug">
-                                <rect key="frame" x="273" y="386" width="55" height="30"/>
-                                <state key="normal" title="Sign Up">
-                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8St-12-Bug">
+                                <rect key="frame" x="270" y="386" width="62" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="SIGN UP">
+                                    <color key="titleColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="signUpButtonTapped:" destination="9oK-W7-AbO" eventType="touchUpInside" id="WeV-yG-Mz8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59i-eA-Sbr">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59i-eA-Sbr">
                                 <rect key="frame" x="0.0" y="285" width="600" height="30"/>
-                                <state key="normal" title="Log In">
-                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="LOG IN">
+                                    <color key="titleColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="logInButtonTapped:" destination="9oK-W7-AbO" eventType="touchUpInside" id="gzI-TT-rOg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEa-H2-58m">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEa-H2-58m">
                                 <rect key="frame" x="292" y="345" width="16" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PQZ-Yh-dKh">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PQZ-Yh-dKh">
                                 <rect key="frame" x="225" y="235" width="150" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="Rze-3W-5bE"/>
@@ -104,10 +106,10 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tig-Sk-BRQ">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tig-Sk-BRQ">
                                         <rect key="frame" x="63" y="185" width="294" height="29"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <state key="normal" title="Sign Up">
+                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
+                                        <state key="normal" title="SIGN UP">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -129,14 +131,14 @@
                                             <action selector="cancelButtonTapped:" destination="YEg-G8-hKU" eventType="touchUpInside" id="Plt-eZ-r3o"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter a unique username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8P-YV-4ek">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Please enter a unique username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8P-YV-4ek">
                                         <rect key="frame" x="0.0" y="100" width="420" height="15"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="12"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Z8P-YV-4ek" firstAttribute="centerX" secondItem="Vrl-iY-iel" secondAttribute="centerX" id="Cy4-ha-oTW"/>
                                     <constraint firstItem="Z8P-YV-4ek" firstAttribute="bottom" secondItem="MJA-3o-H6A" secondAttribute="top" constant="-20" id="LAp-l9-HPX"/>
@@ -180,8 +182,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anish" translatesAutoresizingMaskIntoConstraints="NO" id="H2y-kw-ecB">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings" translatesAutoresizingMaskIntoConstraints="NO" id="Kq7-TY-VhH">
+                                <rect key="frame" x="16" y="10" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="mI3-2p-jKz"/>
+                                    <constraint firstAttribute="height" constant="40" id="rLz-Op-TUW"/>
+                                </constraints>
+                            </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Github Activities" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4IF-jQ-nYa">
-                                <rect key="frame" x="237" y="114" width="126" height="30"/>
+                                <rect key="frame" x="237" y="104" width="126" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -195,14 +208,20 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="medium.com/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUc-95-89C">
-                                <rect key="frame" x="178" y="255" width="106" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <rect key="frame" x="177" y="254" width="107" height="24"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLC-nu-ijO">
-                                <rect key="frame" x="237" y="114" width="126" height="30"/>
+                                <rect key="frame" x="237" y="104" width="126" height="40"/>
+                                <color key="backgroundColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="arh-SN-O55"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Github Activities">
+                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -210,30 +229,44 @@
                                 </connections>
                             </button>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="sUr-7z-EBh">
-                                <rect key="frame" x="382" y="115" width="30" height="27"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="382" y="110" width="30" height="27"/>
+                                <color key="backgroundColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="2pv-qU-zAp"/>
                                     <constraint firstAttribute="width" constant="30" id="AdT-JL-GeF"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2J4-CD-yLi">
-                                <rect key="frame" x="211" y="399" width="178" height="30"/>
+                                <rect key="frame" x="214" y="399" width="172" height="40"/>
+                                <color key="backgroundColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9LU-Mu-iA8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Stack Exchange Activities">
+                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="stackExchangeLoginButtonTapped:" destination="cBn-ee-LEL" eventType="touchUpInside" id="n68-mR-bLu"/>
                                 </connections>
                             </button>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="A64-HP-LVF">
-                                <rect key="frame" x="409" y="400" width="30" height="27"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="A64-HP-LVF">
+                                <rect key="frame" x="406" y="405" width="30" height="27"/>
+                                <color key="backgroundColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="2dn-Bt-SGF"/>
                                     <constraint firstAttribute="width" constant="30" id="OVC-Cz-O8N"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="eKO-pA-ib0"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" id="gE6-bz-alB"/>
+                                </constraints>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="7Cm-v6-99m">
+                                <rect key="frame" x="459" y="250" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="XDz-u4-iDb"/>
+                                    <constraint firstAttribute="height" constant="30" id="laj-Ke-4r2"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -242,9 +275,17 @@
                             <constraint firstAttribute="centerY" secondItem="To1-VT-rmu" secondAttribute="centerY" constant="34" id="0oE-kv-Liq"/>
                             <constraint firstItem="sUr-7z-EBh" firstAttribute="centerY" secondItem="jLC-nu-ijO" secondAttribute="centerY" constant="-0.5" id="1xQ-YN-FUC"/>
                             <constraint firstAttribute="centerX" secondItem="To1-VT-rmu" secondAttribute="centerX" constant="-64" id="5AV-xD-lW8"/>
+                            <constraint firstItem="H2y-kw-ecB" firstAttribute="top" secondItem="Kq7-TY-VhH" secondAttribute="bottom" constant="-49" id="6hj-JT-Whq"/>
+                            <constraint firstItem="H2y-kw-ecB" firstAttribute="width" secondItem="pg7-PI-pOT" secondAttribute="width" id="BTt-ut-ifH"/>
+                            <constraint firstItem="7Cm-v6-99m" firstAttribute="centerY" secondItem="To1-VT-rmu" secondAttribute="centerY" constant="-0.5" id="BtA-CC-Xsg"/>
                             <constraint firstItem="A64-HP-LVF" firstAttribute="centerY" secondItem="2J4-CD-yLi" secondAttribute="centerY" constant="-0.5" id="EAR-v1-MHs"/>
+                            <constraint firstItem="H2y-kw-ecB" firstAttribute="leading" secondItem="Kq7-TY-VhH" secondAttribute="trailing" constant="-56" id="EUh-uS-iTT"/>
+                            <constraint firstItem="H2y-kw-ecB" firstAttribute="centerX" secondItem="pg7-PI-pOT" secondAttribute="centerX" id="Gfp-0o-Tjr"/>
+                            <constraint firstItem="H2y-kw-ecB" firstAttribute="height" secondItem="pg7-PI-pOT" secondAttribute="height" id="Idd-gx-jre"/>
                             <constraint firstItem="To1-VT-rmu" firstAttribute="top" secondItem="4IF-jQ-nYa" secondAttribute="bottom" constant="107" id="JDH-UI-vlV"/>
                             <constraint firstItem="To1-VT-rmu" firstAttribute="leading" secondItem="wUc-95-89C" secondAttribute="trailing" constant="5" id="JFA-wP-hmG"/>
+                            <constraint firstItem="7Cm-v6-99m" firstAttribute="leading" secondItem="To1-VT-rmu" secondAttribute="trailing" constant="20" id="Kbj-Ff-ihQ"/>
+                            <constraint firstItem="H2y-kw-ecB" firstAttribute="centerY" secondItem="pg7-PI-pOT" secondAttribute="centerY" id="NLJ-i7-p9D"/>
                             <constraint firstAttribute="centerX" secondItem="4IF-jQ-nYa" secondAttribute="centerX" id="NhZ-F2-yIE"/>
                             <constraint firstItem="sUr-7z-EBh" firstAttribute="leading" secondItem="jLC-nu-ijO" secondAttribute="trailing" constant="19" id="O5f-d5-aaZ"/>
                             <constraint firstItem="To1-VT-rmu" firstAttribute="centerY" secondItem="wUc-95-89C" secondAttribute="centerY" constant="0.5" id="OFM-cc-HzP"/>
@@ -252,17 +293,27 @@
                             <constraint firstItem="2J4-CD-yLi" firstAttribute="top" secondItem="To1-VT-rmu" secondAttribute="bottom" constant="118" id="TlT-Iw-J0d"/>
                             <constraint firstItem="jLC-nu-ijO" firstAttribute="centerY" secondItem="4IF-jQ-nYa" secondAttribute="centerY" id="Xm4-O2-WFe"/>
                             <constraint firstItem="jLC-nu-ijO" firstAttribute="width" secondItem="4IF-jQ-nYa" secondAttribute="width" id="YfZ-VM-l8B"/>
+                            <constraint firstItem="Kq7-TY-VhH" firstAttribute="top" secondItem="KW6-07-C0F" secondAttribute="bottom" constant="-10" id="ctP-oL-jmc"/>
+                            <constraint firstItem="Kq7-TY-VhH" firstAttribute="leading" secondItem="pg7-PI-pOT" secondAttribute="leadingMargin" id="eDc-cZ-wch"/>
+                            <constraint firstItem="A64-HP-LVF" firstAttribute="leading" secondItem="2J4-CD-yLi" secondAttribute="trailing" constant="20" id="fg0-Uz-EAC"/>
                             <constraint firstAttribute="centerX" secondItem="2J4-CD-yLi" secondAttribute="centerX" id="sUg-xk-fwm"/>
                             <constraint firstItem="jLC-nu-ijO" firstAttribute="centerX" secondItem="4IF-jQ-nYa" secondAttribute="centerX" id="z5Z-aZ-Ymp"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="6hj-JT-Whq"/>
+                                <exclude reference="EUh-uS-iTT"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="checkerImage" destination="sUr-7z-EBh" id="IhL-Qr-vC8"/>
+                        <outlet property="checkerImageTwo" destination="A64-HP-LVF" id="bZC-ry-Zum"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dYk-CI-CFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1910" y="301"/>
+            <point key="canvasLocation" x="1923" y="309"/>
         </scene>
         <!--Stack Sexchange Login Web View Controller-->
         <scene sceneID="M3L-Ye-oQH">
@@ -295,11 +346,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcd-OQ-fsK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1910" y="1075"/>
+            <point key="canvasLocation" x="1839" y="1175"/>
         </scene>
     </scenes>
     <resources>
         <image name="anish" width="640" height="1136"/>
         <image name="check" width="512" height="512"/>
+        <image name="settings" width="512" height="512"/>
     </resources>
 </document>
