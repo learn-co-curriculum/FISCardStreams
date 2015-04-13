@@ -355,7 +355,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="181" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NcD-Mg-V9r">
-                                <rect key="frame" x="16" y="20" width="568" height="580"/>
+                                <rect key="frame" x="16" y="48" width="568" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -366,7 +366,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJS-TJ-01P">
-                                                    <rect key="frame" x="283" y="-2" width="2" height="179.5"/>
+                                                    <rect key="frame" x="283" y="-2" width="2" height="180"/>
                                                     <color key="backgroundColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="2" id="TG7-kF-4E3"/>
@@ -382,7 +382,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 3, 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tU-Ug-yQ7">
-                                                            <rect key="frame" x="20" y="32" width="260" height="13.5"/>
+                                                            <rect key="frame" x="20" y="32" width="260" height="14"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -391,7 +391,7 @@
                                                             <rect key="frame" x="20" y="47" width="260" height="36"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arf-oy-rFg">
-                                                            <rect key="frame" x="20" y="92" width="275" height="20.5"/>
+                                                            <rect key="frame" x="20" y="92" width="275" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -440,9 +440,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NcD-Mg-V9r" firstAttribute="bottom" secondItem="KOQ-aF-SJz" secondAttribute="top" id="NBd-uv-wKi"/>
-                            <constraint firstItem="NcD-Mg-V9r" firstAttribute="trailing" secondItem="p5S-Fo-k68" secondAttribute="trailingMargin" id="Yos-PH-GMb"/>
+                            <constraint firstItem="NcD-Mg-V9r" firstAttribute="trailing" secondItem="p5S-Fo-k68" secondAttribute="trailing" id="Yos-PH-GMb"/>
                             <constraint firstItem="NcD-Mg-V9r" firstAttribute="top" secondItem="LoH-3A-ucr" secondAttribute="bottom" id="Z33-Sc-kGN"/>
-                            <constraint firstItem="NcD-Mg-V9r" firstAttribute="leading" secondItem="p5S-Fo-k68" secondAttribute="leadingMargin" id="hOA-Ik-Jlh"/>
+                            <constraint firstItem="NcD-Mg-V9r" firstAttribute="leading" secondItem="p5S-Fo-k68" secondAttribute="leading" id="hOA-Ik-Jlh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HiE-Nx-CBc">
