@@ -34,6 +34,8 @@
 - (void)getAllStreamsWithCompletionBlock:(void (^)(NSArray *, BOOL))completionBlock {
     [FISCardStreamsAPIClient getAllStreamsWithCompletionBlock:^(NSArray *allStreams) {
         self.allStreams = [FISStream createArrayOfStreamsFromDictionaries:allStreams];
+        NSLog(@"%@", self.allStreams);
+        completionBlock(@[], YES);
     }];
 }
 
@@ -53,7 +55,7 @@
 #pragma mark - Test Data
 
 - (FISCard *)findMostRecentGithubCardInCardsArray:(NSArray *)allCards {
-    FISCard *githubCard = [FISCard init];
+    FISCard *githubCard = [[FISCard alloc]init];
     githubCard.title = @"Github";
     githubCard.cardDescription = @"This is a test commit.";
     githubCard.postAt = [NSDate date];
@@ -62,7 +64,7 @@
 }
 
 - (FISCard *)findMostRecentBlogCardInCardsArray:(NSArray *)allCards {
-    FISCard *blogCard = [FISCard init];
+    FISCard *blogCard = [[FISCard alloc]init];
     blogCard.title = @"Blog Post";
     blogCard.cardDescription = @"This is a test blog post.";
     blogCard.postAt = [NSDate date];
@@ -71,7 +73,7 @@
 }
 
 - (FISCard *)findMostRecentStackExchangeCardInCardsArray:(NSArray *)allCards {
-    FISCard *stackExchangeCard = [FISCard init];
+    FISCard *stackExchangeCard = [[FISCard alloc]init];
     stackExchangeCard.title = @"Stack Exchange";
     stackExchangeCard.cardDescription = @"This is a test stack exchange card.";
     stackExchangeCard.postAt = [NSDate date];

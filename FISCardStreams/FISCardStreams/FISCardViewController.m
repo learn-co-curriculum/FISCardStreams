@@ -60,7 +60,10 @@
 
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    
     return 3;
+//    NSLog(@"COUNT %lu", [self.collectionsDataManager.allStreams count]);
+//    return [self.collectionsDataManager.allStreams count];
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -72,10 +75,10 @@
     
     FISCardCollectionViewCell *cell = [collectionView    dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
     
-    FISStream *currentStream = self.collectionsDataManager.allStreams[indexPath.row];
+    FISStream *currentStream = self.collectionsDataManager.allStreams[0];
     
-    FISCard *gitHubCard = currentStream.cards[0];
-    
+    FISCard *gitHubCard = currentStream.cards[indexPath.section];
+    NSLog(@"%ld", indexPath.row);
     
     cell.titleField.text = gitHubCard.title;
     cell.contentField.text = gitHubCard.cardDescription;

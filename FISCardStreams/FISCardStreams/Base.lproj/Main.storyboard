@@ -152,7 +152,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wx3-uR-oZR" userLabel="TopContainer">
                                                     <rect key="frame" x="8" y="8" width="401" height="80"/>
                                                     <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text=" Your Name Here" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="hLt-y8-oqA" userLabel="NameField">
+                                                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text=" Your Name Here" textAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="hLt-y8-oqA" userLabel="NameField">
                                                             <rect key="frame" x="20" y="6" width="361" height="68"/>
                                                             <color key="backgroundColor" red="0.99517929553985596" green="0.76438117027282715" blue="0.036827046424150467" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -178,18 +178,18 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVo-ny-QBa" userLabel="BottomContainer">
                                                     <rect key="frame" x="8" y="88" width="401" height="333"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RkX-EO-mML" userLabel="Container2">
-                                                            <rect key="frame" x="19" y="52" width="361" height="200"/>
+                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RkX-EO-mML" userLabel="Container2">
+                                                            <rect key="frame" x="-1" y="10" width="401" height="278"/>
                                                             <subviews>
-                                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text=" Blog" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f6n-LE-CGo" userLabel="Title">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="361" height="50"/>
+                                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="    [content title]" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f6n-LE-CGo" userLabel="Title">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="361" height="54"/>
                                                                     <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
-                                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5eq-B8-O5i" userLabel="Content">
-                                                                    <rect key="frame" x="0.0" y="50" width="361" height="150"/>
+                                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5eq-B8-O5i" userLabel="Content">
+                                                                    <rect key="frame" x="0.0" y="56" width="401" height="222"/>
                                                                     <color key="backgroundColor" red="0.96851992610000004" green="0.96849095819999997" blue="0.96850740909999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits"/>
@@ -205,11 +205,12 @@
                                                                 <constraint firstItem="5eq-B8-O5i" firstAttribute="top" secondItem="f6n-LE-CGo" secondAttribute="bottom" id="jY9-jd-vFZ"/>
                                                                 <constraint firstItem="f6n-LE-CGo" firstAttribute="top" secondItem="RkX-EO-mML" secondAttribute="top" id="oc8-P6-91G"/>
                                                                 <constraint firstItem="5eq-B8-O5i" firstAttribute="trailing" secondItem="RkX-EO-mML" secondAttribute="trailing" id="sjc-x4-efY"/>
-                                                                <constraint firstItem="f6n-LE-CGo" firstAttribute="height" secondItem="RkX-EO-mML" secondAttribute="height" multiplier="0.25" id="so3-l1-CWG"/>
+                                                                <constraint firstItem="f6n-LE-CGo" firstAttribute="height" secondItem="RkX-EO-mML" secondAttribute="height" multiplier="0.2" id="so3-l1-CWG"/>
                                                             </constraints>
                                                             <variation key="default">
                                                                 <mask key="constraints">
                                                                     <exclude reference="7ae-xD-QlN"/>
+                                                                    <exclude reference="so3-l1-CWG"/>
                                                                 </mask>
                                                             </variation>
                                                         </view>
@@ -217,9 +218,9 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="RkX-EO-mML" firstAttribute="width" secondItem="UVo-ny-QBa" secondAttribute="width" multiplier="0.9" id="1oh-cS-tuB"/>
-                                                        <constraint firstItem="RkX-EO-mML" firstAttribute="height" secondItem="UVo-ny-QBa" secondAttribute="height" multiplier="0.6" id="dKr-UO-mAV"/>
+                                                        <constraint firstItem="RkX-EO-mML" firstAttribute="top" secondItem="UVo-ny-QBa" secondAttribute="top" constant="10" id="aAC-an-G9E"/>
+                                                        <constraint firstItem="RkX-EO-mML" firstAttribute="height" secondItem="UVo-ny-QBa" secondAttribute="height" multiplier="0.9" id="dKr-UO-mAV"/>
                                                         <constraint firstAttribute="centerX" secondItem="RkX-EO-mML" secondAttribute="centerX" constant="0.5" id="s6t-0D-J0X"/>
-                                                        <constraint firstAttribute="centerY" secondItem="RkX-EO-mML" secondAttribute="centerY" constant="15" id="w9p-yV-aZV"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -233,6 +234,7 @@
                                             <constraint firstItem="wx3-uR-oZR" firstAttribute="leading" secondItem="QOt-wU-UI1" secondAttribute="leadingMargin" id="LXg-G0-Aty"/>
                                             <constraint firstItem="UVo-ny-QBa" firstAttribute="leading" secondItem="QOt-wU-UI1" secondAttribute="leadingMargin" id="Nle-bw-VDF"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="UVo-ny-QBa" secondAttribute="bottom" id="cP5-Wm-TrD"/>
+                                            <constraint firstItem="hLt-y8-oqA" firstAttribute="height" secondItem="f6n-LE-CGo" secondAttribute="height" id="io3-cE-KpV"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="UVo-ny-QBa" secondAttribute="trailing" id="poj-pI-ySl"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="wx3-uR-oZR" secondAttribute="trailing" id="t8E-bF-jgt"/>
                                             <constraint firstItem="UVo-ny-QBa" firstAttribute="top" secondItem="wx3-uR-oZR" secondAttribute="bottom" id="uOm-aW-XNC"/>
