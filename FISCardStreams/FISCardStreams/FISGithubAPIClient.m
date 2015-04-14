@@ -33,7 +33,7 @@
 }
 
 
-+(void)getUsernameWithCopletionBlock:(void (^)(NSString *))completionBlock
++(void)getUsernameWithCompletionBlock:(void (^)(NSString *))completionBlock
 {
     NSString *githubURL = [NSString stringWithFormat:@"https://api.github.com/user"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
