@@ -12,12 +12,16 @@
 #import "FISStream.h"
 #import "FISCard.h"
 
+#import <UIColor+uiGradients.h>
+
 
 #import "FISCollectionDataManager.h"
 
 @interface FISCardViewController () 
 
+@property (strong, nonatomic) IBOutlet UIView *backgroundGrandientView;
 @property (nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet FISCardCollectionViewCell *cardCell;
 
 @property (strong, nonatomic) FISCollectionDataManager *collectionsDataManager;
 
@@ -29,11 +33,34 @@
     [super viewDidLoad];
     
     [self setUpCollectionView];
+    [self setUpBackgroundColor];
+    [self roundCornersOnCollectionViewCell];
     
+    self.cardCell.layer.cornerRadius = 5;
+    self.cardCell.layer.masksToBounds = YES;
+
+
     self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
 //    [self getAllStreams];
     
 
+}
+
+-(void)roundCornersOnCollectionViewCell{
+        self.cardCell.layer.cornerRadius = 5;
+        self.cardCell.layer.masksToBounds = YES;
+}
+
+-(void)setUpBackgroundColor{
+    
+    [self.backgroundGrandientView setBackgroundColor:[UIColor clearColor]];
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.backgroundGrandientView.bounds;
+    gradient.startPoint = CGPointZero;
+    gradient.endPoint = CGPointMake(0, 1);
+    gradient.colors = [NSArray arrayWithObjects: (id)[[UIColor uig_seaWeedEndColor] CGColor], (id)[[UIColor uig_veniceBlueStartColor]CGColor], nil];
+    
+    [self.backgroundGrandientView.layer insertSublayer:gradient atIndex:0];
 }
 
 
@@ -48,15 +75,6 @@
 
 #pragma mark - CollectionView Delegate
 
-//-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return CGSizeMake(300, 600);
-//}
-//
-//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-//    
-//    return UIEdgeInsetsMake( 8, 8, 8, 8);
-//}
 
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{

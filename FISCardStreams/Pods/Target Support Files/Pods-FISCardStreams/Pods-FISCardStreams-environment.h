@@ -72,3 +72,9 @@
 #define COCOAPODS_VERSION_MINOR_RGCardViewLayout 0
 #define COCOAPODS_VERSION_PATCH_RGCardViewLayout 0
 
+// UIColor+uiGradients
+#define COCOAPODS_POD_AVAILABLE_UIColor_uiGradients
+#define COCOAPODS_VERSION_MAJOR_UIColor_uiGradients 0
+#define COCOAPODS_VERSION_MINOR_UIColor_uiGradients 1
+#define COCOAPODS_VERSION_PATCH_UIColor_uiGradients 0
+
