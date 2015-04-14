@@ -36,4 +36,8 @@ NSString *const STACKEXCHANGE_CLIENT_ID = @"4612";
 NSString *const STACKEXCHANGE_CLINET_SECRET = @"qh)p9EvXTFjj6jDVzktxoA((";
 NSString *const STACKEXCHANGE_KEY = @"lxFoOmObqZMUnpIjcTgepQ((";
 
+NSString *const SOURCE_BLOG = @"blog";
+NSString *const SOURCE_GITHUB = @"github";
+NSString *const SOURCE_STACK_EXCHANGE = @"stack_exchange";
+
 @end

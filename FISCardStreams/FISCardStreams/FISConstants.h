@@ -54,6 +54,8 @@ extern NSString *const STACKEXCHANGE_CLIENT_ID;
 extern NSString *const STACKEXCHANGE_CLINET_SECRET;
 extern NSString *const STACKEXCHANGE_KEY;
 
-
+extern NSString *const SOURCE_BLOG;
+extern NSString *const SOURCE_GITHUB;
+extern NSString *const SOURCE_STACK_EXCHANGE;
 
 @end

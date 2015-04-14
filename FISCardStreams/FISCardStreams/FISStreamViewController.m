@@ -1,19 +1,15 @@
 //
-//  FISCardsTableViewController.m
+//  FISStreamViewController.m
 //  FISCardStreams
 //
-//  Created by Mark Murray on 3/31/15.
+//  Created by Joseph Smalls-Mantey on 4/12/15.
 //  Copyright (c) 2015 Mark Edward Murray. All rights reserved.
 //
-//  assigned to Mark (temp)
 
-
-
-#import "FISCardsTableViewController.h"
+#import "FISStreamViewController.h"
 #import "AddingCredentialsViewController.h"
 
 #import "FISStreamsDataManager.h"
-#import "FISCollectionDataManager.h"
 
 // Custom Cells
 #import "FISCardTableViewCell.h"
@@ -24,23 +20,21 @@
 #import "FISCard.h"
 
 #import <AFOAuth2Manager.h>
+#import <QuartzCore/QuartzCore.h>
 
 
 
+@interface FISStreamViewController ()
 
-@interface FISCardsTableViewController ()
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) FISStreamsDataManager *streamsDataManager;
-@property (strong, nonatomic) FISCollectionDataManager *collectionsDataManager;
-
 - (IBAction)refreshTapped:(id)sender;
-- (IBAction)searchTapped:(id)sender;
 
 @end
 
 
 
-@implementation FISCardsTableViewController
+@implementation FISStreamViewController
 
 
 #pragma mark - View Lifecycle
@@ -49,11 +43,16 @@
     [super viewDidLoad];
     
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
-    self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
-
     
     [self getAllCardsForUser];
-    [self getAllStreams];
+    
+    [self.tableView setDelegate:self];
+    [self.tableView setDataSource:self];
+    
+    
+    //get all streams with completions block
+        //inside the completion block reload the tableview
+        //pull the first stream using all streams [0]
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -92,38 +91,38 @@
 
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 
 #pragma mark - UIButton Actions
@@ -142,16 +141,6 @@
             [self.tableView reloadData];
         }];
     }];
-    
-    [self.streamsDataManager updateStackExchangeFeedWithCompletionBlock:^(NSArray *newStackExchangeCards) {
-        [self.streamsDataManager.userStream.cards addObjectsFromArray:newStackExchangeCards];
-        [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-            [self.tableView reloadData];
-        }];
-    }];
-}
-
-- (IBAction)searchTapped:(id)sender {
 }
 
 
@@ -169,19 +158,5 @@
     }];
 }
 
--(void)getAllStreams{
-    [self.collectionsDataManager getAllStreamsWithCompletionBlock:^(NSArray *allStreams, BOOL success) {
-        NSLog(@"collections fetched");
-        
-        for (FISStream *currentStream in self.collectionsDataManager.allStreams) {
-            [self.collectionsDataManager getShowcaseCardsForStream:currentStream completionBlock:^(NSArray *showcaseCards) {
-                [currentStream.cards addObjectsFromArray:showcaseCards];
-            }];
-        }
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            NSLog(@"reload tableivew");
-        }];
-    }];
-}
 
 @end

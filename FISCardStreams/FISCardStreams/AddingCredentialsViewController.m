@@ -59,6 +59,5 @@
     StackSexchangeLoginWebViewController *stackVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stackVC"];
     
     [self presentViewController:stackVC animated:YES completion:nil];
-    
 }
 @end

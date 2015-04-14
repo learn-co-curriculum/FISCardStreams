@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class FISCard;
+
 @interface FISCardViewController : UIViewController <UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+
+
 
 @end

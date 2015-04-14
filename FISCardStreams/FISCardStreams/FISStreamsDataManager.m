@@ -9,11 +9,14 @@
 
 #import "FISStreamsDataManager.h"
 #import "NSDate+DateFromJSONDate.h"
+#import "FISConstants.h"
 
 // API Clients
 #import "FISCardStreamsAPIClient.h"
+#import "FISStackExchangeAPI.h"
 #import "FISRSSFeedAPIClient.h"
 #import "FISGithubAPIClient.h"
+#import "FISStackExchangeAPI.h"
 
 // Data Models
 #import "FISStream.h"
@@ -22,10 +25,6 @@
 #import "FISComment.h"
 
 @implementation FISStreamsDataManager
-
-NSString *const SOURCE_BLOG = @"blog";
-NSString *const SOURCE_GITHUB = @"github";
-NSString *const SOURCE_STACK_EXCHANGE = @"stack_exchange";
 
 + (instancetype)sharedDataManager {
     static FISStreamsDataManager *_sharedDataManager = nil;
@@ -114,7 +113,7 @@ NSString *const SOURCE_STACK_EXCHANGE = @"stack_exchange";
         }
     }
     
-    
+    NSMutableArray *newGithubCards = [[NSMutableArray alloc]init];
     [FISGithubAPIClient getPublicFeedsWithUsername:self.githubUsername
                                WithCompletionBlock:^(NSArray *commits) {
         for (NSDictionary *githubDictionary in commits) {
@@ -135,13 +134,12 @@ NSString *const SOURCE_STACK_EXCHANGE = @"stack_exchange";
             NSDictionary *cardBody = @{ @"title" : @"Github Commit",
                                         @"description" : cardDescription,
                                         @"postAt" : epochPostAt,
-                                        @"source" : @"github" };
                                         @"source" : SOURCE_GITHUB };
             
             [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
                                        WithContentDictionary:cardBody
                                          WithCompletionBlock:^(FISCard *card) {
-                                             NSMutableArray *newGithubCards = [[NSMutableArray alloc]init];
+                                             
                                              [newGithubCards addObject:card];
                                              
                                              if ([githubDictionary isEqual:[commits lastObject]]) {
@@ -169,6 +167,7 @@ NSString *const SOURCE_STACK_EXCHANGE = @"stack_exchange";
             NSNumber *epochPostAt = @(postAtInt);
             
             if ([allSECardTimeStamps containsObject:epochPostAt]) {
+
                 continue;
             }
             

@@ -15,6 +15,15 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.containerView.layer.cornerRadius = 5;
+    self.containerView.layer.masksToBounds = YES;
+    
+    /* self.containerView.layer.shadowOffset = CGSizeMake(-15, 20);
+    self.containerView.layer.shadowRadius = 5;
+    self.containerView.layer.shadowOpacity = 0.5;
+    self.containerView.layer.shadowColor = [UIColor blackColor].CGColor*/
+    ;
 }
 
 
