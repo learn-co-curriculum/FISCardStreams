@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextField *headerField;
 @property (weak, nonatomic) IBOutlet UITextField *contentField;
+@property (weak, nonatomic) IBOutlet UIView *bottomContainer;
 
 
 @end

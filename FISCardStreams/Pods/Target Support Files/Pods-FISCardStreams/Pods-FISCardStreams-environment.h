@@ -54,6 +54,12 @@
 #define COCOAPODS_VERSION_MINOR_AFOAuth2Manager 2
 #define COCOAPODS_VERSION_PATCH_AFOAuth2Manager 0
 
+// Hex
+#define COCOAPODS_POD_AVAILABLE_Hex
+#define COCOAPODS_VERSION_MAJOR_Hex 1
+#define COCOAPODS_VERSION_MINOR_Hex 1
+#define COCOAPODS_VERSION_PATCH_Hex 1
+
 // MONActivityIndicatorView
 #define COCOAPODS_POD_AVAILABLE_MONActivityIndicatorView
 #define COCOAPODS_VERSION_MAJOR_MONActivityIndicatorView 0

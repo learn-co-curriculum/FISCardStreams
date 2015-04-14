@@ -7,6 +7,7 @@
 //
 
 #import "FISCardCollectionViewCell.h"
+#import <UIColor+Hex.h>
 
 @interface FISCardCollectionViewCell ()
 
@@ -17,6 +18,19 @@
 @implementation FISCardCollectionViewCell
 
 
+-(void)awakeFromNib{
+    [self setupBackgroundColors];
+    
+}
 
+-(void)setupBackgroundColors{
+    
+    UIColor *themeBlue = [UIColor colorFromHex:@"208D90"];
+    
+    self.bottomContainer.backgroundColor = themeBlue;
+    
+    
 
+    
+}
 @end
