@@ -8,6 +8,15 @@
 
 #import "FISCardCollectionViewCell.h"
 
+@interface FISCardCollectionViewCell ()
+
+@end
+
+
+
 @implementation FISCardCollectionViewCell
+
+
+
 
 @end

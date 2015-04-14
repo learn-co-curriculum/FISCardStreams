@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface FISCardCollectionViewCell : UICollectionViewCell
+
+
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextField *headerField;
 @property (weak, nonatomic) IBOutlet UITextField *contentField;
 
+
 @end
+

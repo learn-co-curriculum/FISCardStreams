@@ -7,6 +7,7 @@ target 'FISCardStreams' do
 	pod 'MONActivityIndicatorView'
 	pod 'NSURL+QueryDictionary'
 	pod 'RGCardViewLayout','1.0'
+	pod 'UIColor+uiGradients'
 
 end
 
