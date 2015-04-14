@@ -25,9 +25,9 @@
 
 -(void)setupBackgroundColors{
     
-    UIColor *themeBlue = [UIColor colorFromHex:@"208D90"];
+    UIColor *themeBlue = [UIColor colorFromHex:@"0098FF"];
     
-    self.bottomContainer.backgroundColor = themeBlue;
+//    self.bottomContainer.backgroundColor = themeBlue;
     
     
 

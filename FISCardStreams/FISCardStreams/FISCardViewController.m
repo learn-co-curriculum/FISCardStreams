@@ -61,12 +61,10 @@
     gradient.frame = self.backgroundGrandientView.bounds;
     gradient.startPoint = CGPointZero;
     gradient.endPoint = CGPointMake(0, 1);
-    gradient.colors = [NSArray arrayWithObjects: (id)[[UIColor uig_seaWeedEndColor] CGColor], (id)[[UIColor uig_veniceBlueStartColor]CGColor], nil];
+    gradient.colors = [NSArray arrayWithObjects: (id)[[UIColor uig_facebookMessengerStartColor] CGColor], (id)[[UIColor uig_facebookMessengerEndColor]CGColor], nil];
     
     [self.backgroundGrandientView.layer insertSublayer:gradient atIndex:0];
     
-    
-    UIColor *themeBlue = [UIColor colorFromHex:@"35C2A6"];
     
     
 }
