@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @class FISCard;
+@class FISStream;
 
-@interface FISCardViewController : UIViewController <UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface FISCardViewController : UIViewController <UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource>
 
-
+@property (strong, nonatomic) FISStream *stream;
 
 @end
