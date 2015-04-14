@@ -33,11 +33,18 @@
     return _sharedDataManager;
 }
 
-- (void)getAllStreamsWithCompletionBlock:(void (^)(NSArray *, BOOL))completionBlock {
+- (void)getAllStreamsWithCompletionBlock:(void (^)(BOOL))completionBlock {
     [FISCardStreamsAPIClient getAllStreamsWithCompletionBlock:^(NSArray *allStreams) {
         self.allStreams = [FISStream createArrayOfStreamsFromDictionaries:allStreams];
         NSLog(@"%@", self.allStreams);
-        completionBlock(@[], YES);
+        
+//        for (FISStream *currentStream in self.allStreams) {
+//            [self getShowcaseCardsForStream:currentStream completionBlock:^(NSArray *showcaseCards) {
+//                [currentStream.cards addObjectsFromArray:showcaseCards];
+//            }];
+//        }
+        
+        completionBlock(YES);
     }];
 }
 

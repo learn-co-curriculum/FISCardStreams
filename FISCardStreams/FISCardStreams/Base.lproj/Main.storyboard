@@ -104,7 +104,8 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="NtF-gX-H5y">
                             <connections>
-                                <segue destination="9ii-60-CWk" kind="show" id="5rA-u5-FYj"/>
+                                <action selector="searchTapped:" destination="md1-rq-13t" id="P6E-RC-SCi"/>
+                                <segue destination="KJv-o0-IBs" kind="show" identifier="groupSegue" id="vXC-8I-hkw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -277,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VLh-fr-Vpg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2890" y="1245"/>
+            <point key="canvasLocation" x="3638" y="409"/>
         </scene>
         <!--Stream View Controller-->
         <scene sceneID="9ps-2I-ye3">
@@ -396,24 +397,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="63v-Ot-Igz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2890" y="2018"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="1ow-Vh-O01">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9ii-60-CWk" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Xf-lN-Asp">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="KJv-o0-IBs" kind="relationship" relationship="rootViewController" id="s22-qS-OaE"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1VB-HB-c15" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2060" y="1221"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="B6Q-AD-jXE">

@@ -10,6 +10,7 @@
 
 
 #import "FISCardsTableViewController.h"
+#import "FISCardViewController.h"
 #import "AddingCredentialsViewController.h"
 
 #import "FISStreamsDataManager.h"
@@ -152,6 +153,7 @@
 }
 
 - (IBAction)searchTapped:(id)sender {
+    
 }
 
 
@@ -170,18 +172,19 @@
 }
 
 -(void)getAllStreams{
-    [self.collectionsDataManager getAllStreamsWithCompletionBlock:^(NSArray *allStreams, BOOL success) {
-        NSLog(@"collections fetched");
-        
-        for (FISStream *currentStream in self.collectionsDataManager.allStreams) {
-            [self.collectionsDataManager getShowcaseCardsForStream:currentStream completionBlock:^(NSArray *showcaseCards) {
-                [currentStream.cards addObjectsFromArray:showcaseCards];
-            }];
+    [self.collectionsDataManager getAllStreamsWithCompletionBlock:^(BOOL success) {
+        if (success) {
+            NSLog(@"collections fetched");
+        } else {
+            NSLog(@"Error fetching all streams.");
         }
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            NSLog(@"reload tableivew");
-        }];
     }];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    FISCardViewController *cardVC = segue.destinationViewController;
 }
 
 @end

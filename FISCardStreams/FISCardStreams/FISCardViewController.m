@@ -77,11 +77,11 @@
     
     FISStream *currentStream = self.collectionsDataManager.allStreams[0];
     
-    FISCard *gitHubCard = currentStream.cards[indexPath.section];
-    NSLog(@"%ld", indexPath.row);
-    
-    cell.titleField.text = gitHubCard.title;
-    cell.contentField.text = gitHubCard.cardDescription;
+//    FISCard *gitHubCard = currentStream.cards[indexPath.section];
+//    NSLog(@"%ld", indexPath.row);
+//    
+//    cell.titleField.text = gitHubCard.title;
+//    cell.contentField.text = gitHubCard.cardDescription;
     
     
     return cell;
@@ -91,7 +91,7 @@
 #pragma mark - View Helper Methods
 
 -(void)getAllStreams{
-    [self.collectionsDataManager getAllStreamsWithCompletionBlock:^(NSArray *allStreams, BOOL success) {
+    [self.collectionsDataManager getAllStreamsWithCompletionBlock:^(BOOL success) {
         NSLog(@"collections fetched");
         
         for (FISStream *currentStream in self.collectionsDataManager.allStreams) {
