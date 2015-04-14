@@ -25,7 +25,7 @@
                                 <rect key="frame" x="270" y="386" width="62" height="30"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="SIGN UP">
-                                    <color key="titleColor" red="0.35110556120000003" green="0.61237434540000002" blue="0.67165798610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -36,7 +36,7 @@
                                 <rect key="frame" x="0.0" y="285" width="600" height="30"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="LOG IN">
-                                    <color key="titleColor" red="0.35110556120000003" green="0.61237434540000002" blue="0.67165798610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -46,7 +46,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEa-H2-58m">
                                 <rect key="frame" x="292" y="345" width="16" height="21"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="0.35110556120000003" green="0.61237434540000002" blue="0.67165798610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PQZ-Yh-dKh">
@@ -110,7 +110,7 @@
                                         <rect key="frame" x="63" y="185" width="294" height="29"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                                         <state key="normal" title="SIGN UP">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -133,12 +133,12 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Please enter a unique username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8P-YV-4ek">
                                         <rect key="frame" x="0.0" y="100" width="420" height="15"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="12"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.35110556117695502" green="0.61237434538231683" blue="0.67165798611111116" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Z8P-YV-4ek" firstAttribute="centerX" secondItem="Vrl-iY-iel" secondAttribute="centerX" id="Cy4-ha-oTW"/>
                                     <constraint firstItem="Z8P-YV-4ek" firstAttribute="bottom" secondItem="MJA-3o-H6A" secondAttribute="top" constant="-20" id="LAp-l9-HPX"/>
@@ -210,17 +210,18 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="medium.com/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUc-95-89C">
                                 <rect key="frame" x="177" y="254" width="107" height="24"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="0.35110556120000003" green="0.61237434540000002" blue="0.67165798610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLC-nu-ijO">
                                 <rect key="frame" x="237" y="104" width="126" height="40"/>
+                                <color key="backgroundColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="arh-SN-O55"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Github Activities">
-                                    <color key="titleColor" red="0.35110556120000003" green="0.61237434540000002" blue="0.67165798610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -237,12 +238,13 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2J4-CD-yLi">
                                 <rect key="frame" x="214" y="399" width="172" height="40"/>
+                                <color key="backgroundColor" red="0.75686274509999996" green="0.61960784310000006" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9LU-Mu-iA8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Stack Exchange Activities">
-                                    <color key="titleColor" red="0.35110556120000003" green="0.61237434540000002" blue="0.67165798610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
