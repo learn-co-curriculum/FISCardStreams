@@ -18,6 +18,7 @@
 
 // Custom Cells
 #import "FISCardTableViewCell.h"
+#import "WebViewTableViewCell.h"
 
 // Models
 #import "FISStreamsDataManager.h"
@@ -79,6 +80,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     FISCardTableViewCell *cardCell = (FISCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cardCell" forIndexPath:indexPath];
+    
+    WebViewTableViewCell *webCell = (WebViewTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"webCardCell" forIndexPath:indexPath];
     
     FISCard *currentCard = self.stream.cards[indexPath.row];
     cardCell.card = currentCard;

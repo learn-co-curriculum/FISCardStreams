@@ -90,6 +90,22 @@
                                     <outlet property="titleLabel" destination="8Kq-Ua-fqK" id="wtz-Th-KXI"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="weCardCell" rowHeight="176" id="wTA-nA-GoR" customClass="WebViewTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wTA-nA-GoR" id="Gyg-0H-yEi">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mf6-dX-YFJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="176"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </webView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="blogWebView" destination="mf6-dX-YFJ" id="JwC-Vv-15R"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="md1-rq-13t" id="V4D-gS-T7E"/>
