@@ -12,6 +12,7 @@
 #import "FISStream.h"
 #import "FISCard.h"
 
+#import <UIColor+Hex.h>
 #import <UIColor+uiGradients.h>
 
 
@@ -25,6 +26,8 @@
 
 @property (strong, nonatomic) FISCollectionDataManager *collectionsDataManager;
 
+
+
 @end
 
 @implementation FISCardViewController
@@ -33,7 +36,7 @@
     [super viewDidLoad];
     
     [self setUpCollectionView];
-    [self setUpBackgroundColor];
+    [self setUpBackgroundColors];
     [self roundCornersOnCollectionViewCell];
     
     self.cardCell.layer.cornerRadius = 5;
@@ -51,7 +54,7 @@
         self.cardCell.layer.masksToBounds = YES;
 }
 
--(void)setUpBackgroundColor{
+-(void)setUpBackgroundColors{
     
     [self.backgroundGrandientView setBackgroundColor:[UIColor clearColor]];
     CAGradientLayer *gradient = [CAGradientLayer layer];
@@ -61,6 +64,11 @@
     gradient.colors = [NSArray arrayWithObjects: (id)[[UIColor uig_seaWeedEndColor] CGColor], (id)[[UIColor uig_veniceBlueStartColor]CGColor], nil];
     
     [self.backgroundGrandientView.layer insertSublayer:gradient atIndex:0];
+    
+    
+    UIColor *themeBlue = [UIColor colorFromHex:@"35C2A6"];
+    
+    
 }
 
 

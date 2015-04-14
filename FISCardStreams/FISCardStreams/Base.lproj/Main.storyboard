@@ -165,7 +165,7 @@
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="NameField" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hFR-jT-dT2">
                                                             <rect key="frame" x="0.0" y="0.0" width="401" height="80"/>
-                                                            <color key="backgroundColor" red="0.9991258978843689" green="0.99909597635269165" blue="0.99911290407180786" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.9991258978843689" green="0.99909597635269165" blue="0.99911290407180786" alpha="0.25" colorSpace="calibratedRGB"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -187,22 +187,24 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="401" height="167"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Khy-o4-6P5" userLabel="StatView1">
-                                                                    <rect key="frame" x="20" y="8" width="360" height="45"/>
+                                                                    <rect key="frame" x="20" y="12" width="360" height="44"/>
                                                                     <subviews>
-                                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Past Week GitHub Commits" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HGa-Zx-vxh" userLabel="Title">
+                                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Past Week GitHub Commits" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HGa-Zx-vxh" userLabel="Title">
                                                                             <rect key="frame" x="0.0" y="0.0" width="360" height="18"/>
-                                                                            <color key="backgroundColor" red="1" green="0.20944251920000001" blue="0.11105941449999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits"/>
                                                                         </textField>
                                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="test text" translatesAutoresizingMaskIntoConstraints="NO" id="Dr8-Yd-uc5">
                                                                             <rect key="frame" x="0.0" y="30" width="360" height="19"/>
-                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <color key="backgroundColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="0.25" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                         </textView>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" red="1" green="0.20944251920000001" blue="0.11105941449999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstItem="HGa-Zx-vxh" firstAttribute="top" secondItem="Khy-o4-6P5" secondAttribute="top" id="6bD-XN-cLJ"/>
                                                                         <constraint firstItem="Dr8-Yd-uc5" firstAttribute="leading" secondItem="Khy-o4-6P5" secondAttribute="leading" id="8Ag-CE-Q71"/>
@@ -216,22 +218,24 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7E2-Wy-uOb" userLabel="StatView2">
-                                                                    <rect key="frame" x="20" y="61" width="360" height="45"/>
+                                                                    <rect key="frame" x="20" y="64" width="360" height="43"/>
                                                                     <subviews>
-                                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jpz-xd-oIv" userLabel="Title">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="360" height="18"/>
-                                                                            <color key="backgroundColor" red="1" green="0.20944251920000001" blue="0.11105941449999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Latest Blog Post" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jpz-xd-oIv" userLabel="Title">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="360" height="17"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits"/>
                                                                         </textField>
                                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="test text" translatesAutoresizingMaskIntoConstraints="NO" id="nCF-mZ-dka">
                                                                             <rect key="frame" x="0.0" y="20" width="360" height="27"/>
-                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <color key="backgroundColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="0.25" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                         </textView>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" red="1" green="0.20944251920000001" blue="0.11105941449999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstItem="jpz-xd-oIv" firstAttribute="height" secondItem="7E2-Wy-uOb" secondAttribute="height" multiplier="0.4" id="BJ7-Iw-d4V"/>
                                                                         <constraint firstItem="jpz-xd-oIv" firstAttribute="trailing" secondItem="7E2-Wy-uOb" secondAttribute="trailing" id="R4F-Ox-Duv"/>
@@ -244,22 +248,24 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ks2-eU-1SC" userLabel="StatView3">
-                                                                    <rect key="frame" x="21" y="114" width="360" height="45"/>
+                                                                    <rect key="frame" x="21" y="115" width="360" height="44"/>
                                                                     <subviews>
-                                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dpQ-yN-4YY" userLabel="Title">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="360" height="18"/>
-                                                                            <color key="backgroundColor" red="1" green="0.20944251920000001" blue="0.11105941449999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Latest StackOverflow" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dpQ-yN-4YY" userLabel="Title">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="360" height="17"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits"/>
                                                                         </textField>
                                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="test text" translatesAutoresizingMaskIntoConstraints="NO" id="upe-nb-TZo">
                                                                             <rect key="frame" x="0.0" y="20" width="360" height="27"/>
-                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <color key="backgroundColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="0.25" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                         </textView>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" red="1" green="0.20944251920000001" blue="0.11105941449999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstItem="dpQ-yN-4YY" firstAttribute="height" secondItem="Ks2-eU-1SC" secondAttribute="height" multiplier="0.4" id="AWG-aU-ijT"/>
                                                                         <constraint firstItem="dpQ-yN-4YY" firstAttribute="leading" secondItem="Ks2-eU-1SC" secondAttribute="leading" id="Csm-Ez-G6E"/>
@@ -272,7 +278,7 @@
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.0" green="0.80000000000000004" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="Ks2-eU-1SC" firstAttribute="bottom" secondItem="APQ-1f-w8i" secondAttribute="bottom" constant="-8" id="0Am-CI-17i"/>
                                                                 <constraint firstAttribute="centerX" secondItem="7E2-Wy-uOb" secondAttribute="centerX" id="4Rm-kV-c1j"/>
@@ -285,7 +291,7 @@
                                                                 <constraint firstItem="Khy-o4-6P5" firstAttribute="width" secondItem="Ks2-eU-1SC" secondAttribute="width" id="Zf5-e7-rS8"/>
                                                                 <constraint firstItem="Khy-o4-6P5" firstAttribute="height" secondItem="Ks2-eU-1SC" secondAttribute="height" id="ace-JV-89g"/>
                                                                 <constraint firstItem="Khy-o4-6P5" firstAttribute="width" secondItem="APQ-1f-w8i" secondAttribute="width" multiplier="0.9" id="dGs-zW-elu"/>
-                                                                <constraint firstItem="Khy-o4-6P5" firstAttribute="top" secondItem="APQ-1f-w8i" secondAttribute="top" constant="8" id="fNb-PJ-LVP"/>
+                                                                <constraint firstItem="Khy-o4-6P5" firstAttribute="top" secondItem="APQ-1f-w8i" secondAttribute="top" constant="12" id="fNb-PJ-LVP"/>
                                                                 <constraint firstAttribute="centerX" secondItem="Khy-o4-6P5" secondAttribute="centerX" constant="0.5" id="mUm-EJ-XSS"/>
                                                                 <constraint firstItem="7E2-Wy-uOb" firstAttribute="bottom" secondItem="Ks2-eU-1SC" secondAttribute="top" constant="-8" id="u4d-am-7LK"/>
                                                                 <constraint firstItem="7E2-Wy-uOb" firstAttribute="top" secondItem="Khy-o4-6P5" secondAttribute="bottom" constant="8" id="yPm-pX-24v"/>
@@ -302,7 +308,7 @@
                                                         </view>
                                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="C9I-Vf-0Qe">
                                                             <rect key="frame" x="0.0" y="167" width="401" height="166"/>
-                                                            <color key="backgroundColor" red="0.0" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <prototypes>
                                                                 <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="sRE-Kq-GVs">
                                                                     <rect key="frame" x="0.0" y="0.0" width="401" height="44"/>
@@ -342,6 +348,9 @@
                                             <constraint firstItem="UVo-ny-QBa" firstAttribute="top" secondItem="wx3-uR-oZR" secondAttribute="bottom" id="uOm-aW-XNC"/>
                                         </constraints>
                                         <size key="customSize" width="417" height="429"/>
+                                        <connections>
+                                            <outlet property="bottomContainer" destination="UVo-ny-QBa" id="7Gc-qA-vid"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
