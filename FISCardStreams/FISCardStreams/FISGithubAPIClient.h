@@ -19,6 +19,12 @@
 
 
 /**
+ *  ToGet the Username using access_token
+ */
++(void)getUsernameWithCopletionBlock:(void (^)(NSString *username))completionBlock;
+
+
+/**
 *  Returns an NSDictionary consisting of the user feed.
     Format:
     {

@@ -33,6 +33,30 @@
 }
 
 
++(void)getUsernameWithCopletionBlock:(void (^)(NSString *))completionBlock
+{
+    NSString *githubURL = [NSString stringWithFormat:@"https://api.github.com/user"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    AFJSONRequestSerializer *serializer = [[AFJSONRequestSerializer alloc]init];
+    
+    AFOAuthCredential *credential =[AFOAuthCredential retrieveCredentialWithIdentifier:@"githubToken"];
+    
+    [serializer setAuthorizationHeaderFieldWithCredential:credential];
+    
+    manager.requestSerializer = serializer;
+    
+    [manager GET:githubURL parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSString *username = responseObject["login"];
+        
+        completionBlock(username);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Fail: %@",error.localizedDescription);
+    }];
+    
+}
+
 
 +(void)getPublicFeedsWithUsername: (NSString *)username WithCompletionBlock:(void (^)(NSArray *))completionBlock
 {
