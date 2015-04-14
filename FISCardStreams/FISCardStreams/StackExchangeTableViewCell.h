@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class FISCard;
+
 @interface StackExchangeTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) FISCard *card;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+
 
 @end

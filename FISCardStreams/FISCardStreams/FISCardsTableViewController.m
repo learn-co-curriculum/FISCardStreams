@@ -35,6 +35,7 @@
 
 @property (strong, nonatomic) FISStreamsDataManager *streamsDataManager;
 @property (strong, nonatomic) FISCollectionDataManager *collectionsDataManager;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 - (IBAction)refreshTapped:(id)sender;
 - (IBAction)searchTapped:(id)sender;
@@ -50,14 +51,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
-    self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
-
-    
-    [self getAllCardsForUser];
-    [self getAllStreams];
-    
+    [self addingPullToRefreshFeatureToTheTableViews];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -65,6 +59,16 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
+    self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
+    
+    
+    [self getAllCardsForUser];
+    [self getAllStreams];
+}
 
 #pragma mark - UITableView Data Source
 
@@ -85,14 +89,15 @@
 
     if ([currentCard.source isEqualToString:@"blog"]) {
         WebViewTableViewCell *webCell = (WebViewTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"weCardCell" forIndexPath:indexPath];
-        [webCell.blogWebView loadHTMLString:currentCard.cardDescription baseURL:nil];
+        webCell.card = currentCard;
+
             return webCell;
     }
     if([currentCard.source isEqualToString:@"stack_exchange"])
     {
         StackExchangeTableViewCell *stackCell = (StackExchangeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"stackCardCell" forIndexPath:indexPath];
-        stackCell.textView.text = currentCard.cardDescription;
-        return stackCell; 
+        stackCell.card = currentCard;
+        return stackCell;
     }
     else {
     
@@ -171,6 +176,15 @@
     }];
 }
 
+- (IBAction)settingsButtonTapped:(id)sender {
+    
+    UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"LoginFlow" bundle:nil];
+    UIViewController *settings = [loginStoryboard instantiateViewControllerWithIdentifier:@"credentialVC"];
+    
+    [self presentViewController:settings animated:YES completion:nil];
+    
+}
+
 - (IBAction)searchTapped:(id)sender {
     
 }
@@ -181,10 +195,14 @@
 - (void)getAllCardsForUser {
     [self.streamsDataManager getAllCardsForUserStreamWithCompletion:^(BOOL success) {
         NSLog(@"cards fetched");
+        if (self.refreshControl) {
+            [self.refreshControl endRefreshing];
+        }
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             NSLog(@"Reload tableview");
             self.stream = self.streamsDataManager.userStream;
             self.navigationItem.title = self.stream.streamName;
+            
             [self.tableView reloadData];
         }];
     }];
@@ -200,10 +218,26 @@
     }];
 }
 
+
+- (void)addingPullToRefreshFeatureToTheTableViews {
+    //Pull to refresh for tableviews
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+}
+
+- (void)refresh
+{
+    // do your refresh here and reload the tablview
+    [self viewWillAppear:YES];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     FISCardViewController *cardVC = segue.destinationViewController;
 }
+
+
 
 @end

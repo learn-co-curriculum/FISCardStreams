@@ -259,12 +259,12 @@
 			isa = PBXGroup;
 			children = (
 				6A7C1F081ACAD82800DA0161 /* LaunchScreen.xib */,
+				38EE61D31AD7044200D65B32 /* FISCardCollectionViewCell.h */,
+				38EE61D41AD7044200D65B32 /* FISCardCollectionViewCell.m */,
 				6A9C3B501ACEDBBA00CD56E6 /* FISCardTableViewCell.h */,
 				6A9C3B511ACEDBBA00CD56E6 /* FISCardTableViewCell.m */,
 				88977CCC1ADD90590029A337 /* StackExchangeTableViewCell.h */,
 				88977CCD1ADD90590029A337 /* StackExchangeTableViewCell.m */,
-				38EE61D31AD7044200D65B32 /* FISCardCollectionViewCell.h */,
-				38EE61D41AD7044200D65B32 /* FISCardCollectionViewCell.m */,
 				88977CC91ADD85DC0029A337 /* WebViewTableViewCell.h */,
 				88977CCA1ADD85DC0029A337 /* WebViewTableViewCell.m */,
 			);

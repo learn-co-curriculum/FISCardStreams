@@ -14,10 +14,13 @@
 
 #import "StackSexchangeLoginWebViewController.h"
 
-@interface AddingCredentialsViewController ()
+@interface AddingCredentialsViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *checkerImage;
 @property (weak, nonatomic) IBOutlet UIImageView *checkerImageTwo;
+@property (weak, nonatomic) IBOutlet UIButton *homeButton;
+@property (weak, nonatomic) IBOutlet UIImageView *settings;
+@property (nonatomic) NSString *mediumUsername;
 
 - (IBAction)githubLoginButtonTapped:(id)sender;
 
@@ -31,11 +34,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view insertSubview:self.homeButton aboveSubview:self.settings];
     // Do any additional setup after loading the view.
 }
 
 
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
     AFOAuthCredential *cred = [AFOAuthCredential retrieveCredentialWithIdentifier:@"githubToken"];
     if (cred) {
@@ -52,7 +56,21 @@
 }
 
 
+#pragma mark - UITextFieldDelegate
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+    self.mediumUsername = textField.text;
+    
+}
+
+
 #pragma mark - UIButton Actions
+
+- (IBAction)home:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (IBAction)githubLoginButtonTapped:(id)sender {
     
