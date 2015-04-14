@@ -34,6 +34,7 @@
 		6A9C3B531ACEDBBA00CD56E6 /* FISCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C3B511ACEDBBA00CD56E6 /* FISCardTableViewCell.m */; };
 		747F792B1ACEEC5600825492 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 747F792A1ACEEC5600825492 /* XMLReader.m */; };
 		887305691AD701B7000E85D1 /* StackSexchangeLoginWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887305681AD701B7000E85D1 /* StackSexchangeLoginWebViewController.m */; };
+		88977CCB1ADD85DC0029A337 /* WebViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88977CCA1ADD85DC0029A337 /* WebViewTableViewCell.m */; };
 		889998181ACDA94E00A2050B /* FISCardstreamLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889998171ACDA94E00A2050B /* FISCardstreamLogInViewController.m */; };
 		8899981B1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8899981A1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m */; };
 		88BE23C31AD5825B006FA622 /* AddingCredentialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE23C21AD5825B006FA622 /* AddingCredentialsViewController.m */; };
@@ -102,6 +103,8 @@
 		747F792C1ACEEC7D00825492 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		887305671AD701B7000E85D1 /* StackSexchangeLoginWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackSexchangeLoginWebViewController.h; sourceTree = "<group>"; };
 		887305681AD701B7000E85D1 /* StackSexchangeLoginWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackSexchangeLoginWebViewController.m; sourceTree = "<group>"; };
+		88977CC91ADD85DC0029A337 /* WebViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewTableViewCell.h; sourceTree = "<group>"; };
+		88977CCA1ADD85DC0029A337 /* WebViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewTableViewCell.m; sourceTree = "<group>"; };
 		889998161ACDA94E00A2050B /* FISCardstreamLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISCardstreamLogInViewController.h; sourceTree = "<group>"; };
 		889998171ACDA94E00A2050B /* FISCardstreamLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCardstreamLogInViewController.m; sourceTree = "<group>"; };
 		889998191ACDC30B00A2050B /* FISCardstreamSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISCardstreamSignUpViewController.h; sourceTree = "<group>"; };
@@ -257,6 +260,8 @@
 				6A9C3B511ACEDBBA00CD56E6 /* FISCardTableViewCell.m */,
 				38EE61D31AD7044200D65B32 /* FISCardCollectionViewCell.h */,
 				38EE61D41AD7044200D65B32 /* FISCardCollectionViewCell.m */,
+				88977CC91ADD85DC0029A337 /* WebViewTableViewCell.h */,
+				88977CCA1ADD85DC0029A337 /* WebViewTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -459,6 +464,7 @@
 				38737F731ADB478E00FE27FB /* FISStreamViewController.m in Sources */,
 				6A7C1F2F1ACADEB900DA0161 /* FISRSSFeedAPIClient.m in Sources */,
 				6A7C1F3C1ACAE6F100DA0161 /* FISCardsTableViewController.m in Sources */,
+				88977CCB1ADD85DC0029A337 /* WebViewTableViewCell.m in Sources */,
 				88F79DC51AD6DA770089B5FE /* FISStackExchangeAPI.m in Sources */,
 				747F792B1ACEEC5600825492 /* XMLReader.m in Sources */,
 				38EE61D51AD7044200D65B32 /* FISCardCollectionViewCell.m in Sources */,
