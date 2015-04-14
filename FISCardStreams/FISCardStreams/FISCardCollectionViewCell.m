@@ -18,19 +18,4 @@
 @implementation FISCardCollectionViewCell
 
 
--(void)awakeFromNib{
-    [self setupBackgroundColors];
-    
-}
-
--(void)setupBackgroundColors{
-    
-    UIColor *themeBlue = [UIColor colorFromHex:@"0098FF"];
-    
-//    self.bottomContainer.backgroundColor = themeBlue;
-    
-    
-
-    
-}
 @end
