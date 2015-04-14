@@ -35,6 +35,7 @@
 		747F792B1ACEEC5600825492 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 747F792A1ACEEC5600825492 /* XMLReader.m */; };
 		887305691AD701B7000E85D1 /* StackSexchangeLoginWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887305681AD701B7000E85D1 /* StackSexchangeLoginWebViewController.m */; };
 		88977CCB1ADD85DC0029A337 /* WebViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88977CCA1ADD85DC0029A337 /* WebViewTableViewCell.m */; };
+		88977CCE1ADD90590029A337 /* StackExchangeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88977CCD1ADD90590029A337 /* StackExchangeTableViewCell.m */; };
 		889998181ACDA94E00A2050B /* FISCardstreamLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889998171ACDA94E00A2050B /* FISCardstreamLogInViewController.m */; };
 		8899981B1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8899981A1ACDC30B00A2050B /* FISCardstreamSignUpViewController.m */; };
 		88BE23C31AD5825B006FA622 /* AddingCredentialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE23C21AD5825B006FA622 /* AddingCredentialsViewController.m */; };
@@ -105,6 +106,8 @@
 		887305681AD701B7000E85D1 /* StackSexchangeLoginWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackSexchangeLoginWebViewController.m; sourceTree = "<group>"; };
 		88977CC91ADD85DC0029A337 /* WebViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewTableViewCell.h; sourceTree = "<group>"; };
 		88977CCA1ADD85DC0029A337 /* WebViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewTableViewCell.m; sourceTree = "<group>"; };
+		88977CCC1ADD90590029A337 /* StackExchangeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackExchangeTableViewCell.h; sourceTree = "<group>"; };
+		88977CCD1ADD90590029A337 /* StackExchangeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackExchangeTableViewCell.m; sourceTree = "<group>"; };
 		889998161ACDA94E00A2050B /* FISCardstreamLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISCardstreamLogInViewController.h; sourceTree = "<group>"; };
 		889998171ACDA94E00A2050B /* FISCardstreamLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCardstreamLogInViewController.m; sourceTree = "<group>"; };
 		889998191ACDC30B00A2050B /* FISCardstreamSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISCardstreamSignUpViewController.h; sourceTree = "<group>"; };
@@ -258,6 +261,8 @@
 				6A7C1F081ACAD82800DA0161 /* LaunchScreen.xib */,
 				6A9C3B501ACEDBBA00CD56E6 /* FISCardTableViewCell.h */,
 				6A9C3B511ACEDBBA00CD56E6 /* FISCardTableViewCell.m */,
+				88977CCC1ADD90590029A337 /* StackExchangeTableViewCell.h */,
+				88977CCD1ADD90590029A337 /* StackExchangeTableViewCell.m */,
 				38EE61D31AD7044200D65B32 /* FISCardCollectionViewCell.h */,
 				38EE61D41AD7044200D65B32 /* FISCardCollectionViewCell.m */,
 				88977CC91ADD85DC0029A337 /* WebViewTableViewCell.h */,
@@ -443,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88977CCE1ADD90590029A337 /* StackExchangeTableViewCell.m in Sources */,
 				6A7C1F361ACAE01900DA0161 /* FISStream.m in Sources */,
 				889998181ACDA94E00A2050B /* FISCardstreamLogInViewController.m in Sources */,
 				6A7C1F291ACADE7D00DA0161 /* FISCardStreamsAPIClient.m in Sources */,

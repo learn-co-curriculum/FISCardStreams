@@ -95,15 +95,45 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wTA-nA-GoR" id="Gyg-0H-yEi">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mf6-dX-YFJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="176"/>
+                                        <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mf6-dX-YFJ">
+                                            <rect key="frame" x="33" y="18" width="534" height="140"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </webView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="mf6-dX-YFJ" firstAttribute="bottom" secondItem="Gyg-0H-yEi" secondAttribute="bottomMargin" constant="-10" id="6sK-lm-iVM"/>
+                                        <constraint firstItem="mf6-dX-YFJ" firstAttribute="trailing" secondItem="Gyg-0H-yEi" secondAttribute="trailingMargin" constant="-25" id="YZe-LD-B75"/>
+                                        <constraint firstItem="mf6-dX-YFJ" firstAttribute="top" secondItem="Gyg-0H-yEi" secondAttribute="topMargin" constant="10" id="swq-bG-pYC"/>
+                                        <constraint firstItem="mf6-dX-YFJ" firstAttribute="leading" secondItem="Gyg-0H-yEi" secondAttribute="leadingMargin" constant="25" id="xtB-MF-nAA"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="blogWebView" destination="mf6-dX-YFJ" id="JwC-Vv-15R"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stackCardCell" rowHeight="176" id="QuI-13-OFE" customClass="StackExchangeTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QuI-13-OFE" id="ehS-a2-jjo">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et " translatesAutoresizingMaskIntoConstraints="NO" id="cdP-lb-75c">
+                                            <rect key="frame" x="33" y="18" width="534" height="140"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="cdP-lb-75c" firstAttribute="trailing" secondItem="ehS-a2-jjo" secondAttribute="trailingMargin" constant="-25" id="QG3-3U-cwp"/>
+                                        <constraint firstItem="cdP-lb-75c" firstAttribute="leading" secondItem="ehS-a2-jjo" secondAttribute="leadingMargin" constant="25" id="Wd7-kb-jPa"/>
+                                        <constraint firstItem="cdP-lb-75c" firstAttribute="bottom" secondItem="ehS-a2-jjo" secondAttribute="bottomMargin" constant="-10" id="mWD-LD-8JU"/>
+                                        <constraint firstItem="cdP-lb-75c" firstAttribute="top" secondItem="ehS-a2-jjo" secondAttribute="topMargin" constant="10" id="zuD-Sg-jfJ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textView" destination="cdP-lb-75c" id="wC8-iu-kfA"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

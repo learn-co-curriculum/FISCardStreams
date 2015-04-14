@@ -19,6 +19,7 @@
 // Custom Cells
 #import "FISCardTableViewCell.h"
 #import "WebViewTableViewCell.h"
+#import "StackExchangeTableViewCell.h"
 
 // Models
 #import "FISStreamsDataManager.h"
@@ -78,15 +79,30 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    FISCard *currentCard = self.stream.cards[indexPath.row];
+
+    //FIXME github Constants
+
+    if ([currentCard.source isEqualToString:@"blog"]) {
+        WebViewTableViewCell *webCell = (WebViewTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"weCardCell" forIndexPath:indexPath];
+        [webCell.blogWebView loadHTMLString:currentCard.cardDescription baseURL:nil];
+            return webCell;
+    }
+    if([currentCard.source isEqualToString:@"stack_exchange"])
+    {
+        StackExchangeTableViewCell *stackCell = (StackExchangeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"stackCardCell" forIndexPath:indexPath];
+        stackCell.textView.text = currentCard.cardDescription;
+        return stackCell; 
+    }
+    else {
     
     FISCardTableViewCell *cardCell = (FISCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cardCell" forIndexPath:indexPath];
-    
-    WebViewTableViewCell *webCell = (WebViewTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"webCardCell" forIndexPath:indexPath];
-    
-    FISCard *currentCard = self.stream.cards[indexPath.row];
     cardCell.card = currentCard;
     
     return cardCell;
+    
+    }
+
 }
 
 
