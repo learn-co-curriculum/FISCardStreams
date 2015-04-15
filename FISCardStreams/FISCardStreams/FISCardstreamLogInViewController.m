@@ -35,6 +35,7 @@
     self.dataManager = [FISStreamsDataManager sharedDataManager];
 
     self.usernameTextField.delegate = self;
+    self.backgroundImage.backgroundColor = [UIColor whiteColor];
 
 }
 
