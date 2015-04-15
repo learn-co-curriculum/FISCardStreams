@@ -30,6 +30,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *blogTextField;
 
+@property (weak, nonatomic) FISStreamsDataManager *streamsDataManager;
 @property (nonatomic) NSString *mediumUsername;
 
 - (IBAction)githubLoginButtonTapped:(id)sender;
@@ -46,6 +47,12 @@
     [super viewDidLoad];
     [self.view insertSubview:self.homeButton aboveSubview:self.settings];
     // Do any additional setup after loading the view.
+    self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *mediumUsername = [defaults valueForKey:@"medium_username"];
+    if (mediumUsername) {
+        self.blogTextField.text = mediumUsername;
+    }
 }
 
 
@@ -79,19 +86,15 @@
 #pragma mark - UIButton Actions
 
 - (IBAction)home:(id)sender {
-    MONActivityIndicatorView *indicator = [[MONActivityIndicatorView alloc]init];
-    [self.view addSubview:indicator];
-    
     FISStreamsDataManager *streamsDataManager = [FISStreamsDataManager sharedDataManager];
     
     if (![self.blogTextField.text isEqualToString:@""]) {
         streamsDataManager.blogURL = [NSString stringWithFormat:@"https://medium.com/%@", self.blogTextField.text];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue:self.blogTextField.text forKey:@"medium_username"];
     }
     
-    [FISGithubAPIClient getUsernameWithCompletionBlock:^(NSString *username) {
-        streamsDataManager.githubUsername = username;
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)githubLoginButtonTapped:(id)sender {

@@ -32,10 +32,35 @@
     dispatch_once(&onceToken, ^{
         _sharedDataManager = [[FISStreamsDataManager alloc] init];
         _sharedDataManager.streams = [[NSMutableArray alloc]init];
-//        _sharedDataManager.blogURL = @"https://medium.com/@MarkEdwardMurray";
-//        _sharedDataManager.githubUsername = @"markedwardmurray";
+        _sharedDataManager.blogURL = [self getMediumURL];
+        _sharedDataManager.githubUsername = [self getGithubUsername];
     });
     return _sharedDataManager;
+}
+
++ (NSString *)getGithubUsername {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *githubUsername = [defaults valueForKey:@"github_username"];
+    return githubUsername;
+}
+
++ (NSString *)getMediumURL {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *mediumUsername = [defaults valueForKey:@"medium_username"];
+    NSString *mediumURL = [NSString stringWithFormat:@"https://medium.com/%@", mediumUsername];
+    return mediumURL;
+}
+
+- (void)getUsernameFromGithubWithCompletionBlock:(void (^)(BOOL))completionBlock {
+    [FISGithubAPIClient getUsernameWithCompletionBlock:^(NSString *username) {
+        self.githubUsername = username;
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue:username forKey:@"github_username"];
+        [defaults synchronize];
+        
+        completionBlock(YES);
+    }];
 }
 
 #pragma mark - API requests
@@ -97,13 +122,16 @@
                                      WithCompletionBlock:^(FISCard *card) {
                                          [mNewBlogCards addObject:card];
                                          NSLog(@"card created %@", card.title);
+                                         if ([blogDictionary isEqual:[allBlogPosts lastObject]]) {
+                                             NSArray *newBlogCards = [NSArray arrayWithArray:mNewBlogCards];
+                                             completionBlock(newBlogCards);
+                                         }
                                      }];
     }
-    NSArray *newBlogCards = [NSArray arrayWithArray:mNewBlogCards];
-    completionBlock(newBlogCards);
 }
 
 - (void)updateGithubFeedWithCompletionBlock:(void (^)(NSArray *))completionBlock {
+    
     NSMutableArray *allGithubCardTimeStamps = [[NSMutableArray alloc]init];
     for (FISCard *currentCard in self.userStream.cards) {
             if ([currentCard.source isEqualToString:SOURCE_GITHUB]) {
@@ -186,7 +214,7 @@
                                        WithContentDictionary:cardBody
                                          WithCompletionBlock:^(FISCard *card) {
                                              [newStackExchangeCards addObject:card];
-                                             
+                                             //NSLog(@"Stack Exchange %@", card);
                                              if ([activityDictionary isEqual:[userNetworkActivities lastObject]]) {
                                                  completionBlock(newStackExchangeCards);
                                              }
