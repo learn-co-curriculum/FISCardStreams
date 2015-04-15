@@ -60,6 +60,9 @@
     [self.indicatorView startAnimating];
     [self checkForUsernameUniquenessAndSignUserUp];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:@"Yes" forKey:@"user_logged_in"];
+    
 }
 
 

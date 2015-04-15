@@ -15,6 +15,8 @@
 
 // View controllers
 #import "StackSexchangeLoginWebViewController.h"
+#import "FISCardstreamLogInViewController.h"
+#import "FISCardTableViewController.h"
 
 // Data
 #import "FISStreamsDataManager.h"
@@ -25,8 +27,10 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *checkerImage;
 @property (weak, nonatomic) IBOutlet UIImageView *checkerImageTwo;
+@property (weak, nonatomic) IBOutlet UIImageView *mediumChecker;
+
 @property (weak, nonatomic) IBOutlet UIButton *homeButton;
-@property (weak, nonatomic) IBOutlet UIImageView *settings;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 
 @property (weak, nonatomic) IBOutlet UITextField *blogTextField;
 
@@ -46,20 +50,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view insertSubview:self.homeButton aboveSubview:self.settings];
     // Do any additional setup after loading the view.
-
+    
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *mediumUsername = [defaults valueForKey:@"medium_username"];
-    if (mediumUsername) {
-        self.blogTextField.text = mediumUsername;
-    }
-
+    
+    self.logoutButton.layer.borderColor = [UIColor blueColor].CGColor;
+    self.logoutButton.layer.borderWidth = 2.0;
+    
     [self.blogTextField setDelegate:self];
     self.originalCenter = self.view.center;
     
-
+    if ([self.presentingViewController isKindOfClass:[FISCardstreamLogInViewController class]]) {
+        
+        UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *initialVC = [myStoryboard instantiateInitialViewController];
+        
+        //[self presentViewController:initialVC animated:YES completion:nil];
+        
+        UIApplication *application = [UIApplication sharedApplication];
+        [application.keyWindow setRootViewController:initialVC];
+    }
 }
 
 
@@ -72,11 +82,19 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *accessToken = [defaults valueForKey:@"access_token"];
+    NSString *mediumUsername = [defaults valueForKey:@"medium_username"];
+    
     
     if (accessToken) {
         self.checkerImageTwo.hidden = NO;
     }
-
+    
+    
+    if (mediumUsername) {
+        self.blogTextField.text = mediumUsername;
+        self.mediumChecker.hidden = NO;
+    }
+    
 }
 
 
@@ -87,10 +105,13 @@
     return YES;
 }
 
+
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     self.view.center = CGPointMake(self.originalCenter.x, self.originalCenter.y-100);
 }
+
+
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
     self.view.center = self.originalCenter;
@@ -112,7 +133,18 @@
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+//    if ([self.presentingViewController isKindOfClass:[FISCardstreamLogInViewController class]]) {
+//        UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        UIViewController *initialVC = [myStoryboard instantiateInitialViewController];
+//        
+//        [self presentViewController:initialVC animated:YES completion:nil];
+//        
+//        UIApplication *application = [UIApplication sharedApplication];
+//        [application.keyWindow setRootViewController:initialVC];
+//    }
 }
+
 
 - (IBAction)githubLoginButtonTapped:(id)sender {
     
@@ -129,6 +161,47 @@
     [self presentViewController:stackVC animated:YES completion:nil];
 }
 
+- (IBAction)logoutButtonTapped:(id)sender {
+    
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:@"Hey Developer!"
+                                          message:@"Are You sure you want to Log Out?"
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction
+                                   actionWithTitle:NSLocalizedString(@"NO", @"No action")
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"No action");
+                                       
+                                   }];
+    
+    UIAlertAction *okAction = [UIAlertAction
+                               actionWithTitle:NSLocalizedString(@"YES", @"YES action")
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action)
+                               {
+                                   NSLog(@"YES action");
+                                   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                   [defaults setValue:@"No" forKey:@"user_logged_in"];
+                                   [defaults removeObjectForKey:@"medium_username"];
+                                   [defaults removeObjectForKey:@"access_token"];
+                                   
+                                   [AFOAuthCredential deleteCredentialWithIdentifier:@"githubToken"];
+                                   
+                                   FISCardstreamLogInViewController *loginVC = [self.storyboard instantiateInitialViewController];
+                                   
+                                   [self presentViewController:loginVC animated:YES completion:nil];
+                                   
+                               }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:okAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+}
 
 
 

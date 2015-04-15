@@ -32,14 +32,23 @@
     
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *loggedIn = [defaults valueForKey:@"user_logged_in"];
     
-    //if (self.streamsDataManager.userStream) {
-    UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"LoginFlow" bundle:nil];
-    FISCardstreamLogInViewController *loginViewController = [myStoryboard instantiateInitialViewController];
-    self.window.rootViewController = loginViewController;
-    // }
-  
+    if ([loggedIn isEqualToString:@"Yes"]) {
         
+        UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *initialVC = [myStoryboard instantiateInitialViewController];
+        self.window.rootViewController = initialVC;
+        
+        
+    }
+    else{
+        UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"LoginFlow" bundle:nil];
+        FISCardstreamLogInViewController *loginViewController = [myStoryboard instantiateInitialViewController];
+        self.window.rootViewController = loginViewController;
+    }
+    
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -71,32 +80,33 @@
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-        
-        NSDictionary *urlParams = [url uq_queryDictionary];
-        
-        NSLog(@"code: %@",urlParams[@"code"]);
-        
-        NSURL *baseURL = [NSURL URLWithString:@"https://github.com/login/"];
-        
-        AFOAuth2Manager *manager = [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
-                                                                   clientID:GITHUB_CLIENT_ID
-                                                                     secret:GITHUB_CLIENT_SECRET];
-        
-        manager.useHTTPBasicAuthentication = NO;
-        [manager authenticateUsingOAuthWithURLString:@"oauth/access_token"
-                                                code:urlParams[@"code"]
-                                         redirectURI:@"FISCardStreams://callback"
-                                             success:^(AFOAuthCredential *credential)
-         {
-             
-             [AFOAuthCredential storeCredential:credential
-                                 withIdentifier:@"githubToken"];
-             NSLog(@"store the auth data. Token: %@", credential.accessToken);
-             
-         } failure:^(NSError *error) {
-         }];
+    
+    NSDictionary *urlParams = [url uq_queryDictionary];
+    
+    NSLog(@"code: %@",urlParams[@"code"]);
+    
+    NSURL *baseURL = [NSURL URLWithString:@"https://github.com/login/"];
+    
+    AFOAuth2Manager *manager = [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
+                                                               clientID:GITHUB_CLIENT_ID
+                                                                 secret:GITHUB_CLIENT_SECRET];
+    
+    manager.useHTTPBasicAuthentication = NO;
+    [manager authenticateUsingOAuthWithURLString:@"oauth/access_token"
+                                            code:urlParams[@"code"]
+                                     redirectURI:@"FISCardStreams://callback"
+                                         success:^(AFOAuthCredential *credential)
+     {
+         
+         [AFOAuthCredential storeCredential:credential
+                             withIdentifier:@"githubToken"];
+         NSLog(@"store the auth data. Token: %@", credential.accessToken);
+         
+     } failure:^(NSError *error) {
+     }];
     
     return YES;
 }
+
 
 @end

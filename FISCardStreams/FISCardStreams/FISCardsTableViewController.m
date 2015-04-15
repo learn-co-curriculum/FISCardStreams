@@ -64,6 +64,9 @@
     
     [self addingPullToRefreshFeatureToTheTableViews];
     
+    self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
+    self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
