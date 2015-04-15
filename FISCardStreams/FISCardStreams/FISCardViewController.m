@@ -74,7 +74,7 @@
     gradient.frame = self.backgroundGrandientView.bounds;
     gradient.startPoint = CGPointZero;
     gradient.endPoint = CGPointMake(0, 1);
-    gradient.colors = [NSArray arrayWithObjects: (id)[[UIColor uig_facebookMessengerStartColor] CGColor], (id)[[UIColor uig_facebookMessengerEndColor]CGColor], nil];
+    gradient.colors = [NSArray arrayWithObjects: (id)[[UIColor uig_facebookMessengerEndColor] CGColor], (id)[[UIColor uig_aquaMarineStartColor]CGColor], nil];
     
     [self.backgroundGrandientView.layer insertSublayer:gradient atIndex:0];
     
