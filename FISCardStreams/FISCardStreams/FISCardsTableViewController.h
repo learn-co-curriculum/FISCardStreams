@@ -13,6 +13,6 @@
 
 @interface FISCardsTableViewController : UITableViewController
 
-@property (strong, nonatomic) FISStream *stream;
+// @property (strong, nonatomic) FISStream *stream;
 
 @end

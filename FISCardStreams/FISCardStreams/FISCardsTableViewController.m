@@ -28,6 +28,8 @@
 
 #import <AFOAuth2Manager.h>
 
+#import "FISConstants.h"
+
 
 
 
@@ -37,7 +39,6 @@
 @property (strong, nonatomic) FISCollectionDataManager *collectionsDataManager;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
-- (IBAction)refreshTapped:(id)sender;
 - (IBAction)searchTapped:(id)sender;
 
 @property (nonatomic) BOOL githubUpdateIsComplete;
@@ -56,6 +57,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.title = self.streamsDataManager.userStream.streamName;
+    
+    self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
+    self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
+    
     [self addingPullToRefreshFeatureToTheTableViews];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -68,10 +74,6 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
-    self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
-    
-    
     [self getAllCardsForUser];
     [self getAllStreams];
 }
@@ -84,22 +86,20 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.stream.cards count];
+    return [self.streamsDataManager.userStream.cards count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FISCard *currentCard = self.stream.cards[indexPath.row];
+    FISCard *currentCard = self.streamsDataManager.userStream.cards[indexPath.row];
 
-    //FIXME github Constants
-
-    if ([currentCard.source isEqualToString:@"blog"]) {
+    if ([currentCard.source isEqualToString:SOURCE_BLOG]) {
         WebViewTableViewCell *webCell = (WebViewTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"weCardCell" forIndexPath:indexPath];
         webCell.card = currentCard;
 
             return webCell;
     }
-    if([currentCard.source isEqualToString:@"stack_exchange"])
+    if([currentCard.source isEqualToString:SOURCE_STACK_EXCHANGE])
     {
         StackExchangeTableViewCell *stackCell = (StackExchangeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"stackCardCell" forIndexPath:indexPath];
         stackCell.card = currentCard;
@@ -159,7 +159,7 @@
 
 #pragma mark - UIButton Actions
 
-- (IBAction)refreshTapped:(id)sender {
+- (void)updateCardsForAllAccounts {
     self.githubUpdateIsComplete = NO;
     self.rssUpdateIsComplete = NO;
     self.stackExchangeUpdateIsComplete = NO;
@@ -202,6 +202,9 @@
         self.rssUpdateIsComplete &&
         self.stackExchangeUpdateIsComplete) {
         [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+            NSSortDescriptor *postAtSorter = [NSSortDescriptor sortDescriptorWithKey:@"postAt" ascending:NO];
+            NSArray *allCardsSortedByPostAt = [self.streamsDataManager.userStream.cards sortedArrayUsingDescriptors:@[postAtSorter]];
+            self.streamsDataManager.userStream.cards = [[NSMutableArray alloc]initWithArray:allCardsSortedByPostAt];
             [self.tableView reloadData];
         }];
     }
@@ -226,13 +229,14 @@
 - (void)getAllCardsForUser {
     [self.streamsDataManager getAllCardsForUserStreamWithCompletion:^(BOOL success) {
         NSLog(@"cards fetched");
+        [self updateCardsForAllAccounts];
+
         if (self.refreshControl) {
             [self.refreshControl endRefreshing];
         }
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             NSLog(@"Reload tableview");
-            self.stream = self.streamsDataManager.userStream;
-            self.navigationItem.title = self.stream.streamName;
+            self.navigationItem.title = self.streamsDataManager.userStream.streamName;
             
             [self.tableView reloadData];
         }];
@@ -260,8 +264,8 @@
 - (void)refresh
 {
     // do your refresh here and reload the tablview
-    [self refreshTapped:nil];
-    [self viewWillAppear:YES];
+    [self getAllCardsForUser];
+//    [self viewWillAppear:YES];
 }
 
 #pragma mark - Navigation
