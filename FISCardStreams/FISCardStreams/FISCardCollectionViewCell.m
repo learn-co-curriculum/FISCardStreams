@@ -7,7 +7,15 @@
 //
 
 #import "FISCardCollectionViewCell.h"
+#import <UIColor+Hex.h>
+
+@interface FISCardCollectionViewCell ()
+
+@end
+
+
 
 @implementation FISCardCollectionViewCell
+
 
 @end
