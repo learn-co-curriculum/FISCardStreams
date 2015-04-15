@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *blogTextField;
 
 @property (nonatomic) NSString *mediumUsername;
+@property(nonatomic)CGPoint originalCenter;
 
 - (IBAction)githubLoginButtonTapped:(id)sender;
 
@@ -46,6 +47,9 @@
     [super viewDidLoad];
     [self.view insertSubview:self.homeButton aboveSubview:self.settings];
     // Do any additional setup after loading the view.
+    [self.blogTextField setDelegate:self];
+    self.originalCenter = self.view.center;
+    
 }
 
 
@@ -67,13 +71,23 @@
 
 
 #pragma mark - UITextFieldDelegate
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [self.blogTextField resignFirstResponder];
+    return YES;
+}
 
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.view.center = CGPointMake(self.originalCenter.x, self.originalCenter.y-100);
+}
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    
+    self.view.center = self.originalCenter;
     self.mediumUsername = textField.text;
     
 }
+
 
 
 #pragma mark - UIButton Actions
@@ -108,4 +122,8 @@
     
     [self presentViewController:stackVC animated:YES completion:nil];
 }
+
+
+
+
 @end
