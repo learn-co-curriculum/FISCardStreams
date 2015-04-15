@@ -34,7 +34,7 @@
     
     
     //if (self.streamsDataManager.userStream) {
-    UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"LoginFlow" bundle:nil];
     FISCardstreamLogInViewController *loginViewController = [myStoryboard instantiateInitialViewController];
     self.window.rootViewController = loginViewController;
     // }
