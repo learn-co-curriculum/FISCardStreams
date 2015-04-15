@@ -320,6 +320,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="blogTextField" destination="To1-VT-rmu" id="tAD-op-eGx"/>
                         <outlet property="checkerImage" destination="sUr-7z-EBh" id="IhL-Qr-vC8"/>
                         <outlet property="checkerImageTwo" destination="A64-HP-LVF" id="bZC-ry-Zum"/>
                         <outlet property="homeButton" destination="mmX-eF-Z3h" id="x0Q-mo-7gg"/>

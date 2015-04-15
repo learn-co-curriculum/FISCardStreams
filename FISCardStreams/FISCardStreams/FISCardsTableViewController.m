@@ -222,7 +222,7 @@
 - (void)addingPullToRefreshFeatureToTheTableViews {
     //Pull to refresh for tableviews
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(refreshTapped:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
 }
 

@@ -33,7 +33,7 @@
 }
 
 
-+(void)getUsernameWithCopletionBlock:(void (^)(NSString *))completionBlock
++(void)getUsernameWithCompletionBlock:(void (^)(NSString *))completionBlock
 {
     NSString *githubURL = [NSString stringWithFormat:@"https://api.github.com/user"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -47,7 +47,7 @@
     manager.requestSerializer = serializer;
     
     [manager GET:githubURL parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSString *username = responseObject["login"];
+        NSString *username = responseObject[@"login"];
         
         completionBlock(username);
         

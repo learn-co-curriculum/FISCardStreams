@@ -21,7 +21,7 @@
 /**
  *  ToGet the Username using access_token
  */
-+(void)getUsernameWithCopletionBlock:(void (^)(NSString *username))completionBlock;
++(void)getUsernameWithCompletionBlock:(void (^)(NSString *username))completionBlock;
 
 
 /**

@@ -7,12 +7,19 @@
 //
 
 #import "AddingCredentialsViewController.h"
+
+// Frameworks
+#import <AFOAuth2Manager.h>
+#import <AFNetworking.h>
+#import <MONActivityIndicatorView/MONActivityIndicatorView.h>
+
+// View controllers
+#import "StackSexchangeLoginWebViewController.h"
+
+// Data
+#import "FISStreamsDataManager.h"
 #import "FISGithubAPIClient.h"
 #import "FISStackExchangeAPI.h"
-#import <AFNetworking.h>
-#import <AFOAuth2Manager.h>
-
-#import "StackSexchangeLoginWebViewController.h"
 
 @interface AddingCredentialsViewController () <UITextFieldDelegate>
 
@@ -20,6 +27,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *checkerImageTwo;
 @property (weak, nonatomic) IBOutlet UIButton *homeButton;
 @property (weak, nonatomic) IBOutlet UIImageView *settings;
+
+@property (weak, nonatomic) IBOutlet UITextField *blogTextField;
+
 @property (nonatomic) NSString *mediumUsername;
 
 - (IBAction)githubLoginButtonTapped:(id)sender;
@@ -69,7 +79,19 @@
 #pragma mark - UIButton Actions
 
 - (IBAction)home:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    MONActivityIndicatorView *indicator = [[MONActivityIndicatorView alloc]init];
+    [self.view addSubview:indicator];
+    
+    FISStreamsDataManager *streamsDataManager = [FISStreamsDataManager sharedDataManager];
+    
+    if (![self.blogTextField.text isEqualToString:@""]) {
+        streamsDataManager.blogURL = [NSString stringWithFormat:@"https://medium.com/%@", self.blogTextField.text];
+    }
+    
+    [FISGithubAPIClient getUsernameWithCompletionBlock:^(NSString *username) {
+        streamsDataManager.githubUsername = username;
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 - (IBAction)githubLoginButtonTapped:(id)sender {

@@ -32,8 +32,8 @@
     dispatch_once(&onceToken, ^{
         _sharedDataManager = [[FISStreamsDataManager alloc] init];
         _sharedDataManager.streams = [[NSMutableArray alloc]init];
-        _sharedDataManager.blogURL = @"https://medium.com/@MarkEdwardMurray";
-        _sharedDataManager.githubUsername = @"markedwardmurray";
+//        _sharedDataManager.blogURL = @"https://medium.com/@MarkEdwardMurray";
+//        _sharedDataManager.githubUsername = @"markedwardmurray";
     });
     return _sharedDataManager;
 }
