@@ -56,8 +56,8 @@
         FISCard *githubCard = [self findMostRecentGithubCardInCardsArray:allCards];
         FISCard *blogCard = [self findMostRecentBlogCardInCardsArray:allCards];
         FISCard *stackExchangeCard = [self findMostRecentStackExchangeCardInCardsArray:allCards];
-        
-        completionBlock(@[githubCard, blogCard, stackExchangeCard]);
+        NSArray *arrayOFCards = @[githubCard, blogCard, stackExchangeCard];
+        completionBlock(arrayOFCards);
     }];
 }
 
