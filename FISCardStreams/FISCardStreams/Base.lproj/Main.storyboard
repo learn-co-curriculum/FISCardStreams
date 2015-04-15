@@ -458,7 +458,7 @@
                                                             <rect key="frame" x="0.0" y="167" width="401" height="166"/>
                                                             <color key="backgroundColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="0.25" colorSpace="calibratedRGB"/>
                                                             <prototypes>
-                                                                <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="crF-gB-put" detailTextLabel="4zW-KX-mFr" style="IBUITableViewCellStyleSubtitle" id="sRE-Kq-GVs">
+                                                                <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cardCell" textLabel="crF-gB-put" detailTextLabel="4zW-KX-mFr" style="IBUITableViewCellStyleSubtitle" id="sRE-Kq-GVs">
                                                                     <rect key="frame" x="0.0" y="0.0" width="401" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sRE-Kq-GVs" id="m5C-Zc-udK">
