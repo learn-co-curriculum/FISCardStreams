@@ -39,6 +39,8 @@
 
 + (instancetype)sharedDataManager;
 
+- (void)getUsernameFromGithubWithCompletionBlock:(void (^)(BOOL success))completionBlock;
+
 - (void)generateTestData;
 
 - (void)getStreamForStreamIDWithCompletion:(void (^)(BOOL success))completionBlock;

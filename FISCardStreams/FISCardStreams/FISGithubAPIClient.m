@@ -30,6 +30,7 @@
     NSURL *githubURL = [NSURL URLWithString:githubString];
     
     [[UIApplication sharedApplication] openURL:githubURL];
+    
 }
 
 
@@ -96,7 +97,7 @@
                                      @"commit_message":message,
                                      @"commited_date":createdAt};
             
-            NSLog(@"%@", commit);
+            //NSLog(@"%@", commit);
             [mCommits addObject:commit];
             }
         }

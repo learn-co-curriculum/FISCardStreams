@@ -39,9 +39,9 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *accessToken = [defaults valueForKey:@"access_token"];
     
-    //Test accessToken = @"9oeBQj2NjJcEMtS1UdmahQ))
+    
     if (!accessToken) {
-        accessToken = @"K8LRUshQvv7blHC7WHex(w))"; // Mark
+        NSLog(@"Stack Exchange access_token not retrieved");
     }
         
     NSDictionary *urlParams = @{@"access_token":accessToken,
@@ -50,7 +50,7 @@
 
     [manager GET:stackExchangeURL parameters:urlParams success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        NSLog(@"ResponseObject: %@", responseObject);
+        //NSLog(@"ResponseObject: %@", responseObject);
         NSArray *responseItems = responseObject[@"items"];
         completionBlock(responseItems);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

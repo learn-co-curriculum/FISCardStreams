@@ -40,6 +40,10 @@
 - (IBAction)refreshTapped:(id)sender;
 - (IBAction)searchTapped:(id)sender;
 
+@property (nonatomic) BOOL githubUpdateIsComplete;
+@property (nonatomic) BOOL rssUpdateIsComplete;
+@property (nonatomic) BOOL stackExchangeUpdateIsComplete;
+
 @end
 
 
@@ -51,7 +55,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self addingPullToRefreshFeatureToTheTableViews];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -154,26 +160,51 @@
 #pragma mark - UIButton Actions
 
 - (IBAction)refreshTapped:(id)sender {
+    self.githubUpdateIsComplete = NO;
+    self.rssUpdateIsComplete = NO;
+    self.stackExchangeUpdateIsComplete = NO;
+    
     [self.streamsDataManager updateRSSFeedWithCompletionBlock:^(NSArray *newBlogCards) {
         [self.streamsDataManager.userStream.cards addObjectsFromArray:newBlogCards];
-        [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-            [self.tableView reloadData];
-        }];
+        self.rssUpdateIsComplete = YES;
+        NSLog(@"RSS Updated");
+        [self reloadTableViewIfAllUpdatesAreComplete];
     }];
     
-    [self.streamsDataManager updateGithubFeedWithCompletionBlock:^(NSArray *newGithubCards) {
-        [self.streamsDataManager.userStream.cards addObjectsFromArray:newGithubCards];
-        [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-            [self.tableView reloadData];
+    if (self.streamsDataManager.githubUsername) {
+        [self updateGithubCards];
+    } else {
+        NSLog(@"Fetching github username");
+        [self.streamsDataManager getUsernameFromGithubWithCompletionBlock:^(BOOL success) {
+            [self updateGithubCards];
         }];
-    }];
+    }
     
     [self.streamsDataManager updateStackExchangeFeedWithCompletionBlock:^(NSArray *newStackExchangeCards) {
         [self.streamsDataManager.userStream.cards addObjectsFromArray:newStackExchangeCards];
+        self.stackExchangeUpdateIsComplete = YES;
+        NSLog(@"Stack Exchange updated");
+        [self reloadTableViewIfAllUpdatesAreComplete];
+    }];
+}
+
+- (void)updateGithubCards {
+    [self.streamsDataManager updateGithubFeedWithCompletionBlock:^(NSArray *newGithubCards) {
+        [self.streamsDataManager.userStream.cards addObjectsFromArray:newGithubCards];
+        self.githubUpdateIsComplete = YES;
+        NSLog(@"Github updated");
+        [self reloadTableViewIfAllUpdatesAreComplete];
+    }];
+}
+
+- (void)reloadTableViewIfAllUpdatesAreComplete {
+    if (self.githubUpdateIsComplete &&
+        self.rssUpdateIsComplete &&
+        self.stackExchangeUpdateIsComplete) {
         [[NSOperationQueue mainQueue]addOperationWithBlock:^{
             [self.tableView reloadData];
         }];
-    }];
+    }
 }
 
 - (IBAction)settingsButtonTapped:(id)sender {
@@ -222,20 +253,21 @@
 - (void)addingPullToRefreshFeatureToTheTableViews {
     //Pull to refresh for tableviews
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(refreshTapped:) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
 }
 
 - (void)refresh
 {
     // do your refresh here and reload the tablview
+    [self refreshTapped:nil];
     [self viewWillAppear:YES];
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    FISCardViewController *cardVC = segue.destinationViewController;
+//    FISCardViewController *cardVC = segue.destinationViewController;
 }
 
 
