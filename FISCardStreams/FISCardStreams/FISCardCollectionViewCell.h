@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FISCardCollectionViewCell : UICollectionViewCell
+@interface FISCardCollectionViewCell : UICollectionViewCell <UITableViewDataSource, UITableViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextField *headerField;
 @property (weak, nonatomic) IBOutlet UITextField *contentField;
 @property (weak, nonatomic) IBOutlet UIView *bottomContainer;
+@property (weak, nonatomic) IBOutlet UITableView *cardTableView;
 
 
 @end

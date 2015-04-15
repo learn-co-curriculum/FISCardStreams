@@ -517,7 +517,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.80000000000000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="wx3-uR-oZR" firstAttribute="top" secondItem="QOt-wU-UI1" secondAttribute="topMargin" id="0BL-dO-obQ"/>
                                             <constraint firstItem="wx3-uR-oZR" firstAttribute="centerX" secondItem="QOt-wU-UI1" secondAttribute="centerX" id="3El-P0-AbY"/>
@@ -532,6 +532,7 @@
                                         <size key="customSize" width="417" height="429"/>
                                         <connections>
                                             <outlet property="bottomContainer" destination="UVo-ny-QBa" id="7Gc-qA-vid"/>
+                                            <outlet property="cardTableView" destination="C9I-Vf-0Qe" id="a9f-fp-HyF"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
