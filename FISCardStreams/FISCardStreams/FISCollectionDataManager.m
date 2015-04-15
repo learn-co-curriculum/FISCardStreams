@@ -69,10 +69,9 @@
     FISCard *githubCard = [githubArray firstObject];
     
     if (!githubCard) {
-        FISCard *githubCard = [[FISCard alloc] init];
+        githubCard = [[FISCard alloc] init];
         githubCard.title = @"Github";
         githubCard.cardDescription = @"Test github commit.";
-        githubCard.createdAt = [NSDate date];
     }
     return githubCard;
 }
@@ -83,10 +82,9 @@
     FISCard *blogCard = [blogArray firstObject];
     
     if (!blogCard) {
-        FISCard *blogCard = [[FISCard alloc]init];
+        blogCard = [[FISCard alloc]init];
         blogCard.title = @"Blog Post";
         blogCard.cardDescription = @"Test blog post.";
-        blogCard.createdAt = [NSDate date];
     }
     return blogCard;
 }
@@ -97,10 +95,9 @@
     FISCard *stackExchangeCard = [stackExchangeArray firstObject];
     
     if (!stackExchangeCard) {
-        FISCard *stackExchangeCard = [[FISCard alloc]init];
+        stackExchangeCard = [[FISCard alloc]init];
         stackExchangeCard.title = @"Stack Exchange";
         stackExchangeCard.cardDescription = @"Test stack exchange card.";
-        stackExchangeCard.createdAt = [NSDate date];
     }
     return stackExchangeCard;
 }
