@@ -8,17 +8,24 @@
 
 #import "FISCardViewController.h"
 
+//collectionview imports
 #import "FISCardsTableViewController.h"
 #import "FISCardCollectionViewCell.h"
 #import "FISCardTableViewCell.h"
 
+//tableview imports
+#import "FISTableViewCell.h"
+
+//data imports
 #import "FISStream.h"
 #import "FISCard.h"
 
+//UI pods
 #import <RGCardViewLayout.h>
 #import <UIColor+Hex.h>
 #import <UIColor+uiGradients.h>
 
+//data imports
 #import "FISStreamsDataManager.h"
 #import "FISCollectionDataManager.h"
 

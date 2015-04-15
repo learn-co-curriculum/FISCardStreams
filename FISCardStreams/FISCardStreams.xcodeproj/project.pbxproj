@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		38737F731ADB478E00FE27FB /* FISStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38737F721ADB478E00FE27FB /* FISStreamViewController.m */; };
-		38CCA3121ADDD8B40037EA6E /* FISCardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CCA3111ADDD8B40037EA6E /* FISCardTableViewController.m */; };
+		38737F7A1ADEC51300FE27FB /* FISTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38737F791ADEC51300FE27FB /* FISTableViewCell.m */; };
+		38737F7C1ADEC70500FE27FB /* FISCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38737F7B1ADEC70500FE27FB /* FISCell.xib */; };
+		38737F7E1ADEE08700FE27FB /* FISTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38737F7D1ADEE08700FE27FB /* FISTableView.xib */; };
 		38EE61D21AD6D62C00D65B32 /* FISCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE61D11AD6D62C00D65B32 /* FISCardViewController.m */; };
 		38EE61D51AD7044200D65B32 /* FISCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE61D41AD7044200D65B32 /* FISCardCollectionViewCell.m */; };
 		6A0D7EAB3C70015C7445DE06 /* libPods-FISCardStreams.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5664142CC4A883379FB29245 /* libPods-FISCardStreams.a */; };
@@ -56,8 +58,10 @@
 /* Begin PBXFileReference section */
 		38737F711ADB478E00FE27FB /* FISStreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISStreamViewController.h; sourceTree = "<group>"; };
 		38737F721ADB478E00FE27FB /* FISStreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISStreamViewController.m; sourceTree = "<group>"; };
-		38CCA3101ADDD8B40037EA6E /* FISCardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISCardTableViewController.h; sourceTree = "<group>"; };
-		38CCA3111ADDD8B40037EA6E /* FISCardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCardTableViewController.m; sourceTree = "<group>"; };
+		38737F781ADEC51300FE27FB /* FISTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISTableViewCell.h; sourceTree = "<group>"; };
+		38737F791ADEC51300FE27FB /* FISTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISTableViewCell.m; sourceTree = "<group>"; };
+		38737F7B1ADEC70500FE27FB /* FISCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FISCell.xib; sourceTree = "<group>"; };
+		38737F7D1ADEE08700FE27FB /* FISTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FISTableView.xib; sourceTree = "<group>"; };
 		38EE61D01AD6D62C00D65B32 /* FISCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISCardViewController.h; sourceTree = "<group>"; };
 		38EE61D11AD6D62C00D65B32 /* FISCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCardViewController.m; sourceTree = "<group>"; };
 		38EE61D31AD7044200D65B32 /* FISCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISCardCollectionViewCell.h; sourceTree = "<group>"; };
@@ -261,6 +265,10 @@
 		888EBA071AD5C6C1005E92C3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				38737F7D1ADEE08700FE27FB /* FISTableView.xib */,
+				38737F7B1ADEC70500FE27FB /* FISCell.xib */,
+				38737F781ADEC51300FE27FB /* FISTableViewCell.h */,
+				38737F791ADEC51300FE27FB /* FISTableViewCell.m */,
 				6A7C1F081ACAD82800DA0161 /* LaunchScreen.xib */,
 				38EE61D31AD7044200D65B32 /* FISCardCollectionViewCell.h */,
 				38EE61D41AD7044200D65B32 /* FISCardCollectionViewCell.m */,
@@ -291,8 +299,6 @@
 				887305681AD701B7000E85D1 /* StackSexchangeLoginWebViewController.m */,
 				38EE61D01AD6D62C00D65B32 /* FISCardViewController.h */,
 				38EE61D11AD6D62C00D65B32 /* FISCardViewController.m */,
-				38CCA3101ADDD8B40037EA6E /* FISCardTableViewController.h */,
-				38CCA3111ADDD8B40037EA6E /* FISCardTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -401,7 +407,9 @@
 			files = (
 				6A7C1F201ACAD8DC00DA0161 /* LoginFlow.storyboard in Resources */,
 				6A7C1F051ACAD82800DA0161 /* Main.storyboard in Resources */,
+				38737F7E1ADEE08700FE27FB /* FISTableView.xib in Resources */,
 				6A7C1F0A1ACAD82800DA0161 /* LaunchScreen.xib in Resources */,
+				38737F7C1ADEC70500FE27FB /* FISCell.xib in Resources */,
 				6A7C1F071ACAD82800DA0161 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,9 +478,9 @@
 				6A7C1F461ACB1D3200DA0161 /* NSDate+DateFromJSONDate.m in Sources */,
 				6A7C1F3F1ACAFA4400DA0161 /* FISAttachment.m in Sources */,
 				6A7C1F2C1ACADE9700DA0161 /* FISGithubAPIClient.m in Sources */,
-				38CCA3121ADDD8B40037EA6E /* FISCardTableViewController.m in Sources */,
 				6A7C1F391ACAE02A00DA0161 /* FISCard.m in Sources */,
 				6A9C3B531ACEDBBA00CD56E6 /* FISCardTableViewCell.m in Sources */,
+				38737F7A1ADEC51300FE27FB /* FISTableViewCell.m in Sources */,
 				38737F731ADB478E00FE27FB /* FISStreamViewController.m in Sources */,
 				6A7C1F2F1ACADEB900DA0161 /* FISRSSFeedAPIClient.m in Sources */,
 				6A7C1F3C1ACAE6F100DA0161 /* FISCardsTableViewController.m in Sources */,

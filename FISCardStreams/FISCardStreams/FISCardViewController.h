@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FISTableViewCell.h"
 
 @class FISCard;
 @class FISStream;
@@ -14,5 +15,6 @@
 @interface FISCardViewController : UIViewController <UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) FISStream *stream;
+@property (strong, nonatomic) IBOutlet FISTableViewCell *customCell;
 
 @end
