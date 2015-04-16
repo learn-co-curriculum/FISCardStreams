@@ -79,6 +79,7 @@
 {
     AFOAuthCredential *cred = [AFOAuthCredential retrieveCredentialWithIdentifier:@"githubToken"];
     if (cred) {
+        NSLog(@"animating github checker");
         [self animateCheckMark:self.checkerImage];
     }
     
@@ -88,6 +89,7 @@
     
     
     if (accessToken) {
+        NSLog(@"animating stackoerflow checker");
         [self animateCheckMark:self.checkerImageTwo];
     }
     
