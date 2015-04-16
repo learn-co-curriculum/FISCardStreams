@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FISStream.h"
 
 @interface FISCardCollectionViewCell : UICollectionViewCell <UITableViewDataSource, UITableViewDelegate>
 
 
-@property (weak, nonatomic) IBOutlet UITextField *titleField;
-@property (weak, nonatomic) IBOutlet UITextField *headerField;
-@property (weak, nonatomic) IBOutlet UITextField *contentField;
+
 @property (weak, nonatomic) IBOutlet UIView *bottomContainer;
 @property (weak, nonatomic) IBOutlet UITableView *cardTableView;
 
+@property (strong, nonatomic) FISStream *stream;
 
 @end
 
