@@ -10,6 +10,5 @@
 
 @interface StackSexchangeLoginWebViewController : UIViewController
 
-@property (strong, nonatomic) NSString *fisDevUsername;
 
 @end
