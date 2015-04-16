@@ -15,6 +15,11 @@
 
 @property (weak, nonatomic) IBOutlet UIView *bottomContainer;
 @property (weak, nonatomic) IBOutlet UITableView *cardTableView;
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UITextView *gitHubField;
+@property (weak, nonatomic) IBOutlet UITextField *blogField;
+@property (weak, nonatomic) IBOutlet UITextView *stackOverflowField;
+
 
 @property (strong, nonatomic) FISStream *stream;
 
