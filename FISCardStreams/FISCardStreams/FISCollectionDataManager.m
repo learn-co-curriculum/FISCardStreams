@@ -38,12 +38,6 @@
         self.allStreams = [FISStream createArrayOfStreamsFromDictionaries:allStreams];
         NSLog(@"%@", self.allStreams);
         
-//        for (FISStream *currentStream in self.allStreams) {
-//            [self getShowcaseCardsForStream:currentStream completionBlock:^(NSArray *showcaseCards) {
-//                [currentStream.cards addObjectsFromArray:showcaseCards];
-//            }];
-//        }
-        
         completionBlock(YES);
     }];
 }
@@ -61,7 +55,7 @@
     }];
 }
 
-#pragma mark - Test Data
+#pragma mark - Predicate methods
 
 - (FISCard *)findMostRecentGithubCardInCardsArray:(NSArray *)allCards {
     NSPredicate *githubPredicate = [NSPredicate predicateWithFormat:@"source == %@", SOURCE_GITHUB];
