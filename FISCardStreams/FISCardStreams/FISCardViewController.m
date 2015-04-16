@@ -13,8 +13,6 @@
 #import "FISCardCollectionViewCell.h"
 #import "FISCardTableViewCell.h"
 
-//tableview imports
-#import "FISTableViewCell.h"
 
 //data imports
 #import "FISStream.h"
@@ -31,7 +29,7 @@
 
 
 
-@interface FISCardViewController () 
+@interface FISCardViewController ()
 
 @property (strong, nonatomic) IBOutlet UIView *backgroundGrandientView;
 @property (nonatomic) IBOutlet UICollectionView *collectionView;
@@ -54,9 +52,6 @@
     [self setUpCollectionView];
     [self setUpBackgroundColors];
     [self roundCornersOnCollectionViewCell];
-    
-    self.cardCell.layer.cornerRadius = 5;
-    self.cardCell.layer.masksToBounds = YES;
 
 
     self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
@@ -104,8 +99,7 @@
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
     return 3;
-//    NSLog(@"COUNT %lu", [self.collectionsDataManager.allStreams count]);
-//    return [self.collectionsDataManager.allStreams count];
+
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -117,45 +111,44 @@
     
     FISCardCollectionViewCell *cell = [collectionView    dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
     
-    FISStream *currentStream = self.collectionsDataManager.allStreams[0];
+    FISStream *currentStream = self.collectionsDataManager.allStreams[indexPath.section];
     
-//    FISCard *gitHubCard = currentStream.cards[indexPath.section];
-//    NSLog(@"%ld", indexPath.row);
-//    
-//    cell.titleField.text = gitHubCard.title;
-//    cell.contentField.text = gitHubCard.cardDescription;
-    
+    cell.stream = currentStream;
     
     return cell;
 }
 
-#pragma mark - TableView Delegate
-
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.stream.cards count];
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    FISCardTableViewCell *cardCell = (FISCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cardCell" forIndexPath:indexPath];
-    
-    FISCard *currentCard = self.stream.cards[indexPath.row];
-    cardCell.card = currentCard;
-    
-    return cardCell;
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 176;
-}
+//#pragma mark - TableView Delegate
+//
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    return 1;
+//}
+//
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    return [self.stream.cards count];
+//}
+//
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    NSLog(@"TABLEVIEW CODE RAN");
+//    
+//    FISCardTableViewCell *cardCell = (FISCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cardCell" forIndexPath:indexPath];
+//    
+//    
+//    FISCard *currentCard = self.stream.cards[indexPath.row];
+//    cardCell.card = currentCard;
+//    
+//    
+//    return cardCell;
+//}
+//
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return 176;
+//}
 
 
 

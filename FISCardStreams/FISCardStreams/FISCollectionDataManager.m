@@ -38,6 +38,12 @@
         self.allStreams = [FISStream createArrayOfStreamsFromDictionaries:allStreams];
         NSLog(@"%@", self.allStreams);
         
+        for (FISStream *currentStream in self.allStreams) {
+            [self getShowcaseCardsForStream:currentStream completionBlock:^(NSArray *showcaseCards) {
+                [currentStream.cards addObjectsFromArray:showcaseCards];
+            }];
+        }
+        
         completionBlock(YES);
     }];
 }
