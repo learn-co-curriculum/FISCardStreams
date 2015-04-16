@@ -14,7 +14,7 @@
 #import "FISStream.h"
 #import "FISCardstreamSignUpViewController.h"
 
-@interface FISCardstreamLogInViewController ()
+@interface FISCardstreamLogInViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -37,6 +37,13 @@
     self.usernameTextField.delegate = self;
     self.backgroundImage.backgroundColor = [UIColor whiteColor];
 
+}
+
+#pragma mark - textfield
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [self.usernameTextField resignFirstResponder];
+    return YES;
 }
 
 

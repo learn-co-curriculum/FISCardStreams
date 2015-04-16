@@ -79,7 +79,7 @@
 {
     AFOAuthCredential *cred = [AFOAuthCredential retrieveCredentialWithIdentifier:@"githubToken"];
     if (cred) {
-        self.checkerImage.hidden = NO;
+        [self animateCheckMark:self.checkerImage];
     }
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -88,13 +88,13 @@
     
     
     if (accessToken) {
-        self.checkerImageTwo.hidden = NO;
+        [self animateCheckMark:self.checkerImageTwo];
     }
     
     
     if (mediumUsername) {
         self.blogTextField.text = mediumUsername;
-        self.mediumChecker.hidden = NO;
+        [self animateCheckMark:self.mediumChecker];
     }
     
 }
@@ -110,7 +110,11 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    self.view.center = CGPointMake(self.originalCenter.x, self.originalCenter.y-100);
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.view.center = CGPointMake(self.originalCenter.x, self.originalCenter.y-100);
+    } completion:^(BOOL finished) {
+    }];
+    
 }
 
 
@@ -205,6 +209,16 @@
     
 }
 
-
+-(void)animateCheckMark:(UIImageView *)selectedImage
+{
+    selectedImage.hidden = NO;
+    selectedImage.alpha = 0;
+    
+    [UIView animateWithDuration:4.0 delay:0.25 options:UIViewAnimationOptionCurveLinear animations:^{
+        selectedImage.alpha = 1;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
 
 @end

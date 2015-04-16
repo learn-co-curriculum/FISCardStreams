@@ -14,7 +14,7 @@
 #import "FISCardStreamsAPIClient.h"
 #import "FISStream.h"
 
-@interface FISCardstreamSignUpViewController ()
+@interface FISCardstreamSignUpViewController () <UITextFieldDelegate>
 
 
 @property (nonatomic) FISStreamsDataManager *dataManager;
@@ -45,6 +45,13 @@
     
 }
 
+#pragma mark - textfield
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [self.usernameTextField resignFirstResponder];
+    return YES;
+}
 
 #pragma mark - UIButton Actions
 
