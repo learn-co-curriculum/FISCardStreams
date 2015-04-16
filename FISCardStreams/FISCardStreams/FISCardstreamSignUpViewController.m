@@ -43,6 +43,12 @@
     self. indicatorView = [[MONActivityIndicatorView alloc] init];
     [self.view addSubview:self.indicatorView];
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    
 }
 
 #pragma mark - textfield
@@ -75,18 +81,6 @@
 
 #pragma mark - View Helper Methods
 
--(void)takeMeToHomePage
-{
-    UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UINavigationController *navController = [myStoryboard instantiateInitialViewController];
-    UIViewController *homePage = [myStoryboard instantiateViewControllerWithIdentifier:@"homeVC"];
-    UIApplication *application = [UIApplication sharedApplication];
-    [application.keyWindow setRootViewController:navController];
-    
-    [self presentViewController:homePage animated:YES completion:nil];
-}
-
-
 -(void)takeMeToCredentialPage
 {
     UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"LoginFlow" bundle:nil];
@@ -97,6 +91,11 @@
     
     [self presentViewController:homePage animated:YES completion:nil];
 
+}
+
+
+-(void)dismissKeyboard {
+    [self.usernameTextField resignFirstResponder];
 }
 
 

@@ -72,6 +72,12 @@
         UIApplication *application = [UIApplication sharedApplication];
         [application.keyWindow setRootViewController:initialVC];
     }
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
 }
 
 
@@ -221,6 +227,11 @@
     } completion:^(BOOL finished) {
         
     }];
+}
+
+
+-(void)dismissKeyboard {
+    [self.blogTextField resignFirstResponder];
 }
 
 @end

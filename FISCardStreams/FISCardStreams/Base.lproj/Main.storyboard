@@ -230,7 +230,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="MY FEED" id="8nu-Uq-ceA">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="wum-XU-e7c">
+                        <barButtonItem key="leftBarButtonItem" image="settings" id="wum-XU-e7c">
                             <color key="tintColor" red="0.070588235289999995" green="0.58039215690000001" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="settingsButtonTapped:" destination="md1-rq-13t" id="vmQ-bh-pZP"/>
@@ -244,6 +244,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="barButtonItem" destination="wum-XU-e7c" id="dAs-wQ-Jn8"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T2q-2y-Xtd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -695,4 +698,7 @@
             <point key="canvasLocation" x="2132" y="2018"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="settings" width="512" height="512"/>
+    </resources>
 </document>
