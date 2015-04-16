@@ -70,6 +70,9 @@
     [pic setBackgroundColor:[UIColor clearColor]];
     pic.layer.cornerRadius = pic.frame.size.width / 2;
     pic.layer.masksToBounds = YES;
+    
+    
+    
 //    [self.barButtonItem.image
 
     // Uncomment the following line to preserve selection between presentations.
@@ -132,13 +135,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *webViewCell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    if ([webViewCell isKindOfClass:[webViewCell class]]) {
-        return 300;
-    }
-    
-    return 176;
+//    UITableViewCell *webViewCell = [tableView cellForRowAtIndexPath:indexPath];
+//    
+//    if ([webViewCell isKindOfClass:[webViewCell class]]) {
+//        return 300;
+//    }
+//    
+//    return 176;
 }
 
 

@@ -110,7 +110,7 @@
     
     
     if (mediumUsername) {
-        self.blogTextField.text = mediumUsername;
+        self.blogTextField.placeholder = mediumUsername;
         [self animateCheckMark:self.mediumChecker];
     }
     
