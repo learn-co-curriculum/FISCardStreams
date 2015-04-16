@@ -111,7 +111,7 @@
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        self.view.center = CGPointMake(self.originalCenter.x, self.originalCenter.y-100);
+        self.view.center = CGPointMake(self.originalCenter.x, self.originalCenter.y-70);
     } completion:^(BOOL finished) {
     }];
     
