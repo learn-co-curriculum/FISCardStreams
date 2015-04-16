@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9oK-W7-AbO">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -62,8 +63,8 @@
                                 <color key="shadowColor" red="0.81960791349999995" green="0.95294123890000004" blue="0.93333339689999995" alpha="1" colorSpace="deviceRGB"/>
                                 <size key="shadowOffset" width="0.0" height="2"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PQZ-Yh-dKh">
-                                <rect key="frame" x="175" y="199" width="250" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PQZ-Yh-dKh">
+                                <rect key="frame" x="175" y="189" width="250" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0iv-X9-nnR"/>
                                     <constraint firstAttribute="width" constant="250" id="Rze-3W-5bE"/>
@@ -72,15 +73,27 @@
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nBc-00-Yio">
-                                <rect key="frame" x="202" y="77" width="196" height="87"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="nBc-00-Yio">
+                                <rect key="frame" x="135" y="20" width="300" height="154"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.89999999999999991" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="MlA-5C-kan"/>
+                                    <constraint firstAttribute="width" secondItem="nBc-00-Yio" secondAttribute="height" multiplier="196:87" id="ODV-FN-ZX6"/>
+                                    <constraint firstAttribute="width" constant="300" id="poh-nn-CL3"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ODV-FN-ZX6"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="nBc-00-Yio" secondAttribute="centerX" id="Gmh-ih-4SP"/>
                             <constraint firstAttribute="centerY" secondItem="8St-12-Bug" secondAttribute="centerY" multiplier="0.7" id="Hva-zd-WfR"/>
                             <constraint firstAttribute="centerY" secondItem="59i-eA-Sbr" secondAttribute="centerY" id="J8U-CE-n2r"/>
+                            <constraint firstItem="PQZ-Yh-dKh" firstAttribute="top" secondItem="nBc-00-Yio" secondAttribute="bottom" constant="35" id="McI-5X-ZBw"/>
                             <constraint firstAttribute="centerX" secondItem="PQZ-Yh-dKh" secondAttribute="centerX" id="XBh-kZ-Pic"/>
                             <constraint firstAttribute="centerX" secondItem="59i-eA-Sbr" secondAttribute="centerX" id="fVK-3c-Jxx"/>
                             <constraint firstAttribute="centerX" secondItem="8St-12-Bug" secondAttribute="centerX" id="g3G-t2-WiY"/>
@@ -115,7 +128,7 @@
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MJA-3o-H6A">
                                         <rect key="frame" x="75" y="135" width="344" height="30"/>
-                                        <color key="textColor" red="0.039215686274509803" green="0.090196078431372548" blue="0.58039215686274515" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.27450980392156865" green="0.60392156862745094" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -197,7 +210,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLC-nu-ijO" userLabel="Github Activities button">
                                 <rect key="frame" x="140" y="220" width="265" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.6470588235294118" blue="0.81960784313725488" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.070588235294117646" green="0.58039215686274515" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="dME-cC-pN6"/>
                                     <constraint firstAttribute="width" constant="265" id="vKO-DJ-3EM"/>
@@ -229,13 +242,14 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZz-II-iJU">
                                 <rect key="frame" x="494" y="30" width="75" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.070588235289999995" green="0.58039215690000001" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1zp-0w-dvW"/>
                                     <constraint firstAttribute="width" constant="75" id="p85-JA-Rx5"/>
                                 </constraints>
-                                <state key="normal" title="LOG OUT">
-                                    <color key="titleColor" red="0.070588235294117646" green="0.58039215686274515" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -349,9 +363,11 @@
                             <constraint firstAttribute="centerY" secondItem="2J4-CD-yLi" secondAttribute="centerY" multiplier="0.95" id="tjm-Ye-qDX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BZz-II-iJU" secondAttribute="trailing" constant="15" id="u8A-qa-KlT"/>
                             <constraint firstItem="7Cm-v6-99m" firstAttribute="centerY" secondItem="pg7-PI-pOT" secondAttribute="centerY" id="xMm-ye-aBL"/>
+                            <constraint firstItem="jLC-nu-ijO" firstAttribute="top" secondItem="4IF-jQ-nYa" secondAttribute="bottom" constant="85" id="yEh-82-IPa"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="PUv-MQ-TFP"/>
                                 <exclude reference="Kf9-P1-cHB"/>
                                 <exclude reference="xMm-ye-aBL"/>
                                 <exclude reference="EDN-Rl-Qxv"/>
@@ -370,7 +386,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dYk-CI-CFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1923.5" y="309"/>
+            <point key="canvasLocation" x="1913" y="301"/>
         </scene>
         <!--Stack Sexchange Login Web View Controller-->
         <scene sceneID="M3L-Ye-oQH">
@@ -407,6 +423,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Logo" width="198" height="156"/>
         <image name="check" width="512" height="512"/>
         <image name="house" width="1024" height="1024"/>
     </resources>

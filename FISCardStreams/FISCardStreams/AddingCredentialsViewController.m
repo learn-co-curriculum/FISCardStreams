@@ -25,6 +25,8 @@
 
 @interface AddingCredentialsViewController () <UITextFieldDelegate>
 
+
+//Checker Buttons
 @property (weak, nonatomic) IBOutlet UIImageView *checkerImage;
 @property (weak, nonatomic) IBOutlet UIImageView *checkerImageTwo;
 @property (weak, nonatomic) IBOutlet UIImageView *mediumChecker;
@@ -54,7 +56,7 @@
     
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
     
-    self.logoutButton.layer.borderColor = [UIColor blueColor].CGColor;
+    self.logoutButton.layer.borderColor = [UIColor colorWithRed:18.0 green:148.0 blue:199.0 alpha:1.0].CGColor;
     self.logoutButton.layer.borderWidth = 2.0;
     
     [self.blogTextField setDelegate:self];
@@ -73,7 +75,7 @@
 }
 
 
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
     AFOAuthCredential *cred = [AFOAuthCredential retrieveCredentialWithIdentifier:@"githubToken"];
     if (cred) {
