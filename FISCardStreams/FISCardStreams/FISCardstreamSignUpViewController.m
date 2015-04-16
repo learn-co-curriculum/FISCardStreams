@@ -10,6 +10,8 @@
 #import <MONActivityIndicatorView.h>
 
 #import "FISCardstreamSignUpViewController.h"
+
+#import "AddingCredentialsViewController.h"
 #import "FISStreamsDataManager.h"
 #import "FISCardStreamsAPIClient.h"
 #import "FISStream.h"
@@ -51,13 +53,14 @@
     
 }
 
-#pragma mark - textfield
+#pragma mark - UITextFieldDelegate
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
     
     [self.usernameTextField resignFirstResponder];
     return YES;
 }
+
 
 #pragma mark - UIButton Actions
 
@@ -85,7 +88,10 @@
 {
     UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"LoginFlow" bundle:nil];
     UINavigationController *navController = [myStoryboard instantiateInitialViewController];
-    UIViewController *homePage = [myStoryboard instantiateViewControllerWithIdentifier:@"credentialVC"];
+    AddingCredentialsViewController *homePage = [myStoryboard instantiateViewControllerWithIdentifier:@"credentialVC"];
+    
+    homePage.fisDevUsername = self.usernameTextField.text;
+    
     UIApplication *application = [UIApplication sharedApplication];
     [application.keyWindow setRootViewController:navController];
     
@@ -115,9 +121,19 @@
     }SecondCompletionBlock:^(BOOL unique) {
         
         if (unique == NO) {
-            [FISCardStreamsAPIClient createAStreamForName:self.usernameTextField.text WithCompletionBlock:^(FISStream *userStream) {
+            
+            NSString *username = [self validateUserName:self.usernameTextField.text];
+            
+            [FISCardStreamsAPIClient createAStreamForName:username WithCompletionBlock:^(FISStream *userStream) {
                 NSLog(@"Signed UP");
-                //self.dataManager.userStream = self.streamToPass;
+                self.dataManager.userStream = userStream;
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                
+                if(![defaults valueForKey:@"fisdev_username"])
+                {
+                    [defaults setValue:username forKey:@"fisdev_username"];
+                }
+                
                 [self takeMeToCredentialPage];
                 [self.indicatorView stopAnimating];
                 
@@ -126,5 +142,17 @@
     }];
 }
 
+
+- (NSString *)validateUserName:(NSString *)usernameBeforeValidation
+{
+    if ([self.usernameTextField.text containsString:@" "]) {
+        NSString *usernameToReturn = [self.usernameTextField.text stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+        return usernameToReturn;
+    }
+    
+    else{
+        return self.usernameTextField.text;
+    }
+}
 
 @end

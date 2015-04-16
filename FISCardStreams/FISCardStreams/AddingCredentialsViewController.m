@@ -8,10 +8,13 @@
 
 #import "AddingCredentialsViewController.h"
 
+#import "FISConstants.h"
+
 // Frameworks
 #import <AFOAuth2Manager.h>
 #import <AFNetworking.h>
 #import <MONActivityIndicatorView/MONActivityIndicatorView.h>
+#import <SSKeychain/SSKeychain.h>
 
 // View controllers
 #import "StackSexchangeLoginWebViewController.h"
@@ -22,6 +25,9 @@
 #import "FISStreamsDataManager.h"
 #import "FISGithubAPIClient.h"
 #import "FISStackExchangeAPI.h"
+
+// Models
+#import "FISStream.h"
 
 @interface AddingCredentialsViewController () <UITextFieldDelegate>
 
@@ -54,24 +60,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self.blogTextField setDelegate:self];
+
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
     
     self.logoutButton.layer.borderColor = [UIColor colorWithRed:18.0 green:148.0 blue:199.0 alpha:1.0].CGColor;
     self.logoutButton.layer.borderWidth = 2.0;
     
-    [self.blogTextField setDelegate:self];
     self.originalCenter = self.view.center;
-    
-    if ([self.presentingViewController isKindOfClass:[FISCardstreamLogInViewController class]]) {
-        
-        UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController *initialVC = [myStoryboard instantiateInitialViewController];
-        
-        //[self presentViewController:initialVC animated:YES completion:nil];
-        
-        UIApplication *application = [UIApplication sharedApplication];
-        [application.keyWindow setRootViewController:initialVC];
-    }
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
@@ -90,19 +86,17 @@
     }
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *accessToken = [defaults valueForKey:@"access_token"];
     NSString *mediumUsername = [defaults valueForKey:@"medium_username"];
-    
-    
-    if (accessToken) {
-        NSLog(@"animating stackoerflow checker");
-        [self animateCheckMark:self.checkerImageTwo];
-    }
-    
-    
+    //    NSString *mediumUsername = [SSKeychain passwordForService:SOURCE_BLOG account:self.fisDevUsername];
     if (mediumUsername) {
-        self.blogTextField.text = mediumUsername;
+        self.blogTextField.placeholder = mediumUsername;
         [self animateCheckMark:self.mediumChecker];
+    }
+
+    NSString *accessToken = [SSKeychain passwordForService:SOURCE_STACK_EXCHANGE account:self.fisDevUsername];
+    if (accessToken) {
+        NSLog(@"animating stackoverflow checker");
+        [self animateCheckMark:self.checkerImageTwo];
     }
     
 }
@@ -142,11 +136,22 @@
     
     if (![self.blogTextField.text isEqualToString:@""]) {
         streamsDataManager.blogURL = [NSString stringWithFormat:@"https://medium.com/%@", self.blogTextField.text];
+        //[SSKeychain setPassword:self.blogTextField.text forService:SOURCE_BLOG account:self.fisDevUsername];
+        
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:self.blogTextField.text forKey:@"medium_username"];
+        
     }
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+   // [self dismissViewControllerAnimated:YES completion:nil];
+    
+    UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *initialVC = [myStoryboard instantiateInitialViewController];
+    
+    [self presentViewController:initialVC animated:YES completion:nil];
+    
+    UIApplication *application = [UIApplication sharedApplication];
+    [application.keyWindow setRootViewController:initialVC];
     
 //    if ([self.presentingViewController isKindOfClass:[FISCardstreamLogInViewController class]]) {
 //        UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -175,6 +180,7 @@
     [self presentViewController:stackVC animated:YES completion:nil];
 }
 
+
 - (IBAction)logoutButtonTapped:(id)sender {
     
     UIAlertController *alertController = [UIAlertController
@@ -197,12 +203,13 @@
                                handler:^(UIAlertAction *action)
                                {
                                    NSLog(@"YES action");
+                                   
                                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                                    [defaults setValue:@"No" forKey:@"user_logged_in"];
-//                                   [defaults removeObjectForKey:@"medium_username"];
-//                                   [defaults removeObjectForKey:@"access_token"];
-                                   
-                                   [AFOAuthCredential deleteCredentialWithIdentifier:@"githubToken"];
+
+                                   [defaults removeObjectForKey:@"fisdev_username"];
+                                   // [defaults removeObjectForKey:@"access_token"];
+                                   //[AFOAuthCredential deleteCredentialWithIdentifier:@"githubToken"];
                                    
                                    FISCardstreamLogInViewController *loginVC = [self.storyboard instantiateInitialViewController];
                                    

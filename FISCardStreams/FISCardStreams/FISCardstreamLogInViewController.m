@@ -105,6 +105,11 @@
         self.streamToPass = stream;
         NSLog(@"Logged In");
         self.dataManager.userStream = self.streamToPass;
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue:self.usernameTextField.text forKey:@"fisdev_username"];
+
+        
         [self takeMeToHomePage];
         
     } SecondCompletionBlock:^(BOOL unique) {

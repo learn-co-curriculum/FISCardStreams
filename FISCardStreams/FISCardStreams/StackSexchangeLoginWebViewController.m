@@ -7,14 +7,25 @@
 //
 
 #import "StackSexchangeLoginWebViewController.h"
-#import "FISConstants.h"
-#import "FISStackExchangeAPI.h"
+
+// Cocoa Pods
 #import <AFOAuth2Manager/AFHTTPRequestSerializer+OAuth2.h>
 #import <AFOAuth2Manager.h>
+#import <SSKeychain/SSKeychain.h>
+
+// Custom Classes
+#import "FISStreamsDataManager.h"
+#import "FISConstants.h"
+#import "FISStackExchangeAPI.h"
+
+#import "FISStream.h"
 
 @interface StackSexchangeLoginWebViewController () <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *stackExchange;
+
+@property (weak, nonatomic) FISStreamsDataManager *streamsDataManager;
+
 @end
 
 @implementation StackSexchangeLoginWebViewController
@@ -29,6 +40,7 @@
     
     [self.stackExchange loadRequest:[FISStackExchangeAPI redirectAfterAuthentication]];
     
+    self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
 }
 
 
@@ -51,7 +63,17 @@
         NSString *realAccessToken = [accessTokenWithExpiry componentsSeparatedByString:@"="][1];
         NSLog(@"Access Token is %@", realAccessToken);
         
-        [self storingAccessTokenAsUserDefaults:realAccessToken];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *username = [defaults valueForKey:@"fisdev_username"];
+        
+        [SSKeychain setPassword:realAccessToken forService:SOURCE_STACK_EXCHANGE account:username];
+        
+        
+        //test password retrieval
+        NSString *retrievedToken = [SSKeychain passwordForService:SOURCE_STACK_EXCHANGE account:username];
+        NSLog(@"Retrieved Token is %@", retrievedToken);
+        
+//        [self storingAccessTokenAsUserDefaults:realAccessToken];
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -63,6 +85,7 @@
 
 #pragma mark - UIWebViewDelegate Helper Methods
 
+// unused method
 - (void)storingAccessTokenAsUserDefaults:(NSString *)accessToken
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
