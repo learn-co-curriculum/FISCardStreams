@@ -13,6 +13,9 @@ target 'FISCardStreams' do
 end
 
 target 'FISCardStreamsTests' do
+	pod 'Specta'
+	pod 'Expecta'
+	pod 'OCMock'
 
 end
 

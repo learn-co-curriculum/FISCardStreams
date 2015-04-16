@@ -22,28 +22,37 @@ PODS:
     - AFNetworking/NSURLSession
   - AFOAuth2Manager (2.2.0):
     - AFNetworking/NSURLConnection (~> 2.2)
+  - Expecta (0.4.0)
   - Hex (1.1.1)
   - MONActivityIndicatorView (0.0.3)
   - NSURL+QueryDictionary (1.1.0)
+  - OCMock (3.1.2)
   - RGCardViewLayout (1.0)
+  - Specta (0.5.0)
   - UIColor+uiGradients (0.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - AFOAuth2Manager
+  - Expecta
   - Hex
   - MONActivityIndicatorView
   - NSURL+QueryDictionary
+  - OCMock
   - RGCardViewLayout (= 1.0)
+  - Specta
   - UIColor+uiGradients
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
   AFOAuth2Manager: 952eb62e8fd8022971e64c6e8fe28b9e999224af
+  Expecta: 392a6b5bfb9f4097e47dd8064d9b732079490332
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
   MONActivityIndicatorView: a00611695de16d956b17d03be25ee49a8effc5f2
   NSURL+QueryDictionary: dd0a5fec689a9b4780b6fa0e0225c01ca3ea653e
+  OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
   RGCardViewLayout: d8f4ecd6703b3f012f876008cff19dae711a9b07
+  Specta: eb90708ed77569bbda089f8ead10bb99b8e9489e
   UIColor+uiGradients: 0e540aa2d8c75254aaebb6c92f20c1aa43be5f05
 
 COCOAPODS: 0.35.0
