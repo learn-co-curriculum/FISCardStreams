@@ -72,6 +72,12 @@
         UIApplication *application = [UIApplication sharedApplication];
         [application.keyWindow setRootViewController:initialVC];
     }
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
 }
 
 
@@ -79,6 +85,7 @@
 {
     AFOAuthCredential *cred = [AFOAuthCredential retrieveCredentialWithIdentifier:@"githubToken"];
     if (cred) {
+        NSLog(@"animating github checker");
         [self animateCheckMark:self.checkerImage];
     }
     
@@ -88,6 +95,7 @@
     
     
     if (accessToken) {
+        NSLog(@"animating stackoerflow checker");
         [self animateCheckMark:self.checkerImageTwo];
     }
     
@@ -219,6 +227,11 @@
     } completion:^(BOOL finished) {
         
     }];
+}
+
+
+-(void)dismissKeyboard {
+    [self.blogTextField resignFirstResponder];
 }
 
 @end

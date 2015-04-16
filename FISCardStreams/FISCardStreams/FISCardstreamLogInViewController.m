@@ -36,6 +36,12 @@
 
     self.usernameTextField.delegate = self;
     self.backgroundImage.backgroundColor = [UIColor whiteColor];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
 
 }
 
@@ -82,6 +88,12 @@
     UIApplication *application = [UIApplication sharedApplication];
     [application.keyWindow setRootViewController:initialVC];
 }
+
+
+-(void)dismissKeyboard {
+    [self.usernameTextField resignFirstResponder];
+}
+
 
 
 #pragma mark - UIButton Helper Methods
