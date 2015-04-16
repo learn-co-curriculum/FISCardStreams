@@ -29,6 +29,7 @@ PODS:
   - OCMock (3.1.2)
   - RGCardViewLayout (1.0)
   - Specta (0.5.0)
+  - SSKeychain (1.2.3)
   - UIColor+uiGradients (0.1.0)
 
 DEPENDENCIES:
@@ -41,6 +42,7 @@ DEPENDENCIES:
   - OCMock
   - RGCardViewLayout (= 1.0)
   - Specta
+  - SSKeychain
   - UIColor+uiGradients
 
 SPEC CHECKSUMS:
@@ -53,6 +55,7 @@ SPEC CHECKSUMS:
   OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
   RGCardViewLayout: d8f4ecd6703b3f012f876008cff19dae711a9b07
   Specta: eb90708ed77569bbda089f8ead10bb99b8e9489e
+  SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
   UIColor+uiGradients: 0e540aa2d8c75254aaebb6c92f20c1aa43be5f05
 
 COCOAPODS: 0.35.0

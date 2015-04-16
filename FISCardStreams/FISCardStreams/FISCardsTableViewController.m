@@ -38,6 +38,7 @@
 @property (strong, nonatomic) FISStreamsDataManager *streamsDataManager;
 @property (strong, nonatomic) FISCollectionDataManager *collectionsDataManager;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *settings;
 
 - (IBAction)searchTapped:(id)sender;
 
@@ -64,14 +65,21 @@
     
     [self addingPullToRefreshFeatureToTheTableViews];
     
-    self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
-    self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
-    
+    UIImageView *pic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings"]];
+    [pic setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x,self.navigationController.navigationBar.frame.origin.y -10,30,30)];
+    [pic setBackgroundColor:[UIColor clearColor]];
+    pic.layer.cornerRadius = pic.frame.size.width / 2;
+    pic.layer.masksToBounds = YES;
+//    [self.barButtonItem.image
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    //self.settings.image = [UIImage imageNamed:@"settings"];
+
 }
 
 
@@ -97,7 +105,9 @@
     FISCard *currentCard = self.streamsDataManager.userStream.cards[indexPath.row];
 
     if ([currentCard.source isEqualToString:SOURCE_BLOG]) {
+        
         WebViewTableViewCell *webCell = (WebViewTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"weCardCell" forIndexPath:indexPath];
+        
         webCell.card = currentCard;
 
             return webCell;
@@ -121,6 +131,13 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *webViewCell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if ([webViewCell isKindOfClass:[webViewCell class]]) {
+        return 300;
+    }
+    
     return 176;
 }
 
@@ -191,6 +208,7 @@
     }];
 }
 
+
 - (void)updateGithubCards {
     [self.streamsDataManager updateGithubFeedWithCompletionBlock:^(NSArray *newGithubCards) {
         [self.streamsDataManager.userStream.cards addObjectsFromArray:newGithubCards];
@@ -199,6 +217,7 @@
         [self reloadTableViewIfAllUpdatesAreComplete];
     }];
 }
+
 
 - (void)reloadTableViewIfAllUpdatesAreComplete {
     if (self.githubUpdateIsComplete &&
@@ -213,6 +232,7 @@
     }
 }
 
+
 - (IBAction)settingsButtonTapped:(id)sender {
     
     UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"LoginFlow" bundle:nil];
@@ -221,6 +241,7 @@
     [self presentViewController:settings animated:YES completion:nil];
     
 }
+
 
 - (IBAction)searchTapped:(id)sender {
     

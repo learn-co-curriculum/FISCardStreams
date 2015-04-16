@@ -176,7 +176,7 @@
 - (CATransform3D)transformfromAngle:(CGFloat )angle height:(CGFloat) height xAxis:(BOOL)axis
 {
     CATransform3D t = CATransform3DIdentity;
-    t.m34  = 0.5/-500;
+    t.m34  = 1.0/-500;
     
     if (axis)
     {

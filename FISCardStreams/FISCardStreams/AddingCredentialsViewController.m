@@ -8,10 +8,13 @@
 
 #import "AddingCredentialsViewController.h"
 
+#import "FISConstants.h"
+
 // Frameworks
 #import <AFOAuth2Manager.h>
 #import <AFNetworking.h>
 #import <MONActivityIndicatorView/MONActivityIndicatorView.h>
+#import <SSKeychain/SSKeychain.h>
 
 // View controllers
 #import "StackSexchangeLoginWebViewController.h"
@@ -23,8 +26,13 @@
 #import "FISGithubAPIClient.h"
 #import "FISStackExchangeAPI.h"
 
+// Models
+#import "FISStream.h"
+
 @interface AddingCredentialsViewController () <UITextFieldDelegate>
 
+
+//Checker Buttons
 @property (weak, nonatomic) IBOutlet UIImageView *checkerImage;
 @property (weak, nonatomic) IBOutlet UIImageView *checkerImageTwo;
 @property (weak, nonatomic) IBOutlet UIImageView *mediumChecker;
@@ -54,45 +62,56 @@
     
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
     
-    self.logoutButton.layer.borderColor = [UIColor blueColor].CGColor;
+    self.logoutButton.layer.borderColor = [UIColor colorWithRed:18.0 green:148.0 blue:199.0 alpha:1.0].CGColor;
     self.logoutButton.layer.borderWidth = 2.0;
     
     [self.blogTextField setDelegate:self];
     self.originalCenter = self.view.center;
     
-    if ([self.presentingViewController isKindOfClass:[FISCardstreamLogInViewController class]]) {
-        
-        UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController *initialVC = [myStoryboard instantiateInitialViewController];
-        
-        //[self presentViewController:initialVC animated:YES completion:nil];
-        
-        UIApplication *application = [UIApplication sharedApplication];
-        [application.keyWindow setRootViewController:initialVC];
-    }
+//    if ([self.presentingViewController isKindOfClass:[FISCardstreamLogInViewController class]]) {
+//        
+//        UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        UIViewController *initialVC = [myStoryboard instantiateInitialViewController];
+//        
+//        //[self presentViewController:initialVC animated:YES completion:nil];
+//        
+//        UIApplication *application = [UIApplication sharedApplication];
+//        [application.keyWindow setRootViewController:initialVC];
+//    }
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
 }
 
 
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
     AFOAuthCredential *cred = [AFOAuthCredential retrieveCredentialWithIdentifier:@"githubToken"];
     if (cred) {
-        self.checkerImage.hidden = NO;
+        NSLog(@"animating github checker");
+        [self animateCheckMark:self.checkerImage];
     }
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *accessToken = [defaults valueForKey:@"access_token"];
+//    NSString *accessToken = [defaults valueForKey:@"access_token"];
     NSString *mediumUsername = [defaults valueForKey:@"medium_username"];
     
+
+    NSString *accessToken = [SSKeychain passwordForService:SOURCE_STACK_EXCHANGE account:self.fisDevUsername];
+//    NSString *mediumUsername = [SSKeychain passwordForService:SOURCE_BLOG account:self.fisDevUsername];
     
     if (accessToken) {
-        self.checkerImageTwo.hidden = NO;
+        NSLog(@"animating stackoerflow checker");
+        [self animateCheckMark:self.checkerImageTwo];
     }
     
     
     if (mediumUsername) {
         self.blogTextField.text = mediumUsername;
-        self.mediumChecker.hidden = NO;
+        [self animateCheckMark:self.mediumChecker];
     }
     
 }
@@ -108,7 +127,11 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    self.view.center = CGPointMake(self.originalCenter.x, self.originalCenter.y-100);
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.view.center = CGPointMake(self.originalCenter.x, self.originalCenter.y-70);
+    } completion:^(BOOL finished) {
+    }];
+    
 }
 
 
@@ -128,6 +151,7 @@
     
     if (![self.blogTextField.text isEqualToString:@""]) {
         streamsDataManager.blogURL = [NSString stringWithFormat:@"https://medium.com/%@", self.blogTextField.text];
+        //[SSKeychain setPassword:self.blogTextField.text forService:SOURCE_BLOG account:self.fisDevUsername];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:self.blogTextField.text forKey:@"medium_username"];
     }
@@ -157,6 +181,7 @@
     //[FISStackExchangeAPI redirectAfterAuthentication];
     
     StackSexchangeLoginWebViewController *stackVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stackVC"];
+    stackVC.fisDevUsername = self.fisDevUsername;
     
     [self presentViewController:stackVC animated:YES completion:nil];
 }
@@ -185,8 +210,9 @@
                                    NSLog(@"YES action");
                                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                                    [defaults setValue:@"No" forKey:@"user_logged_in"];
+
                                    [defaults removeObjectForKey:@"medium_username"];
-                                   [defaults removeObjectForKey:@"access_token"];
+                                   // [defaults removeObjectForKey:@"access_token"];git
                                    
                                    [AFOAuthCredential deleteCredentialWithIdentifier:@"githubToken"];
                                    
@@ -203,6 +229,21 @@
     
 }
 
+-(void)animateCheckMark:(UIImageView *)selectedImage
+{
+    selectedImage.hidden = NO;
+    selectedImage.alpha = 0;
+    
+    [UIView animateWithDuration:4.0 delay:0.25 options:UIViewAnimationOptionCurveLinear animations:^{
+        selectedImage.alpha = 1;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
 
+
+-(void)dismissKeyboard {
+    [self.blogTextField resignFirstResponder];
+}
 
 @end

@@ -14,7 +14,7 @@
 #import "FISStream.h"
 #import "FISCardstreamSignUpViewController.h"
 
-@interface FISCardstreamLogInViewController ()
+@interface FISCardstreamLogInViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -36,7 +36,20 @@
 
     self.usernameTextField.delegate = self;
     self.backgroundImage.backgroundColor = [UIColor whiteColor];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
 
+}
+
+#pragma mark - textfield
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [self.usernameTextField resignFirstResponder];
+    return YES;
 }
 
 
@@ -75,6 +88,12 @@
     UIApplication *application = [UIApplication sharedApplication];
     [application.keyWindow setRootViewController:initialVC];
 }
+
+
+-(void)dismissKeyboard {
+    [self.usernameTextField resignFirstResponder];
+}
+
 
 
 #pragma mark - UIButton Helper Methods
