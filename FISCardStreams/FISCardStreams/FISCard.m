@@ -27,6 +27,7 @@
                  streamPosition:0
                          postAt:[NSDate date]
                          source:@""
+                   uniquenessID:@""
                       isDeleted:NO
                       deletedAt:nil
                     attachments:[[NSMutableArray alloc]init]
@@ -46,6 +47,7 @@
                 streamPosition:(NSInteger )streamPosition
                         postAt:(NSDate   *)postAt
                         source:(NSString *)source
+                  uniquenessID:(NSString *)uniquenessID
                      isDeleted:(BOOL      )isDeleted
                      deletedAt:(NSDate   *)deletedAt
                    attachments:(NSMutableArray *)attachments
@@ -63,6 +65,7 @@
         _streamPosition  = streamPosition;
         _postAt          = postAt;
         _source          = source;
+        _uniquenessID    = uniquenessID;
         _isDeleted       = isDeleted;
         _deletedAt       = deletedAt;
         _attachments     = attachments;
@@ -89,6 +92,11 @@
         source = cardDictionary[@"source"];
     }
     
+    NSString *uniquenessID = @"";
+    if ([[cardDictionary allKeys]containsObject:@"uniquenessID"]) {
+        uniquenessID = cardDictionary[@"uniquenessID"];
+    }
+    
     FISCard *card = [[FISCard alloc]initWithCardID:cardDictionary[@"id"]
                                           streamID:cardDictionary[@"streamId"]
                                              title:cardDictionary[@"title"]
@@ -99,6 +107,7 @@
                                     streamPosition:(NSInteger)cardDictionary[@"streamPosition"]
                                             postAt:postAt
                                             source:source
+                                      uniquenessID:uniquenessID
                                          isDeleted:cardDictionary[@"isDeleted"]
                                          deletedAt:deletedAt
                                        attachments:attachments

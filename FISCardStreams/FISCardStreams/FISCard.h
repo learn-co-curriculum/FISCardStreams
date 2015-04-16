@@ -65,6 +65,11 @@
 @property (strong, nonatomic) NSString  *source;
 
 /**
+ (custom--optional) A uniqueness identifier set directly from a chosen property in the source API's response object to protect against duplicate cards with the same information.
+ */
+@property (strong, nonatomic) NSString  *uniquenessID;
+
+/**
  Is the card absent from the Stream?
  */
 @property (nonatomic        ) BOOL      isDeleted;
@@ -109,6 +114,7 @@
                 streamPosition:(NSInteger )streamPosition
                         postAt:(NSDate   *)postAt
                         source:(NSString *)source
+                  uniquenessID:(NSString *)uniquenessID
                      isDeleted:(BOOL      )isDeleted
                      deletedAt:(NSDate   *)deletedAt
                    attachments:(NSMutableArray *)attachments

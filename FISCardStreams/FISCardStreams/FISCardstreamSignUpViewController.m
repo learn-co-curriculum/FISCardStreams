@@ -14,7 +14,7 @@
 #import "FISCardStreamsAPIClient.h"
 #import "FISStream.h"
 
-@interface FISCardstreamSignUpViewController ()
+@interface FISCardstreamSignUpViewController () <UITextFieldDelegate>
 
 
 @property (nonatomic) FISStreamsDataManager *dataManager;
@@ -43,8 +43,21 @@
     self. indicatorView = [[MONActivityIndicatorView alloc] init];
     [self.view addSubview:self.indicatorView];
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    
 }
 
+#pragma mark - textfield
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [self.usernameTextField resignFirstResponder];
+    return YES;
+}
 
 #pragma mark - UIButton Actions
 
@@ -60,22 +73,13 @@
     [self.indicatorView startAnimating];
     [self checkForUsernameUniquenessAndSignUserUp];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:@"Yes" forKey:@"user_logged_in"];
+    
 }
 
 
 #pragma mark - View Helper Methods
-
--(void)takeMeToHomePage
-{
-    UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UINavigationController *navController = [myStoryboard instantiateInitialViewController];
-    UIViewController *homePage = [myStoryboard instantiateViewControllerWithIdentifier:@"homeVC"];
-    UIApplication *application = [UIApplication sharedApplication];
-    [application.keyWindow setRootViewController:navController];
-    
-    [self presentViewController:homePage animated:YES completion:nil];
-}
-
 
 -(void)takeMeToCredentialPage
 {
@@ -87,6 +91,11 @@
     
     [self presentViewController:homePage animated:YES completion:nil];
 
+}
+
+
+-(void)dismissKeyboard {
+    [self.usernameTextField resignFirstResponder];
 }
 
 

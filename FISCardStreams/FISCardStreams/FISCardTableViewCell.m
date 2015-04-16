@@ -46,9 +46,10 @@
         [dateFormatter setDateStyle:NSDateFormatterLongStyle];
         [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
         if (!self.card.postAt) {
-            self.card.postAt = self.card.createdAt;
+            self.dateLabel.text = [dateFormatter stringFromDate:self.card.createdAt];
+        } else {
+            self.dateLabel.text = [dateFormatter stringFromDate:self.card.postAt];
         }
-        self.dateLabel.text = [dateFormatter stringFromDate:self.card.postAt];
         
         self.descriptionLabel.text = self.card.cardDescription;
     }

@@ -91,10 +91,10 @@
 - (void)updateRSSFeedWithCompletionBlock:(void (^)(NSArray *))completionBlock {
     FISRSSFeedAPIClient *rssFeedAPIClient = [[FISRSSFeedAPIClient alloc]initWithBlogUrl:self.blogURL];
     
-    NSMutableArray *allBlogCardTitles = [[NSMutableArray alloc]init];
+    NSMutableArray *allBlogCardUniquenessIDs = [[NSMutableArray alloc]init];
     for (FISCard *currentCard in self.userStream.cards) {
         if ([currentCard.source isEqualToString:SOURCE_BLOG]) {
-            [allBlogCardTitles addObject:currentCard.title];
+            [allBlogCardUniquenessIDs addObject:currentCard.uniquenessID];
         }
     }
     
@@ -104,7 +104,7 @@
     for (NSDictionary *blogDictionary in allBlogPosts) {
         
         // check that a card with this blog post's title does not already exist
-        if ([allBlogCardTitles containsObject:blogDictionary[@"title"]]) {
+        if ([allBlogCardUniquenessIDs containsObject:blogDictionary[@"pubDate"]]) {
             continue;
         }
         
@@ -112,11 +112,12 @@
         NSInteger postAtInt = [postAt timeIntervalSince1970] * 1000; // convert to milliseconds
         NSNumber *epochPostAt = @(postAtInt);
         
-        NSDictionary *cardBody = @{ @"title" : blogDictionary[@"title"],
-                                    @"description" : blogDictionary[@"summary"],
-                                    @"postAt" : epochPostAt,
-                                    @"postLink" :  blogDictionary[@"link"],
-                                    @"source" : SOURCE_BLOG };
+        NSDictionary *cardBody = @{ @"title"        : blogDictionary[@"title"],
+                                    @"description"  : blogDictionary[@"summary"],
+                                    @"postAt"       : epochPostAt,
+                                    @"postLink"     :  blogDictionary[@"link"],
+                                    @"source"       : SOURCE_BLOG,
+                                    @"uniquenessID" : blogDictionary[@"pubDate"]  };
         [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
                                    WithContentDictionary:cardBody
                                      WithCompletionBlock:^(FISCard *card) {
@@ -132,12 +133,13 @@
 
 - (void)updateGithubFeedWithCompletionBlock:(void (^)(NSArray *))completionBlock {
     
-    NSMutableArray *allGithubCardTimeStamps = [[NSMutableArray alloc]init];
+    NSMutableArray *allGithubUniquenessIDs = [[NSMutableArray alloc]init];
     for (FISCard *currentCard in self.userStream.cards) {
             if ([currentCard.source isEqualToString:SOURCE_GITHUB]) {
-                NSInteger postAtInt = [currentCard.postAt timeIntervalSince1970] * 1000; // convert to milliseconds
-                NSNumber *epochCardDate = @(postAtInt);
-                [allGithubCardTimeStamps addObject:epochCardDate];
+//                NSInteger postAtInt = [currentCard.postAt timeIntervalSince1970] * 1000; // convert to milliseconds
+//                NSNumber *epochCardDate = @(postAtInt);
+//                [allGithubCardTimeStamps addObject:epochCardDate];
+                [allGithubUniquenessIDs addObject:currentCard.uniquenessID];
         }
     }
     
@@ -145,24 +147,25 @@
     [FISGithubAPIClient getPublicFeedsWithUsername:self.githubUsername
                                WithCompletionBlock:^(NSArray *commits) {
         for (NSDictionary *githubDictionary in commits) {
+            // checks via timestamp that the item has not been previously assimilated
+            if ([allGithubUniquenessIDs containsObject:githubDictionary[@"commited_date"]]) {
+                continue;
+            }
+            
             NSDate *postAt = [NSDate dateFromGithubDate:githubDictionary[@"commited_date"]];
             NSInteger postAtInt = [postAt timeIntervalSince1970] * 1000; // convert to milliseconds
             NSNumber *epochPostAt = @(postAtInt);
-            
-            // checks via timestamp that the item has not been previously assimilated
-            if ([allGithubCardTimeStamps containsObject:epochPostAt]) {
-                continue;
-            }
             
             NSString *cardDescription = [NSString stringWithFormat:@"%@ pushed to %@ \"%@\"",
                                          githubDictionary[@"username"],
                                          githubDictionary[@"repo_name"],
                                          githubDictionary[@"commit_message"]];
             
-            NSDictionary *cardBody = @{ @"title" : @"Github Commit",
-                                        @"description" : cardDescription,
-                                        @"postAt" : epochPostAt,
-                                        @"source" : SOURCE_GITHUB };
+            NSDictionary *cardBody = @{ @"title"        : @"Github Commit",
+                                        @"description"  : cardDescription,
+                                        @"postAt"       : epochPostAt,
+                                        @"source"       : SOURCE_GITHUB,
+                                        @"uniquenessID" : githubDictionary[@"commited_date"]  };
             
             [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
                                        WithContentDictionary:cardBody
@@ -179,36 +182,36 @@
 }
 
 - (void)updateStackExchangeFeedWithCompletionBlock:(void (^)(NSArray *))completionBlock {
-    NSMutableArray *allSECardTimeStamps = [[NSMutableArray alloc]init];
+    NSMutableArray *allSECardUniquenessIDs = [[NSMutableArray alloc]init];
     for (FISCard *currentCard in self.userStream.cards) {
         if ([currentCard.source isEqualToString:SOURCE_STACK_EXCHANGE]) {
-            NSInteger postAtInt = [currentCard.postAt timeIntervalSince1970] * 1000; // convert to milliseconds
-            NSNumber *epochCardDate = @(postAtInt);
-            [allSECardTimeStamps addObject:epochCardDate];
+            [allSECardUniquenessIDs addObject:currentCard.uniquenessID];
         }
     }
     
     NSMutableArray *newStackExchangeCards = [[NSMutableArray alloc]init];
     [FISStackExchangeAPI getNetworkActivityForCurrentUserWithCompletionBlock:^(NSArray *userNetworkActivities) {
         for (NSDictionary *activityDictionary in userNetworkActivities) {
-            NSInteger postAtInt = [activityDictionary[@"creation_date"] integerValue] * 1000; // convert to milliseconds
-            NSNumber *epochPostAt = @(postAtInt);
             
-            if ([allSECardTimeStamps containsObject:epochPostAt]) {
-
+            if ([allSECardUniquenessIDs containsObject:activityDictionary[@"creation_date"]]) {
+                
                 continue;
             }
+
+            NSInteger postAtInt = [activityDictionary[@"creation_date"] integerValue] * 1000; // convert to milliseconds
+            NSNumber *epochPostAt = @(postAtInt);
             
             NSString *cardDescription = [NSString stringWithFormat:@"%@: %@\n%@",
                                          activityDictionary[@"activity_type"],
                                          activityDictionary[@"title"],
                                          activityDictionary[@"description"]  ];
             
-            NSDictionary *cardBody = @{ @"title" : activityDictionary[@"api_site_parameter"],
-                                        @"description" : cardDescription,
-                                        @"postAt" : epochPostAt,
-                                        @"postLink" : activityDictionary[@"link"],
-                                        @"source" : SOURCE_STACK_EXCHANGE };
+            NSDictionary *cardBody = @{ @"title"        : activityDictionary[@"api_site_parameter"],
+                                        @"description"  : cardDescription,
+                                        @"postAt"       : epochPostAt,
+                                        @"postLink"     : activityDictionary[@"link"],
+                                        @"source"       : SOURCE_STACK_EXCHANGE,
+                                        @"uniquenessID" : activityDictionary[@"creation_date"]    };
             
             [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
                                        WithContentDictionary:cardBody

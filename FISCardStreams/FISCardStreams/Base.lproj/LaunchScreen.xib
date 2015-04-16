@@ -10,18 +10,42 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardstream" translatesAutoresizingMaskIntoConstraints="NO" id="Qqa-6m-H2n">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="nnq-O0-pIS">
+                    <rect key="frame" x="143" y="171" width="194" height="138"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="194" id="37C-Vg-eW9"/>
+                        <constraint firstAttribute="height" constant="138" id="AWY-SH-D1V"/>
+                    </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Developer!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQx-Qm-43Y">
+                    <rect key="frame" x="160" y="147" width="161" height="24"/>
+                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                    <color key="textColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a product for The Flatiron School developers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Gu-lH-tXV">
+                    <rect key="frame" x="99" y="417" width="282" height="20"/>
+                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="powered by cardstream.io" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbT-zr-Qlm">
+                    <rect key="frame" x="158" y="445" width="165" height="20"/>
+                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="Qqa-6m-H2n" secondAttribute="centerX" id="38O-ta-eVu"/>
-                <constraint firstItem="Qqa-6m-H2n" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4bh-EN-dxu"/>
-                <constraint firstAttribute="centerY" secondItem="Qqa-6m-H2n" secondAttribute="centerY" id="Zdp-2E-TTH"/>
-                <constraint firstAttribute="trailing" secondItem="Qqa-6m-H2n" secondAttribute="trailing" id="gQl-KI-ke4"/>
-                <constraint firstItem="Qqa-6m-H2n" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rMD-qC-dJg"/>
-                <constraint firstAttribute="bottom" secondItem="Qqa-6m-H2n" secondAttribute="bottom" id="utG-DC-hgb"/>
+                <constraint firstAttribute="centerX" secondItem="nnq-O0-pIS" secondAttribute="centerX" id="48T-5u-d41"/>
+                <constraint firstItem="7Gu-lH-tXV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="7AT-o4-WEA"/>
+                <constraint firstItem="JbT-zr-Qlm" firstAttribute="top" secondItem="7Gu-lH-tXV" secondAttribute="bottom" constant="8" id="L1m-Iy-zaJ"/>
+                <constraint firstItem="JbT-zr-Qlm" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="WsL-gx-y7h"/>
+                <constraint firstAttribute="bottom" secondItem="JbT-zr-Qlm" secondAttribute="bottom" constant="15" id="X1m-GT-5ex"/>
+                <constraint firstAttribute="centerX" secondItem="vQx-Qm-43Y" secondAttribute="centerX" id="c1f-vc-sUe"/>
+                <constraint firstAttribute="centerY" secondItem="nnq-O0-pIS" secondAttribute="centerY" id="em7-Oz-2ET"/>
+                <constraint firstItem="nnq-O0-pIS" firstAttribute="top" secondItem="vQx-Qm-43Y" secondAttribute="bottom" id="tPS-Lm-Teu"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -29,6 +53,6 @@
         </view>
     </objects>
     <resources>
-        <image name="cardstream" width="640" height="1136"/>
+        <image name="Logo" width="198" height="156"/>
     </resources>
 </document>

@@ -151,6 +151,7 @@
 
     [manager GET:cardstreamURL parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
+        NSLog(@"%@", responseObject);
         NSDictionary *returnedDictionary = responseObject;
         NSArray *allStreams = returnedDictionary[@"cards"];
         completionBlock(allStreams);
