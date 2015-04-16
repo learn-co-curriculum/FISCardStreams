@@ -22,6 +22,7 @@
 @property (strong, nonatomic) FISCollectionDataManager *collectionsDataManager;
 @property (strong, nonatomic) FISStreamsDataManager *streamsDataManager;
 
+
 @end
 
 

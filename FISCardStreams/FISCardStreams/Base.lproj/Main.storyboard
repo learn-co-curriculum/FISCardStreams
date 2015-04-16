@@ -300,7 +300,7 @@
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="NameField" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hFR-jT-dT2">
                                                             <rect key="frame" x="0.0" y="0.0" width="401" height="80"/>
-                                                            <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -537,8 +537,13 @@
                                         </constraints>
                                         <size key="customSize" width="417" height="429"/>
                                         <connections>
+                                            <outlet property="blogField" destination="jpz-xd-oIv" id="yiK-x8-x37"/>
                                             <outlet property="bottomContainer" destination="UVo-ny-QBa" id="7Gc-qA-vid"/>
+                                            <outlet property="cardName" destination="hFR-jT-dT2" id="J8r-Al-GGx"/>
                                             <outlet property="cardTableView" destination="C9I-Vf-0Qe" id="a9f-fp-HyF"/>
+                                            <outlet property="gitHubField" destination="Dr8-Yd-uc5" id="5vx-DQ-hcY"/>
+                                            <outlet property="nameField" destination="hFR-jT-dT2" id="oqq-nW-NME"/>
+                                            <outlet property="stackOverflowField" destination="upe-nb-TZo" id="op5-cD-6uq"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
