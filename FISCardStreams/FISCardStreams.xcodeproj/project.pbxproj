@@ -12,8 +12,10 @@
 		38EE61D21AD6D62C00D65B32 /* FISCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE61D11AD6D62C00D65B32 /* FISCardViewController.m */; };
 		38EE61D51AD7044200D65B32 /* FISCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE61D41AD7044200D65B32 /* FISCardCollectionViewCell.m */; };
 		6A0D7EAB3C70015C7445DE06 /* libPods-FISCardStreams.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5664142CC4A883379FB29245 /* libPods-FISCardStreams.a */; };
+		6A1671801AE04E0400954E34 /* FISCardSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A16717F1AE04E0400954E34 /* FISCardSpec.m */; };
 		6A35AA771AD8438900B1788D /* FISCollectionDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A35AA761AD8438900B1788D /* FISCollectionDataManager.m */; };
 		6A40849D1ADFF33B00317834 /* FISAttachmentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A40849C1ADFF33B00317834 /* FISAttachmentSpec.m */; };
+		6A40849F1AE03D3000317834 /* FISCommentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A40849E1AE03D3000317834 /* FISCommentSpec.m */; };
 		6A7C1EF91ACAD82800DA0161 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7C1EF81ACAD82800DA0161 /* main.m */; };
 		6A7C1EFC1ACAD82800DA0161 /* FISAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7C1EFB1ACAD82800DA0161 /* FISAppDelegate.m */; };
 		6A7C1EFF1ACAD82800DA0161 /* FISCardStreams.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6A7C1EFD1ACAD82800DA0161 /* FISCardStreams.xcdatamodeld */; };
@@ -68,9 +70,11 @@
 		3DE0F0B7A4ABDED34230BA8A /* Pods-FISCardStreams.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FISCardStreams.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FISCardStreams/Pods-FISCardStreams.debug.xcconfig"; sourceTree = "<group>"; };
 		5664142CC4A883379FB29245 /* libPods-FISCardStreams.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FISCardStreams.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69A96FFA800F0F0EA1AD4492 /* libPods-FISCardStreamsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FISCardStreamsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A16717F1AE04E0400954E34 /* FISCardSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCardSpec.m; sourceTree = "<group>"; };
 		6A35AA751AD8438900B1788D /* FISCollectionDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISCollectionDataManager.h; sourceTree = "<group>"; };
 		6A35AA761AD8438900B1788D /* FISCollectionDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCollectionDataManager.m; sourceTree = "<group>"; };
 		6A40849C1ADFF33B00317834 /* FISAttachmentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISAttachmentSpec.m; sourceTree = "<group>"; };
+		6A40849E1AE03D3000317834 /* FISCommentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCommentSpec.m; sourceTree = "<group>"; };
 		6A7C1EF31ACAD82800DA0161 /* FISCardStreams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FISCardStreams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A7C1EF71ACAD82800DA0161 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A7C1EF81ACAD82800DA0161 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				6A40849C1ADFF33B00317834 /* FISAttachmentSpec.m */,
+				6A40849E1AE03D3000317834 /* FISCommentSpec.m */,
+				6A16717F1AE04E0400954E34 /* FISCardSpec.m */,
 				6A7C1F131ACAD82800DA0161 /* Supporting Files */,
 			);
 			path = FISCardStreamsTests;
@@ -528,7 +534,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A1671801AE04E0400954E34 /* FISCardSpec.m in Sources */,
 				6A40849D1ADFF33B00317834 /* FISAttachmentSpec.m in Sources */,
+				6A40849F1AE03D3000317834 /* FISCommentSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

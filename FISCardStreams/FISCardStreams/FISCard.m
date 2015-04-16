@@ -57,6 +57,7 @@
     self = [super init];
     if (self) {
         _cardID          = cardID;
+        _streamID        = streamID;
         _title           = title;
         _cardDescription = cardDescription;
         _createdAt       = createdAt;
@@ -87,6 +88,11 @@
     NSDate *postAt    = [NSDate dateFromJSONDate:cardDictionary[@"postAt"]];
     NSDate *deletedAt = [NSDate dateFromJSONDate:cardDictionary[@"deletedAt"]];
     
+    NSInteger displayAt      = [cardDictionary[@"displayAt"] integerValue];
+    NSInteger streamPosition = [cardDictionary[@"streamPosition"] integerValue];
+    NSInteger commentCount   = [cardDictionary[@"commentCount"] integerValue];
+    BOOL isDeleted           = [cardDictionary[@"isDeleted"] boolValue];
+    
     NSString *source = @"";
     if ([[cardDictionary allKeys]containsObject:@"source"]) {
         source = cardDictionary[@"source"];
@@ -103,15 +109,15 @@
                                    cardDescription:cardDictionary[@"description"]
                                          createdAt:createdAt
                                          updatedAt:updatedAt
-                                         displayAt:(NSInteger)cardDictionary[@"displayAt"]
-                                    streamPosition:(NSInteger)cardDictionary[@"streamPosition"]
+                                         displayAt:displayAt
+                                    streamPosition:streamPosition
                                             postAt:postAt
                                             source:source
                                       uniquenessID:uniquenessID
-                                         isDeleted:cardDictionary[@"isDeleted"]
+                                         isDeleted:isDeleted
                                          deletedAt:deletedAt
                                        attachments:attachments
-                                      commentCount:(NSInteger)cardDictionary[@"commentCount"]
+                                      commentCount:commentCount
                                           comments:comments
                                               tags:cardDictionary[@"tags"]              ];
     
