@@ -61,8 +61,6 @@
     NSString *date = [NSDate dateAsJSONDate:currentCard.postAt];
     cell.detailTextLabel.text = date;
     
-    
-    
 
     
     return cell;

@@ -19,7 +19,7 @@
 // View controllers
 #import "StackSexchangeLoginWebViewController.h"
 #import "FISCardstreamLogInViewController.h"
-#import "FISCardTableViewController.h"
+#import "FISCardsTableViewController.h"
 
 // Data
 #import "FISStreamsDataManager.h"

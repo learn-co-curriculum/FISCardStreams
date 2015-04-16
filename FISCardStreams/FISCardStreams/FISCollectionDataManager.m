@@ -63,9 +63,12 @@
 
 #pragma mark - Predicate methods
 
-- (FISCard *)findMostRecentGithubCardInCardsArray:(NSArray *)allCards {
+- (FISCard *)findMostRecentGithubCardInCardsArray:(NSMutableArray *)allCards {
     NSPredicate *githubPredicate = [NSPredicate predicateWithFormat:@"source == %@", SOURCE_GITHUB];
     NSArray *githubArray = [allCards filteredArrayUsingPredicate:githubPredicate];
+    
+    
+    
     FISCard *githubCard = [githubArray firstObject];
     
     if (!githubCard) {
@@ -76,7 +79,7 @@
     return githubCard;
 }
 
-- (FISCard *)findMostRecentBlogCardInCardsArray:(NSArray *)allCards {
+- (FISCard *)findMostRecentBlogCardInCardsArray:(NSMutableArray *)allCards {
     NSPredicate *blogPredicate = [NSPredicate predicateWithFormat:@"source == %@", SOURCE_BLOG];
     NSArray *blogArray = [allCards filteredArrayUsingPredicate:blogPredicate];
     FISCard *blogCard = [blogArray firstObject];
@@ -89,7 +92,7 @@
     return blogCard;
 }
 
-- (FISCard *)findMostRecentStackExchangeCardInCardsArray:(NSArray *)allCards {
+- (FISCard *)findMostRecentStackExchangeCardInCardsArray:(NSMutableArray *)allCards {
     NSPredicate *stackExchangePredicate = [NSPredicate predicateWithFormat:@"source == %@", SOURCE_STACK_EXCHANGE];
     NSArray *stackExchangeArray = [allCards filteredArrayUsingPredicate:stackExchangePredicate];
     FISCard *stackExchangeCard = [stackExchangeArray firstObject];

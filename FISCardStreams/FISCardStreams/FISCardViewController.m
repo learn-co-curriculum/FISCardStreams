@@ -98,7 +98,7 @@
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
-    return 3;
+    return [self.collectionsDataManager.allStreams count];
 
 }
 
@@ -115,40 +115,20 @@
     
     cell.stream = currentStream;
     
+    
+    
+    FISCard *stackOverflowCard = [self.collectionsDataManager findMostRecentBlogCardInCardsArray:currentStream.cards];
+    cell.stackOverflowField.text = stackOverflowCard.description;
+    
+    
+    
+    FISCard *blogCard = [self.collectionsDataManager findMostRecentBlogCardInCardsArray:currentStream.cards];
+    cell.blogField.text = blogCard.description;
+    
+    
     return cell;
 }
 
-//#pragma mark - TableView Delegate
-//
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return 1;
-//}
-//
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return [self.stream.cards count];
-//}
-//
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    NSLog(@"TABLEVIEW CODE RAN");
-//    
-//    FISCardTableViewCell *cardCell = (FISCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cardCell" forIndexPath:indexPath];
-//    
-//    
-//    FISCard *currentCard = self.stream.cards[indexPath.row];
-//    cardCell.card = currentCard;
-//    
-//    
-//    return cardCell;
-//}
-//
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 176;
-//}
 
 
 
@@ -193,3 +173,36 @@
 */
 
 @end
+
+
+//#pragma mark - TableView Delegate
+//
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    return 1;
+//}
+//
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    return [self.stream.cards count];
+//}
+//
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//    NSLog(@"TABLEVIEW CODE RAN");
+//
+//    FISCardTableViewCell *cardCell = (FISCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cardCell" forIndexPath:indexPath];
+//
+//
+//    FISCard *currentCard = self.stream.cards[indexPath.row];
+//    cardCell.card = currentCard;
+//
+//
+//    return cardCell;
+//}
+//
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return 176;
+//}
