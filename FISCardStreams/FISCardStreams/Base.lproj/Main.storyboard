@@ -230,14 +230,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="MY FEED" id="8nu-Uq-ceA">
-                        <barButtonItem key="leftBarButtonItem" image="settings" id="wum-XU-e7c">
-                            <color key="tintColor" red="0.070588235289999995" green="0.58039215690000001" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="wum-XU-e7c">
+                            <color key="tintColor" red="0.0" green="0.64705882349999999" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="settingsButtonTapped:" destination="md1-rq-13t" id="vmQ-bh-pZP"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="NtF-gX-H5y">
-                            <color key="tintColor" red="0.070588235289999995" green="0.58039215690000001" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.64705882349999999" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="searchTapped:" destination="md1-rq-13t" id="P6E-RC-SCi"/>
                                 <segue destination="KJv-o0-IBs" kind="show" identifier="groupSegue" id="vXC-8I-hkw"/>
@@ -245,7 +245,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="barButtonItem" destination="wum-XU-e7c" id="dAs-wQ-Jn8"/>
+                        <outlet property="settings" destination="wum-XU-e7c" id="JMe-Fz-swi"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T2q-2y-Xtd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -304,7 +304,7 @@
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="NameField" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hFR-jT-dT2">
                                                             <rect key="frame" x="0.0" y="0.0" width="401" height="80"/>
-                                                            <color key="backgroundColor" red="0.070588235289999995" green="0.58039215690000001" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.0" green="0.64705882349999999" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -335,10 +335,10 @@
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits"/>
                                                                         </textField>
-                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="21" translatesAutoresizingMaskIntoConstraints="NO" id="Dr8-Yd-uc5">
+                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="21" translatesAutoresizingMaskIntoConstraints="NO" id="Dr8-Yd-uc5">
                                                                             <rect key="frame" x="0.0" y="15" width="360" height="20"/>
-                                                                            <color key="backgroundColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="0.25" colorSpace="calibratedRGB"/>
-                                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <color key="textColor" red="0.37254901960784315" green="0.38039215686274508" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                         </textView>
@@ -366,10 +366,10 @@
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits"/>
                                                                         </textField>
-                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="The Importance of Classes" translatesAutoresizingMaskIntoConstraints="NO" id="nCF-mZ-dka">
+                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="The Importance of Classes" translatesAutoresizingMaskIntoConstraints="NO" id="nCF-mZ-dka">
                                                                             <rect key="frame" x="0.0" y="13" width="360" height="22"/>
-                                                                            <color key="backgroundColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="0.25" colorSpace="calibratedRGB"/>
-                                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <color key="textColor" red="0.37254901960784315" green="0.38039215686274508" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                         </textView>
@@ -396,10 +396,10 @@
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits"/>
                                                                         </textField>
-                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="How to implement gradients" translatesAutoresizingMaskIntoConstraints="NO" id="upe-nb-TZo">
+                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="How to implement gradients" translatesAutoresizingMaskIntoConstraints="NO" id="upe-nb-TZo">
                                                                             <rect key="frame" x="1" y="16" width="187" height="25"/>
-                                                                            <color key="backgroundColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="0.25" colorSpace="calibratedRGB"/>
-                                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <color key="textColor" red="0.37254901959999998" green="0.3803921569" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                         </textView>
@@ -477,12 +477,13 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </tableViewCellContentView>
                                                                 </tableViewCell>
                                                             </prototypes>
                                                         </tableView>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.76122553661616155" green="0.76122553661616155" blue="0.76122553661616155" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="C9I-Vf-0Qe" secondAttribute="bottom" constant="20" symbolic="YES" id="4cU-n6-885"/>
                                                         <constraint firstItem="C9I-Vf-0Qe" firstAttribute="centerX" secondItem="UVo-ny-QBa" secondAttribute="centerX" id="6Py-ej-Oab"/>
@@ -698,7 +699,4 @@
             <point key="canvasLocation" x="2132" y="2018"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="settings" width="512" height="512"/>
-    </resources>
 </document>
