@@ -74,7 +74,7 @@
     [pic setBackgroundColor:[UIColor clearColor]];
     pic.layer.cornerRadius = pic.frame.size.width / 2;
     pic.layer.masksToBounds = YES;
-    [self.barButtonItem.image
+//    [self.barButtonItem.image
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

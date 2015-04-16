@@ -26,6 +26,7 @@ PODS:
   - MONActivityIndicatorView (0.0.3)
   - NSURL+QueryDictionary (1.1.0)
   - RGCardViewLayout (1.0)
+  - SSKeychain (1.2.3)
   - UIColor+uiGradients (0.1.0)
 
 DEPENDENCIES:
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - MONActivityIndicatorView
   - NSURL+QueryDictionary
   - RGCardViewLayout (= 1.0)
+  - SSKeychain
   - UIColor+uiGradients
 
 SPEC CHECKSUMS:
@@ -44,6 +46,7 @@ SPEC CHECKSUMS:
   MONActivityIndicatorView: a00611695de16d956b17d03be25ee49a8effc5f2
   NSURL+QueryDictionary: dd0a5fec689a9b4780b6fa0e0225c01ca3ea653e
   RGCardViewLayout: d8f4ecd6703b3f012f876008cff19dae711a9b07
+  SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
   UIColor+uiGradients: 0e540aa2d8c75254aaebb6c92f20c1aa43be5f05
 
 COCOAPODS: 0.35.0

@@ -10,6 +10,8 @@
 #import <MONActivityIndicatorView.h>
 
 #import "FISCardstreamSignUpViewController.h"
+
+#import "AddingCredentialsViewController.h"
 #import "FISStreamsDataManager.h"
 #import "FISCardStreamsAPIClient.h"
 #import "FISStream.h"
@@ -85,7 +87,9 @@
 {
     UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"LoginFlow" bundle:nil];
     UINavigationController *navController = [myStoryboard instantiateInitialViewController];
-    UIViewController *homePage = [myStoryboard instantiateViewControllerWithIdentifier:@"credentialVC"];
+    AddingCredentialsViewController *homePage = [myStoryboard instantiateViewControllerWithIdentifier:@"credentialVC"];
+    homePage.fisDevUsername = self.usernameTextField.text;
+    
     UIApplication *application = [UIApplication sharedApplication];
     [application.keyWindow setRootViewController:navController];
     

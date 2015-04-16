@@ -43,6 +43,4 @@
  */
 - (FISCard *)findMostRecentStackExchangeCardInCardsArray:(NSArray *)allCards;
 
-
-
 @end

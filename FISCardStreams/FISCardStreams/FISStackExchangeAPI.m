@@ -6,11 +6,18 @@
 //  Copyright (c) 2015 Mark Edward Murray. All rights reserved.
 //
 
+#import "FISStackExchangeAPI.h"
+
+#import "FISConstants.h"
+
+// Cocoa Pods
 #import <AFNetworking.h>
 #import <AFOAuth2Manager.h>
 #import <AFHTTPRequestSerializer+OAuth2.h>
-#import "FISStackExchangeAPI.h"
-#import "FISConstants.h"
+#import <SSKeychain/SSKeychain.h>
+
+#import "FISStreamsDataManager.h"
+#import "FISStream.h"
 
 @implementation FISStackExchangeAPI
 
@@ -36,9 +43,12 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *accessToken = [defaults valueForKey:@"access_token"];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSString *accessToken = [defaults valueForKey:@"access_token"];
     
+    FISStreamsDataManager *streamsDataManager = [FISStreamsDataManager sharedDataManager];
+    NSString *username = streamsDataManager.userStream.streamName;
+    NSString *accessToken = [SSKeychain passwordForService:SOURCE_STACK_EXCHANGE account:username];
     
     if (!accessToken) {
         NSLog(@"Stack Exchange access_token not retrieved");
