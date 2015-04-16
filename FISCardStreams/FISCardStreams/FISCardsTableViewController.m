@@ -64,6 +64,13 @@
     self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
     
     [self addingPullToRefreshFeatureToTheTableViews];
+    
+    UIImageView *pic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings"]];
+    [pic setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x,self.navigationController.navigationBar.frame.origin.y -10,30,30)];
+    [pic setBackgroundColor:[UIColor clearColor]];
+    pic.layer.cornerRadius = pic.frame.size.width / 2;
+    pic.layer.masksToBounds = YES;
+//    [self.barButtonItem.image
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

@@ -10,4 +10,6 @@
 
 @interface AddingCredentialsViewController : UIViewController
 
+@property (strong, nonatomic) NSString *fisDevUsername;
+
 @end
