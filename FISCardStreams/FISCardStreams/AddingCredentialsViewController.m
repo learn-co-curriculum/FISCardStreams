@@ -199,8 +199,8 @@
                                    NSLog(@"YES action");
                                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                                    [defaults setValue:@"No" forKey:@"user_logged_in"];
-                                   [defaults removeObjectForKey:@"medium_username"];
-                                   [defaults removeObjectForKey:@"access_token"];
+//                                   [defaults removeObjectForKey:@"medium_username"];
+//                                   [defaults removeObjectForKey:@"access_token"];
                                    
                                    [AFOAuthCredential deleteCredentialWithIdentifier:@"githubToken"];
                                    

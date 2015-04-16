@@ -210,7 +210,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLC-nu-ijO" userLabel="Github Activities button">
                                 <rect key="frame" x="140" y="220" width="265" height="40"/>
-                                <color key="backgroundColor" red="0.070588235294117646" green="0.58039215686274515" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.64705882349999999" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="dME-cC-pN6"/>
                                     <constraint firstAttribute="width" constant="265" id="vKO-DJ-3EM"/>
@@ -310,7 +310,7 @@
                                     <constraint firstAttribute="height" constant="40" id="Q4A-79-5RK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="23"/>
-                                <color key="textColor" red="0.0" green="0.51336485409185095" blue="0.65298063354129532" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.64705882349999999" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
