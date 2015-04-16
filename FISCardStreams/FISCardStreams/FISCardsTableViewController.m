@@ -65,6 +65,10 @@
     
     [self addingPullToRefreshFeatureToTheTableViews];
     
+    self.tableView.estimatedRowHeight = 200;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+
+    
     UIImageView *pic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings"]];
     [pic setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x,self.navigationController.navigationBar.frame.origin.y -10,30,30)];
     [pic setBackgroundColor:[UIColor clearColor]];
@@ -133,16 +137,16 @@
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    UITableViewCell *webViewCell = [tableView cellForRowAtIndexPath:indexPath];
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    
-//    if ([webViewCell isKindOfClass:[webViewCell class]]) {
-//        return 300;
-//    }
-//    
-//    return 176;
-}
+////    UITableViewCell *webViewCell = [tableView cellForRowAtIndexPath:indexPath];
+////    
+////    if ([webViewCell isKindOfClass:[webViewCell class]]) {
+////        return 300;
+////    }
+////    
+////    return 176;
+//}
 
 
 /*

@@ -49,4 +49,4 @@ SPEC CHECKSUMS:
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
   UIColor+uiGradients: 0e540aa2d8c75254aaebb6c92f20c1aa43be5f05
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.0.beta.2

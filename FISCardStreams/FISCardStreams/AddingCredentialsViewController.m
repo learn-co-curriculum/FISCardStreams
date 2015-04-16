@@ -211,7 +211,7 @@
                                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                                    [defaults setValue:@"No" forKey:@"user_logged_in"];
 
-                                   [defaults removeObjectForKey:@"medium_username"];
+                                   //[defaults removeObjectForKey:@"medium_username"];
                                    // [defaults removeObjectForKey:@"access_token"];git
                                    
                                    [AFOAuthCredential deleteCredentialWithIdentifier:@"githubToken"];
