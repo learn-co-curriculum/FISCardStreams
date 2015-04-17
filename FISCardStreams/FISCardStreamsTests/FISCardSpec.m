@@ -20,38 +20,37 @@ SpecBegin(FISCard)
 
 describe(@"FISCard", ^{
     
-    __block NSString *cardID;
-    __block NSString *streamID;
-    __block NSString *title;
-    __block NSString *cardDescription;
-    __block NSDate   *createdAt;
-    __block NSDate   *updatedAt;
-    __block NSInteger displayAt;
-    __block NSInteger streamPosition;
-    __block NSDate   *postAt;
-    __block NSString *source;
-    __block NSString *uniquenessID;
-    __block BOOL      isDeleted;
-    __block NSDate   *deletedAt;
+    __block NSString       *cardID;
+    __block NSString       *streamID;
+    __block NSString       *title;
+    __block NSString       *cardDescription;
+    __block NSDate         *createdAt;
+    __block NSDate         *updatedAt;
+    __block NSInteger       displayAt;
+    __block NSInteger       streamPosition;
+    __block NSDate         *postAt;
+    __block NSString       *source;
+    __block NSString       *uniquenessID;
+    __block BOOL            isDeleted;
+    __block NSDate         *deletedAt;
     __block NSMutableArray *attachments;
-    __block NSInteger commentCount;
+    __block NSInteger       commentCount;
     __block NSMutableArray *comments;
-    __block NSArray  *tags;
+    __block NSArray        *tags;
     
-    __block NSString *jsonCreatedAt;
-    __block NSString *jsonUpdatedAt;
-    __block NSString *jsonPostAt;
-    __block NSString *jsonDeletedAt;
+    __block NSString       *jsonCreatedAt;
+    __block NSString       *jsonUpdatedAt;
+    __block NSString       *jsonPostAt;
+    __block NSString       *jsonDeletedAt;
+    __block NSDictionary   *cardDictionary;
     
-    __block NSDictionary *cardDictionary;
+    __block NSDictionary   *cardDictionary2;
+    __block NSArray        *cardDictionaries;
     
-    __block NSDictionary *cardDictionary2;
-    __block NSArray      *cardDictionaries;
-    
-    __block FISCard *defaultCard;
-    __block FISCard *designatedCard;
-    __block FISCard *dictionaryCard;
-    __block NSArray *arrayOfCards;
+    __block FISCard        *defaultCard;
+    __block FISCard        *designatedCard;
+    __block FISCard        *dictionaryCard;
+    __block NSArray        *arrayOfCards;
     
     beforeEach(^{
         cardID          = @"cardID";
@@ -72,30 +71,30 @@ describe(@"FISCard", ^{
         comments        = [[NSMutableArray alloc]init];
         tags            = @[@"tag1", @"tag2"];
         
-        jsonCreatedAt  = [NSDate dateAsJSONDate:createdAt];
-        jsonUpdatedAt  = [NSDate dateAsJSONDate:updatedAt];
-        jsonPostAt     = [NSDate dateAsJSONDate:postAt];
-        jsonDeletedAt  = [NSDate dateAsJSONDate:deletedAt];
+        jsonCreatedAt   = [NSDate dateAsJSONDate:createdAt];
+        jsonUpdatedAt   = [NSDate dateAsJSONDate:updatedAt];
+        jsonPostAt      = [NSDate dateAsJSONDate:postAt];
+        jsonDeletedAt   = [NSDate dateAsJSONDate:deletedAt];
         
-        cardDictionary = @{ @"id"             : cardID,
-                            @"streamId"       : streamID,
-                            @"title"          : title,
-                            @"description"    : cardDescription,
-                            @"createdAt"      : jsonCreatedAt,
-                            @"updatedAt"      : jsonUpdatedAt,
-                            @"displayAt"      : @(displayAt),
-                            @"streamPosition" : @(streamPosition),
-                            @"postAt"         : jsonPostAt,
-                            @"source"         : source,
-                            @"uniquenessID"   : uniquenessID,
-                            @"isDeleted"      : @(isDeleted),
-                            @"deletedAt"      : jsonDeletedAt,
-                            @"attachments"    : attachments,
-                            @"commentCount"   : @(commentCount),
-                            @"comments"       : comments,
-                            @"tags"           : tags            };
+        cardDictionary  = @{ @"id"             : cardID,
+                             @"streamId"       : streamID,
+                             @"title"          : title,
+                             @"description"    : cardDescription,
+                             @"createdAt"      : jsonCreatedAt,
+                             @"updatedAt"      : jsonUpdatedAt,
+                             @"displayAt"      : @(displayAt),
+                             @"streamPosition" : @(streamPosition),
+                             @"postAt"         : jsonPostAt,
+                             @"source"         : source,
+                             @"uniquenessID"   : uniquenessID,
+                             @"isDeleted"      : @(isDeleted),
+                             @"deletedAt"      : jsonDeletedAt,
+                             @"attachments"    : attachments,
+                             @"commentCount"   : @(commentCount),
+                             @"comments"       : comments,
+                             @"tags"           : tags            };
         
-        cardDictionary2 = [cardDictionary copy];
+        cardDictionary2  = [cardDictionary copy];
         cardDictionaries = @[cardDictionary, cardDictionary2];
         
         defaultCard = [[FISCard alloc]init];
@@ -281,7 +280,6 @@ describe(@"FISCard", ^{
             }
         });
     });
-
 });
 
 SpecEnd

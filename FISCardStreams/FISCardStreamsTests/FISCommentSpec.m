@@ -20,36 +20,35 @@ SpecBegin(FISComment)
 
 describe(@"FISComment", ^{
     
+    __block NSString       *commentID;
+    __block NSString       *parentID;
+    __block NSDate         *createdAt;
+    __block NSString       *content;
+    
+    __block NSString       *jsonCreatedAt;
+    __block NSDictionary   *commentDictionary;
+    
+    __block NSDictionary   *commentDictionary2;
+    __block NSArray        *commentDictionaries;
+    
     __block FISComment     *defaultComment;
     __block FISComment     *designatedComment;
     __block FISComment     *dictionaryComment;
     __block NSMutableArray *arrayOfComments;
-    
-    __block NSString *commentID;
-    __block NSString *parentID;
-    __block NSDate   *createdAt;
-    __block NSString *content;
-    
-    __block NSString *jsonCreatedAt;
-    __block NSDictionary *commentDictionary;
-    
-    __block NSDictionary *commentDictionary2;
-    __block NSArray      *commentDictionaries;
-    
+
     beforeEach(^{
-        commentID = @"commentID";
-        parentID  = @"parentID";
-        createdAt = [NSDate date];
-        content   = @"content";
+        commentID         = @"commentID";
+        parentID          = @"parentID";
+        createdAt         = [NSDate date];
+        content           = @"content";
         
-        jsonCreatedAt = [NSDate dateAsJSONDate:createdAt];
-        
+        jsonCreatedAt     = [NSDate dateAsJSONDate:createdAt];
         commentDictionary = @{ @"id"        : commentID,
                                @"parentId"  : parentID,
                                @"createdAt" : jsonCreatedAt,
                                @"content"   : content };
         
-        commentDictionary2 = [commentDictionary copy];
+        commentDictionary2  = [commentDictionary copy];
         commentDictionaries = @[commentDictionary, commentDictionary2];
         
         defaultComment = [[FISComment alloc]init];
@@ -67,18 +66,18 @@ describe(@"FISComment", ^{
     describe(@"default initializer", ^{
         it(@"sets all properties to default values", ^{
             expect(defaultComment.commentID).to.equal(@"");
-            expect(defaultComment.parentID).to.equal(@"");
+            expect(defaultComment.parentID ).to.equal(@"");
             expect(defaultComment.createdAt).to.beKindOf([NSDate class]);
-            expect(defaultComment.content).to.equal(@"");
+            expect(defaultComment.content  ).to.equal(@"");
         });
     });
     
     describe(@"designated initializer", ^{
         it(@"sets all properties to submitted values", ^{
             expect(designatedComment.commentID).to.equal(commentID);
-            expect(designatedComment.parentID).to.equal(parentID);
+            expect(designatedComment.parentID ).to.equal(parentID);
             expect(designatedComment.createdAt).to.equal(createdAt);
-            expect(designatedComment.content).to.equal(content);
+            expect(designatedComment.content  ).to.equal(content);
         });
     });
     
@@ -86,14 +85,14 @@ describe(@"FISComment", ^{
         it(@"sets string properties correctly from a dictionary", ^{
             
             expect(dictionaryComment.commentID).to.equal(commentID);
-            expect(dictionaryComment.parentID).to.equal(parentID);
-            expect(dictionaryComment.content).to.equal(content);
+            expect(dictionaryComment.parentID ).to.equal(parentID);
+            expect(dictionaryComment.content  ).to.equal(content);
         });
         it(@"sets date correctly", ^{
-            NSInteger commentEpoch = [dictionaryComment.createdAt timeIntervalSince1970];
+            NSInteger commentCreatedAt = [dictionaryComment.createdAt timeIntervalSince1970];
             NSInteger createdAtEpoch = [createdAt timeIntervalSince1970];
             
-            expect(commentEpoch).to.beCloseToWithin(createdAtEpoch, 1);
+            expect(commentCreatedAt).to.beCloseToWithin(createdAtEpoch, 1);
         });
     });
     
@@ -105,21 +104,20 @@ describe(@"FISComment", ^{
         it(@"sets all string properties correctly for each dictionary in the submitted array", ^{
             for (FISComment *currentComment in arrayOfComments) {
                 expect(currentComment.commentID).to.equal(commentID);
-                expect(currentComment.parentID).to.equal(parentID);
-                expect(currentComment.content).to.equal(content);
+                expect(currentComment.parentID ).to.equal(parentID);
+                expect(currentComment.content  ).to.equal(content);
             }
         });
         
         it(@"set all date properties correly for each dictionary in the submitted array", ^{
             for (FISComment *currentComment in arrayOfComments) {
-                NSInteger commentEpoch = [currentComment.createdAt timeIntervalSince1970];
+                NSInteger commentCreatedAt = [currentComment.createdAt timeIntervalSince1970];
                 NSInteger createdAtEpoch = [createdAt timeIntervalSince1970];
         
-                expect(commentEpoch).to.beCloseToWithin(createdAtEpoch, 1);
+                expect(commentCreatedAt).to.beCloseToWithin(createdAtEpoch, 1);
             }
         });
     });
-    
 });
 
 SpecEnd
