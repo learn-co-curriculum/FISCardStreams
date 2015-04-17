@@ -13,6 +13,9 @@
 #import "FISStreamsDataManager.h"
 #import "FISStream.h"
 #import "FISCardstreamSignUpViewController.h"
+#import "AddingCredentialsViewController.h"
+#import <SSKeychain.h>
+#import "FISConstants.h"
 
 @interface FISCardstreamLogInViewController () <UITextFieldDelegate>
 
@@ -90,6 +93,17 @@
 }
 
 
+-(void)takeMeToCredentialPage
+{
+    AddingCredentialsViewController *homePage = [self.storyboard instantiateViewControllerWithIdentifier:@"credentialVC"];
+    
+    homePage.fisDevUsername = self.usernameTextField.text;
+    
+    [self presentViewController:homePage animated:YES completion:nil];
+    
+}
+
+
 -(void)dismissKeyboard {
     [self.usernameTextField resignFirstResponder];
 }
@@ -109,8 +123,12 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:self.usernameTextField.text forKey:@"fisdev_username"];
 
-        
-        [self takeMeToHomePage];
+        if([SSKeychain passwordForService:SOURCE_STACK_EXCHANGE account:self.usernameTextField.text])
+        {
+            [self takeMeToHomePage];
+        }
+
+         [self takeMeToCredentialPage];
         
     } SecondCompletionBlock:^(BOOL unique) {
         
