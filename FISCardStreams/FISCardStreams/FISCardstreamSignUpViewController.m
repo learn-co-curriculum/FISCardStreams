@@ -153,12 +153,16 @@
 - (BOOL)validateUserName:(NSString *)usernameBeforeValidation
 {
     BOOL isAccepted = NO;
-    if ([self.usernameTextField.text containsString:@" "]) {
+    if (self.usernameTextField.text.length > 10) {
+        [self showAlertUsernameTooLong];
+        isAccepted = NO;
+    }
+    else if ([self.usernameTextField.text containsString:@" "]) {
         NSString *usernameToReturn = [self.usernameTextField.text stringByReplacingOccurrencesOfString:@" " withString:@"_"];
         self.usernameTextField.text =  usernameToReturn;
         isAccepted = YES;
     }
-    else if([self.usernameTextField.text containsString:@"%"] || [self.usernameTextField.text containsString:@"&"] || [self.usernameTextField.text containsString:@"?"] || [self.usernameTextField.text containsString:@"/"] ||[self.usernameTextField.text isEqualToString:@"+"] )
+    else if([self.usernameTextField.text containsString:@"%"] || [self.usernameTextField.text containsString:@"&"] || [self.usernameTextField.text containsString:@"?"] || [self.usernameTextField.text containsString:@"/"] ||[self.usernameTextField.text isEqualToString:@"+"] ||[self.usernameTextField.text containsString:@"#"] || [self.usernameTextField.text containsString:@"$"] || [self.usernameTextField.text containsString:@"*"] || [self.usernameTextField.text containsString:@"("] ||[self.usernameTextField.text isEqualToString:@")"]||[self.usernameTextField.text containsString:@"{"] || [self.usernameTextField.text containsString:@"}"] || [self.usernameTextField.text containsString:@"?"] || [self.usernameTextField.text containsString:@"<"] ||[self.usernameTextField.text isEqualToString:@">"])
     {
         
         [self showAlertForIncorrectUsername];
@@ -176,6 +180,17 @@
 -(void)showAlertForIncorrectUsername
 {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Incorrect Username" message:@"Please use alphanumeric only" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alertController addAction:ok];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+}
+
+-(void)showAlertUsernameTooLong
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Incorrect Username" message:@"Username is too long" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [alertController addAction:ok];

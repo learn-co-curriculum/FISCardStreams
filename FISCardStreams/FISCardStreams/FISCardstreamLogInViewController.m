@@ -122,48 +122,40 @@
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:self.usernameTextField.text forKey:@"fisdev_username"];
-
+        
         if([SSKeychain passwordForService:SOURCE_STACK_EXCHANGE account:self.usernameTextField.text])
         {
             [self takeMeToHomePage];
         }
-
-         [self takeMeToCredentialPage];
+        
+        [self takeMeToCredentialPage];
         
     } SecondCompletionBlock:^(BOOL unique) {
         
-        if ([self.usernameTextField.text containsString:@" "]) {
-            
-            NSString *usernameToReturn = [self.usernameTextField.text stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-            
-            self.usernameTextField.text =  usernameToReturn;
-            
-            [self checkForUsernameAndLogUserIn];
-            
-        }
-        
-        else
-            
+        if (!unique)
         {
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log in failed"
-                                  
-                                                            message:@"Username doesn't match"
-                                  
-                                                           delegate:self
-                                  
-                                                  cancelButtonTitle:@"Try Again"
-                                  
-                                                  otherButtonTitles:nil];
-            
-            [alert show];
-            
-            
+            if ([self.usernameTextField.text containsString:@" "]) {
+                NSString *usernameToReturn = [self.usernameTextField.text stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+                self.usernameTextField.text =  usernameToReturn;
+                [self checkForUsernameAndLogUserIn];
+                
+            }
+            else
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log in failed"
+                                                                message:@"Username doesn't match"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"Try Again"
+                                                      otherButtonTitles:nil];
+                [alert show];
+                
+            }
             
         }
         
     }];
 }
+
 
 
 @end
