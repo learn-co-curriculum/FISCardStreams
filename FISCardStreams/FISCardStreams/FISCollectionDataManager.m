@@ -39,8 +39,8 @@
         NSLog(@"%@", self.allStreams);
         
         for (FISStream *currentStream in self.allStreams) {
-            [self getShowcaseCardsForStream:currentStream completionBlock:^(NSArray *showcaseCards) {
-                [currentStream.cards addObjectsFromArray:showcaseCards];
+            [FISCardStreamsAPIClient getAllCardsWithStreamID:currentStream.streamID AndCheckWithCompletionBlock:^(NSArray *userCards) {
+                [currentStream.cards addObjectsFromArray:userCards];
             }];
         }
         
@@ -48,27 +48,25 @@
     }];
 }
 
-- (void)getShowcaseCardsForStream:(FISStream *)stream completionBlock:(void (^)(NSArray *))completionBlock {
-    NSString *streamID = stream.streamID;
-    [FISCardStreamsAPIClient getAllCardsWithStreamID:streamID AndCheckWithCompletionBlock:^(NSArray *userCards) {
-        NSArray *allCards = [FISCard createArrayOfCardsFromDictionaries:userCards];
-        
-        FISCard *githubCard = [self findMostRecentGithubCardInCardsArray:allCards];
-        FISCard *blogCard = [self findMostRecentBlogCardInCardsArray:allCards];
-        FISCard *stackExchangeCard = [self findMostRecentStackExchangeCardInCardsArray:allCards];
-        NSArray *arrayOFCards = @[githubCard, blogCard, stackExchangeCard];
-        completionBlock(arrayOFCards);
-    }];
-}
+//- (void)getShowcaseCardsForStream:(FISStream *)stream completionBlock:(void (^)(NSArray *))completionBlock {
+//    NSString *streamID = stream.streamID;
+//    [FISCardStreamsAPIClient getAllCardsWithStreamID:streamID AndCheckWithCompletionBlock:^(NSArray *userCards) {
+//        NSMutableArray *allCards = [[NSMutableArray alloc] init];
+//        [allCards addObjectsFromArray:[FISCard createArrayOfCardsFromDictionaries:userCards]];
+//        
+//        FISCard *githubCard = [self findMostRecentGithubCardInCardsArray:allCards];
+//        FISCard *blogCard = [self findMostRecentBlogCardInCardsArray:allCards];
+//        FISCard *stackExchangeCard = [self findMostRecentStackExchangeCardInCardsArray:allCards];
+//        NSArray *arrayOFCards = @[githubCard, blogCard, stackExchangeCard];
+//        completionBlock(arrayOFCards);
+//    }];
+//}
 
 #pragma mark - Predicate methods
 
-- (FISCard *)findMostRecentGithubCardInCardsArray:(NSMutableArray *)allCards {
+- (FISCard *)findMostRecentGithubCardInCardsArray:(NSMutableArray *)userCards {
     NSPredicate *githubPredicate = [NSPredicate predicateWithFormat:@"source == %@", SOURCE_GITHUB];
-    NSArray *githubArray = [allCards filteredArrayUsingPredicate:githubPredicate];
-    
-    
-    
+    NSArray *githubArray = [userCards filteredArrayUsingPredicate:githubPredicate];
     FISCard *githubCard = [githubArray firstObject];
     
     if (!githubCard) {
@@ -79,28 +77,43 @@
     return githubCard;
 }
 
-- (FISCard *)findMostRecentBlogCardInCardsArray:(NSMutableArray *)allCards {
+- (NSInteger)findCountOfGithubCommitsInLastSevenDaysInCardsArray:(NSMutableArray *)userCards {
+    NSPredicate *githubPredicate = [NSPredicate predicateWithFormat:@"source == %@", SOURCE_GITHUB];
+    NSArray *githubArray = [userCards filteredArrayUsingPredicate:githubPredicate];
+    
+    NSInteger secondsInOneWeekNeg = -604800;
+    NSDate *oneWeekAgo = [[NSDate alloc] initWithTimeIntervalSinceNow:secondsInOneWeekNeg];
+    
+    NSPredicate *withinOneWeekAgoPredicate = [NSPredicate predicateWithFormat:@"postAt > %@", oneWeekAgo];
+    NSArray *githubWithinOneWeekAgoArray = [githubArray filteredArrayUsingPredicate:withinOneWeekAgoPredicate];
+    
+    NSLog(@"%@", githubWithinOneWeekAgoArray);
+    
+    return [githubWithinOneWeekAgoArray count];
+}
+
+- (FISCard *)findMostRecentBlogCardInCardsArray:(NSMutableArray *)userCards {
     NSPredicate *blogPredicate = [NSPredicate predicateWithFormat:@"source == %@", SOURCE_BLOG];
-    NSArray *blogArray = [allCards filteredArrayUsingPredicate:blogPredicate];
+    NSArray *blogArray = [userCards filteredArrayUsingPredicate:blogPredicate];
     FISCard *blogCard = [blogArray firstObject];
     
     if (!blogCard) {
         blogCard = [[FISCard alloc]init];
-        blogCard.title = @"Blog Post";
-        blogCard.cardDescription = @"Test blog post.";
+        blogCard.title = @"No blog cards found";
+        blogCard.cardDescription = @"This user has not connected a blog.";
     }
     return blogCard;
 }
 
-- (FISCard *)findMostRecentStackExchangeCardInCardsArray:(NSMutableArray *)allCards {
+- (FISCard *)findMostRecentStackExchangeCardInCardsArray:(NSMutableArray *)userCards {
     NSPredicate *stackExchangePredicate = [NSPredicate predicateWithFormat:@"source == %@", SOURCE_STACK_EXCHANGE];
-    NSArray *stackExchangeArray = [allCards filteredArrayUsingPredicate:stackExchangePredicate];
+    NSArray *stackExchangeArray = [userCards filteredArrayUsingPredicate:stackExchangePredicate];
     FISCard *stackExchangeCard = [stackExchangeArray firstObject];
     
     if (!stackExchangeCard) {
         stackExchangeCard = [[FISCard alloc]init];
-        stackExchangeCard.title = @"Stack Exchange";
-        stackExchangeCard.cardDescription = @"Test stack exchange card.";
+        stackExchangeCard.title = @"No Stack Exchange cards found.";
+        stackExchangeCard.cardDescription = @"This user has not connect a stack exchange account.";
     }
     return stackExchangeCard;
 }
