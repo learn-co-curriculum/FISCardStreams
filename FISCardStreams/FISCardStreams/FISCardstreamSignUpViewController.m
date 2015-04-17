@@ -73,7 +73,7 @@
 
 - (IBAction)signUpButtonTapped:(id)sender {
     
-    [self.indicatorView startAnimating];
+//    [self.indicatorView startAnimating];
     [self checkForUsernameUniquenessAndSignUserUp];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -107,10 +107,10 @@
 
 #pragma mark - UIButton Helper Method
 
+#pragma mark - UIButton Helper Method
+
 - (void)checkForUsernameUniquenessAndSignUserUp {
     [FISCardStreamsAPIClient getAllStreamsAndCheckWithUsername:self.usernameTextField.text CompletionBlock:^(FISStream *stream) {
-        
-        [self.indicatorView stopAnimating];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Signup failed"
                                                         message:@"Username is already taken"
@@ -122,37 +122,66 @@
         
         if (unique == NO) {
             
-            NSString *username = [self validateUserName:self.usernameTextField.text];
+            [self validateUserName:self.usernameTextField.text];
+            NSLog(@"my username %@", self.usernameTextField.text);
             
-            [FISCardStreamsAPIClient createAStreamForName:username WithCompletionBlock:^(FISStream *userStream) {
-                NSLog(@"Signed UP");
-                self.dataManager.userStream = userStream;
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                
-                if(![defaults valueForKey:@"fisdev_username"])
-                {
-                    [defaults setValue:username forKey:@"fisdev_username"];
-                }
-                
-                [self takeMeToCredentialPage];
-                [self.indicatorView stopAnimating];
-                
-            }];
+            if ([self validateUserName:self.usernameTextField.text] == YES)
+            {
+                [self.indicatorView startAnimating];
+                NSLog(@"found the correct answer");
+                [FISCardStreamsAPIClient createAStreamForName:self.usernameTextField.text WithCompletionBlock:^(FISStream *userStream) {
+                    NSLog(@"Signed UP");
+                    self.dataManager.userStream = userStream;
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    
+                    if(![defaults valueForKey:@"fisdev_username"])
+                    {
+                        [defaults setValue:self.usernameTextField.text forKey:@"fisdev_username"];
+                    }
+                    
+                    [self takeMeToCredentialPage];
+                    [self.indicatorView stopAnimating];
+                    
+                }];
+            }
+            
         }
     }];
 }
 
 
-- (NSString *)validateUserName:(NSString *)usernameBeforeValidation
+- (BOOL)validateUserName:(NSString *)usernameBeforeValidation
 {
+    BOOL isAccepted = NO;
     if ([self.usernameTextField.text containsString:@" "]) {
         NSString *usernameToReturn = [self.usernameTextField.text stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-        return usernameToReturn;
+        self.usernameTextField.text =  usernameToReturn;
+        isAccepted = YES;
     }
+    else if([self.usernameTextField.text containsString:@"%"] || [self.usernameTextField.text containsString:@"&"] || [self.usernameTextField.text containsString:@"?"] || [self.usernameTextField.text containsString:@"/"] ||[self.usernameTextField.text isEqualToString:@"+"] )
+    {
+        
+        [self showAlertForIncorrectUsername];
+        isAccepted = NO;
+        ;
+    }
+    else
+    {
+        isAccepted = YES;
+    }
+    return isAccepted;
     
-    else{
-        return self.usernameTextField.text;
-    }
+}
+
+-(void)showAlertForIncorrectUsername
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Incorrect Username" message:@"Please use alphanumeric only" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alertController addAction:ok];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
 }
 
 @end

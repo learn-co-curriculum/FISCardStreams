@@ -132,14 +132,34 @@
         
     } SecondCompletionBlock:^(BOOL unique) {
         
-        if (!unique)
+        if ([self.usernameTextField.text containsString:@" "]) {
+            
+            NSString *usernameToReturn = [self.usernameTextField.text stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+            
+            self.usernameTextField.text =  usernameToReturn;
+            
+            [self checkForUsernameAndLogUserIn];
+            
+        }
+        
+        else
+            
         {
+            
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log in failed"
+                                  
                                                             message:@"Username doesn't match"
+                                  
                                                            delegate:self
+                                  
                                                   cancelButtonTitle:@"Try Again"
+                                  
                                                   otherButtonTitles:nil];
+            
             [alert show];
+            
+            
+            
         }
         
     }];
