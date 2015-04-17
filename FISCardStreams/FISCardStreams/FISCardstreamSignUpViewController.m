@@ -122,37 +122,63 @@
         
         if (unique == NO) {
             
-            NSString *username = [self validateUserName:self.usernameTextField.text];
+            [self validateUserName:self.usernameTextField.text];
             
-            [FISCardStreamsAPIClient createAStreamForName:username WithCompletionBlock:^(FISStream *userStream) {
-                NSLog(@"Signed UP");
-                self.dataManager.userStream = userStream;
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                
-                if(![defaults valueForKey:@"fisdev_username"])
-                {
-                    [defaults setValue:username forKey:@"fisdev_username"];
-                }
-                
-                [self takeMeToCredentialPage];
-                [self.indicatorView stopAnimating];
-                
-            }];
+            if (self.usernameTextField == nil) {
+                NSLog(@"Error");
+            }
+            else{
+                [FISCardStreamsAPIClient createAStreamForName:self.usernameTextField.text WithCompletionBlock:^(FISStream *userStream) {
+                    NSLog(@"Signed UP");
+                    self.dataManager.userStream = userStream;
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    
+                    if(![defaults valueForKey:@"fisdev_username"])
+                    {
+                        [defaults setValue:self.usernameTextField.text forKey:@"fisdev_username"];
+                    }
+                    
+                    [self takeMeToCredentialPage];
+                    [self.indicatorView stopAnimating];
+                    
+                }];
+            }
+            
         }
     }];
 }
 
 
-- (NSString *)validateUserName:(NSString *)usernameBeforeValidation
+- (void)validateUserName:(NSString *)usernameBeforeValidation
 {
+//    NSSet *invalidCharacters = [NSSet setWithArray:@[@" ", @"&", @"?", @"!", @"+", @"-", @"=", @"%"]];
+    
+    
+    
     if ([self.usernameTextField.text containsString:@" "]) {
         NSString *usernameToReturn = [self.usernameTextField.text stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-        return usernameToReturn;
+        self.usernameTextField.text =  usernameToReturn;
+    }
+    else if([self.usernameTextField.text containsString:@"%"] || [self.usernameTextField.text containsString:@"&"] || [self.usernameTextField.text containsString:@"?"] || [self.usernameTextField.text containsString:@"/"] )
+    {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Incorrect Username" message:@"Please use alphanumeric only" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:ok];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        self.usernameTextField.text = nil;
     }
     
-    else{
-        return self.usernameTextField.text;
-    }
+    
 }
+
+-(void)showAlert
+{
+    
+    
+}
+
 
 @end
