@@ -139,11 +139,6 @@
     [self.collectionsDataManager getAllStreamsWithCompletionBlock:^(BOOL success) {
         NSLog(@"collections fetched");
         
-        for (FISStream *currentStream in self.collectionsDataManager.allStreams) {
-            [self.collectionsDataManager getShowcaseCardsForStream:currentStream completionBlock:^(NSArray *showcaseCards) {
-                [currentStream.cards addObjectsFromArray:showcaseCards];
-            }];
-        }
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             NSLog(@"reload tableivew");
         }];

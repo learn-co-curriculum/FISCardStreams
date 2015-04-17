@@ -26,7 +26,7 @@
  *  Deprecated.
  *  Requests from the CardStreams.io API all of the cards for the designated stream, filters them for the most recent card of each Github, Blog, and Stack Exchange type, and loads only these three cards into the stream's cards array property.
  */
-- (void)getShowcaseCardsForStream:(FISStream *)stream completionBlock:(void (^)(NSArray *showcaseCards))completionBlock;
+//- (void)getShowcaseCardsForStream:(FISStream *)stream completionBlock:(void (^)(NSArray *showcaseCards))completionBlock;
 
 /**
  *  Returns the FISCard in the submitted array with the latest postAt time stamp of the cards containing "github" in the source property. If the result is nil, a test card is returned.

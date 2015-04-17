@@ -11,8 +11,7 @@
 @class FISCard;
 @class FISStream;
 
-@interface FISCardViewController : UIViewController <UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource>
-
+@interface FISCardViewController : UIViewController <UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (strong, nonatomic) FISStream *stream;
 
 @end
