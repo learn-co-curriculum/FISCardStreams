@@ -35,19 +35,19 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *loggedIn = [defaults valueForKey:@"user_logged_in"];
     
-    if ([loggedIn isEqualToString:@"Yes"]) {
-        
-        UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController *initialVC = [myStoryboard instantiateInitialViewController];
-        self.window.rootViewController = initialVC;
-        
-        
-    }
-    else{
+//    if ([loggedIn isEqualToString:@"Yes"]) {
+//        
+//        UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        UIViewController *initialVC = [myStoryboard instantiateInitialViewController];
+//        self.window.rootViewController = initialVC;
+//        
+//        
+//    }
+//    else{
         UIStoryboard *myStoryboard = [UIStoryboard storyboardWithName:@"LoginFlow" bundle:nil];
         FISCardstreamLogInViewController *loginViewController = [myStoryboard instantiateInitialViewController];
         self.window.rootViewController = loginViewController;
-    }
+    //}
     
     [self.window makeKeyAndVisible];
     
