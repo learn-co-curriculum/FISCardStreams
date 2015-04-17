@@ -33,7 +33,7 @@
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *loggedIn = [defaults valueForKey:@"user_logged_in"];
+    //NSString *loggedIn = [defaults valueForKey:@"user_logged_in"];
     
 //    if ([loggedIn isEqualToString:@"Yes"]) {
 //        

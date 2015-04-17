@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9oK-W7-AbO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9oK-W7-AbO">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -240,7 +240,7 @@
                                     <action selector="stackExchangeLoginButtonTapped:" destination="cBn-ee-LEL" eventType="touchUpInside" id="n68-mR-bLu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZz-II-iJU">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZz-II-iJU">
                                 <rect key="frame" x="494" y="30" width="75" height="30"/>
                                 <color key="backgroundColor" red="0.070588235289999995" green="0.58039215690000001" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
