@@ -74,6 +74,8 @@
                                    action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+    
+    NSLog(@"medium %@", self.mediumUsername);
 }
 
 
@@ -81,6 +83,7 @@
 {
     AFOAuthCredential *cred = [AFOAuthCredential retrieveCredentialWithIdentifier:@"githubToken"];
     if (cred) {
+        NSLog(@"animate cred is %@", cred);
         NSLog(@"animating github checker");
         [self animateCheckMark:self.checkerImage];
     }
@@ -88,13 +91,17 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *mediumUsername = [defaults valueForKey:@"medium_username"];
     //    NSString *mediumUsername = [SSKeychain passwordForService:SOURCE_BLOG account:self.fisDevUsername];
-    if (mediumUsername) {
+    if (self.mediumUsername) {
+        NSLog(@"animate medium %@", mediumUsername);
         self.blogTextField.placeholder = mediumUsername;
         [self animateCheckMark:self.mediumChecker];
     }
-
-    NSString *accessToken = [SSKeychain passwordForService:SOURCE_STACK_EXCHANGE account:self.fisDevUsername];
+    
+    NSLog(@"%@", self.fisDevUsername);
+    NSString *username = [defaults valueForKey:@"fisdev_username"];
+    NSString *accessToken = [SSKeychain passwordForService:SOURCE_STACK_EXCHANGE account:username];
     if (accessToken) {
+        NSLog(@"animate accessToken %@", accessToken);
         NSLog(@"animating stackoverflow checker");
         [self animateCheckMark:self.checkerImageTwo];
     }
