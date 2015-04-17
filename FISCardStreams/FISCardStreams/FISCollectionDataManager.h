@@ -31,16 +31,21 @@
 /**
  *  Returns the FISCard in the submitted array with the latest postAt time stamp of the cards containing "github" in the source property. If the result is nil, a test card is returned.
  */
-- (FISCard *)findMostRecentGithubCardInCardsArray:(NSMutableArray *)allCards;
+- (FISCard *)findMostRecentGithubCardInCardsArray:(NSMutableArray *)userCards;
+
+/**
+ *  Returns the number of Github commit cards within the last week contained in a stream's cards array.
+ */
+- (NSInteger)findCountOfGithubCommitsInLastSevenDaysInCardsArray:(NSMutableArray *)userCards;
 
 /**
  *  Returns the FISCard in the submitted array with the latest postAt time stamp of the cards containing "blog" in the source property. If the result is nil, a test card is returned.
  */
-- (FISCard *)findMostRecentBlogCardInCardsArray:(NSMutableArray *)allCards;
+- (FISCard *)findMostRecentBlogCardInCardsArray:(NSMutableArray *)userCards;
 
 /**
  *  Returns the FISCard in the submitted array with the latest postAt time stamp of the cards containing "stack_exchange" in the source property. If the result is nil, a test card is returned.
  */
-- (FISCard *)findMostRecentStackExchangeCardInCardsArray:(NSMutableArray *)allCards;
+- (FISCard *)findMostRecentStackExchangeCardInCardsArray:(NSMutableArray *)userCards;
 
 @end

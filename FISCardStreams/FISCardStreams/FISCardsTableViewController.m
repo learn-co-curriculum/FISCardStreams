@@ -107,12 +107,6 @@
     
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    [self updateCardsForAllAccounts];
-
-}
-
 #pragma mark - UITableView Data Source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
