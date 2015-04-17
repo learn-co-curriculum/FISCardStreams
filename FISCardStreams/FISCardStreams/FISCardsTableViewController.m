@@ -103,7 +103,7 @@
     //        NSString *accessToken = [SSKeychain passwordForService:SOURCE_STACK_EXCHANGE account:username];
     //
     //        if (accessToken) {
-    //[self getAllStreams];
+    [self getAllStreams];
     
 }
 
@@ -125,7 +125,7 @@
     
     if ([currentCard.source isEqualToString:SOURCE_BLOG]) {
         
-        WebViewTableViewCell *webCell = (WebViewTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"weCardCell" forIndexPath:indexPath];
+        WebViewTableViewCell *webCell = (WebViewTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"blogCell" forIndexPath:indexPath];
         
         webCell.card = currentCard;
         
@@ -133,13 +133,13 @@
     }
     if([currentCard.source isEqualToString:SOURCE_STACK_EXCHANGE])
     {
-        StackExchangeTableViewCell *stackCell = (StackExchangeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"stackCardCell" forIndexPath:indexPath];
+        StackExchangeTableViewCell *stackCell = (StackExchangeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"stackExchangeCell" forIndexPath:indexPath];
         stackCell.card = currentCard;
         return stackCell;
     }
     else {
         
-        FISCardTableViewCell *cardCell = (FISCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cardCell" forIndexPath:indexPath];
+        FISCardTableViewCell *cardCell = (FISCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"githubCell" forIndexPath:indexPath];
         cardCell.card = currentCard;
         
         return cardCell;

@@ -141,7 +141,7 @@
     NSString *cardstreamURL = [NSString stringWithFormat:@"%@/streams/%@/cards", CARDSTREAMS_BASE_URL, streamID];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [[manager operationQueue] setMaxConcurrentOperationCount:5];
+    [[manager operationQueue] setMaxConcurrentOperationCount:10];
     
     AFJSONRequestSerializer *serializer = [[AFJSONRequestSerializer alloc] init];
     [serializer setValue:CARDSTREAMS_APP_ID forHTTPHeaderField:@"X-Lifestreams-3scale-AppId"];

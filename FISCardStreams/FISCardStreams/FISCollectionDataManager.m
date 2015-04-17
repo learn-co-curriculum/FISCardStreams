@@ -41,11 +41,17 @@
         
         for (FISStream *currentStream in self.allStreams) {
             [FISCardStreamsAPIClient getAllCardsWithStreamID:currentStream.streamID AndCheckWithCompletionBlock:^(NSArray *userCards) {
-                [currentStream.cards addObjectsFromArray:userCards];
+                currentStream.cards = [[NSMutableArray alloc]init];
+                for (NSDictionary *cardDictionary in userCards) {
+                    FISCard *card = [FISCard createCardFromDictionary:cardDictionary];
+                    [currentStream.cards addObject:card];
+                }
+                NSLog(@"cards fetched for %@", currentStream);
+                if ([currentStream isEqual:[self.allStreams lastObject]]) {
+                    completionBlock(YES);
+                }
             }];
         }
-        
-        completionBlock(YES);
     }];
 }
 

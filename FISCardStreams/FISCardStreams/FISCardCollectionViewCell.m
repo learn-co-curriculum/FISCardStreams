@@ -19,8 +19,8 @@
 
 @interface FISCardCollectionViewCell ()
 
-@property (strong, nonatomic) FISCollectionDataManager *collectionsDataManager;
-@property (strong, nonatomic) FISStreamsDataManager *streamsDataManager;
+//@property (strong, nonatomic) FISCollectionDataManager *collectionsDataManager;
+//@property (strong, nonatomic) FISStreamsDataManager *streamsDataManager;
 
 
 @end
@@ -34,15 +34,15 @@
     [self.cardTableView setDelegate:self];
     [self.cardTableView setDataSource:self];
     
-    self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
-    self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
+//    self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
+//    self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
 }
 
 
 #pragma mark - UITableView Data Source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 10;
+    return [self.stream.cards count];
 }
 
 
@@ -53,9 +53,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cardCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"activityCell" forIndexPath:indexPath];
     
-    FISCard *currentCard = self.stream.cards[indexPath.row];
+    FISCard *currentCard = (FISCard *)self.stream.cards[indexPath.row];
     
     cell.textLabel.text = currentCard.title;
     NSString *date = [NSDate dateAsJSONDate:currentCard.postAt];

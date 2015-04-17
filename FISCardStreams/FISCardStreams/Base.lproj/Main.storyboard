@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cardCell" rowHeight="176" id="vBf-xg-nMq" customClass="FISCardTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="githubCell" rowHeight="176" id="vBf-xg-nMq" customClass="FISCardTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vBf-xg-nMq" id="p4e-tm-Lro">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -90,7 +90,7 @@
                                     <outlet property="titleLabel" destination="8Kq-Ua-fqK" id="wtz-Th-KXI"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="weCardCell" rowHeight="176" id="xUq-Bl-WD4" customClass="WebViewTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="blogCell" rowHeight="176" id="xUq-Bl-WD4" customClass="WebViewTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xUq-Bl-WD4" id="UjV-m1-QHA">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -158,7 +158,7 @@
                                     <outlet property="titleLabel" destination="cDu-w7-XPi" id="6Bf-eJ-eQ4"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stackCardCell" rowHeight="176" id="QuI-13-OFE" customClass="StackExchangeTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stackExchangeCell" rowHeight="176" id="QuI-13-OFE" customClass="StackExchangeTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QuI-13-OFE" id="ehS-a2-jjo">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -295,7 +295,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cardCell" id="QOt-wU-UI1" customClass="FISCardCollectionViewCell">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="userCell" id="QOt-wU-UI1" customClass="FISCardCollectionViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -463,7 +463,7 @@
                                                             <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <prototypes>
-                                                                <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cardCell" textLabel="crF-gB-put" detailTextLabel="4zW-KX-mFr" style="IBUITableViewCellStyleSubtitle" id="sRE-Kq-GVs">
+                                                                <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityCell" textLabel="crF-gB-put" detailTextLabel="4zW-KX-mFr" style="IBUITableViewCellStyleSubtitle" id="sRE-Kq-GVs">
                                                                     <rect key="frame" x="0.0" y="0.0" width="401" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sRE-Kq-GVs" id="m5C-Zc-udK">

@@ -57,9 +57,9 @@
     self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
  
-    [self getAllStreams];
+//    [self getAllStreams];
 
-    [self getAllCardsForUser];
+//    [self getAllCardsForUser];
 
 }
 
@@ -110,7 +110,7 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    FISCardCollectionViewCell *cell = [collectionView    dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
+    FISCardCollectionViewCell *cell = [collectionView    dequeueReusableCellWithReuseIdentifier:@"userCell" forIndexPath:indexPath];
     
     FISStream *currentStream = self.collectionsDataManager.allStreams[indexPath.section];
     
@@ -118,13 +118,13 @@
     
     
     
-    FISCard *stackOverflowCard = [self.collectionsDataManager findMostRecentBlogCardInCardsArray:currentStream.cards];
-    cell.stackOverflowField.text = stackOverflowCard.description;
+    FISCard *stackOverflowCard = [self.collectionsDataManager findMostRecentStackExchangeCardInCardsArray:currentStream.cards];
+    cell.stackOverflowField.text = stackOverflowCard.cardDescription;
     
     
     
     FISCard *blogCard = [self.collectionsDataManager findMostRecentBlogCardInCardsArray:currentStream.cards];
-    cell.blogField.text = blogCard.description;
+    cell.blogField.text = blogCard.cardDescription;
     
     
     return cell;
@@ -137,11 +137,11 @@
 
 -(void)getAllStreams{
     [self.collectionsDataManager getAllStreamsWithCompletionBlock:^(BOOL success) {
-        NSLog(@"collections fetched");
-        
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            NSLog(@"reload tableivew");
-        }];
+        if (success) {
+            NSLog(@"collections fetched");
+        } else {
+            NSLog(@"collections error");
+        }
     }];
 }
 
