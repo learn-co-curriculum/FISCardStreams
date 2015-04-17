@@ -38,6 +38,12 @@
         self.allStreams = [FISStream createArrayOfStreamsFromDictionaries:allStreams];
         NSLog(@"%@", self.allStreams);
         
+        for (FISStream *currentStream in self.allStreams) {
+            [self getShowcaseCardsForStream:currentStream completionBlock:^(NSArray *showcaseCards) {
+                [currentStream.cards addObjectsFromArray:showcaseCards];
+            }];
+        }
+        
         completionBlock(YES);
     }];
 }
@@ -50,16 +56,19 @@
         FISCard *githubCard = [self findMostRecentGithubCardInCardsArray:allCards];
         FISCard *blogCard = [self findMostRecentBlogCardInCardsArray:allCards];
         FISCard *stackExchangeCard = [self findMostRecentStackExchangeCardInCardsArray:allCards];
-        
-        completionBlock(@[githubCard, blogCard, stackExchangeCard]);
+        NSArray *arrayOFCards = @[githubCard, blogCard, stackExchangeCard];
+        completionBlock(arrayOFCards);
     }];
 }
 
 #pragma mark - Predicate methods
 
-- (FISCard *)findMostRecentGithubCardInCardsArray:(NSArray *)allCards {
+- (FISCard *)findMostRecentGithubCardInCardsArray:(NSMutableArray *)allCards {
     NSPredicate *githubPredicate = [NSPredicate predicateWithFormat:@"source == %@", SOURCE_GITHUB];
     NSArray *githubArray = [allCards filteredArrayUsingPredicate:githubPredicate];
+    
+    
+    
     FISCard *githubCard = [githubArray firstObject];
     
     if (!githubCard) {
@@ -70,7 +79,7 @@
     return githubCard;
 }
 
-- (FISCard *)findMostRecentBlogCardInCardsArray:(NSArray *)allCards {
+- (FISCard *)findMostRecentBlogCardInCardsArray:(NSMutableArray *)allCards {
     NSPredicate *blogPredicate = [NSPredicate predicateWithFormat:@"source == %@", SOURCE_BLOG];
     NSArray *blogArray = [allCards filteredArrayUsingPredicate:blogPredicate];
     FISCard *blogCard = [blogArray firstObject];
@@ -83,7 +92,7 @@
     return blogCard;
 }
 
-- (FISCard *)findMostRecentStackExchangeCardInCardsArray:(NSArray *)allCards {
+- (FISCard *)findMostRecentStackExchangeCardInCardsArray:(NSMutableArray *)allCards {
     NSPredicate *stackExchangePredicate = [NSPredicate predicateWithFormat:@"source == %@", SOURCE_STACK_EXCHANGE];
     NSArray *stackExchangeArray = [allCards filteredArrayUsingPredicate:stackExchangePredicate];
     FISCard *stackExchangeCard = [stackExchangeArray firstObject];

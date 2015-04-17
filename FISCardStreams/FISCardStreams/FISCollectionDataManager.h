@@ -31,16 +31,16 @@
 /**
  *  Returns the FISCard in the submitted array with the latest postAt time stamp of the cards containing "github" in the source property. If the result is nil, a test card is returned.
  */
-- (FISCard *)findMostRecentGithubCardInCardsArray:(NSArray *)allCards;
+- (FISCard *)findMostRecentGithubCardInCardsArray:(NSMutableArray *)allCards;
 
 /**
  *  Returns the FISCard in the submitted array with the latest postAt time stamp of the cards containing "blog" in the source property. If the result is nil, a test card is returned.
  */
-- (FISCard *)findMostRecentBlogCardInCardsArray:(NSArray *)allCards;
+- (FISCard *)findMostRecentBlogCardInCardsArray:(NSMutableArray *)allCards;
 
 /**
  *  Returns the FISCard in the submitted array with the latest postAt time stamp of the cards containing "stack_exchange" in the source property. If the result is nil, a test card is returned.
  */
-- (FISCard *)findMostRecentStackExchangeCardInCardsArray:(NSArray *)allCards;
+- (FISCard *)findMostRecentStackExchangeCardInCardsArray:(NSMutableArray *)allCards;
 
 @end

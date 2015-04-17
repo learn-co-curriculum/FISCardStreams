@@ -12,6 +12,8 @@
 #import "FISCardsTableViewController.h"
 #import "FISCardViewController.h"
 #import "AddingCredentialsViewController.h"
+#import "FISCardstreamLogInViewController.h"
+#import <SSKeychain.h>
 
 #import "FISStreamsDataManager.h"
 #import "FISCollectionDataManager.h"
@@ -65,28 +67,50 @@
     
     [self addingPullToRefreshFeatureToTheTableViews];
     
+    self.tableView.estimatedRowHeight = 200;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    
     UIImageView *pic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings"]];
     [pic setFrame:CGRectMake(self.navigationController.navigationBar.frame.origin.x,self.navigationController.navigationBar.frame.origin.y -10,30,30)];
     [pic setBackgroundColor:[UIColor clearColor]];
     pic.layer.cornerRadius = pic.frame.size.width / 2;
     pic.layer.masksToBounds = YES;
-//    [self.barButtonItem.image
-
+    
+    
+    
+    //    [self.barButtonItem.image
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
+    
     //self.settings.image = [UIImage imageNamed:@"settings"];
-
+    
 }
 
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
     [self getAllCardsForUser];
-    [self getAllStreams];
+    
+    //    if ([self.presentingViewController isKindOfClass:[FISCardstreamLogInViewController class]]) {
+    //        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //        NSString *username = [defaults valueForKey:@"fisdev_username"];
+    //        NSString *accessToken = [SSKeychain passwordForService:SOURCE_STACK_EXCHANGE account:username];
+    //
+    //        if (accessToken) {
+    //[self getAllStreams];
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self updateCardsForAllAccounts];
+
 }
 
 #pragma mark - UITableView Data Source
@@ -103,14 +127,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FISCard *currentCard = self.streamsDataManager.userStream.cards[indexPath.row];
-
+    
     if ([currentCard.source isEqualToString:SOURCE_BLOG]) {
         
         WebViewTableViewCell *webCell = (WebViewTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"weCardCell" forIndexPath:indexPath];
         
         webCell.card = currentCard;
-
-            return webCell;
+        
+        return webCell;
     }
     if([currentCard.source isEqualToString:SOURCE_STACK_EXCHANGE])
     {
@@ -119,62 +143,15 @@
         return stackCell;
     }
     else {
-    
-    FISCardTableViewCell *cardCell = (FISCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cardCell" forIndexPath:indexPath];
-    cardCell.card = currentCard;
-    
-    return cardCell;
-    
-    }
-
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UITableViewCell *webViewCell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    if ([webViewCell isKindOfClass:[webViewCell class]]) {
-        return 300;
+        
+        FISCardTableViewCell *cardCell = (FISCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cardCell" forIndexPath:indexPath];
+        cardCell.card = currentCard;
+        
+        return cardCell;
+        
     }
     
-    return 176;
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 #pragma mark - UIButton Actions
@@ -254,7 +231,7 @@
     [self.streamsDataManager getAllCardsForUserStreamWithCompletion:^(BOOL success) {
         NSLog(@"cards fetched");
         [self updateCardsForAllAccounts];
-
+        
         if (self.refreshControl) {
             [self.refreshControl endRefreshing];
         }
@@ -289,13 +266,13 @@
 {
     // do your refresh here and reload the tablview
     [self getAllCardsForUser];
-//    [self viewWillAppear:YES];
+    //    [self viewWillAppear:YES];
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    FISCardViewController *cardVC = segue.destinationViewController;
+    //    FISCardViewController *cardVC = segue.destinationViewController;
 }
 
 

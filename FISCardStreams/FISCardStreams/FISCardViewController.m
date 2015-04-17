@@ -8,23 +8,28 @@
 
 #import "FISCardViewController.h"
 
+//collectionview imports
 #import "FISCardsTableViewController.h"
 #import "FISCardCollectionViewCell.h"
 #import "FISCardTableViewCell.h"
 
+
+//data imports
 #import "FISStream.h"
 #import "FISCard.h"
 
+//UI pods
 #import <RGCardViewLayout.h>
 #import <UIColor+Hex.h>
 #import <UIColor+uiGradients.h>
 
+//data imports
 #import "FISStreamsDataManager.h"
 #import "FISCollectionDataManager.h"
 
 
 
-@interface FISCardViewController () 
+@interface FISCardViewController ()
 
 @property (strong, nonatomic) IBOutlet UIView *backgroundGrandientView;
 @property (nonatomic) IBOutlet UICollectionView *collectionView;
@@ -47,9 +52,6 @@
     [self setUpCollectionView];
     [self setUpBackgroundColors];
     [self roundCornersOnCollectionViewCell];
-    
-    self.cardCell.layer.cornerRadius = 5;
-    self.cardCell.layer.masksToBounds = YES;
 
 
     self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
@@ -96,9 +98,8 @@
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
-    return 3;
-//    NSLog(@"COUNT %lu", [self.collectionsDataManager.allStreams count]);
-//    return [self.collectionsDataManager.allStreams count];
+    return [self.collectionsDataManager.allStreams count];
+
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -110,45 +111,24 @@
     
     FISCardCollectionViewCell *cell = [collectionView    dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
     
-    FISStream *currentStream = self.collectionsDataManager.allStreams[0];
+    FISStream *currentStream = self.collectionsDataManager.allStreams[indexPath.section];
     
-//    FISCard *gitHubCard = currentStream.cards[indexPath.section];
-//    NSLog(@"%ld", indexPath.row);
-//    
-//    cell.titleField.text = gitHubCard.title;
-//    cell.contentField.text = gitHubCard.cardDescription;
+    cell.stream = currentStream;
+    
+    
+    
+    FISCard *stackOverflowCard = [self.collectionsDataManager findMostRecentBlogCardInCardsArray:currentStream.cards];
+    cell.stackOverflowField.text = stackOverflowCard.description;
+    
+    
+    
+    FISCard *blogCard = [self.collectionsDataManager findMostRecentBlogCardInCardsArray:currentStream.cards];
+    cell.blogField.text = blogCard.description;
     
     
     return cell;
 }
 
-#pragma mark - TableView Delegate
-
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.stream.cards count];
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    FISCardTableViewCell *cardCell = (FISCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cardCell" forIndexPath:indexPath];
-    
-    FISCard *currentCard = self.stream.cards[indexPath.row];
-    cardCell.card = currentCard;
-    
-    return cardCell;
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 176;
-}
 
 
 
@@ -193,3 +173,36 @@
 */
 
 @end
+
+
+//#pragma mark - TableView Delegate
+//
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    return 1;
+//}
+//
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    return [self.stream.cards count];
+//}
+//
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//    NSLog(@"TABLEVIEW CODE RAN");
+//
+//    FISCardTableViewCell *cardCell = (FISCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cardCell" forIndexPath:indexPath];
+//
+//
+//    FISCard *currentCard = self.stream.cards[indexPath.row];
+//    cardCell.card = currentCard;
+//
+//
+//    return cardCell;
+//}
+//
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return 176;
+//}

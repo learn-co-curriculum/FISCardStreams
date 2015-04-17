@@ -12,8 +12,8 @@
 @implementation FISConstants
 
 NSString *const CARDSTREAMS_BASE_URL = @"https://api.cardstreams.io/v1";
-NSString *const CARDSTREAMS_APP_ID = @"a43a7450"; // Mark
-NSString *const CARDSTREAMS_KEY = @"51a297e99b4ca58be472ee943da73e7b"; // Mark
+NSString *const CARDSTREAMS_APP_ID = @"c1bb343c"; // Anish
+NSString *const CARDSTREAMS_KEY = @"ee1875c7b1527f31206d39f5b95aa98a"; // Anish
 
 // Mark's API credentials
 NSString *const CARDSTREAMS_APP_ID_MARK = @"a43a7450";

@@ -47,14 +47,27 @@
 //    NSString *accessToken = [defaults valueForKey:@"access_token"];
     
     FISStreamsDataManager *streamsDataManager = [FISStreamsDataManager sharedDataManager];
+    NSString *stackAccess = [[NSString alloc] init];
     NSString *username = streamsDataManager.userStream.streamName;
-    NSString *accessToken = [SSKeychain passwordForService:SOURCE_STACK_EXCHANGE account:username];
+    if (username) {
+        NSString *accessToken = [SSKeychain passwordForService:SOURCE_STACK_EXCHANGE account:username];
+        stackAccess = accessToken;
+    }
+    else
+    {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        NSString *realUSername = [defaults valueForKey:@"fisdev_username"];
+        
+        NSString *accessToken = [SSKeychain passwordForService:SOURCE_STACK_EXCHANGE account:realUSername];
+        stackAccess = accessToken;
+    }
     
-    if (!accessToken) {
+    if (!stackAccess) {
         NSLog(@"Stack Exchange access_token not retrieved");
     }
         
-    NSDictionary *urlParams = @{@"access_token":accessToken,
+    NSDictionary *urlParams = @{@"access_token":stackAccess,
                                 @"key":STACKEXCHANGE_KEY};
 
 

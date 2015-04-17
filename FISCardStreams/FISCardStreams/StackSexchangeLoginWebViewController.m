@@ -63,10 +63,14 @@
         NSString *realAccessToken = [accessTokenWithExpiry componentsSeparatedByString:@"="][1];
         NSLog(@"Access Token is %@", realAccessToken);
         
-        [SSKeychain setPassword:realAccessToken forService:SOURCE_STACK_EXCHANGE account:self.fisDevUsername];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *username = [defaults valueForKey:@"fisdev_username"];
+        
+        [SSKeychain setPassword:realAccessToken forService:SOURCE_STACK_EXCHANGE account:username];
+        
         
         //test password retrieval
-        NSString *retrievedToken = [SSKeychain passwordForService:SOURCE_STACK_EXCHANGE account:self.fisDevUsername];
+        NSString *retrievedToken = [SSKeychain passwordForService:SOURCE_STACK_EXCHANGE account:username];
         NSLog(@"Retrieved Token is %@", retrievedToken);
         
 //        [self storingAccessTokenAsUserDefaults:realAccessToken];

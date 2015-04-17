@@ -74,6 +74,7 @@
 }
 
 - (void)getAllCardsForUserStreamWithCompletion:(void (^)(BOOL))completionBlock {
+    
     if (self.userStream != nil) {
         [FISCardStreamsAPIClient getAllCardsWithStreamID:self.userStream.streamID AndCheckWithCompletionBlock:^(NSArray *userCards) {
             self.userStream.cards = [[NSMutableArray alloc]init];
@@ -85,6 +86,17 @@
         }];
     } else {
         NSLog(@"userStream has not been fetched from the server");
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *streamID = [defaults valueForKey:@"fisdev_username"];
+        [FISCardStreamsAPIClient getAllCardsWithStreamID:streamID AndCheckWithCompletionBlock:^(NSArray *userCards) {
+            self.userStream.cards = [[NSMutableArray alloc]init];
+            for (NSDictionary *cardDictionary in userCards) {
+                FISCard *card = [FISCard createCardFromDictionary:cardDictionary];
+                [self.userStream.cards addObject:card];
+            }
+            completionBlock(YES);
+        }];
+
     }
 }
 
