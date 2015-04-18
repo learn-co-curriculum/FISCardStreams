@@ -121,12 +121,13 @@
     
     
     FISCard *stackOverflowCard = [self.collectionsDataManager findMostRecentStackExchangeCardInCardsArray:currentStream.cards];
+    
     cell.stackOverflowField.text = stackOverflowCard.cardDescription;
     
     
     
     FISCard *blogCard = [self.collectionsDataManager findMostRecentBlogCardInCardsArray:currentStream.cards];
-    cell.blogField.text = blogCard.cardDescription;
+    cell.blogField.text = blogCard.title;
     
     
     return cell;

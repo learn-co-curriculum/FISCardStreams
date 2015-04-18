@@ -544,7 +544,7 @@
                                         </constraints>
                                         <size key="customSize" width="417" height="429"/>
                                         <connections>
-                                            <outlet property="blogField" destination="jpz-xd-oIv" id="yiK-x8-x37"/>
+                                            <outlet property="blogField" destination="nCF-mZ-dka" id="oh5-Bm-AIg"/>
                                             <outlet property="bottomContainer" destination="UVo-ny-QBa" id="7Gc-qA-vid"/>
                                             <outlet property="cardTableView" destination="C9I-Vf-0Qe" id="a9f-fp-HyF"/>
                                             <outlet property="gitHubField" destination="Dr8-Yd-uc5" id="5vx-DQ-hcY"/>
