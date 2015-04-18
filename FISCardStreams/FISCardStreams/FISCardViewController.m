@@ -118,6 +118,10 @@
     
     cell.nameField.text = currentStream.streamName;
     
+    NSInteger githubCount = [self.collectionsDataManager findCountOfGithubCommitsInLastSevenDaysInCardsArray:self.collectionsDataManager.allStreams];
+    
+    cell.gitHubField.text = [NSString stringWithFormat:@"%ld", (long)githubCount];
+    
     
     
     FISCard *stackOverflowCard = [self.collectionsDataManager findMostRecentStackExchangeCardInCardsArray:currentStream.cards];
