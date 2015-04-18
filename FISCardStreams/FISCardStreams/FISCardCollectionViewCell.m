@@ -58,9 +58,15 @@
     FISCard *currentCard = (FISCard *)self.stream.cards[indexPath.section];
     
     cell.textLabel.text = currentCard.title;
-    NSString *date = [NSDate dateAsJSONDate:currentCard.postAt];
+    NSDate *postDate = currentCard.postAt;
     
-    cell.detailTextLabel.text = date;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    NSString *shortDate = [dateFormatter stringFromDate:postDate];
+    
+    cell.detailTextLabel.text = shortDate;
     
 
     
