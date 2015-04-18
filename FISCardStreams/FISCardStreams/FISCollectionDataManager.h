@@ -30,7 +30,7 @@
 /**
  *  Returns the number of Github commit cards within the last week contained in a stream's cards array.
  */
-- (NSInteger)findCountOfGithubCommitsInLastSevenDaysInCardsArray:(NSMutableArray *)userCards;
+- (NSInteger)findCountOfGithubCommitsInLastSevenDaysInCardsArray:(NSArray *)userCards;
 
 /**
  *  Returns the FISCard in the submitted array with the latest postAt time stamp of the cards containing "blog" in the source property. If the result is nil, a test card is returned.

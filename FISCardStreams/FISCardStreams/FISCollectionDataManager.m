@@ -71,7 +71,7 @@
     return githubCard;
 }
 
-- (NSInteger)findCountOfGithubCommitsInLastSevenDaysInCardsArray:(NSMutableArray *)userCards {
+- (NSInteger)findCountOfGithubCommitsInLastSevenDaysInCardsArray:(NSArray *)userCards {
     NSPredicate *githubPredicate = [NSPredicate predicateWithFormat:@"source == %@", SOURCE_GITHUB];
     NSArray *githubArray = [userCards filteredArrayUsingPredicate:githubPredicate];
     
