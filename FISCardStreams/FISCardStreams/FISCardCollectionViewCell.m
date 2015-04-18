@@ -55,10 +55,11 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"activityCell" forIndexPath:indexPath];
     
-    FISCard *currentCard = (FISCard *)self.stream.cards[indexPath.row];
+    FISCard *currentCard = (FISCard *)self.stream.cards[indexPath.section];
     
     cell.textLabel.text = currentCard.title;
     NSString *date = [NSDate dateAsJSONDate:currentCard.postAt];
+    
     cell.detailTextLabel.text = date;
     
 
