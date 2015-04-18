@@ -116,6 +116,8 @@
     
     cell.stream = currentStream;
     
+    cell.nameField.text = currentStream.streamName;
+    
     
     
     FISCard *stackOverflowCard = [self.collectionsDataManager findMostRecentStackExchangeCardInCardsArray:currentStream.cards];
