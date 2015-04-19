@@ -113,7 +113,7 @@
     
     cell.nameField.text = currentStream.streamName;
     
-    NSInteger githubCount = [self.collectionsDataManager findCountOfGithubCommitsInLastSevenDaysInCardsArray:self.collectionsDataManager.allStreams];
+    NSInteger githubCount = [self.collectionsDataManager findCountOfGithubCommitsInLastSevenDaysInCardsArray:currentStream.cards];
     
     cell.gitHubField.text = [NSString stringWithFormat:@"%ld", (long)githubCount];
     
