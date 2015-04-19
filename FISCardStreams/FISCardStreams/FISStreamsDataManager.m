@@ -134,7 +134,7 @@
                                    WithContentDictionary:cardBody
                                      WithCompletionBlock:^(FISCard *card) {
                                          [mNewBlogCards addObject:card];
-                                         NSLog(@"card created %@", card.title);
+//                                         NSLog(@"card created %@", card.title);
                                          if ([blogDictionary isEqual:[allBlogPosts lastObject]]) {
                                              NSArray *newBlogCards = [NSArray arrayWithArray:mNewBlogCards];
                                              completionBlock(newBlogCards);
