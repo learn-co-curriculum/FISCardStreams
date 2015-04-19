@@ -56,11 +56,6 @@
 
     self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
     self.streamsDataManager = [FISStreamsDataManager sharedDataManager];
- 
-//    [self getAllStreams];
-
-//    [self getAllCardsForUser];
-
 }
 
 

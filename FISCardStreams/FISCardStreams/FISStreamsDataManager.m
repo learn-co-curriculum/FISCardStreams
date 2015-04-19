@@ -148,9 +148,6 @@
     NSMutableArray *allGithubUniquenessIDs = [[NSMutableArray alloc]init];
     for (FISCard *currentCard in self.userStream.cards) {
             if ([currentCard.source isEqualToString:SOURCE_GITHUB]) {
-//                NSInteger postAtInt = [currentCard.postAt timeIntervalSince1970] * 1000; // convert to milliseconds
-//                NSNumber *epochCardDate = @(postAtInt);
-//                [allGithubCardTimeStamps addObject:epochCardDate];
                 [allGithubUniquenessIDs addObject:currentCard.uniquenessID];
         }
     }

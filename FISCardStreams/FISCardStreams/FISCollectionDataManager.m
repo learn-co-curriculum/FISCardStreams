@@ -56,20 +56,6 @@
 }
 
 
-//- (void)getShowcaseCardsForStream:(FISStream *)stream completionBlock:(void (^)(NSArray *))completionBlock {
-//    NSString *streamID = stream.streamID;
-//    [FISCardStreamsAPIClient getAllCardsWithStreamID:streamID AndCheckWithCompletionBlock:^(NSArray *userCards) {
-//        NSMutableArray *allCards = [[NSMutableArray alloc] init];
-//        [allCards addObjectsFromArray:[FISCard createArrayOfCardsFromDictionaries:userCards]];
-//        
-//        FISCard *githubCard = [self findMostRecentGithubCardInCardsArray:allCards];
-//        FISCard *blogCard = [self findMostRecentBlogCardInCardsArray:allCards];
-//        FISCard *stackExchangeCard = [self findMostRecentStackExchangeCardInCardsArray:allCards];
-//        NSArray *arrayOFCards = @[githubCard, blogCard, stackExchangeCard];
-//        completionBlock(arrayOFCards);
-//    }];
-//}
-
 #pragma mark - Predicate methods
 
 - (FISCard *)findMostRecentGithubCardInCardsArray:(NSMutableArray *)userCards {
@@ -121,7 +107,7 @@
     if (!stackExchangeCard) {
         stackExchangeCard = [[FISCard alloc]init];
         stackExchangeCard.title = @"No Stack Exchange cards found.";
-        stackExchangeCard.cardDescription = @"This user has not connect a stack exchange account.";
+        stackExchangeCard.cardDescription = @"This user has not connected a stack exchange account.";
     }
     return stackExchangeCard;
 }

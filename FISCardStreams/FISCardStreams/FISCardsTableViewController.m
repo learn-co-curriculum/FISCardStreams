@@ -79,8 +79,6 @@
     
     
     
-    //    [self.barButtonItem.image
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -94,17 +92,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    
     [self getAllCardsForUser];
     
-    //    if ([self.presentingViewController isKindOfClass:[FISCardstreamLogInViewController class]]) {
-    //        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //        NSString *username = [defaults valueForKey:@"fisdev_username"];
-    //        NSString *accessToken = [SSKeychain passwordForService:SOURCE_STACK_EXCHANGE account:username];
-    //
-    //        if (accessToken) {
     [self getAllStreams];
-    
 }
 
 
@@ -261,7 +251,6 @@
 {
     // do your refresh here and reload the tablview
     [self getAllCardsForUser];
-    //    [self viewWillAppear:YES];
 }
 
 #pragma mark - Navigation
