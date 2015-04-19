@@ -37,7 +37,7 @@
 - (void)getAllStreamsWithCompletionBlock:(void (^)(BOOL))completionBlock {
     [FISCardStreamsAPIClient getAllStreamsWithCompletionBlock:^(NSArray *allStreams) {
         self.allStreams = [FISStream createArrayOfStreamsFromDictionaries:allStreams];
-        NSLog(@"%@", self.allStreams);
+//        NSLog(@"%@", self.allStreams);
         
         for (FISStream *currentStream in self.allStreams) {
             [FISCardStreamsAPIClient getAllCardsWithStreamID:currentStream.streamID AndCheckWithCompletionBlock:^(NSArray *userCards) {
@@ -87,7 +87,8 @@
 
 - (NSInteger)findCountOfGithubCommitsInLastSevenDaysInCardsArray:(NSArray *)userCards {
     NSPredicate *githubPredicate = [NSPredicate predicateWithFormat:@"source == %@", SOURCE_GITHUB];
-    NSArray *githubArray = [userCards filteredArrayUsingPredicate:githubPredicate];
+    NSArray *githubArray = [[NSArray alloc]init];
+    githubArray = [userCards filteredArrayUsingPredicate:githubPredicate];
     
     NSInteger secondsInOneWeekNeg = -604800;
     NSDate *oneWeekAgo = [[NSDate alloc] initWithTimeIntervalSinceNow:secondsInOneWeekNeg];
@@ -95,7 +96,7 @@
     NSPredicate *withinOneWeekAgoPredicate = [NSPredicate predicateWithFormat:@"postAt > %@", oneWeekAgo];
     NSArray *githubWithinOneWeekAgoArray = [githubArray filteredArrayUsingPredicate:withinOneWeekAgoPredicate];
     
-    NSLog(@"%@", githubWithinOneWeekAgoArray);
+//    NSLog(@"%@", githubWithinOneWeekAgoArray);
     
     return [githubWithinOneWeekAgoArray count];
 }
