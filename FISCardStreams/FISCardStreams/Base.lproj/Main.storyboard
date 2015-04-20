@@ -561,11 +561,7 @@
                             <constraint firstAttribute="width" secondItem="xdP-ES-qdj" secondAttribute="width" id="jzF-bi-zFf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4Iq-cK-2eq">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="XH4-xO-eOd">
-                            <color key="tintColor" red="0.0" green="0.64705882349999999" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="4Iq-cK-2eq"/>
                     <connections>
                         <outlet property="backgroundGrandientView" destination="mpF-wy-uum" id="0eI-84-Z4U"/>
                         <outlet property="collectionView" destination="xdP-ES-qdj" id="oQC-L0-BUV"/>
