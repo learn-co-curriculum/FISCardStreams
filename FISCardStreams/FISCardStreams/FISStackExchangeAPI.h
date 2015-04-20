@@ -14,7 +14,7 @@
 +(NSURLRequest *)redirectAfterAuthentication;
 
 
-+ (void)getNetworkActivityForCurrentUserWithCompletionBlock:(void (^)(NSArray *userNetworkActivities))completionBlock;
++ (void)getNetworkActivityForCurrentUserWithCompletionBlock:(void (^)(NSArray *userNetworkActivities, BOOL success))completionBlock;
 
 
 @end

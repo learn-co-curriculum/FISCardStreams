@@ -36,7 +36,7 @@
 }
 
 
-+ (void)getNetworkActivityForCurrentUserWithCompletionBlock:(void (^)(NSArray *))completionBlock
++ (void)getNetworkActivityForCurrentUserWithCompletionBlock:(void (^)(NSArray *, BOOL))completionBlock
 {
     
     NSString *stackExchangeURL = [NSString stringWithFormat:@"%@me/network-activity", STACKEXCHANGE_BASE_URL];
@@ -63,23 +63,25 @@
         stackAccess = accessToken;
     }
     
-    if (!stackAccess) {
+    if (stackAccess) {
+        
+        NSDictionary *urlParams = @{@"access_token":stackAccess,
+                                    @"key":STACKEXCHANGE_KEY};
+        
+        
+        [manager GET:stackExchangeURL parameters:urlParams success:^(NSURLSessionDataTask *task, id responseObject) {
+            
+            //NSLog(@"ResponseObject: %@", responseObject);
+            NSArray *responseItems = responseObject[@"items"];
+            completionBlock(responseItems, YES);
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            completionBlock(@[], NO);
+            NSLog(@"Failure: %@", error.localizedDescription);
+        }];
+    } else {
+        completionBlock(@[], NO);
         NSLog(@"Stack Exchange access_token not retrieved");
     }
-        
-    NSDictionary *urlParams = @{@"access_token":stackAccess,
-                                @"key":STACKEXCHANGE_KEY};
-
-
-    [manager GET:stackExchangeURL parameters:urlParams success:^(NSURLSessionDataTask *task, id responseObject) {
-        
-        //NSLog(@"ResponseObject: %@", responseObject);
-        NSArray *responseItems = responseObject[@"items"];
-        completionBlock(responseItems);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"Failure: %@", error.localizedDescription);
-    }];
-    
 }
 
 @end

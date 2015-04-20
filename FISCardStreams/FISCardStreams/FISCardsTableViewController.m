@@ -176,11 +176,15 @@
         }];
     }
     
-    [self.streamsDataManager updateStackExchangeFeedWithCompletionBlock:^(NSArray *newStackExchangeCards) {
-        [self.streamsDataManager.userStream.cards addObjectsFromArray:newStackExchangeCards];
-        self.stackExchangeUpdateIsComplete = YES;
-        NSLog(@"Stack Exchange updated");
-        [self reloadTableViewIfAllUpdatesAreComplete];
+    [self.streamsDataManager updateStackExchangeFeedWithCompletionBlock:^(NSArray *newStackExchangeCards, BOOL success) {
+        if (success) {
+            [self.streamsDataManager.userStream.cards addObjectsFromArray:newStackExchangeCards];
+            self.stackExchangeUpdateIsComplete = YES;
+            NSLog(@"Stack Exchange updated");
+            [self reloadTableViewIfAllUpdatesAreComplete];
+        } else {
+            self.stackExchangeUpdateIsComplete = YES;
+        }
     }];
 }
 

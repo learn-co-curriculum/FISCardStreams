@@ -62,6 +62,6 @@
  *  Downloads all of the network-activity for the Stack Exchange account attributed by the access_token granted during the sign up process and checks them for uniqueness by time stamp among cards which share the "stack_exchange" value in the "source" property.
  *  Unique cards are POSTed to the CardStreams.io API under the currently set userStream's streamID, and the added locally to the userStream's cards array.
  */
-- (void)updateStackExchangeFeedWithCompletionBlock:(void (^)(NSArray *newStackExchangeCards))completionBlock;
+- (void)updateStackExchangeFeedWithCompletionBlock:(void (^)(NSArray *newStackExchangeCards, BOOL success))completionBlock;
 
 @end
