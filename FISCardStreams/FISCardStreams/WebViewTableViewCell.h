@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class FISCard;
-@interface WebViewTableViewCell : UITableViewCell
+@interface WebViewTableViewCell : UITableViewCell <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *blogWebView;
 @property (weak, nonatomic) FISCard *card;
