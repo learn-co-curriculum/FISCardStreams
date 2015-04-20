@@ -94,8 +94,8 @@
     
     if (!blogCard) {
         blogCard = [[FISCard alloc]init];
-        blogCard.title = @"No blog cards found";
-        blogCard.cardDescription = @"This user has not connected a blog.";
+        blogCard.title = @"No blog posts found";
+        blogCard.cardDescription = @"No blog posts found.";
     }
     return blogCard;
 }
@@ -108,7 +108,7 @@
     if (!stackExchangeCard) {
         stackExchangeCard = [[FISCard alloc]init];
         stackExchangeCard.title = @"No Stack Exchange cards found.";
-        stackExchangeCard.cardDescription = @"This user has not connected a stack exchange account.";
+        stackExchangeCard.cardDescription = @"No Stack Exchange posts found.";
     }
     return stackExchangeCard;
 }

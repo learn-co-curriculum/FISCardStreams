@@ -55,7 +55,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"activityCell" forIndexPath:indexPath];
     
-    FISCard *currentCard = (FISCard *)self.stream.cards[indexPath.section];
+    FISCard *currentCard = self.stream.cards[indexPath.section];
     
     cell.textLabel.text = currentCard.title;
     NSDate *postDate = currentCard.postAt;
