@@ -57,10 +57,23 @@
     
     for (NSInteger i = 0; i < [blogList count]; i++) {
         NSMutableDictionary * filteredData = [[NSMutableDictionary alloc]init];
+        
         filteredData[@"title"] = blogList[i][@"title"][@"@"];
-        filteredData[@"summary"] = blogList[i][@"description"][@"@"];
         filteredData[@"link"] = blogList[i][@"link"][@"@"];
         filteredData[@"pubDate"] = blogList[i][@"pubDate"][@"@"];
+        
+        NSString * description = blogList[i][@"description"][@"@"];
+        
+        NSString * changeImageSize = [description stringByReplacingOccurrencesOfString:@"width=\"600\" height=\"200\"" withString:@"width=\"250\" height=\"125\""];
+        
+        NSString *updateFont = [changeImageSize stringByReplacingOccurrencesOfString:@"<p class=\"medium-feed-snippet\">" withString:@"<p class=\"medium-feed-snippet\"><font face=\"avenir\">"];
+        
+        NSInteger summaryLength = updateFont.length - 10;
+        NSString *closingFontTag = [updateFont stringByReplacingCharactersInRange:NSMakeRange(summaryLength, 10) withString:@"</font></p></div>"];
+        
+        filteredData[@"summary"] = [closingFontTag stringByReplacingOccurrencesOfString:@"»" withString:@""];
+        
+        NSLog(@"%@", closingFontTag);
         [userBlogResult addObject:filteredData];
     }
     

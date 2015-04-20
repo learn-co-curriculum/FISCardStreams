@@ -88,10 +88,12 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *mediumUsername = [defaults valueForKey:@"medium_username"];
-    //    NSString *mediumUsername = [SSKeychain passwordForService:SOURCE_BLOG account:self.fisDevUsername];
-    if (self.mediumUsername) {
+//    NSString *savedMediumUsername = [SSKeychain passwordForService:SOURCE_BLOG account:self.fisDevUsername];
+    
+    NSLog(@"saved medium username: %@", mediumUsername);
+    if (mediumUsername) {
         NSLog(@"animate medium %@", mediumUsername);
-        self.blogTextField.placeholder = mediumUsername;
+        self.blogTextField.text = mediumUsername;
         [self animateCheckMark:self.mediumChecker];
     }
     
