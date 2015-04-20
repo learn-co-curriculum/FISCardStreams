@@ -153,7 +153,7 @@
 - (BOOL)validateUserName:(NSString *)usernameBeforeValidation
 {
     BOOL isAccepted = NO;
-    if (self.usernameTextField.text.length > 10) {
+    if (self.usernameTextField.text.length > 16) {
         [self showAlertUsernameTooLong];
         isAccepted = NO;
     }

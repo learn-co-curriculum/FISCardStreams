@@ -190,7 +190,7 @@
     }];
 }
 
-- (void)updateStackExchangeFeedWithCompletionBlock:(void (^)(NSArray *))completionBlock {
+- (void)updateStackExchangeFeedWithCompletionBlock:(void (^)(NSArray *, BOOL))completionBlock {
     NSMutableArray *allSECardUniquenessIDs = [[NSMutableArray alloc]init];
     for (FISCard *currentCard in self.userStream.cards) {
         if ([currentCard.source isEqualToString:SOURCE_STACK_EXCHANGE]) {
@@ -199,38 +199,42 @@
     }
     
     NSMutableArray *newStackExchangeCards = [[NSMutableArray alloc]init];
-    [FISStackExchangeAPI getNetworkActivityForCurrentUserWithCompletionBlock:^(NSArray *userNetworkActivities) {
-        for (NSDictionary *activityDictionary in userNetworkActivities) {
-            
-            if ([allSECardUniquenessIDs containsObject:activityDictionary[@"creation_date"]]) {
+    [FISStackExchangeAPI getNetworkActivityForCurrentUserWithCompletionBlock:^(NSArray *userNetworkActivities, BOOL success) {
+        if (success) {
+            for (NSDictionary *activityDictionary in userNetworkActivities) {
                 
-                continue;
+                if ([allSECardUniquenessIDs containsObject:activityDictionary[@"creation_date"]]) {
+                    
+                    continue;
+                }
+                
+                NSInteger postAtInt = [activityDictionary[@"creation_date"] integerValue] * 1000; // convert to milliseconds
+                NSNumber *epochPostAt = @(postAtInt);
+                
+                NSString *cardDescription = [NSString stringWithFormat:@"%@: %@\n%@",
+                                             activityDictionary[@"activity_type"],
+                                             activityDictionary[@"title"],
+                                             activityDictionary[@"description"]  ];
+                
+                NSDictionary *cardBody = @{ @"title"        : activityDictionary[@"api_site_parameter"],
+                                            @"description"  : cardDescription,
+                                            @"postAt"       : epochPostAt,
+                                            @"postLink"     : activityDictionary[@"link"],
+                                            @"source"       : SOURCE_STACK_EXCHANGE,
+                                            @"uniquenessID" : activityDictionary[@"creation_date"]    };
+                
+                [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
+                                           WithContentDictionary:cardBody
+                                             WithCompletionBlock:^(FISCard *card) {
+                                                 [newStackExchangeCards addObject:card];
+                                                 //NSLog(@"Stack Exchange %@", card);
+                                                 if ([activityDictionary isEqual:[userNetworkActivities lastObject]]) {
+                                                     completionBlock(newStackExchangeCards, YES);
+                                                 }
+                                             }];
             }
-
-            NSInteger postAtInt = [activityDictionary[@"creation_date"] integerValue] * 1000; // convert to milliseconds
-            NSNumber *epochPostAt = @(postAtInt);
-            
-            NSString *cardDescription = [NSString stringWithFormat:@"%@: %@\n%@",
-                                         activityDictionary[@"activity_type"],
-                                         activityDictionary[@"title"],
-                                         activityDictionary[@"description"]  ];
-            
-            NSDictionary *cardBody = @{ @"title"        : activityDictionary[@"api_site_parameter"],
-                                        @"description"  : cardDescription,
-                                        @"postAt"       : epochPostAt,
-                                        @"postLink"     : activityDictionary[@"link"],
-                                        @"source"       : SOURCE_STACK_EXCHANGE,
-                                        @"uniquenessID" : activityDictionary[@"creation_date"]    };
-            
-            [FISCardStreamsAPIClient createACardWithStreamID:self.userStream.streamID
-                                       WithContentDictionary:cardBody
-                                         WithCompletionBlock:^(FISCard *card) {
-                                             [newStackExchangeCards addObject:card];
-                                             //NSLog(@"Stack Exchange %@", card);
-                                             if ([activityDictionary isEqual:[userNetworkActivities lastObject]]) {
-                                                 completionBlock(newStackExchangeCards);
-                                             }
-                                         }];
+        } else {
+            completionBlock(@[], NO);
         }
     }];
 }
