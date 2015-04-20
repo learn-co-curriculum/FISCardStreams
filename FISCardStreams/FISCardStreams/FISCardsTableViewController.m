@@ -57,6 +57,7 @@
 
 #pragma mark - View Lifecycle
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -66,6 +67,7 @@
     self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
     
     [self addingPullToRefreshFeatureToTheTableViews];
+    [self setUpNavigationBarFonts];
     
     self.tableView.estimatedRowHeight = 200;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -77,8 +79,6 @@
     pic.layer.cornerRadius = pic.frame.size.width / 2;
     pic.layer.masksToBounds = YES;
     
-    
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -89,12 +89,26 @@
     
 }
 
+-(void)setUpNavigationBarFonts{
+    
+    NSDictionary *barButtonAppearance = @{NSFontAttributeName : [UIFont fontWithName:@"avenir" size:18.0]};
+    [[UIBarButtonItem appearance] setTitleTextAttributes:barButtonAppearance forState:UIControlStateNormal ];
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIFont fontWithName:@"avenir" size:22], NSFontAttributeName, nil]];
+    
+}
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [self getAllCardsForUser];
     
     [self getAllStreams];
+    
+    [self setUpNavigationBarFonts];
+
+    
 }
 
 

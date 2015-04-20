@@ -52,6 +52,7 @@
     [self setUpCollectionView];
     [self setUpBackgroundColors];
     [self roundCornersOnCollectionViewCell];
+    [self setUpNavigationBarFonts];
 
 
     self.collectionsDataManager = [FISCollectionDataManager sharedDataManager];
@@ -59,7 +60,8 @@
 }
 
 
-#pragma mark - 
+#pragma mark - Formatting
+
 -(void)roundCornersOnCollectionViewCell{
         self.cardCell.layer.cornerRadius = 5;
         self.cardCell.layer.masksToBounds = YES;
@@ -76,6 +78,17 @@
     
     [self.backgroundGrandientView.layer insertSublayer:gradient atIndex:0];
     
+}
+
+-(void)setUpNavigationBarFonts{
+    
+    NSDictionary *barButtonAppearance = @{NSFontAttributeName : [UIFont fontWithName:@"avenir" size:18.0]};
+    [[UIBarButtonItem appearance] setTitleTextAttributes:barButtonAppearance forState:UIControlStateNormal ];
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIFont fontWithName:@"avenir" size:22], NSFontAttributeName, nil]];
+
 }
 
 
