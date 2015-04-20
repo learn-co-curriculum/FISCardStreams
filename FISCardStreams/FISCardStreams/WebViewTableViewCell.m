@@ -39,8 +39,24 @@
         self.dateLabel.text = [dateFormatter stringFromDate:self.card.postAt];
         
         [self.blogWebView loadHTMLString:self.card.cardDescription baseURL:nil];
+        
+        self.blogWebView.delegate = self;
+        
     }
 
 }
+
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSLog(@"blog was click");
+    if ( navigationType == UIWebViewNavigationTypeLinkClicked ) {
+        [[UIApplication sharedApplication] openURL:[request URL]];
+        return NO;
+    }
+    
+    return YES;
+}
+
+
 
 @end
