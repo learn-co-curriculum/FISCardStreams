@@ -64,7 +64,7 @@
         
         NSString * description = blogList[i][@"description"][@"@"];
         
-        NSString * changeImageSize = [description stringByReplacingOccurrencesOfString:@"width=\"600\" height=\"200\"" withString:@"width=\"250\" height=\"125\""];
+        NSString * changeImageSize = [description stringByReplacingOccurrencesOfString:@"width=\"600\" height=\"200\"" withString:@"width=\"200\" height=\"125\""];
         
         NSString *updateFont = [changeImageSize stringByReplacingOccurrencesOfString:@"<p class=\"medium-feed-snippet\">" withString:@"<p class=\"medium-feed-snippet\"><font face=\"avenir\">"];
         
