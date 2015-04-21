@@ -83,7 +83,7 @@
         
             NSArray *data = event[@"payload"][@"commits"];
             
-            if (data)
+            if ([data count] >0)
             {
             NSString *repo = event[@"repo"][@"name"];
             NSArray *fullName = [repo componentsSeparatedByString:@"/"];
