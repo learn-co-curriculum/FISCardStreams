@@ -57,7 +57,14 @@
     
     FISCard *currentCard = self.stream.cards[indexPath.section];
     
-    cell.textLabel.text = currentCard.title;
+    NSString *gitHubString = @"Github Commit";
+    
+//    if (currentCard.title == gitHubString) {
+        cell.textLabel.text = [NSString stringWithFormat:@"GitHub Commit: %@", currentCard.postAt];
+//    }else{
+//    cell.textLabel.text = currentCard.title;
+//    }
+    
     NSDate *postDate = currentCard.postAt;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
