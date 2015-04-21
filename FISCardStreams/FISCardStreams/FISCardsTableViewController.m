@@ -132,12 +132,14 @@
         WebViewTableViewCell *webCell = (WebViewTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"blogCell" forIndexPath:indexPath];
         
         webCell.card = currentCard;
+        NSString *blog = @"Blog: ";
+        webCell.titleLabel.text = [blog stringByAppendingString:currentCard.title];
         
         return webCell;
     }
     if([currentCard.source isEqualToString:SOURCE_STACK_EXCHANGE])
     {
-        StackExchangeTableViewCell *stackCell = (StackExchangeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"stackExchangeCell" forIndexPath:indexPath];
+        WebViewTableViewCell *stackCell = (WebViewTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"blogCell" forIndexPath:indexPath];
         stackCell.card = currentCard;
         return stackCell;
     }

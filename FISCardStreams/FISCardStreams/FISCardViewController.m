@@ -128,18 +128,18 @@
     
     NSInteger githubCount = [self.collectionsDataManager findCountOfGithubCommitsInLastSevenDaysInCardsArray:currentStream.cards];
     
-    cell.gitHubField.text = [NSString stringWithFormat:@"%ld", (long)githubCount];
+    cell.gitHubField.text = [NSString stringWithFormat:@"  %ld", (long)githubCount];
     
     
     
     FISCard *stackOverflowCard = [self.collectionsDataManager findMostRecentStackExchangeCardInCardsArray:currentStream.cards];
     
-    cell.stackOverflowField.text = stackOverflowCard.cardDescription;
+    cell.stackOverflowField.text = [NSString stringWithFormat:@"  %@", stackOverflowCard.cardDescription ];
     
     
     
     FISCard *blogCard = [self.collectionsDataManager findMostRecentBlogCardInCardsArray:currentStream.cards];
-    cell.blogField.text = blogCard.title;
+    cell.blogField.text = [NSString stringWithFormat:@"  %@", blogCard.title];;
     
     
     return cell;

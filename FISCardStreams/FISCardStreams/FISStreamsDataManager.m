@@ -211,7 +211,9 @@
                 NSInteger postAtInt = [activityDictionary[@"creation_date"] integerValue] * 1000; // convert to milliseconds
                 NSNumber *epochPostAt = @(postAtInt);
                 
-                NSString *cardDescription = [NSString stringWithFormat:@"%@: %@\n%@",
+//                NSString *doubleQuoteDescription = [activityDictionary[@"description"] stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
+//                NSString *singleQuoteDescription = [doubleQuoteDescription stringByReplacingOccurrencesOfString:@"&#39;" withString:@"\'"];
+                NSString *cardDescription = [NSString stringWithFormat:@"%@: %@\n\n%@",
                                              activityDictionary[@"activity_type"],
                                              activityDictionary[@"title"],
                                              activityDictionary[@"description"]  ];
