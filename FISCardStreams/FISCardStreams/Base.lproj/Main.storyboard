@@ -338,25 +338,24 @@
                                                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits"/>
                                                                         </textField>
-                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="21" translatesAutoresizingMaskIntoConstraints="NO" id="Dr8-Yd-uc5">
-                                                                            <rect key="frame" x="0.0" y="15" width="360" height="20"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2o4-hQ-3lX">
+                                                                            <rect key="frame" x="0.0" y="14" width="361" height="21"/>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                            <color key="textColor" red="0.37254901960784315" green="0.38039215686274508" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
-                                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                                        </textView>
+                                                                            <color key="textColor" red="0.37254901959999998" green="0.3803921569" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstItem="HGa-Zx-vxh" firstAttribute="top" secondItem="Khy-o4-6P5" secondAttribute="top" id="6bD-XN-cLJ"/>
-                                                                        <constraint firstItem="Dr8-Yd-uc5" firstAttribute="leading" secondItem="Khy-o4-6P5" secondAttribute="leading" id="8Ag-CE-Q71"/>
-                                                                        <constraint firstItem="Dr8-Yd-uc5" firstAttribute="bottom" secondItem="Khy-o4-6P5" secondAttribute="bottom" id="ATZ-UH-ilj"/>
-                                                                        <constraint firstItem="Dr8-Yd-uc5" firstAttribute="top" secondItem="HGa-Zx-vxh" secondAttribute="bottom" id="MdJ-lZ-MsO"/>
-                                                                        <constraint firstItem="Dr8-Yd-uc5" firstAttribute="top" secondItem="HGa-Zx-vxh" secondAttribute="bottom" id="VEk-qe-hsx"/>
+                                                                        <constraint firstItem="2o4-hQ-3lX" firstAttribute="leading" secondItem="Khy-o4-6P5" secondAttribute="leading" id="FCm-KL-xQB"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="2o4-hQ-3lX" secondAttribute="trailing" id="Npa-xE-d5B"/>
                                                                         <constraint firstItem="HGa-Zx-vxh" firstAttribute="trailing" secondItem="Khy-o4-6P5" secondAttribute="trailing" id="VfV-fu-0td"/>
                                                                         <constraint firstItem="HGa-Zx-vxh" firstAttribute="height" secondItem="Khy-o4-6P5" secondAttribute="height" multiplier="0.4" id="agB-4d-cr5"/>
                                                                         <constraint firstItem="HGa-Zx-vxh" firstAttribute="leading" secondItem="Khy-o4-6P5" secondAttribute="leading" id="dI9-AB-w0L"/>
-                                                                        <constraint firstItem="Dr8-Yd-uc5" firstAttribute="trailing" secondItem="Khy-o4-6P5" secondAttribute="trailing" id="jQ5-lH-OGA"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="2o4-hQ-3lX" secondAttribute="bottom" id="kZ9-1A-qeo"/>
+                                                                        <constraint firstItem="2o4-hQ-3lX" firstAttribute="top" secondItem="HGa-Zx-vxh" secondAttribute="bottom" id="tAg-yH-0DL"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7E2-Wy-uOb" userLabel="StatView2">
@@ -369,24 +368,24 @@
                                                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits"/>
                                                                         </textField>
-                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" editable="NO" text="The Importance of Classes" translatesAutoresizingMaskIntoConstraints="NO" id="nCF-mZ-dka">
-                                                                            <rect key="frame" x="0.0" y="13" width="360" height="22"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYL-LM-u05">
+                                                                            <rect key="frame" x="0.0" y="14" width="361" height="21"/>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                            <color key="textColor" red="0.37254901960784315" green="0.38039215686274508" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
-                                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                                        </textView>
+                                                                            <color key="textColor" red="0.37254901959999998" green="0.3803921569" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <constraints>
+                                                                        <constraint firstItem="RYL-LM-u05" firstAttribute="top" secondItem="jpz-xd-oIv" secondAttribute="bottom" id="2AL-z2-1ue"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="RYL-LM-u05" secondAttribute="trailing" id="2S9-Ly-k9h"/>
                                                                         <constraint firstItem="jpz-xd-oIv" firstAttribute="height" secondItem="7E2-Wy-uOb" secondAttribute="height" multiplier="0.4" id="BJ7-Iw-d4V"/>
                                                                         <constraint firstItem="jpz-xd-oIv" firstAttribute="trailing" secondItem="7E2-Wy-uOb" secondAttribute="trailing" id="R4F-Ox-Duv"/>
-                                                                        <constraint firstItem="nCF-mZ-dka" firstAttribute="top" secondItem="jpz-xd-oIv" secondAttribute="bottom" id="SYX-4g-Y3s"/>
                                                                         <constraint firstItem="jpz-xd-oIv" firstAttribute="top" secondItem="7E2-Wy-uOb" secondAttribute="top" id="aHT-Vi-vKx"/>
-                                                                        <constraint firstItem="nCF-mZ-dka" firstAttribute="bottom" secondItem="7E2-Wy-uOb" secondAttribute="bottom" id="igs-x0-EpD"/>
+                                                                        <constraint firstItem="RYL-LM-u05" firstAttribute="leading" secondItem="7E2-Wy-uOb" secondAttribute="leading" id="imH-ej-cRH"/>
                                                                         <constraint firstItem="jpz-xd-oIv" firstAttribute="leading" secondItem="7E2-Wy-uOb" secondAttribute="leading" id="pNz-V6-EcB"/>
-                                                                        <constraint firstItem="nCF-mZ-dka" firstAttribute="trailing" secondItem="7E2-Wy-uOb" secondAttribute="trailing" id="wjB-zB-7jy"/>
-                                                                        <constraint firstItem="nCF-mZ-dka" firstAttribute="leading" secondItem="7E2-Wy-uOb" secondAttribute="leading" id="wud-1d-hV7"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="RYL-LM-u05" secondAttribute="bottom" id="tEy-2k-NSm"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ks2-eU-1SC" userLabel="StatView3">
@@ -399,24 +398,24 @@
                                                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits"/>
                                                                         </textField>
-                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" editable="NO" text="How to implement gradients" translatesAutoresizingMaskIntoConstraints="NO" id="upe-nb-TZo">
-                                                                            <rect key="frame" x="1" y="16" width="187" height="25"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Du1-4e-Cyt">
+                                                                            <rect key="frame" x="0.0" y="14" width="361" height="21"/>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                            <color key="textColor" red="0.37254901959999998" green="0.3803921569" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
-                                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                                        </textView>
+                                                                            <color key="textColor" red="0.37254901959999998" green="0.3803921569" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <constraints>
+                                                                        <constraint firstAttribute="trailing" secondItem="Du1-4e-Cyt" secondAttribute="trailing" id="3wY-ki-IyT"/>
                                                                         <constraint firstItem="dpQ-yN-4YY" firstAttribute="height" secondItem="Ks2-eU-1SC" secondAttribute="height" multiplier="0.4" id="AWG-aU-ijT"/>
                                                                         <constraint firstItem="dpQ-yN-4YY" firstAttribute="leading" secondItem="Ks2-eU-1SC" secondAttribute="leading" id="Csm-Ez-G6E"/>
-                                                                        <constraint firstItem="upe-nb-TZo" firstAttribute="leading" secondItem="Ks2-eU-1SC" secondAttribute="leading" id="Rln-2n-YnS"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="upe-nb-TZo" secondAttribute="bottom" id="WJt-7s-wlo"/>
+                                                                        <constraint firstItem="Du1-4e-Cyt" firstAttribute="top" secondItem="dpQ-yN-4YY" secondAttribute="bottom" id="VWc-Ko-mHr"/>
                                                                         <constraint firstItem="dpQ-yN-4YY" firstAttribute="trailing" secondItem="Ks2-eU-1SC" secondAttribute="trailing" id="aOL-0N-SLS"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="upe-nb-TZo" secondAttribute="trailing" id="qJ7-6U-gLu"/>
+                                                                        <constraint firstItem="Du1-4e-Cyt" firstAttribute="leading" secondItem="Ks2-eU-1SC" secondAttribute="leading" id="aoq-SY-OuD"/>
                                                                         <constraint firstItem="dpQ-yN-4YY" firstAttribute="top" secondItem="Ks2-eU-1SC" secondAttribute="top" id="toT-Dq-PSe"/>
-                                                                        <constraint firstItem="upe-nb-TZo" firstAttribute="top" secondItem="dpQ-yN-4YY" secondAttribute="bottom" id="uoN-wC-wlO"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="Du1-4e-Cyt" secondAttribute="bottom" id="ziC-eH-AJ3"/>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
@@ -473,14 +472,14 @@
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="12"/>
-                                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                <color key="textColor" red="0.37254901959999998" green="0.3803921569" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4zW-KX-mFr">
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="11"/>
-                                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                <color key="textColor" red="0.37254901959999998" green="0.3803921569" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
@@ -544,12 +543,12 @@
                                         </constraints>
                                         <size key="customSize" width="417" height="429"/>
                                         <connections>
-                                            <outlet property="blogField" destination="nCF-mZ-dka" id="oh5-Bm-AIg"/>
+                                            <outlet property="blogField" destination="RYL-LM-u05" id="mgX-wB-6Uc"/>
                                             <outlet property="bottomContainer" destination="UVo-ny-QBa" id="7Gc-qA-vid"/>
                                             <outlet property="cardTableView" destination="C9I-Vf-0Qe" id="a9f-fp-HyF"/>
-                                            <outlet property="gitHubField" destination="Dr8-Yd-uc5" id="5vx-DQ-hcY"/>
+                                            <outlet property="gitHubField" destination="2o4-hQ-3lX" id="85O-Rq-Irf"/>
                                             <outlet property="nameField" destination="hFR-jT-dT2" id="oqq-nW-NME"/>
-                                            <outlet property="stackOverflowField" destination="upe-nb-TZo" id="op5-cD-6uq"/>
+                                            <outlet property="stackOverflowField" destination="Du1-4e-Cyt" id="olY-ED-P0S"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
