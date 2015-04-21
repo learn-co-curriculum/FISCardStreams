@@ -27,7 +27,7 @@
 {
     _card = card;
     
-    if (self.card != nil) {
+    if (self.card) {
         self.titleLabel.text = self.card.title;
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];

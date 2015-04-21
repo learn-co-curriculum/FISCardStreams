@@ -39,7 +39,7 @@
 - (void)setCard:(FISCard *)card {
     _card = card;
     
-    if (self.card != nil) {
+    if (self.card) {
         self.titleLabel.text = self.card.title;
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
