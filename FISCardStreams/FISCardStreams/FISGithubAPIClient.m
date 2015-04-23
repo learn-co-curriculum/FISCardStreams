@@ -83,19 +83,19 @@
         
             NSArray *data = event[@"payload"][@"commits"];
             
-            if (data)
+            if ([data count] > 0)
             {
-            NSString *repo = event[@"repo"][@"name"];
-            NSArray *fullName = [repo componentsSeparatedByString:@"/"];
+                NSString *repo = event[@"repo"][@"name"];
+                NSArray *fullName = [repo componentsSeparatedByString:@"/"];
             
-            NSString *username = fullName[0];
-            NSString *repoName = fullName[1];
-            NSString *message = data[0][@"message"];
-            NSString *createdAt = event[@"created_at"];
-            NSDictionary *commit = @{@"username":username,
-                                     @"repo_name":repoName,
-                                     @"commit_message":message,
-                                     @"commited_date":createdAt};
+                NSString *username = fullName[0];
+                NSString *repoName = fullName[1];
+                NSString *message = @"";
+                NSString *createdAt = event[@"created_at"];
+                NSDictionary *commit = @{@"username":username,
+                                         @"repo_name":repoName,
+                                         @"commit_message":message,
+                                         @"commited_date":createdAt};
             
             //NSLog(@"%@", commit);
             [mCommits addObject:commit];
