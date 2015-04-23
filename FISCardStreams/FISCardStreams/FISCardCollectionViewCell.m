@@ -56,12 +56,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"activityCell" forIndexPath:indexPath];
     
     FISCard *currentCard = self.stream.cards[indexPath.section];
+
+    NSString *gitHubString = @"Github Commit";
     
     if ([currentCard.title containsString:@"Github Commit"]) {
         cell.textLabel.text = [NSString stringWithFormat:@"GitHub: %@", currentCard.cardDescription];
     }else{
         cell.textLabel.text = currentCard.title;
     }
+    
     NSDate *postDate = currentCard.postAt;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
