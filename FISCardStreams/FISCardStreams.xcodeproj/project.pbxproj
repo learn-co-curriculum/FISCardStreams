@@ -347,6 +347,7 @@
 				6A7C1EF01ACAD82800DA0161 /* Frameworks */,
 				6A7C1EF11ACAD82800DA0161 /* Resources */,
 				E49D482A97D20FCCD0B84866 /* Copy Pods Resources */,
+				E156532FB948EE39537964B3 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -366,6 +367,7 @@
 				6A7C1F0C1ACAD82800DA0161 /* Frameworks */,
 				6A7C1F0D1ACAD82800DA0161 /* Resources */,
 				E2E6FB2F16AAB5A718352F90 /* Copy Pods Resources */,
+				CCAF34080794003A9692BFB8 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -388,6 +390,7 @@
 				TargetAttributes = {
 					6A7C1EF21ACAD82800DA0161 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 4YFVWFGQC2;
 					};
 					6A7C1F0E1ACAD82800DA0161 = {
 						CreatedOnToolsVersion = 6.2;
@@ -449,6 +452,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CCAF34080794003A9692BFB8 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FISCardStreamsTests/Pods-FISCardStreamsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E156532FB948EE39537964B3 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FISCardStreams/Pods-FISCardStreams-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E2E6FB2F16AAB5A718352F90 /* Copy Pods Resources */ = {
@@ -657,10 +690,13 @@
 			baseConfigurationReference = 3DE0F0B7A4ABDED34230BA8A /* Pods-FISCardStreams.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FISCardStreams/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -669,10 +705,13 @@
 			baseConfigurationReference = B0E688A2D2D1B38D94F890D7 /* Pods-FISCardStreams.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FISCardStreams/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

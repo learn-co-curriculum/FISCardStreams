@@ -1,1 +1,0 @@
-PODS_FISCARDSTREAMS_RGCARDVIEWLAYOUT_OTHER_LDFLAGS = -framework "CoreGraphics" -framework "Foundation" -framework "UIKit"
