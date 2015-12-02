@@ -39,3 +39,5 @@ The application should detect a previous log-in session (that was not logged-out
 The homepage should be a summary or analytics page and not the feed/timeline itself.
 
 
+
+<a href='https://learn.co/lessons/FISCardStreams' data-visibility='hidden'>View this lesson on Learn.co</a>
