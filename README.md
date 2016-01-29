@@ -40,4 +40,4 @@ The homepage should be a summary or analytics page and not the feed/timeline its
 
 
 
-<a href='https://learn.co/lessons/FISCardStreams' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/FISCardStreams' title='FISCardStreams'>FISCardStreams</a> on Learn.co and start learning to code for free.</p>
